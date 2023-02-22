@@ -4,11 +4,11 @@ The Myanmar Macroeconomics, Trade and Investment team is responsible for underta
 
 This repository includes a starter Stratefic Brief, which includes preliminary adviosry for the Task Team on:
 
-- **Data Collection and Acquisition**. Identified data resources that could support the earthquake socio-economic impact analysis.
+- **Data Collection and Acquisition**. Identified data resources that could support the Monitor update. 
 
 - **Data Management**. Recommendations for managing derived project datasets.
 
-- **Data Analytics and Insight Dissemination**. A menu of proposals for analytical work that could be coordinated through the Lab.
+- **Data Analytics and Insight Dissemination**. A menu of proposals for analytical work that could be coordinated through the Lab network.
 
 Over time, datasets, code, and documentation will be added to the repository, supporting reproducibility and reusability of all work conducted in support of the Monitor. 
 

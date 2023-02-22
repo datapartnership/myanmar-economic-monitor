@@ -13,11 +13,11 @@ The Task Team seeks advisory on alternative data sources, especially remote sens
 
 The **Data Lab** advisory is presented in three sections:
 
-- **Data Collection and Acquisition**: Identified data resources that could support the earthquake socio-economic impact analysis.
+- **Data Collection and Acquisition**. Identified data resources that could support the Monitor update. 
 
-- **Data Management**: Recommendations for managing derived project datasets.
+- **Data Management**. Recommendations for managing derived project datasets.
 
-- **Data Analytics and Insight Dissemination**: A menu of proposals for analytical work that could be coordinated through the Lab.
+- **Data Analytics**. A menu of proposals for analytical work that could be coordinated through the Lab network.
 
 ## Data Collection and Acquisition
 
