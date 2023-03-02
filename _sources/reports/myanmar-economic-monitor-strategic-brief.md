@@ -202,3 +202,59 @@ The [Development Data Partnership](https://datapartnership.org) fosters a commun
 practitioners and maintains a robust data documentation and code collaboration
 platform based on GitHub, which is recognized as a good practice in the World
 Bank and in partner international organizations. See more at [https://docs.datapartnership.org](https://docs.datapartnership.org).
+
+### Resources from the Development Data Hub
+
+**ACLED Collection**
+
+[ACLED – East Asia and the Pacific](https://datacatalog.worldbank.org/int/search/dataset/0061832/ACLED---East-Asia-and-the-Pacific)
+
+[ACLED - Direct COVID-19 Disorder Events](https://datacatalog.worldbank.org/int/search/dataset/0061827/ACLED---Direct-COVID-19-Disorder-Events)
+
+[ACLED - Political Violence Targeting Women & Demonstrations Featuring Women](https://datacatalog.worldbank.org/int/search/dataset/0061825/ACLED---Political-Violence-Targeting-Women---Demonstrations-Featuring-Women)
+
+[ACLED – Disorder involving the Media](https://datacatalog.worldbank.org/int/search/dataset/0061823/ACLED---Disorder-Involving-the-Media)
+
+[ACLED – Disorder Involving Health Workers](https://datacatalog.worldbank.org/int/search/dataset/0061824/ACLED---Disorder-Involving-Health-Workers)
+
+[ACLED – Anti-Civilian Violence](https://datacatalog.worldbank.org/int/search/dataset/0061826/ACLED---Anti-Civilian-Violence)
+
+
+
+**DDH Datasets**
+
+[Collection of datasets involving Myanmar on Data Catalog](https://datacatalog.worldbank.org/int/search?fq=(geographical_extent%2Fcoverage%2Fany(geo:geo%2Fname%20eq%20%27Myanmar%27))&q=&sort=last_updated_date%20desc)
+
+[Myanmar Food Insecurity Experience Scale](https://datacatalog.worldbank.org/int/search/dataset/0063795/Myanmar---Food-Insecurity-Experience-Scale-2021)
+
+[Myanmar Global Financial Inclusion Database](https://datacatalog.worldbank.org/int/search/dataset/0063224/Myanmar---Global-Financial-Inclusion--Global-Findex--Database-2021)
+
+[Harmonized COVID-19 Household Monitoring Surveys](https://datacatalog.worldbank.org/int/search/dataset/0037769/Harmonized-COVID-19-Household-Monitoring-Surveys)
+
+[Health Equity and Financial Protection Indicators](https://datacatalog.worldbank.org/int/search/dataset/0038633/Health-Equity-and-Financial-Protection-Indicators)
+
+
+
+**Thematic Dashboards**
+
+[Gender Data Portal](https://genderdata.worldbank.org/countries/malaysia/)
+
+[Water Data Portal](https://wbwaterdata.org/)
+
+[Infrastructure Data Portal](http://w0lxprconn01.worldbank.org:3939/infrasap/) (Internal to bank’s network)
+
+[Global Infrastructure Map](https://geo.worldbank.org/home/toolkit?infraToolkit=global)
+
+[Global Food and Nutrition Security Dashboard](https://www.gafs.info/home/)
+
+[Poverty and Inequality Platform](https://pip.worldbank.org/home)
+
+[Climate Change Knowledge Portal](https://climateknowledgeportal.worldbank.org/)
+
+[Country Climate and Development Report - DataBank](https://databank.worldbank.org/source/country-climate-and-development-report-(ccdr))
+
+[What a Waste portal](https://datatopics.worldbank.org/what-a-waste/)
+
+[Jobs Indicators Database](https://databank.worldbank.org/source/global-jobs-indicators-database-(join))
+
+[Energy Data](https://energydata.info/)
