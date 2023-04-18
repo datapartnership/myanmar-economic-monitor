@@ -487,7 +487,7 @@ document.write(`
 <section id="standardized-anomaly">
 <h4>Standardized Anomaly<a class="headerlink" href="#standardized-anomaly" title="Permalink to this heading">#</a></h4>
 <p>The standardized anomaly is a dimensionless measure that accounts for variations in the mean and standard deviation of the time series data, allowing for a more robust comparison of anomalies across different regions or time periods. This variable can help identify abnormal vegetation conditions that may warrant further analysis or management action.</p>
-<p>The anomaly is calculated based on difference from the average and standard deviation</p>
+<p>The anomaly is calculated based on difference from the average and standard deviation.</p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;anomaly</span> <span class="pre">(%)&quot;</span> <span class="pre">=</span> <span class="pre">(&quot;evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;mean_evi&quot;)</span> <span class="pre">/</span> <span class="pre">&quot;std_evi&quot;</span></code></p>
 <p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">mean_evi</span></code> and <code class="docutils literal notranslate"><span class="pre">std_evi</span></code> is the long-term average and standard deviation of EVI.</p>
 <p><img alt="StdAnom" src="../../_images/climag-stdanom-20230322.png" /></p>
@@ -495,10 +495,10 @@ document.write(`
 </section>
 <section id="vegetation-condition-index-vci">
 <h4>Vegetation Condition Index (VCI)<a class="headerlink" href="#vegetation-condition-index-vci" title="Permalink to this heading">#</a></h4>
-<p>The VCI is a normalized index that ranges from 0 to 100, with higher values indicating better vegetation health. Derived from the EVI data, the VCI provides a concise measure of the overall vegetation condition, enabling the identification of trends and patterns in vegetation dynamics, as well as the evaluation of the effectiveness of management interventions.</p>
-<p>The anomaly is calculated based on difference from the average and standard deviation</p>
+<p>The Vegetation Condition Index (VCI) is a normalized index calculated from the Enhanced Vegetation Index (EVI) data, which ranges from 0 to 100, with higher values indicating better vegetation health. By providing a concise measure of the overall vegetation condition, the VCI enables the identification of trends and patterns in vegetation dynamics and the evaluation of the effectiveness of management interventions.</p>
+<p>To calculate the VCI, the current EVI value is compared to its long-term minimum and maximum values using the following equation:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;vci&quot;</span> <span class="pre">=</span> <span class="pre">100</span> <span class="pre">*</span> <span class="pre">(&quot;evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;min_evi&quot;)</span> <span class="pre">/</span> <span class="pre">(&quot;max_evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;min_evi&quot;)</span></code></p>
-<p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">mean_evi</span></code> and <code class="docutils literal notranslate"><span class="pre">std_evi</span></code> is the long-term average and standard deviation of EVI.</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">min_evi</span></code> and <code class="docutils literal notranslate"><span class="pre">max_evi</span></code> is the long-term minimum and maximum of EVI.</p>
 <p><img alt="VCI" src="../../_images/climag-vci-20230322.png" /></p>
 <p><strong>Figure 7.</strong> Vegetation Condition Index, 22 March - 7 April 2023.</p>
 </section>
@@ -509,14 +509,32 @@ document.write(`
 <section id="start-of-season-sos">
 <h4>Start of Season (SOS)<a class="headerlink" href="#start-of-season-sos" title="Permalink to this heading">#</a></h4>
 <p>The SOS is a critical phenological metric that represents the onset of the growing season. By analyzing the timing of SOS, we can gain insights into how environmental factors, such as temperature and precipitation, impact vegetation growth and development. Understanding the SOS is vital for agricultural planning, as it can inform planting and harvesting schedules, irrigation management, and help predict potential yield outcomes.</p>
+<p>This map displays the spatial distribution of the SOS for Season 1, indicating when vegetation begins its growth cycle across the study area.</p>
+<p><img alt="SOS1" src="../../_images/climag-sos1-2022.png" /></p>
+<p><strong>Figure 8.</strong> Crop planting status - Season 1, 2022</p>
+<p>This map represents the onset of the second growing season, illustrating the spatial distribution of the SOS for Season 2 across the study area.</p>
+<p><img alt="SOS2" src="../../_images/climag-sos2-2022.png" /></p>
+<p><strong>Figure 9.</strong> Crop planting status - Season 2, 2022</p>
 </section>
 <section id="mid-of-season-mos">
 <h4>Mid of Season (MOS)<a class="headerlink" href="#mid-of-season-mos" title="Permalink to this heading">#</a></h4>
 <p>The MOS is an essential phenological parameter that indicates the peak of the growing season. Examining MOS can provide valuable information about the overall health and productivity of vegetation, as it typically corresponds to the period of maximum photosynthetic activity and biomass accumulation. Assessing MOS trends can help identify changes in vegetation dynamics due to climate change, land-use practices, or other environmental stressors, and support the development of effective management strategies for agriculture and natural resources.</p>
+<p>The MOS map for Season 1 illustrates the point in time when vegetation reaches its peak growth and productivity during the first growing season.</p>
+<p><img alt="MOS1" src="../../_images/climag-mos1-2022.png" /></p>
+<p><strong>Figure 10.</strong> Time of middle of season - Season 1, 2022</p>
+<p>Highlighting the peak growth and productivity during the second growing season, the MOS map for Season 2 provides insights into the vegetation dynamics during this period.</p>
+<p><img alt="MOS2" src="../../_images/climag-mos2-2022.png" /></p>
+<p><strong>Figure 11.</strong> Time of middle of season - - Season 2, 2022</p>
 </section>
 <section id="end-of-season-eos">
 <h4>End of Season (EOS)<a class="headerlink" href="#end-of-season-eos" title="Permalink to this heading">#</a></h4>
 <p>The EOS is an important phenological marker signifying the conclusion of the growing season. Investigating the timing of EOS can reveal valuable information about the duration of the growing season and the overall performance of vegetation. EOS trends can help us understand how factors such as temperature, precipitation, and human-induced land-use changes impact ecosystems and their productivity. Information on EOS is also crucial for agricultural management, as it aids in planning harvest schedules and post-harvest activities, and supports the development of informed land management and conservation policies.</p>
+<p>Depicting the conclusion of the growing period, the EOS map for Season 1 shows when vegetation growth ceases and senescence begins in the study area.</p>
+<p><img alt="EOS1" src="../../_images/climag-eos1-2022.png" /></p>
+<p><strong>Figure 12.</strong> Crop harvest status - Season 1, 2022</p>
+<p>The EOS map for Season 2 visualizes the conclusion of the second growing season, capturing the spatial pattern of vegetation senescence across the study area.</p>
+<p><img alt="EOS2" src="../../_images/climag-eos2-2022.png" /></p>
+<p><strong>Figure 13.</strong> Crop harvest status - Season 2, 2022</p>
 </section>
 </section>
 </section>

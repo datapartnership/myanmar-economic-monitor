@@ -92,7 +92,7 @@ where `evi` is current EVI and `mean_evi` is the long-term average of EVI.
 
 The standardized anomaly is a dimensionless measure that accounts for variations in the mean and standard deviation of the time series data, allowing for a more robust comparison of anomalies across different regions or time periods. This variable can help identify abnormal vegetation conditions that may warrant further analysis or management action.
 
-The anomaly is calculated based on difference from the average and standard deviation
+The anomaly is calculated based on difference from the average and standard deviation.
 
 `"anomaly (%)" = ("evi" - "mean_evi") / "std_evi"`
 
@@ -104,13 +104,13 @@ where `evi` is current EVI and `mean_evi` and `std_evi` is the long-term average
 
 #### Vegetation Condition Index (VCI)
 
-The VCI is a normalized index that ranges from 0 to 100, with higher values indicating better vegetation health. Derived from the EVI data, the VCI provides a concise measure of the overall vegetation condition, enabling the identification of trends and patterns in vegetation dynamics, as well as the evaluation of the effectiveness of management interventions.
+The Vegetation Condition Index (VCI) is a normalized index calculated from the Enhanced Vegetation Index (EVI) data, which ranges from 0 to 100, with higher values indicating better vegetation health. By providing a concise measure of the overall vegetation condition, the VCI enables the identification of trends and patterns in vegetation dynamics and the evaluation of the effectiveness of management interventions.
 
-The anomaly is calculated based on difference from the average and standard deviation
+To calculate the VCI, the current EVI value is compared to its long-term minimum and maximum values using the following equation:
 
 `"vci" = 100 * ("evi" - "min_evi") / ("max_evi" - "min_evi")`
 
-where `evi` is current EVI and `mean_evi` and `std_evi` is the long-term average and standard deviation of EVI.
+where `evi` is current EVI and `min_evi` and `max_evi` is the long-term minimum and maximum of EVI.
 
 ![VCI](./images/climag-vci-20230322.png)
 
@@ -124,14 +124,49 @@ In addition to the previously mentioned vegetation indices and derived products,
 
 The SOS is a critical phenological metric that represents the onset of the growing season. By analyzing the timing of SOS, we can gain insights into how environmental factors, such as temperature and precipitation, impact vegetation growth and development. Understanding the SOS is vital for agricultural planning, as it can inform planting and harvesting schedules, irrigation management, and help predict potential yield outcomes.
 
+This map displays the spatial distribution of the SOS for Season 1, indicating when vegetation begins its growth cycle across the study area.
+
+![SOS1](./images/climag-sos1-2022.png)
+
+**Figure 8.** Crop planting status - Season 1, 2022
+
+This map represents the onset of the second growing season, illustrating the spatial distribution of the SOS for Season 2 across the study area.
+
+![SOS2](./images/climag-sos2-2022.png)
+
+**Figure 9.** Crop planting status - Season 2, 2022
+
 #### Mid of Season (MOS)
 
 The MOS is an essential phenological parameter that indicates the peak of the growing season. Examining MOS can provide valuable information about the overall health and productivity of vegetation, as it typically corresponds to the period of maximum photosynthetic activity and biomass accumulation. Assessing MOS trends can help identify changes in vegetation dynamics due to climate change, land-use practices, or other environmental stressors, and support the development of effective management strategies for agriculture and natural resources.
+
+The MOS map for Season 1 illustrates the point in time when vegetation reaches its peak growth and productivity during the first growing season.
+
+![MOS1](./images/climag-mos1-2022.png)
+
+**Figure 10.** Time of middle of season - Season 1, 2022
+
+Highlighting the peak growth and productivity during the second growing season, the MOS map for Season 2 provides insights into the vegetation dynamics during this period.
+
+![MOS2](./images/climag-mos2-2022.png)
+
+**Figure 11.** Time of middle of season - - Season 2, 2022
 
 #### End of Season (EOS)
 
 The EOS is an important phenological marker signifying the conclusion of the growing season. Investigating the timing of EOS can reveal valuable information about the duration of the growing season and the overall performance of vegetation. EOS trends can help us understand how factors such as temperature, precipitation, and human-induced land-use changes impact ecosystems and their productivity. Information on EOS is also crucial for agricultural management, as it aids in planning harvest schedules and post-harvest activities, and supports the development of informed land management and conservation policies.
 
+Depicting the conclusion of the growing period, the EOS map for Season 1 shows when vegetation growth ceases and senescence begins in the study area.
+
+![EOS1](./images/climag-eos1-2022.png)
+
+**Figure 12.** Crop harvest status - Season 1, 2022
+
+The EOS map for Season 2 visualizes the conclusion of the second growing season, capturing the spatial pattern of vegetation senescence across the study area.
+
+![EOS2](./images/climag-eos2-2022.png)
+
+**Figure 13.** Crop harvest status - Season 2, 2022
 
 ## Implementation
 
@@ -141,15 +176,15 @@ We utilized GEE to acquire a time series of EVI data. The EVI data was then proc
 
 In this study, we employed a three-step coding approach to analyze the time series EVI data and derive vegetation index products. The first step utilized GEE to efficiently batch download the time series EVI data. 
 
-* The code for downloading timeseries EVI in GEE: [gee-batch-export-mxd13q1.js](/gee-batch-export-mxd13q1.js)
+* The code for downloading timeseries EVI in GEE: [gee-batch-export-mxd13q1.js](/notebooks/vegetation-conditions/gee-batch-export-mxd13q1.js)
 
 Following this, an ArcPy script was executed to process the acquired data and calculate long-term statistics from the time series.
 
-* The code for calculating long-term statistical value of EVI in Arcpy: [modis_8daystats.py](/modis_8daystats.py)
+* The code for calculating long-term statistical value of EVI in Arcpy: [modis_8daystats.py](/notebooks/vegetation-conditions/modis_8daystats.py)
 
 Lastly, another ArcPy script was employed to compute various vegetation index derived products, such as the ratio, difference, standardized anomaly, and VCI.
 
-* The code for calculating derived EVI products in Arcpy: [modis_viproducts.py](/modis_viproducts.py)
+* The code for calculating derived EVI products in Arcpy: [modis_viproducts.py](/notebooks/vegetation-conditions/modis_viproducts.py)
 
 ### Phenological Metrics
 
