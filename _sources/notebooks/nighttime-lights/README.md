@@ -118,7 +118,7 @@ align: center
 Percent Change in Nighttime Lights: AMD 1 Level
 ```
 
-```{figure} ../../reports/figures/pc_2019_maps1.png
+```{figure} ../../reports/figures/pc_2019_maps2.png
 ---
 scale: 50%
 align: center
@@ -126,7 +126,7 @@ align: center
 Percent Change in Nighttime Lights: AMD 2 Level
 ```
 
-```{figure} ../../reports/figures/pc_2019_maps1.png
+```{figure} ../../reports/figures/pc_2019_maps3.png
 ---
 scale: 50%
 align: center
@@ -137,6 +137,6 @@ Percent Change in Nighttime Lights: AMD 3 Level
 
 ## Limitations
 
-Nighttime lights are a common data source for measuring local economic activity. However, it is a proxy that is strongly--€”although imperfectly--€”correlated with measures of interest, such as population, local GDP, and wealth. Consequently, care must be taken in interpreting reasons for changes in lights.
+Nighttime lights are a common data source for measuring local economic activity. However, it is a proxy that is strongly--??although imperfectly--??correlated with measures of interest, such as population, local GDP, and wealth. Consequently, care must be taken in interpreting reasons for changes in lights.
 
 
