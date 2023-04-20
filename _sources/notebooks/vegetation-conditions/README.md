@@ -150,7 +150,7 @@ Highlighting the peak growth and productivity during the second growing season, 
 
 ![MOS2](./images/climag-mos2-2022.png)
 
-**Figure 11.** Time of middle of season - - Season 2, 2022
+**Figure 11.** Time of middle of season - Season 2, 2022
 
 #### End of Season (EOS)
 
@@ -167,6 +167,18 @@ The EOS map for Season 2 visualizes the conclusion of the second growing season,
 ![EOS2](./images/climag-eos2-2022.png)
 
 **Figure 13.** Crop harvest status - Season 2, 2022
+
+### Tabular data
+
+Time series data aggregate at admin level 2 from January 2002 - February 2023 for above variables are available at Sharepoint, accessible via this [link](https://worldbankgroup.sharepoint.com/:x:/r/teams/DevelopmentDataPartnershipCommunity-WBGroup/Shared%20Documents/Projects/Data%20Lab/Myanmar%20Economic%20Monitor/Data/MODIS%20VI%20250m/07_tables/mmr_phy_modis_evi_monthly_admin2_2002_2023.xlsx?d=w495b1112724243b68ce9939231f64ba6&csf=1&web=1&e=Fgoy6p).
+
+Data aggregation process are done using ArcGIS [Zonal Statistics](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/zonal-statistics-as-table.htm).
+
+Below is an example on how the number of areas for each growing stages can be easily calculated month-by-month from EVI derived products.
+
+![GS2022](./images/climag-growingstages-2022.png)
+
+**Figure 14.** Growing stages in 2022
 
 ## Implementation
 
