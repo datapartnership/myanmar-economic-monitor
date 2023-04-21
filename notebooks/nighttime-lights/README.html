@@ -596,11 +596,6 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#findings">
    Findings
   </a>
@@ -642,6 +637,16 @@ title="Print to PDF"
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
 <p>We use nighttime lights data from the VIIRS Black Marble dataset. Raw nighttime lights data requires correction due to cloud cover and stray light, such as lunar light. The Black Marble dataset applies advanced algorithms to correct raw nighttime light values and calibrate data so that trends in lights over time can be meaningfully analyzed. We use daily and monthly data from VIIRS Black Marble.</p>
+<p>The data for the analysis can be accessed from:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datacatalog.worldbank.org/search/dataset/0037743">Gas Flaring Location Data</a></p></li>
+<li><p><strong>Black Marble Nighttime Lights:</strong> There are two options to access the data:</p>
+<ul>
+<li><p>The code <a class="reference external" href="https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/02_download_black_marble.R">here</a> downloads raw data from the <a class="reference external" href="https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/">NASA archive</a> and processes the data for Turkiye—mosaicing raster tiles together to cover Turkiye. Running the code requires a NASA bearer token; the documentation <a class="reference external" href="https://github.com/ramarty/blackmarbler">here</a> describes how to obtain a token.</p></li>
+<li><p>Pre-processed data can be downloaded from <span class="xref myst">here</span>, using the <strong>Night Time Lights BlackMarble Data</strong></p></li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="methodology">
 <h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h2>
@@ -650,7 +655,7 @@ title="Print to PDF"
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h2>
 <p>Code to replicate the analysis can be found <a class="reference external" href="https://github.com/datapartnership/myanmar-economic-monitor/tree/ntl/notebooks/nighttime-lights">here</a>.</p>
-<p>The code largely relies on an R package (<code class="docutils literal notranslate"><span class="pre">blackmarbler</span></code>) that is currently being created to faciliate downloading and processing Black Marble nighttime lights data. The package <a class="reference external" href="https://ramarty.github.io/blackmarbler/">documentation</a> provides some generic examples for how to download data, make a map of nighttime lights, and show trends in nighttime lights. The below code leverages the package to produce analytics for Turkiye.</p>
+<p>The code largely relies on an R package (<code class="docutils literal notranslate"><span class="pre">blackmarbler</span></code>) that is currently being created to faciliate downloading and processing Black Marble nighttime lights data. The package <a class="reference external" href="https://ramarty.github.io/blackmarbler/">documentation</a> provides some generic examples for how to download data, make a map of nighttime lights, and show trends in nighttime lights. The below code leverages the package to produce analytics for a country.</p>
 <p>The main script (<a class="reference external" href="https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/_main.R">_main.R</a>) loads all packages and runs all scripts for the analysis. Below we document scripts for (1) creating analysis-ready datasets and (2) producing analytics (eg, figures) of nighttime lights data.</p>
 <section id="create-analysis-ready-nighttime-lights-datasets">
 <h3>Create Analysis-Ready Nighttime Lights Datasets<a class="headerlink" href="#create-analysis-ready-nighttime-lights-datasets" title="Permalink to this heading">#</a></h3>
@@ -673,84 +678,71 @@ title="Print to PDF"
 </ul>
 </section>
 </section>
-<section id="id1">
-<h2>Data<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>The data for the analysis can be accessed from:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://datacatalog.worldbank.org/search/dataset/0037743">Gas Flaring Location Data</a></p></li>
-<li><p><strong>Black Marble Nighttime Lights:</strong> There are two options to access the data:</p>
-<ul>
-<li><p>The code <a class="reference external" href="https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/02_download_black_marble.R">here</a> downloads raw data from the <a class="reference external" href="https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/">NASA archive</a> and processes the data for Turkiye—mosaicing raster tiles together to cover Turkiye. Running the code requires a NASA bearer token; the documentation <a class="reference external" href="https://github.com/ramarty/blackmarbler">here</a> describes how to obtain a token.</p></li>
-<li><p>Pre-processed data can be downloaded from <span class="xref myst">here</span>, using the <strong>Night Time Lights BlackMarble Data</strong></p></li>
-</ul>
-</li>
-</ul>
-</section>
 <section id="findings">
 <h2>Findings<a class="headerlink" href="#findings" title="Permalink to this heading">#</a></h2>
 <section id="maps-of-nighttime-lights">
 <h3>Maps of Nighttime Lights<a class="headerlink" href="#maps-of-nighttime-lights" title="Permalink to this heading">#</a></h3>
 <p>The below figures show maps of nighttime lights. The first figure shows nighttime lights in the latest year currently available (2022), and the second figure shows nighttime lights in each year.</p>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../../_images/ntl_bm_2022.png"><img alt="../../_images/ntl_bm_2022.png" src="../../_images/ntl_bm_2022.png" style="width: 300.0px; height: 600.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Nighttime lights in 2022</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Nighttime lights in 2022</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../../_images/ntl_bm_allyears.png"><img alt="../../_images/ntl_bm_allyears.png" src="../../_images/ntl_bm_allyears.png" style="width: 1050.0px; height: 1800.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Nighttime lights</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Nighttime lights</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="trends-in-nighttime-lights">
 <h3>Trends in Nighttime Lights<a class="headerlink" href="#trends-in-nighttime-lights" title="Permalink to this heading">#</a></h3>
 <p>The below figures show trends in average nighttime lights.</p>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../../_images/ntl_trends_adm0.png"><img alt="../../_images/ntl_trends_adm0.png" src="../../_images/ntl_trends_adm0.png" style="width: 750.0px; height: 450.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Trends in Nighttime Lights at Country Level</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Trends in Nighttime Lights at Country Level</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../../_images/ntl_trends_adm1.png"><img alt="../../_images/ntl_trends_adm1.png" src="../../_images/ntl_trends_adm1.png" style="width: 1200.0px; height: 900.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Trends in Nighttime Lights at ADM 1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id5">
-<a class="reference internal image-reference" href="../../_images/ntl_trends_adm1.png"><img alt="../../_images/ntl_trends_adm1.png" src="../../_images/ntl_trends_adm1.png" style="width: 1200.0px; height: 900.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ntl_trends_adm2.png"><img alt="../../_images/ntl_trends_adm2.png" src="../../_images/ntl_trends_adm2.png" style="width: 1800.0px; height: 1200.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Trends in Nighttime Lights at ADM 1</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Trends in Nighttime Lights at ADM 2</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id6">
-<a class="reference internal image-reference" href="../../_images/ntl_trends_adm2.png"><img alt="../../_images/ntl_trends_adm2.png" src="../../_images/ntl_trends_adm2.png" style="width: 1800.0px; height: 1200.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Trends in Nighttime Lights at ADM 2</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="../../_images/ntl_trends_adm3.png"><img alt="../../_images/ntl_trends_adm3.png" src="../../_images/ntl_trends_adm3.png" style="width: 3750.0px; height: 3000.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Trends in Nighttime Lights at ADM 3</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Trends in Nighttime Lights at ADM 3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="maps-of-changes-in-nighttime-lights">
 <h3>Maps of Changes in Nighttime Lights<a class="headerlink" href="#maps-of-changes-in-nighttime-lights" title="Permalink to this heading">#</a></h3>
 <p>The below maps show the percent change in nighttime lights relative to 2019.</p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="../../_images/pc_2019_maps1.png"><img alt="../../_images/pc_2019_maps1.png" src="../../_images/pc_2019_maps1.png" style="width: 1200.0px; height: 750.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 1 Level</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 1 Level</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../../_images/pc_2019_maps2.png"><img alt="../../_images/pc_2019_maps2.png" src="../../_images/pc_2019_maps2.png" style="width: 1200.0px; height: 750.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 2 Level</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id9">
-<a class="reference internal image-reference" href="../../_images/pc_2019_maps2.png"><img alt="../../_images/pc_2019_maps2.png" src="../../_images/pc_2019_maps2.png" style="width: 1200.0px; height: 750.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 2 Level</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../../_images/pc_2019_maps3.png"><img alt="../../_images/pc_2019_maps3.png" src="../../_images/pc_2019_maps3.png" style="width: 1200.0px; height: 750.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 3 Level</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 3 Level</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -847,11 +839,6 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#findings">
    Findings
   </a>
@@ -906,7 +893,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-Last updated on Apr 20, 2023.<br>
+Last updated on Apr 21, 2023.<br>
 </p>
   </div>
   

@@ -6,6 +6,16 @@ Nighttime lights have become a commonly used resource to estimate changes in loc
 
 We use nighttime lights data from the VIIRS Black Marble dataset. Raw nighttime lights data requires correction due to cloud cover and stray light, such as lunar light. The Black Marble dataset applies advanced algorithms to correct raw nighttime light values and calibrate data so that trends in lights over time can be meaningfully analyzed. We use daily and monthly data from VIIRS Black Marble.
 
+The data for the analysis can be accessed from:
+
+* [Gas Flaring Location Data](https://datacatalog.worldbank.org/search/dataset/0037743)
+
+* __Black Marble Nighttime Lights:__ There are two options to access the data:
+
+  * The code [here](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/02_download_black_marble.R) downloads raw data from the [NASA archive](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/) and processes the data for Turkiye---mosaicing raster tiles together to cover Turkiye. Running the code requires a NASA bearer token; the documentation [here](https://github.com/ramarty/blackmarbler) describes how to obtain a token.
+
+  * Pre-processed data can be downloaded from [here](URL), using the __Night Time Lights BlackMarble Data__
+
 ## Methodology
 
 We extract average nighttime lights within each administrative unit in Mynamar. We distinguish lights between lights observed in gas flaring locations and lights in other locations. Oil extraction and production involves gas flaring, which produces significant volumes of light. Separately examining lights in gas flaring and other locations allows distinguishing between lights generated due to oil production versus other sources of human activity. We use data on the locations of gas flaring sites from the [Global Gas Flaring Reduction Partnership](https://www.worldbank.org/en/programs/gasflaringreduction); we remove lights within 5km of gas flaring sites.
@@ -14,7 +24,7 @@ We extract average nighttime lights within each administrative unit in Mynamar. 
 
 Code to replicate the analysis can be found [here](https://github.com/datapartnership/myanmar-economic-monitor/tree/ntl/notebooks/nighttime-lights). 
 
-The code largely relies on an R package (`blackmarbler`) that is currently being created to faciliate downloading and processing Black Marble nighttime lights data. The package [documentation](https://ramarty.github.io/blackmarbler/) provides some generic examples for how to download data, make a map of nighttime lights, and show trends in nighttime lights. The below code leverages the package to produce analytics for Turkiye. 
+The code largely relies on an R package (`blackmarbler`) that is currently being created to faciliate downloading and processing Black Marble nighttime lights data. The package [documentation](https://ramarty.github.io/blackmarbler/) provides some generic examples for how to download data, make a map of nighttime lights, and show trends in nighttime lights. The below code leverages the package to produce analytics for a country.
 
 The main script ([_main.R](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/_main.R)) loads all packages and runs all scripts for the analysis. Below we document scripts for (1) creating analysis-ready datasets and (2) producing analytics (eg, figures) of nighttime lights data.
 
@@ -35,18 +45,6 @@ The below code analyzes the nighttime lights data, producing figures and tables.
 * [05_pc_2019_maps.R](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/05_pc_2019_maps.R): Produce maps showing percent change in nighttime lights relative to 2019
 * [05_map_ntl_annual_separate.R](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/05_map_ntl_annual_separate.R): Produce maps of nighttime lights for each year, separately
 * [05_map_ntl_annual_together.R](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/05_map_ntl_annual_together.R): Produce a figure showing maps of nighttime lights for each year available
-
-## Data
-
-The data for the analysis can be accessed from:
-
-* [Gas Flaring Location Data](https://datacatalog.worldbank.org/search/dataset/0037743)
-
-* __Black Marble Nighttime Lights:__ There are two options to access the data:
-
-  * The code [here](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/02_download_black_marble.R) downloads raw data from the [NASA archive](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/) and processes the data for Turkiye---mosaicing raster tiles together to cover Turkiye. Running the code requires a NASA bearer token; the documentation [here](https://github.com/ramarty/blackmarbler) describes how to obtain a token.
-
-  * Pre-processed data can be downloaded from [here](URL), using the __Night Time Lights BlackMarble Data__
 
 ## Findings
 
