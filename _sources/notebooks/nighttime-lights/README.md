@@ -88,20 +88,14 @@ align: center
 Trends in Nighttime Lights at ADM 1
 ```
 
-```{figure} ../../reports/figures/ntl_trends_adm2.png
----
-scale: 50%
-align: center
----
-Trends in Nighttime Lights at ADM 2
-```
+The below figure shows trends in nighttime lights, showing trends in the z-score. The z-score is computed within each admin 1 unit.
 
-```{figure} ../../reports/figures/ntl_trends_adm3.png
+```{figure} ../../reports/figures/ntl_trends_adm1_zscore.png
 ---
 scale: 50%
 align: center
 ---
-Trends in Nighttime Lights at ADM 3
+Trends in Nighttime Lights at ADM 1 using Z-Score
 ```
 
 ### Maps of Changes in Nighttime Lights
@@ -135,6 +129,6 @@ Percent Change in Nighttime Lights: AMD 3 Level
 
 ## Limitations
 
-Nighttime lights are a common data source for measuring local economic activity. However, it is a proxy that is strongly--??although imperfectly--??correlated with measures of interest, such as population, local GDP, and wealth. Consequently, care must be taken in interpreting reasons for changes in lights.
+Nighttime lights are a common data source for measuring local economic activity. However, it is a proxy that is strongly---although imperfectly---correlated with measures of interest, such as population, local GDP, and wealth. Consequently, care must be taken in interpreting reasons for changes in lights.
 
 
