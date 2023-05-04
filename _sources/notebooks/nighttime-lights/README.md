@@ -70,6 +70,8 @@ Nighttime lights
 
 ### Trends in Nighttime Lights
 
+#### Annual
+
 The below figures show trends in average nighttime lights.
 
 ```{figure} ../../reports/figures/ntl_trends_adm0.png
@@ -88,14 +90,24 @@ align: center
 Trends in Nighttime Lights at ADM 1
 ```
 
-The below figure shows trends in nighttime lights, showing trends in the z-score. The z-score is computed within each admin 1 unit.
+#### Monthly
 
-```{figure} ../../reports/figures/ntl_trends_adm1_zscore.png
+```{figure} ../../reports/figures/ntl_trends_adm1_monthly.png
 ---
 scale: 50%
 align: center
 ---
-Trends in Nighttime Lights at ADM 1 using Z-Score
+Trends in Nighttime Lights at ADM 1, Monthly
+```
+
+The below figure shows trends in nighttime lights, showing trends in the z-score. The z-score is computed within each admin 1 unit.
+
+```{figure} ../../reports/figures/ntl_trends_adm1_monthly_zscore.png
+---
+scale: 50%
+align: center
+---
+Trends in Nighttime Lights at ADM 1 using Z-Score, Monthly
 ```
 
 ### Maps of Changes in Nighttime Lights
