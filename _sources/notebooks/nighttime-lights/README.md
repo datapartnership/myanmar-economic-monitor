@@ -138,6 +138,96 @@ align: center
 Percent Change in Nighttime Lights: AMD 3 Level
 ```
 
+### Gas Flaring Nighttime Lights
+
+The below figure shows the location of inland gas flaring locations, which are concentrated within one location in Myanmar. 
+
+```{figure} ../../reports/figures/ntl_bm_gf_2022.png
+---
+scale: 50%
+align: center
+---
+Gas Flaring Map
+```
+
+The below figure shows trends in nighttime lights in gas flaring locations.
+
+```{figure} ../../reports/figures/ntl_gas_flaring_trends.png
+---
+scale: 50%
+align: center
+---
+Gas Flaring Map
+```
+
+### Special Economic Zones
+
+The below figure shows trends in nighttime lights within special economic zones.
+
+```{figure} ../../reports/figures/sez_ntl_trends.png
+---
+scale: 50%
+align: center
+---
+Gas Flaring Map
+```
+
+### GDP vs Nighttime Lights: Annual
+
+This section explores the association between GDP and nighttime lights using annual data. We use data since 2012, the start of the nighttime lights data.
+
+```{figure} ../../reports/figures/gdp_ntl_annual_scatter.png
+---
+scale: 50%
+align: center
+---
+Association between Nighttime Lights and GDP
+```
+
+```{figure} ../../reports/figures/gdp_ntl_annual_trends.png
+---
+scale: 50%
+align: center
+---
+Trends in GDP and Nighttime Lights
+```
+
+```{figure} ../../reports/figures/gdp_ntl_annual_trends_pc.png
+---
+scale: 50%
+align: center
+---
+Trends in GDP and Nighttime Lights: Percent Change since 2012
+```
+
+### GDP vs Nighttime Lights: Quarterly
+
+This section explores the association between GDP and nighttime lights using annual data. We use available quarterly data from 2015 to 2019.
+
+```{figure} ../../reports/figures/gdp_ntl_quarterly_scatter.png
+---
+scale: 50%
+align: center
+---
+Association between Nighttime Lights and GDP
+```
+
+```{figure} ../../reports/figures/gdp_ntl_quarterly_trends.png
+---
+scale: 50%
+align: center
+---
+Trends in GDP and Nighttime Lights
+```
+
+```{figure} ../../reports/figures/gdp_ntl_quarterly_trends_pc.png
+---
+scale: 50%
+align: center
+---
+Trends in GDP and Nighttime Lights: Percent Change since 2012
+```
+
 
 ## Limitations
 
