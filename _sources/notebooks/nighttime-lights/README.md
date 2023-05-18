@@ -157,7 +157,7 @@ The below figure shows trends in nighttime lights in gas flaring locations.
 scale: 50%
 align: center
 ---
-Gas Flaring Map
+Trends in nighttime lights in gas flaring locations
 ```
 
 ### Special Economic Zones
@@ -169,7 +169,15 @@ The below figure shows trends in nighttime lights within special economic zones.
 scale: 50%
 align: center
 ---
-Gas Flaring Map
+Change in nighttime lights from 2012 to 2022 in Special Economic Zones
+```
+
+```{figure} ../../reports/figures/sez_ntl_map.png
+---
+scale: 50%
+align: center
+---
+Change in nighttime lights from 2012 to 2022 in Special Economic Zones
 ```
 
 ### GDP vs Nighttime Lights: Annual
