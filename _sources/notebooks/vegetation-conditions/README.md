@@ -42,9 +42,9 @@ The EVI from both MOD13Q1 and MYD13Q1 downloaded using Google Earth Engine ([GEE
 
  * Clipped for Myanmar and batch export the collection to Google Drive.
 
-![VI](./images/climag-evi-20230322.png)
+![VI](./images/climag-evi-202304.png)
 
-**Figure 3.** Vegetation indices, 22 March - 7 April 2023.
+**Figure 3.** Vegetation indices, April 2023.
 
 ## Products
 
@@ -70,9 +70,9 @@ The anomaly is calculated based on percentage of the average
 
 where `evi` is current EVI and `mean_evi` is the long-term average of EVI.
 
-![RatioAnom](./images/climag-ratioanom-20230322.png)
+![RatioAnom](./images/climag-ratioanom-202304.png)
 
-**Figure 4.** Ratio anomaly, 22 March - 7 April 2023.
+**Figure 4.** Ratio anomaly, April 2023.
 
 #### Difference Anomaly
 
@@ -84,9 +84,9 @@ The anomaly is calculated based on difference from the average
 
 where `evi` is current EVI and `mean_evi` is the long-term average of EVI.
 
-![DiffAnom](./images/climag-diffanom-20230322.png)
+![DiffAnom](./images/climag-diffanom-202304.png)
 
-**Figure 5.** Difference anomaly, 22 March - 7 April 2023.
+**Figure 5.** Difference anomaly, April 2023.
 
 #### Standardized Anomaly
 
@@ -98,9 +98,9 @@ The anomaly is calculated based on difference from the average and standard devi
 
 where `evi` is current EVI and `mean_evi` and `std_evi` is the long-term average and standard deviation of EVI.
 
-![StdAnom](./images/climag-stdanom-20230322.png)
+![StdAnom](./images/climag-stdanom-202304.png)
 
-**Figure 6.** Standardized anomaly, 22 March - 7 April 2023.
+**Figure 6.** Standardized anomaly, April 2023.
 
 #### Vegetation Condition Index (VCI)
 
@@ -112,9 +112,9 @@ To calculate the VCI, the current EVI value is compared to its long-term minimum
 
 where `evi` is current EVI and `min_evi` and `max_evi` is the long-term minimum and maximum of EVI.
 
-![VCI](./images/climag-vci-20230322.png)
+![VCI](./images/climag-vci-202304.png)
 
-**Figure 7.** Vegetation Condition Index, 22 March - 7 April 2023.
+**Figure 7.** Vegetation Condition Index, April 2023.
 
 ### Phenological metrics
 
