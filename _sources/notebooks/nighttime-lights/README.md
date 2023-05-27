@@ -162,6 +162,16 @@ Trends in nighttime lights in gas flaring locations
 
 ### Special Economic Zones
 
+The below figure shows trends in nighttime lights within special economic zones, averaged across special economic zones.
+
+```{figure} ../../reports/figures/sez_ntl_trends_avg.png
+---
+scale: 50%
+align: center
+---
+Change in nighttime lights from 2012 to 2022 in Special Economic Zones, averaged across zones
+```
+
 The below figure shows trends in nighttime lights within special economic zones.
 
 ```{figure} ../../reports/figures/sez_ntl_trends.png
@@ -192,6 +202,14 @@ align: center
 Association between Nighttime Lights and GDP
 ```
 
+```{figure} ../../reports/figures/gdp_ntl_annual_scatter_log.png
+---
+scale: 50%
+align: center
+---
+Association between Nighttime Lights and GDP, logging both NTL and GDP
+```
+
 ```{figure} ../../reports/figures/gdp_ntl_annual_trends.png
 ---
 scale: 50%
@@ -207,6 +225,12 @@ align: center
 ---
 Trends in GDP and Nighttime Lights: Percent Change since 2012
 ```
+
+````{=html}
+```{r, echo=FALSE, results='asis'}
+xfun::file_string('../../reports/figures/reg_gdp_ntl.html')
+```
+````
 
 ### GDP vs Nighttime Lights: Quarterly
 
@@ -235,7 +259,6 @@ align: center
 ---
 Trends in GDP and Nighttime Lights: Percent Change since 2012
 ```
-
 
 ## Limitations
 
