@@ -232,6 +232,25 @@ xfun::file_string('../../reports/figures/reg_gdp_ntl.html')
 ```
 ````
 
+<table style="text-align:center"><tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="2"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="2" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>GDP (Billions)</td><td>log(GDP)</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">NTL</td><td>37.299<sup>**</sup></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>(11.661)</td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">log(NTL)</td><td></td><td>0.257<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.074)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>48.294<sup>***</sup></td><td>25.109<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(5.290)</td><td>(0.066)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>10</td><td>10</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.561</td><td>0.601</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.506</td><td>0.551</td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="2" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table>
+
 ### GDP vs Nighttime Lights: Quarterly
 
 This section explores the association between GDP and nighttime lights using annual data. We use available quarterly data from 2015 to 2019.
@@ -242,6 +261,14 @@ scale: 50%
 align: center
 ---
 Association between Nighttime Lights and GDP
+```
+
+```{figure} ../../reports/figures/gdp_ntl_quarterly_scatter_log.png
+---
+scale: 50%
+align: center
+---
+Association between Nighttime Lights and GDP, logging both NTL and GDP
 ```
 
 ```{figure} ../../reports/figures/gdp_ntl_quarterly_trends.png
