@@ -226,11 +226,7 @@ align: center
 Trends in GDP and Nighttime Lights: Percent Change since 2012
 ```
 
-````{=html}
-```{r, echo=FALSE, results='asis'}
-xfun::file_string('../../reports/figures/reg_gdp_ntl.html')
-```
-````
+Below shows regressions results, regressing GDP on average nighttime lights.
 
 <table style="text-align:center"><tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="2"><em>Dependent variable:</em></td></tr>
 <tr><td></td><td colspan="2" style="border-bottom: 1px solid black"></td></tr>
