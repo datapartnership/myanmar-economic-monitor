@@ -315,6 +315,27 @@ align: center
 Trends in GDP and Nighttime Lights: Percent Change since 2012 (Logged)
 ```
 
+Below shows regressions results, regressing GDP on average nighttime lights.
+
+<table style="text-align:center"><tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="2"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="2" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>GDP (Billions)</td><td>log(GDP)</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">NTL</td><td>0.017<sup>*</sup></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>(0.009)</td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">log(NTL)</td><td></td><td>0.822<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.375)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>0.007</td><td>16.965<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.007)</td><td>(0.101)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>20</td><td>20</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.176</td><td>0.211</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.130</td><td>0.167</td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="2" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table>
+
 ## Limitations
 
 Nighttime lights are a common data source for measuring local economic activity. However, it is a proxy that is strongly---although imperfectly---correlated with measures of interest, such as population, local GDP, and wealth. Consequently, care must be taken in interpreting reasons for changes in lights.
