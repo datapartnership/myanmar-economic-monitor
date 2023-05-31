@@ -218,12 +218,20 @@ align: center
 Trends in GDP and Nighttime Lights
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_annual_trends_pc.png
+```{figure} ../../reports/figures/gdp_ntl_annual_trends_log.png
 ---
 scale: 50%
 align: center
 ---
-Trends in GDP and Nighttime Lights: Percent Change since 2012
+Trends in GDP and Nighttime Lights, Logged
+```
+
+```{figure} ../../reports/figures/gdp_ntl_annual_trends_pc_log.png
+---
+scale: 50%
+align: center
+---
+Trends in GDP and Nighttime Lights: Percent Change since 2012 (Logged)
 ```
 
 Below shows regressions results, regressing GDP on average nighttime lights.
@@ -275,12 +283,28 @@ align: center
 Trends in GDP and Nighttime Lights
 ```
 
+```{figure} ../../reports/figures/gdp_ntl_quarterly_trends_log.png
+---
+scale: 50%
+align: center
+---
+Trends in GDP and Nighttime Lights, Logged
+```
+
 ```{figure} ../../reports/figures/gdp_ntl_quarterly_trends_pc.png
 ---
 scale: 50%
 align: center
 ---
 Trends in GDP and Nighttime Lights: Percent Change since 2012
+```
+
+```{figure} ../../reports/figures/gdp_ntl_quarterly_trends_pc_log.png
+---
+scale: 50%
+align: center
+---
+Trends in GDP and Nighttime Lights: Percent Change since 2012 (Logged)
 ```
 
 ## Limitations
