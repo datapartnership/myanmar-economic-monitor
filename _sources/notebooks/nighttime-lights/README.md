@@ -319,7 +319,7 @@ Below shows regressions results, regressing GDP on average nighttime lights.
 
 <table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
 <tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align:left"></td><td>GDP (Millions)</td><td>log(GDP)</td><td>GDP (Millions)</td><td>log(GDP)</td></tr>
+<tr><td style="text-align:left"></td><td>GDP (Millions)~~~</td><td>log(GDP)~~~</td><td>GDP (Millions)~~~</td><td>log(GDP)~~~</td></tr>
 <tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
 <tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">NTL</td><td>11,871,105.000<sup>*</sup></td><td></td><td>12,350,574.000<sup>**</sup></td><td></td></tr>
 <tr><td style="text-align:left"></td><td>(5,917,835.000)</td><td></td><td>(5,727,722.000)</td><td></td></tr>
