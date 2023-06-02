@@ -319,19 +319,19 @@ Below shows regressions results, regressing GDP on average nighttime lights.
 
 <table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
 <tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align:left"></td><td>GDP (Billions)</td><td>log(GDP)</td><td>gdp_div</td><td>log(gdp_div)</td></tr>
+<tr><td style="text-align:left"></td><td>GDP (Millions)</td><td>log(GDP)</td><td>GDP (Millions)</td><td>log(GDP)</td></tr>
 <tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
-<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">NTL</td><td>11.871<sup>*</sup></td><td></td><td>12.351<sup>**</sup></td><td></td></tr>
-<tr><td style="text-align:left"></td><td>(5.918)</td><td></td><td>(5.728)</td><td></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">NTL</td><td>11,871,105.000<sup>*</sup></td><td></td><td>12,350,574.000<sup>**</sup></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>(5,917,835.000)</td><td></td><td>(5,727,722.000)</td><td></td></tr>
 <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
 <tr><td style="text-align:left">log(NTL)</td><td></td><td>0.604<sup>**</sup></td><td></td><td>0.622<sup>**</sup></td></tr>
 <tr><td style="text-align:left"></td><td></td><td>(0.291)</td><td></td><td>(0.280)</td></tr>
 <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
-<tr><td style="text-align:left">2020 Onwards</td><td></td><td></td><td>-0.315</td><td>-0.024</td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td><td>(2.637)</td><td>(0.143)</td></tr>
+<tr><td style="text-align:left">2020 Onwards</td><td></td><td></td><td>-314,581.800</td><td>-0.024</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(2,636,518.000)</td><td>(0.143)</td></tr>
 <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
-<tr><td style="text-align:left">Constant</td><td>9.086<sup>*</sup></td><td>3.000<sup>***</sup></td><td>8.686<sup>*</sup></td><td>3.004<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td>(5.062)</td><td>(0.084)</td><td>(4.908)</td><td>(0.082)</td></tr>
+<tr><td style="text-align:left">Constant</td><td>9,085,884.000<sup>*</sup></td><td>16.816<sup>***</sup></td><td>8,685,543.000<sup>*</sup></td><td>16.819<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(5,062,361.000)</td><td>(0.084)</td><td>(4,908,431.000)</td><td>(0.082)</td></tr>
 <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
 <tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Start Year</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td></tr>
 <tr><td style="text-align:left">End Year</td><td>2020</td><td>2020</td><td>2022</td><td>2022</td></tr>
