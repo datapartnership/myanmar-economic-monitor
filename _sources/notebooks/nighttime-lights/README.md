@@ -317,23 +317,28 @@ Trends in GDP and Nighttime Lights: Percent Change since 2012 (Logged)
 
 Below shows regressions results, regressing GDP on average nighttime lights.
 
-<table style="text-align:center"><tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="2"><em>Dependent variable:</em></td></tr>
-<tr><td></td><td colspan="2" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align:left"></td><td>GDP (Billions)</td><td>log(GDP)</td></tr>
-<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td></tr>
-<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">NTL</td><td>0.017<sup>*</sup></td><td></td></tr>
-<tr><td style="text-align:left"></td><td>(0.009)</td><td></td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td></tr>
-<tr><td style="text-align:left">log(NTL)</td><td></td><td>0.822<sup>**</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td>(0.375)</td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td></tr>
-<tr><td style="text-align:left">Constant</td><td>0.007</td><td>16.965<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td>(0.007)</td><td>(0.101)</td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td></tr>
-<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>20</td><td>20</td></tr>
-<tr><td style="text-align:left">R<sup>2</sup></td><td>0.176</td><td>0.211</td></tr>
-<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.130</td><td>0.167</td></tr>
-<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="2" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+<table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>GDP (Billions)</td><td>log(GDP)</td><td>gdp_div</td><td>log(gdp_div)</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">NTL</td><td>11.871<sup>*</sup></td><td></td><td>12.351<sup>**</sup></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>(5.918)</td><td></td><td>(5.728)</td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">log(NTL)</td><td></td><td>0.604<sup>**</sup></td><td></td><td>0.622<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.291)</td><td></td><td>(0.280)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">2020 Onwards</td><td></td><td></td><td>-0.315</td><td>-0.024</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(2.637)</td><td>(0.143)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>9.086<sup>*</sup></td><td>3.000<sup>***</sup></td><td>8.686<sup>*</sup></td><td>3.004<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(5.062)</td><td>(0.084)</td><td>(4.908)</td><td>(0.082)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Start Year</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td></tr>
+<tr><td style="text-align:left">End Year</td><td>2020</td><td>2020</td><td>2022</td><td>2022</td></tr>
+<tr><td style="text-align:left">Observations</td><td>36</td><td>36</td><td>44</td><td>44</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.106</td><td>0.113</td><td>0.103</td><td>0.110</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.080</td><td>0.087</td><td>0.060</td><td>0.066</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
 </table>
 
 ## Limitations
