@@ -182,6 +182,14 @@ align: center
 Change in nighttime lights from 2012 to 2022 in Special Economic Zones
 ```
 
+```{figure} ../../reports/figures/sez_ntl_trends_select_zones.png
+---
+scale: 50%
+align: center
+---
+Change in nighttime lights from 2012 to 2022 in Select Special Economic Zones
+```
+
 ```{figure} ../../reports/figures/sez_ntl_map.png
 ---
 scale: 50%
