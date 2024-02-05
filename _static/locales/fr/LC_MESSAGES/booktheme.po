@@ -8,68 +8,41 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Copyright"
-msgstr "droits d'auteur"
-
-msgid "Print to PDF"
-msgstr "Imprimer au format PDF"
-
-msgid "Edit this page"
-msgstr "Modifier cette page"
+msgid "Download source file"
+msgstr "Télécharger le fichier source"
 
 msgid "suggest edit"
 msgstr "suggestion de modification"
 
-msgid "Sphinx Book Theme"
-msgstr "Thème du livre Sphinx"
+msgid "Toggle navigation"
+msgstr "Basculer la navigation"
 
 msgid "open issue"
 msgstr "signaler un problème"
 
-msgid "By the"
-msgstr "Par le"
+msgid "Download notebook file"
+msgstr "Télécharger le fichier notebook"
+
+msgid "repository"
+msgstr "dépôt"
 
 msgid "Theme by the"
 msgstr "Thème par le"
 
-msgid "Download notebook file"
-msgstr "Télécharger le fichier notebook"
-
-msgid "Toggle navigation"
-msgstr "Basculer la navigation"
-
-msgid "next page"
-msgstr "page suivante"
-
-msgid "Contents"
-msgstr "Contenu"
-
-msgid "Source repository"
-msgstr "Dépôt source"
-
-msgid "Search the docs ..."
-msgstr "Rechercher dans les documents ..."
-
-msgid "Last updated on"
-msgstr "Dernière mise à jour le"
-
-msgid "Search this book..."
-msgstr "Rechercher dans ce livre ..."
+msgid "Print to PDF"
+msgstr "Imprimer au format PDF"
 
 msgid "Download this page"
 msgstr "Téléchargez cette page"
 
+msgid "Copyright"
+msgstr "droits d'auteur"
+
+msgid "Last updated on"
+msgstr "Dernière mise à jour le"
+
 msgid "Launch"
 msgstr "lancement"
-
-msgid "Download source file"
-msgstr "Télécharger le fichier source"
-
-msgid "previous page"
-msgstr "page précédente"
-
-msgid "By"
-msgstr "Par"
 
 msgid "Open an issue"
 msgstr "Ouvrez un problème"
@@ -77,5 +50,26 @@ msgstr "Ouvrez un problème"
 msgid "Fullscreen mode"
 msgstr "Mode plein écran"
 
-msgid "repository"
-msgstr "dépôt"
+msgid "Sphinx Book Theme"
+msgstr "Thème du livre Sphinx"
+
+msgid "Contents"
+msgstr "Contenu"
+
+msgid "Edit this page"
+msgstr "Modifier cette page"
+
+msgid "next page"
+msgstr "page suivante"
+
+msgid "Source repository"
+msgstr "Dépôt source"
+
+msgid "By"
+msgstr "Par"
+
+msgid "By the"
+msgstr "Par le"
+
+msgid "previous page"
+msgstr "page précédente"

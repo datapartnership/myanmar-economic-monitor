@@ -8,68 +8,41 @@ msgstr ""
 "Language: no\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Copyright"
-msgstr "opphavsrett"
-
-msgid "Print to PDF"
-msgstr "Skriv ut til PDF"
-
-msgid "Edit this page"
-msgstr "Rediger denne siden"
+msgid "Download source file"
+msgstr "Last ned kildefilen"
 
 msgid "suggest edit"
 msgstr "foreslå redigering"
 
-msgid "Sphinx Book Theme"
-msgstr "Sphinx boktema"
+msgid "Toggle navigation"
+msgstr "Bytt navigasjon"
 
 msgid "open issue"
 msgstr "åpent nummer"
 
-msgid "By the"
-msgstr "Ved"
+msgid "Download notebook file"
+msgstr "Last ned notatbokfilen"
+
+msgid "repository"
+msgstr "oppbevaringssted"
 
 msgid "Theme by the"
 msgstr "Tema av"
 
-msgid "Download notebook file"
-msgstr "Last ned notatbokfilen"
-
-msgid "Toggle navigation"
-msgstr "Bytt navigasjon"
-
-msgid "next page"
-msgstr "neste side"
-
-msgid "Contents"
-msgstr "Innhold"
-
-msgid "Source repository"
-msgstr "Kildedepot"
-
-msgid "Search the docs ..."
-msgstr "Søk i dokumentene ..."
-
-msgid "Last updated on"
-msgstr "Sist oppdatert den"
-
-msgid "Search this book..."
-msgstr "Søk i denne boken ..."
+msgid "Print to PDF"
+msgstr "Skriv ut til PDF"
 
 msgid "Download this page"
 msgstr "Last ned denne siden"
 
+msgid "Copyright"
+msgstr "opphavsrett"
+
+msgid "Last updated on"
+msgstr "Sist oppdatert den"
+
 msgid "Launch"
 msgstr "Start"
-
-msgid "Download source file"
-msgstr "Last ned kildefilen"
-
-msgid "previous page"
-msgstr "forrige side"
-
-msgid "By"
-msgstr "Av"
 
 msgid "Open an issue"
 msgstr "Åpne et problem"
@@ -77,5 +50,26 @@ msgstr "Åpne et problem"
 msgid "Fullscreen mode"
 msgstr "Fullskjerm-modus"
 
-msgid "repository"
-msgstr "oppbevaringssted"
+msgid "Sphinx Book Theme"
+msgstr "Sphinx boktema"
+
+msgid "Contents"
+msgstr "Innhold"
+
+msgid "Edit this page"
+msgstr "Rediger denne siden"
+
+msgid "next page"
+msgstr "neste side"
+
+msgid "Source repository"
+msgstr "Kildedepot"
+
+msgid "By"
+msgstr "Av"
+
+msgid "By the"
+msgstr "Ved"
+
+msgid "previous page"
+msgstr "forrige side"

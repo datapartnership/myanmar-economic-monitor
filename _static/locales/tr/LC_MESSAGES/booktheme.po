@@ -8,68 +8,41 @@ msgstr ""
 "Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Copyright"
-msgstr "Telif hakkı"
-
-msgid "Print to PDF"
-msgstr "PDF olarak yazdır"
-
-msgid "Edit this page"
-msgstr "Bu sayfayı düzenle"
+msgid "Download source file"
+msgstr "Kaynak dosyayı indirin"
 
 msgid "suggest edit"
 msgstr "düzenleme öner"
 
-msgid "Sphinx Book Theme"
-msgstr "Sfenks Kitap Teması"
+msgid "Toggle navigation"
+msgstr "Gezinmeyi değiştir"
 
 msgid "open issue"
 msgstr "Açık konu"
 
-msgid "By the"
-msgstr "Tarafından"
+msgid "Download notebook file"
+msgstr "Defter dosyasını indirin"
+
+msgid "repository"
+msgstr "depo"
 
 msgid "Theme by the"
 msgstr "Tarafından tema"
 
-msgid "Download notebook file"
-msgstr "Defter dosyasını indirin"
-
-msgid "Toggle navigation"
-msgstr "Gezinmeyi değiştir"
-
-msgid "next page"
-msgstr "sonraki Sayfa"
-
-msgid "Contents"
-msgstr "İçindekiler"
-
-msgid "Source repository"
-msgstr "Kaynak kod deposu"
-
-msgid "Search the docs ..."
-msgstr "Belgelerde ara ..."
-
-msgid "Last updated on"
-msgstr "Son güncelleme tarihi"
-
-msgid "Search this book..."
-msgstr "Bu kitabı ara ..."
+msgid "Print to PDF"
+msgstr "PDF olarak yazdır"
 
 msgid "Download this page"
 msgstr "Bu sayfayı indirin"
 
+msgid "Copyright"
+msgstr "Telif hakkı"
+
+msgid "Last updated on"
+msgstr "Son güncelleme tarihi"
+
 msgid "Launch"
 msgstr "Başlatmak"
-
-msgid "Download source file"
-msgstr "Kaynak dosyayı indirin"
-
-msgid "previous page"
-msgstr "önceki sayfa"
-
-msgid "By"
-msgstr "Tarafından"
 
 msgid "Open an issue"
 msgstr "Bir sorunu açın"
@@ -77,5 +50,26 @@ msgstr "Bir sorunu açın"
 msgid "Fullscreen mode"
 msgstr "Tam ekran modu"
 
-msgid "repository"
-msgstr "depo"
+msgid "Sphinx Book Theme"
+msgstr "Sfenks Kitap Teması"
+
+msgid "Contents"
+msgstr "İçindekiler"
+
+msgid "Edit this page"
+msgstr "Bu sayfayı düzenle"
+
+msgid "next page"
+msgstr "sonraki Sayfa"
+
+msgid "Source repository"
+msgstr "Kaynak kod deposu"
+
+msgid "By"
+msgstr "Tarafından"
+
+msgid "By the"
+msgstr "Tarafından"
+
+msgid "previous page"
+msgstr "önceki sayfa"

@@ -8,68 +8,41 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Copyright"
-msgstr "Πνευματική ιδιοκτησία"
-
-msgid "Print to PDF"
-msgstr "Εκτύπωση σε PDF"
-
-msgid "Edit this page"
-msgstr "Επεξεργαστείτε αυτήν τη σελίδα"
+msgid "Download source file"
+msgstr "Λήψη αρχείου προέλευσης"
 
 msgid "suggest edit"
 msgstr "προτείνω επεξεργασία"
 
-msgid "Sphinx Book Theme"
-msgstr "Θέμα βιβλίου Sphinx"
+msgid "Toggle navigation"
+msgstr "Εναλλαγή πλοήγησης"
 
 msgid "open issue"
 msgstr "ανοιχτό ζήτημα"
 
-msgid "By the"
-msgstr "Από το"
+msgid "Download notebook file"
+msgstr "Λήψη αρχείου σημειωματάριου"
+
+msgid "repository"
+msgstr "αποθήκη"
 
 msgid "Theme by the"
 msgstr "Θέμα από το"
 
-msgid "Download notebook file"
-msgstr "Λήψη αρχείου σημειωματάριου"
-
-msgid "Toggle navigation"
-msgstr "Εναλλαγή πλοήγησης"
-
-msgid "next page"
-msgstr "επόμενη σελίδα"
-
-msgid "Contents"
-msgstr "Περιεχόμενα"
-
-msgid "Source repository"
-msgstr "Αποθήκη πηγής"
-
-msgid "Search the docs ..."
-msgstr "Αναζήτηση στα έγγραφα ..."
-
-msgid "Last updated on"
-msgstr "Τελευταία ενημέρωση στις"
-
-msgid "Search this book..."
-msgstr "Αναζήτηση σε αυτό το βιβλίο ..."
+msgid "Print to PDF"
+msgstr "Εκτύπωση σε PDF"
 
 msgid "Download this page"
 msgstr "Λήψη αυτής της σελίδας"
 
+msgid "Copyright"
+msgstr "Πνευματική ιδιοκτησία"
+
+msgid "Last updated on"
+msgstr "Τελευταία ενημέρωση στις"
+
 msgid "Launch"
 msgstr "Εκτόξευση"
-
-msgid "Download source file"
-msgstr "Λήψη αρχείου προέλευσης"
-
-msgid "previous page"
-msgstr "προηγούμενη σελίδα"
-
-msgid "By"
-msgstr "Με"
 
 msgid "Open an issue"
 msgstr "Ανοίξτε ένα ζήτημα"
@@ -77,5 +50,26 @@ msgstr "Ανοίξτε ένα ζήτημα"
 msgid "Fullscreen mode"
 msgstr "ΛΕΙΤΟΥΡΓΙΑ ΠΛΗΡΟΥΣ ΟΘΟΝΗΣ"
 
-msgid "repository"
-msgstr "αποθήκη"
+msgid "Sphinx Book Theme"
+msgstr "Θέμα βιβλίου Sphinx"
+
+msgid "Contents"
+msgstr "Περιεχόμενα"
+
+msgid "Edit this page"
+msgstr "Επεξεργαστείτε αυτήν τη σελίδα"
+
+msgid "next page"
+msgstr "επόμενη σελίδα"
+
+msgid "Source repository"
+msgstr "Αποθήκη πηγής"
+
+msgid "By"
+msgstr "Με"
+
+msgid "By the"
+msgstr "Από το"
+
+msgid "previous page"
+msgstr "προηγούμενη σελίδα"

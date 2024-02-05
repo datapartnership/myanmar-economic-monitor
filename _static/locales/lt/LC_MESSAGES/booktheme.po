@@ -8,68 +8,41 @@ msgstr ""
 "Language: lt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Copyright"
-msgstr "Autorių teisės"
-
-msgid "Print to PDF"
-msgstr "Spausdinti į PDF"
-
-msgid "Edit this page"
-msgstr "Redaguoti šį puslapį"
+msgid "Download source file"
+msgstr "Atsisiųsti šaltinio failą"
 
 msgid "suggest edit"
 msgstr "pasiūlyti redaguoti"
 
-msgid "Sphinx Book Theme"
-msgstr "Sfinkso knygos tema"
+msgid "Toggle navigation"
+msgstr "Perjungti naršymą"
 
 msgid "open issue"
 msgstr "atviras klausimas"
 
-msgid "By the"
-msgstr "Prie"
+msgid "Download notebook file"
+msgstr "Atsisiųsti nešiojamojo kompiuterio failą"
+
+msgid "repository"
+msgstr "saugykla"
 
 msgid "Theme by the"
 msgstr "Tema"
 
-msgid "Download notebook file"
-msgstr "Atsisiųsti nešiojamojo kompiuterio failą"
-
-msgid "Toggle navigation"
-msgstr "Perjungti naršymą"
-
-msgid "next page"
-msgstr "Kitas puslapis"
-
-msgid "Contents"
-msgstr "Turinys"
-
-msgid "Source repository"
-msgstr "Šaltinio saugykla"
-
-msgid "Search the docs ..."
-msgstr "Ieškoti dokumentuose ..."
-
-msgid "Last updated on"
-msgstr "Paskutinį kartą atnaujinta"
-
-msgid "Search this book..."
-msgstr "Ieškoti šioje knygoje ..."
+msgid "Print to PDF"
+msgstr "Spausdinti į PDF"
 
 msgid "Download this page"
 msgstr "Atsisiųskite šį puslapį"
 
+msgid "Copyright"
+msgstr "Autorių teisės"
+
+msgid "Last updated on"
+msgstr "Paskutinį kartą atnaujinta"
+
 msgid "Launch"
 msgstr "Paleiskite"
-
-msgid "Download source file"
-msgstr "Atsisiųsti šaltinio failą"
-
-msgid "previous page"
-msgstr "Ankstesnis puslapis"
-
-msgid "By"
-msgstr "Iki"
 
 msgid "Open an issue"
 msgstr "Atidarykite problemą"
@@ -77,5 +50,26 @@ msgstr "Atidarykite problemą"
 msgid "Fullscreen mode"
 msgstr "Pilno ekrano režimas"
 
-msgid "repository"
-msgstr "saugykla"
+msgid "Sphinx Book Theme"
+msgstr "Sfinkso knygos tema"
+
+msgid "Contents"
+msgstr "Turinys"
+
+msgid "Edit this page"
+msgstr "Redaguoti šį puslapį"
+
+msgid "next page"
+msgstr "Kitas puslapis"
+
+msgid "Source repository"
+msgstr "Šaltinio saugykla"
+
+msgid "By"
+msgstr "Iki"
+
+msgid "By the"
+msgstr "Prie"
+
+msgid "previous page"
+msgstr "Ankstesnis puslapis"

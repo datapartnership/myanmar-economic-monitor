@@ -8,68 +8,41 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Copyright"
-msgstr "Derechos de autor"
-
-msgid "Print to PDF"
-msgstr "Imprimir en PDF"
-
-msgid "Edit this page"
-msgstr "Edita esta página"
+msgid "Download source file"
+msgstr "Descargar archivo fuente"
 
 msgid "suggest edit"
 msgstr "sugerir editar"
 
-msgid "Sphinx Book Theme"
-msgstr "Tema del libro de la esfinge"
+msgid "Toggle navigation"
+msgstr "Navegación de palanca"
 
 msgid "open issue"
 msgstr "Tema abierto"
 
-msgid "By the"
-msgstr "Por el"
+msgid "Download notebook file"
+msgstr "Descargar archivo de cuaderno"
+
+msgid "repository"
+msgstr "repositorio"
 
 msgid "Theme by the"
 msgstr "Tema por el"
 
-msgid "Download notebook file"
-msgstr "Descargar archivo de cuaderno"
-
-msgid "Toggle navigation"
-msgstr "Navegación de palanca"
-
-msgid "next page"
-msgstr "siguiente página"
-
-msgid "Contents"
-msgstr "Contenido"
-
-msgid "Source repository"
-msgstr "Repositorio de origen"
-
-msgid "Search the docs ..."
-msgstr "Buscar los documentos ..."
-
-msgid "Last updated on"
-msgstr "Ultima actualización en"
-
-msgid "Search this book..."
-msgstr "Buscar este libro ..."
+msgid "Print to PDF"
+msgstr "Imprimir en PDF"
 
 msgid "Download this page"
 msgstr "Descarga esta pagina"
 
+msgid "Copyright"
+msgstr "Derechos de autor"
+
+msgid "Last updated on"
+msgstr "Ultima actualización en"
+
 msgid "Launch"
 msgstr "Lanzamiento"
-
-msgid "Download source file"
-msgstr "Descargar archivo fuente"
-
-msgid "previous page"
-msgstr "pagina anterior"
-
-msgid "By"
-msgstr "Por"
 
 msgid "Open an issue"
 msgstr "Abrir un problema"
@@ -77,5 +50,26 @@ msgstr "Abrir un problema"
 msgid "Fullscreen mode"
 msgstr "Modo de pantalla completa"
 
-msgid "repository"
-msgstr "repositorio"
+msgid "Sphinx Book Theme"
+msgstr "Tema del libro de la esfinge"
+
+msgid "Contents"
+msgstr "Contenido"
+
+msgid "Edit this page"
+msgstr "Edita esta página"
+
+msgid "next page"
+msgstr "siguiente página"
+
+msgid "Source repository"
+msgstr "Repositorio de origen"
+
+msgid "By"
+msgstr "Por"
+
+msgid "By the"
+msgstr "Por el"
+
+msgid "previous page"
+msgstr "pagina anterior"

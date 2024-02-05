@@ -8,68 +8,41 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Copyright"
-msgstr "auteursrechten"
-
-msgid "Print to PDF"
-msgstr "Afdrukken naar pdf"
-
-msgid "Edit this page"
-msgstr "bewerk deze pagina"
+msgid "Download source file"
+msgstr "Download het bronbestand"
 
 msgid "suggest edit"
 msgstr "suggereren bewerken"
 
-msgid "Sphinx Book Theme"
-msgstr "Sphinx-boekthema"
+msgid "Toggle navigation"
+msgstr "Schakel navigatie"
 
 msgid "open issue"
 msgstr "open probleem"
 
-msgid "By the"
-msgstr "Door de"
+msgid "Download notebook file"
+msgstr "Download notebookbestand"
+
+msgid "repository"
+msgstr "repository"
 
 msgid "Theme by the"
 msgstr "Thema door de"
 
-msgid "Download notebook file"
-msgstr "Download notebookbestand"
-
-msgid "Toggle navigation"
-msgstr "Schakel navigatie"
-
-msgid "next page"
-msgstr "volgende bladzijde"
-
-msgid "Contents"
-msgstr "Inhoud"
-
-msgid "Source repository"
-msgstr "Bronopslagplaats"
-
-msgid "Search the docs ..."
-msgstr "Doorzoek de documenten ..."
-
-msgid "Last updated on"
-msgstr "Laatst geupdate op"
-
-msgid "Search this book..."
-msgstr "Zoek in dit boek ..."
+msgid "Print to PDF"
+msgstr "Afdrukken naar pdf"
 
 msgid "Download this page"
 msgstr "Download deze pagina"
 
+msgid "Copyright"
+msgstr "auteursrechten"
+
+msgid "Last updated on"
+msgstr "Laatst geupdate op"
+
 msgid "Launch"
 msgstr "Lancering"
-
-msgid "Download source file"
-msgstr "Download het bronbestand"
-
-msgid "previous page"
-msgstr "vorige pagina"
-
-msgid "By"
-msgstr "Door"
 
 msgid "Open an issue"
 msgstr "Open een probleem"
@@ -77,5 +50,26 @@ msgstr "Open een probleem"
 msgid "Fullscreen mode"
 msgstr "Volledig scherm"
 
-msgid "repository"
-msgstr "repository"
+msgid "Sphinx Book Theme"
+msgstr "Sphinx-boekthema"
+
+msgid "Contents"
+msgstr "Inhoud"
+
+msgid "Edit this page"
+msgstr "bewerk deze pagina"
+
+msgid "next page"
+msgstr "volgende bladzijde"
+
+msgid "Source repository"
+msgstr "Bronopslagplaats"
+
+msgid "By"
+msgstr "Door"
+
+msgid "By the"
+msgstr "Door de"
+
+msgid "previous page"
+msgstr "vorige pagina"

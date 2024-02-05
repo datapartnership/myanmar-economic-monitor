@@ -4,14 +4,14 @@ The Myanmar Macroeconomics, Trade and Investment team is responsible for underta
 
 This repository includes a starter Stratefic Brief, which includes preliminary adviosry for the Task Team on:
 
-- **Data Collection and Acquisition**. Identified data resources that could support the Monitor update. 
+- **Data Collection and Acquisition**. Identified data resources that could support the Monitor update.
 
 - **Data Management**. Recommendations for managing derived project datasets.
 
 - **Data Analytics and Insight Dissemination**. A menu of proposals for analytical work that could be coordinated through the Lab network.
 
-Over time, datasets, code, and documentation will be added to the repository, supporting reproducibility and reusability of all work conducted in support of the Monitor. 
+Over time, datasets, code, and documentation will be added to the repository, supporting reproducibility and reusability of all work conducted in support of the Monitor.
 
 ## License
 
-This repository is licensed under the [**World Bank Master Community License Agreement**](https://github.com/datapartnership/myanmar_economic_monitor/blob/487de32429b5bf737f07a726247652899fa45258/LICENSE.md)
+This projects is licensed under the [**Mozilal Public License**](https://opensource.org/license/mpl-2-0/) - see the [LICENSE](LICENSE) file for details.

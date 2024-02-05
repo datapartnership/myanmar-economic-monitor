@@ -8,68 +8,41 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Copyright"
-msgstr "авторское право"
-
-msgid "Print to PDF"
-msgstr "Распечатать в PDF"
-
-msgid "Edit this page"
-msgstr "Редактировать эту страницу"
+msgid "Download source file"
+msgstr "Скачать исходный файл"
 
 msgid "suggest edit"
 msgstr "предложить редактировать"
 
-msgid "Sphinx Book Theme"
-msgstr "Тема книги Сфинкс"
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
 
 msgid "open issue"
 msgstr "открытый вопрос"
 
-msgid "By the"
-msgstr "Посредством"
+msgid "Download notebook file"
+msgstr "Скачать файл записной книжки"
+
+msgid "repository"
+msgstr "хранилище"
 
 msgid "Theme by the"
 msgstr "Тема от"
 
-msgid "Download notebook file"
-msgstr "Скачать файл записной книжки"
-
-msgid "Toggle navigation"
-msgstr "Переключить навигацию"
-
-msgid "next page"
-msgstr "Следующая страница"
-
-msgid "Contents"
-msgstr "Содержание"
-
-msgid "Source repository"
-msgstr "Исходный репозиторий"
-
-msgid "Search the docs ..."
-msgstr "Искать в документах ..."
-
-msgid "Last updated on"
-msgstr "Последнее обновление"
-
-msgid "Search this book..."
-msgstr "Искать в этой книге ..."
+msgid "Print to PDF"
+msgstr "Распечатать в PDF"
 
 msgid "Download this page"
 msgstr "Загрузите эту страницу"
 
+msgid "Copyright"
+msgstr "авторское право"
+
+msgid "Last updated on"
+msgstr "Последнее обновление"
+
 msgid "Launch"
 msgstr "Запуск"
-
-msgid "Download source file"
-msgstr "Скачать исходный файл"
-
-msgid "previous page"
-msgstr "Предыдущая страница"
-
-msgid "By"
-msgstr "По"
 
 msgid "Open an issue"
 msgstr "Открыть вопрос"
@@ -77,5 +50,26 @@ msgstr "Открыть вопрос"
 msgid "Fullscreen mode"
 msgstr "Полноэкранный режим"
 
-msgid "repository"
-msgstr "хранилище"
+msgid "Sphinx Book Theme"
+msgstr "Тема книги Сфинкс"
+
+msgid "Contents"
+msgstr "Содержание"
+
+msgid "Edit this page"
+msgstr "Редактировать эту страницу"
+
+msgid "next page"
+msgstr "Следующая страница"
+
+msgid "Source repository"
+msgstr "Исходный репозиторий"
+
+msgid "By"
+msgstr "По"
+
+msgid "By the"
+msgstr "Посредством"
+
+msgid "previous page"
+msgstr "Предыдущая страница"
