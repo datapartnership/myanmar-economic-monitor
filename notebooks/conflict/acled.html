@@ -57,11 +57,7 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/conflict/acled';</script>
     <link rel="canonical" href="https://github.com/datapartnership/myanmar-economic-monitor/notebooks/conflict/acled.html" />
@@ -71,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Nighttime Lights" href="../nighttime-lights/README.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Feb 05, 2024"/>
+    <meta name="docbuild:last-update" content="Feb 15, 2024"/>
   </head>
   
   
@@ -182,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Goods Overview</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../docs/introduction_to_data_goods.html">Introduction to Data Goods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/data.html">Datasets and Data Products Summary</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Products</span></p>
@@ -438,8 +433,8 @@ document.write(`
 <p>Removing conflict data from strategic developments after the Mynmar Country team had consultations with a team onground monitoring the conflict</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled</span> <span class="o">=</span> <span class="n">acled</span><span class="p">[</span><span class="n">acled</span><span class="p">[</span><span class="s1">&#39;event_type&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;Strategic developments&#39;</span><span class="p">]</span>
-<span class="n">acled</span> <span class="o">=</span> <span class="n">acled</span><span class="p">[</span><span class="n">acled</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled</span> <span class="o">=</span> <span class="n">acled</span><span class="p">[</span><span class="n">acled</span><span class="p">[</span><span class="s2">&quot;event_type&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;Strategic developments&quot;</span><span class="p">]</span>
+<span class="n">acled</span> <span class="o">=</span> <span class="n">acled</span><span class="p">[</span><span class="n">acled</span><span class="p">[</span><span class="s2">&quot;event_date&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s2">&quot;2020-01-01&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -450,11 +445,19 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_acled_conflicts_by_year</span><span class="p">(</span><span class="n">acled</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
-    <span class="n">acled_22</span> <span class="o">=</span> <span class="n">acled</span><span class="p">[(</span><span class="n">acled</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">start_date</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">acled</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">end_date</span><span class="p">)]</span>
-    <span class="n">acled_22</span> <span class="o">=</span> <span class="n">acled_22</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;event_date&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)])[</span><span class="s1">&#39;fatalities&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">acled_22</span> <span class="o">=</span> <span class="n">acled</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">acled</span><span class="p">[</span><span class="s2">&quot;event_date&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">start_date</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">acled</span><span class="p">[</span><span class="s2">&quot;event_date&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">end_date</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="n">acled_22</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">acled_22</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;event_date&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">)]</span>
+        <span class="p">)[</span><span class="s2">&quot;fatalities&quot;</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;sum&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="p">)</span>
     <span class="n">acled_22</span> <span class="o">=</span> <span class="n">convert_to_gdf</span><span class="p">(</span><span class="n">acled_22</span><span class="p">)</span>
-    <span class="n">acled_22</span><span class="p">[</span><span class="s1">&#39;sizeCategory&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">acled_22</span><span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">get_size_category</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">acled_22</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+    <span class="n">acled_22</span><span class="p">[</span><span class="s2">&quot;sizeCategory&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">acled_22</span><span class="p">[</span><span class="s2">&quot;sum&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">get_size_category</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">acled_22</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">acled_22</span>
 </pre></div>
@@ -463,9 +466,9 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled_21</span> <span class="o">=</span> <span class="n">get_acled_conflicts_by_year</span><span class="p">(</span><span class="n">acled</span><span class="p">,</span> <span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-12-31&#39;</span><span class="p">)</span>
-<span class="n">acled_22</span> <span class="o">=</span> <span class="n">get_acled_conflicts_by_year</span><span class="p">(</span><span class="n">acled</span><span class="p">,</span> <span class="s1">&#39;2022-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-12-31&#39;</span><span class="p">)</span>
-<span class="n">acled_23</span> <span class="o">=</span> <span class="n">get_acled_conflicts_by_year</span><span class="p">(</span><span class="n">acled</span><span class="p">,</span> <span class="s1">&#39;2023-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-12-31&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled_21</span> <span class="o">=</span> <span class="n">get_acled_conflicts_by_year</span><span class="p">(</span><span class="n">acled</span><span class="p">,</span> <span class="s2">&quot;2021-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2021-12-31&quot;</span><span class="p">)</span>
+<span class="n">acled_22</span> <span class="o">=</span> <span class="n">get_acled_conflicts_by_year</span><span class="p">(</span><span class="n">acled</span><span class="p">,</span> <span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-12-31&quot;</span><span class="p">)</span>
+<span class="n">acled_23</span> <span class="o">=</span> <span class="n">get_acled_conflicts_by_year</span><span class="p">(</span><span class="n">acled</span><span class="p">,</span> <span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2023-12-31&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -492,21 +495,20 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.family&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Georgia&quot;</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.family&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Georgia&quot;</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
 
-<span class="n">acled_21</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">,</span>  <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">markersize</span> <span class="o">=</span> <span class="s1">&#39;sizeCategory&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">myanmar_adm1</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fatalities and Events in 2021&#39;</span><span class="p">)</span>
+<span class="n">acled_21</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">markersize</span><span class="o">=</span><span class="s2">&quot;sizeCategory&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span>
+<span class="p">)</span>
+<span class="n">myanmar_adm1</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Fatalities and Events in 2021&quot;</span><span class="p">)</span>
 
-<span class="n">acled_22</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span>  <span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">markersize</span> <span class="o">=</span> <span class="s1">&#39;sizeCategory&#39;</span><span class="p">)</span>
-<span class="n">myanmar_adm1</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fatalities and Events in 2022&#39;</span><span class="p">)</span>
+<span class="n">acled_22</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">markersize</span><span class="o">=</span><span class="s2">&quot;sizeCategory&quot;</span><span class="p">)</span>
+<span class="n">myanmar_adm1</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Fatalities and Events in 2022&quot;</span><span class="p">)</span>
 
 <span class="c1"># acled_23.plot(column = &#39;sum&#39;,  cmap = &#39;Reds&#39;, ax = ax[2], markersize = &#39;sizeCategory&#39;, vmin=10, vmax = 300)</span>
 <span class="c1"># myanmar_adm1.boundary.plot(ax=ax[2], color = &#39;lightgrey&#39;, alpha = 0.5, zorder = 1)</span>
@@ -515,31 +517,46 @@ document.write(`
 <span class="c1">#     print(row[&#39;ST&#39;])</span>
 <span class="c1">#     ax[1].annotate(text=row[&#39;ST&#39;], xy=row[&#39;coords&#39;],</span>
 <span class="c1">#                  horizontalalignment=&#39;center&#39;)</span>
-<span class="c1">#ax[2].set_title(&#39;Fatalities and Events in 2023&#39;)</span>
+<span class="c1"># ax[2].set_title(&#39;Fatalities and Events in 2023&#39;)</span>
 
 <span class="c1"># Create a colorbar</span>
 <span class="n">sm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
-<span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">acled_22</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
+<span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">acled_22</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">])</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">)</span>
 <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Number of conflict events&quot;</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]:</span>
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
 
-<span class="n">sizes</span> <span class="o">=</span> <span class="n">acled_22</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;sizeCategory&#39;</span><span class="p">)[</span><span class="s1">&#39;sizeCategory&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">acled_22</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;sizeCategory&quot;</span><span class="p">)[</span><span class="s2">&quot;sizeCategory&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="n">handles</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">:</span>
-    <span class="n">handle</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">size</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">sizeCategoryLabels</span><span class="p">[</span><span class="n">size</span><span class="p">],</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">handle</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[],</span>
+        <span class="p">[],</span>
+        <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
+        <span class="n">markersize</span><span class="o">=</span><span class="n">size</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">sizeCategoryLabels</span><span class="p">[</span><span class="n">size</span><span class="p">],</span>
+        <span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+        <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="n">handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">handles</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Number of fatalities&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_to_anchor</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">0.2</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+    <span class="n">handles</span><span class="o">=</span><span class="n">handles</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Number of fatalities&quot;</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span>
+    <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    <span class="c1">#ax[i].set_xticks(False)</span>
+<span class="c1"># ax[i].set_xticks(False)</span>
 </pre></div>
 </div>
 </div>
@@ -556,7 +573,11 @@ document.write(`
 <h3>Top 5 worst affected admin 1 regions in 2021<a class="headerlink" href="#top-5-worst-affected-admin-1-regions-in-2021" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled_adm1</span><span class="p">[</span><span class="n">acled_adm1</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="s1">&#39;2022-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-12-31&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;event_date&#39;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span><span class="p">),</span> <span class="s1">&#39;ST&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s1">&#39;fatalities&#39;</span><span class="p">,</span> <span class="s1">&#39;nrEvents&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;nrEvents&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)[[</span><span class="s1">&#39;event_date&#39;</span><span class="p">,</span> <span class="s1">&#39;ST&#39;</span><span class="p">,</span> <span class="s1">&#39;fatalities&#39;</span><span class="p">,</span> <span class="s1">&#39;nrEvents&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled_adm1</span><span class="p">[</span><span class="n">acled_adm1</span><span class="p">[</span><span class="s2">&quot;event_date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-12-31&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;event_date&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">),</span> <span class="s2">&quot;ST&quot;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s2">&quot;fatalities&quot;</span><span class="p">,</span> <span class="s2">&quot;nrEvents&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+    <span class="n">by</span><span class="o">=</span><span class="s2">&quot;nrEvents&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)[[</span><span class="s2">&quot;event_date&quot;</span><span class="p">,</span> <span class="s2">&quot;ST&quot;</span><span class="p">,</span> <span class="s2">&quot;fatalities&quot;</span><span class="p">,</span> <span class="s2">&quot;nrEvents&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -635,7 +656,11 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled_adm1</span><span class="p">[</span><span class="n">acled_adm1</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-12-31&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;event_date&#39;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span><span class="p">),</span> <span class="s1">&#39;ST&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s1">&#39;fatalities&#39;</span><span class="p">,</span> <span class="s1">&#39;nrEvents&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;nrEvents&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)[[</span><span class="s1">&#39;event_date&#39;</span><span class="p">,</span> <span class="s1">&#39;ST&#39;</span><span class="p">,</span> <span class="s1">&#39;fatalities&#39;</span><span class="p">,</span> <span class="s1">&#39;nrEvents&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled_adm1</span><span class="p">[</span><span class="n">acled_adm1</span><span class="p">[</span><span class="s2">&quot;event_date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="s2">&quot;2021-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2021-12-31&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;event_date&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">),</span> <span class="s2">&quot;ST&quot;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s2">&quot;fatalities&quot;</span><span class="p">,</span> <span class="s2">&quot;nrEvents&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+    <span class="n">by</span><span class="o">=</span><span class="s2">&quot;nrEvents&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)[[</span><span class="s2">&quot;event_date&quot;</span><span class="p">,</span> <span class="s2">&quot;ST&quot;</span><span class="p">,</span> <span class="s2">&quot;fatalities&quot;</span><span class="p">,</span> <span class="s2">&quot;nrEvents&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -718,15 +743,22 @@ document.write(`
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="c1">#df = get_acled_by_admin(myanmar_adm1, acled, columns = [&#39;country&#39;])</span>
-<span class="k">for</span> <span class="nb">type</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;nrEvents&#39;</span><span class="p">,</span> <span class="s1">&#39;fatalities&#39;</span><span class="p">]:</span>
-
+<span class="c1"># df = get_acled_by_admin(myanmar_adm1, acled, columns = [&#39;country&#39;])</span>
+<span class="k">for</span> <span class="nb">type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;nrEvents&quot;</span><span class="p">,</span> <span class="s2">&quot;fatalities&quot;</span><span class="p">]:</span>
     <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="n">TabPanel</span><span class="p">(</span>
-        <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span><span class="n">acled_adm0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> in the country&quot;</span><span class="p">,</span> <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span> <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subtitle</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">measure</span> <span class="o">=</span> <span class="nb">type</span><span class="p">),</span>
-                    <span class="n">title</span><span class="o">=</span><span class="nb">type</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
-                <span class="p">)</span>
-                <span class="p">)</span>
+            <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span>
+                <span class="n">acled_adm0</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> in the country&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span>
+                <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="n">category</span><span class="o">=</span><span class="s2">&quot;country&quot;</span><span class="p">,</span>
+                <span class="n">measure</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">title</span><span class="o">=</span><span class="nb">type</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;scale_both&quot;</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">warn_on_missing_glyphs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1066,10 +1098,17 @@ if (force === true) {
 
 <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
     <span class="n">TabPanel</span><span class="p">(</span>
-    <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span><span class="n">acled_adm1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Conflict Index by admin 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span> <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subtitle</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;ST&#39;</span><span class="p">),</span>
-                <span class="c1">#title=adm.capitalize(),</span>
-            <span class="p">)</span>
-            <span class="p">)</span>
+        <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span>
+            <span class="n">acled_adm1</span><span class="p">,</span>
+            <span class="s2">&quot;Conflict Index by admin 1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span>
+            <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">category</span><span class="o">=</span><span class="s2">&quot;ST&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="c1"># title=adm.capitalize(),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;scale_both&quot;</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">warn_on_missing_glyphs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1408,15 +1447,21 @@ if (force === true) {
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">adm</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">acled_adm2</span><span class="p">[</span><span class="s1">&#39;ST&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">acled_adm2</span><span class="p">[</span><span class="n">acled_adm2</span><span class="p">[</span><span class="s1">&#39;ST&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">adm</span><span class="p">]</span> 
+<span class="k">for</span> <span class="n">adm</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">acled_adm2</span><span class="p">[</span><span class="s2">&quot;ST&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">acled_adm2</span><span class="p">[</span><span class="n">acled_adm2</span><span class="p">[</span><span class="s2">&quot;ST&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">adm</span><span class="p">]</span>
 
     <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="n">TabPanel</span><span class="p">(</span>
-        <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Conflict Index by admin 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span> <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subtitle</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
-                    <span class="n">title</span><span class="o">=</span><span class="n">adm</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
-                <span class="p">)</span>
-                <span class="p">)</span>
+            <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span>
+                <span class="n">df</span><span class="p">,</span>
+                <span class="s2">&quot;Conflict Index by admin 2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span>
+                <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">adm</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;scale_both&quot;</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">warn_on_missing_glyphs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1750,7 +1795,8 @@ if (force === true) {
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;conflictIndex&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ntl_bm_gf_mean&#39;</span><span class="p">])</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;conflictIndex&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ntl_bm_gf_mean&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1768,28 +1814,29 @@ if (force === true) {
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ST</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;Yangon (East)&#39;</span><span class="p">,</span> <span class="s1">&#39;Yangon (West)&#39;</span><span class="p">,</span> <span class="s1">&#39;Yangon (North)&#39;</span><span class="p">,</span> <span class="s1">&#39;Yangon (South)&#39;</span><span class="p">]):</span>
-    <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NAME_2&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">ST</span><span class="p">]</span>
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;ntl_bm_mean&#39;</span><span class="p">],</span> <span class="s1">&#39;#1F77B4&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;ntl&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;ntl&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;#1F77B4&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ST</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;Yangon (East)&quot;</span><span class="p">,</span> <span class="s2">&quot;Yangon (West)&quot;</span><span class="p">,</span> <span class="s2">&quot;Yangon (North)&quot;</span><span class="p">,</span> <span class="s2">&quot;Yangon (South)&quot;</span><span class="p">]</span>
+<span class="p">):</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;NAME_2&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ST</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;ntl_bm_mean&quot;</span><span class="p">],</span> <span class="s2">&quot;#1F77B4&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ntl&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ntl&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;#1F77B4&quot;</span><span class="p">)</span>
 
     <span class="n">ax1</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;conflictIndex&#39;</span><span class="p">],</span> <span class="s1">&#39;#FF7F00&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;conflict index&#39;</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;conflict index&#39;</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;#FF7F00&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;conflictIndex&quot;</span><span class="p">],</span> <span class="s2">&quot;#FF7F00&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;conflict index&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;conflict index&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;#FF7F00&quot;</span><span class="p">)</span>
 
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="n">lines</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_lines</span><span class="p">()</span> <span class="o">+</span> <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_lines</span><span class="p">()</span>
     <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
-    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
-    
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">ST</span><span class="p">)</span>
 </pre></div>
@@ -1904,7 +1951,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Feb 05, 2024.
+  Last updated on Feb 15, 2024.
   <br/>
 </p>
   </div>

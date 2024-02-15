@@ -3,7 +3,3 @@
 **Indicators** can be derived from a combination of **Foundational Datasets** and **Data Products**. By combining Foundational Datasets and Data Products, teams can, on-demand, develop a large array of indicators to meet their project needs. Indicators can presented side-by-side in an Excel workbook -- a format that is generally accessible to the widest audiences. Because all indicators are based on the same underlying data, they are comparable with each other, across geographies and across time.
 
 For this project, sample indicators have been derived and aggregated at the Admin 2 level over multiple time periods, to show changing trends in each area over time. Here is a link to the **Indicators Excel workbook** (accessible to team members via SharePoint): [Excel Workbook](https://worldbankgroup.sharepoint.com.mcas.ms/:x:/r/teams/DevelopmentDataPartnershipCommunity-WBGroup/_layouts/15/Doc.aspx?sourcedoc=%7BFE218C50-B0B1-45CC-8215-DD7224679500%7D&file=Data%20Products%20Summary.xlsx&action=default&mobileredirect=true), and sample indicators such as correlation between Night Time Lights and conflict data can be seen.
-
-
-
-

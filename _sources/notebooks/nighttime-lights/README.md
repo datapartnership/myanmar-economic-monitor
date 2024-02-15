@@ -22,15 +22,15 @@ We extract average nighttime lights within each administrative unit in Mynamar. 
 
 ## Implementation
 
-Code to replicate the analysis can be found [here](https://github.com/datapartnership/myanmar-economic-monitor/tree/ntl/notebooks/nighttime-lights). 
+Code to replicate the analysis can be found [here](https://github.com/datapartnership/myanmar-economic-monitor/tree/ntl/notebooks/nighttime-lights).
 
-The code largely relies on an R package (`blackmarbler`) that is currently being created to faciliate downloading and processing Black Marble nighttime lights data. The package [documentation](https://ramarty.github.io/blackmarbler/) provides some generic examples for how to download data, make a map of nighttime lights, and show trends in nighttime lights. The below code leverages the package to produce analytics for a country.
+The code largely relies on an R package (`blackmarbler`) that is currently being created to facilitate downloading and processing Black Marble nighttime lights data. The package [documentation](https://ramarty.github.io/blackmarbler/) provides some generic examples for how to download data, make a map of nighttime lights, and show trends in nighttime lights. The below code leverages the package to produce analytics for a country.
 
 The main script ([_main.R](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/_main.R)) loads all packages and runs all scripts for the analysis. Below we document scripts for (1) creating analysis-ready datasets and (2) producing analytics (eg, figures) of nighttime lights data.
 
 ### Create Analysis-Ready Nighttime Lights Datasets
 
-The below code downloads and processes nighttime lights data. 
+The below code downloads and processes nighttime lights data.
 
 * [01_clean_gas_flaring_data.R](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/01_clean_gas_flaring_data.R): Produces a clean dataset of the locations of gas flaring locations. This dataset is needed because we summarize nighttime lights for (1) all lights, (2) lights excluding gas flaring loations, and (3) lights only in gas flaring locations.
 * [02_download_black_marble.R](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/02_download_black_marble.R): Downloads Black Marble nighttime lights data for annual, monthly, and daily nighttime lights data. The script exports a geotiff file of nighttime lights for each time period (eg, for each year for annual data). If the script is run at a later date, only data that has not already been downloaded will be downloaded.
@@ -140,7 +140,7 @@ Percent Change in Nighttime Lights: AMD 3 Level
 
 ### Gas Flaring Nighttime Lights
 
-The below figure shows the location of inland gas flaring locations, which are concentrated within one location in Myanmar. 
+The below figure shows the location of inland gas flaring locations, which are concentrated within one location in Myanmar.
 
 ```{figure} ../../reports/figures/ntl_bm_gf_2022.png
 ---
@@ -352,5 +352,3 @@ Below shows regressions results, regressing GDP on average nighttime lights.
 ## Limitations
 
 Nighttime lights are a common data source for measuring local economic activity. However, it is a proxy that is strongly---although imperfectly---correlated with measures of interest, such as population, local GDP, and wealth. Consequently, care must be taken in interpreting reasons for changes in lights.
-
-

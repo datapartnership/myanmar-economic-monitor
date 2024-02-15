@@ -57,11 +57,7 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/vegetation-conditions/README';</script>
     <link rel="canonical" href="https://github.com/datapartnership/myanmar-economic-monitor/notebooks/vegetation-conditions/README.html" />
@@ -71,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Datasets and Data Products Summary" href="../../docs/data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Feb 05, 2024"/>
+    <meta name="docbuild:last-update" content="Feb 15, 2024"/>
   </head>
   
   
@@ -182,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Goods Overview</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../docs/introduction_to_data_goods.html">Introduction to Data Goods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/data.html">Datasets and Data Products Summary</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Products</span></p>
@@ -475,7 +470,7 @@ document.write(`
 <h3>Vegetation Indices<a class="headerlink" href="#vegetation-indices" title="Permalink to this heading">#</a></h3>
 <p>The EVI from both MOD13Q1 and MYD13Q1 downloaded using Google Earth Engine (<a class="reference external" href="https://earthengine.google.com/">GEE</a>) which involves some process:</p>
 <ul class="simple">
-<li><p>Combine the two 16-day composites into a synthethic 8-day composite containing data from both Aqua and Terra.</p></li>
+<li><p>Combine the two 16-day composites into a synthethic synthetic 8-day composite containing data from both Aqua and Terra.</p></li>
 <li><p>Applying Quality Control Bitmask, keep only pixels with good quality.</p></li>
 <li><p>Applying cropland mask, keep only pixels identified as a cropland based on ESA WorldCover.</p></li>
 <li><p>Clipped for Myanmar and batch export the collection to Google Drive.</p></li>
@@ -600,14 +595,13 @@ document.write(`
 <li><p>Preprocessing: Detrend and smooth the vegetation index time series data to reduce noise.</p></li>
 <li><p>Model Fitting: Fit a function (e.g., logistic, asymmetric Gaussian) to the smoothed time series data. The chosen function should adequately represent the seasonal pattern of vegetation growth and senescence.</p></li>
 <li><p>Threshold Determination: Define thresholds for SOS, MOS, and EOS. These thresholds may be absolute values, or they may be based on a percentage of the maximum vegetation index value for the season (e.g., 20% for SOS and EOS, 100% for MOS).</p></li>
-<li><p>Metric Calculation: Identify the points in the fitted function where the thresholds are met. These points correspond to the SOS, MOS, and EOS.</p>
+<li><p>Metric Calculation: Identify the points in the fitted function where the thresholds are met. These points correspond to the SOS, MOS, and EOS.</p></li>
+</ol>
 <ul class="simple">
 <li><p>SOS: The time step where the fitted function first exceeds the lower threshold, marking the start of significant vegetation growth.</p></li>
 <li><p>MOS: The time step where the fitted function reaches the maximum vegetation index value, indicating the peak of the growing season.</p></li>
 <li><p>EOS: The time step where the fitted function falls below the lower threshold again, signifying the end of significant vegetation growth.</p></li>
 </ul>
-</li>
-</ol>
 <p>Note that these metrics will depend on the choice of function, thresholds, and other methodological details. The equations for calculating SOS, MOS, and EOS may vary depending on the specific technique employed.</p>
 <p>A how-to guideline on calculating the phenological metrics are available through <strong>Seasonality_Parameters_Data_Extraction</strong></p>
 </section>
@@ -755,7 +749,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Feb 05, 2024.
+  Last updated on Feb 15, 2024.
   <br/>
 </p>
   </div>

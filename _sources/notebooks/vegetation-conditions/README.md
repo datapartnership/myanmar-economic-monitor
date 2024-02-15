@@ -34,13 +34,13 @@ The cropland class has value equal to `2` and `3`, which will be used within Goo
 
 The EVI from both MOD13Q1 and MYD13Q1 downloaded using Google Earth Engine ([GEE](https://earthengine.google.com/)) which involves some process:
 
- * Combine the two 16-day composites into a synthethic 8-day composite containing data from both Aqua and Terra.
+* Combine the two 16-day composites into a synthethic synthetic 8-day composite containing data from both Aqua and Terra.
 
- * Applying Quality Control Bitmask, keep only pixels with good quality.
+* Applying Quality Control Bitmask, keep only pixels with good quality.
 
- * Applying cropland mask, keep only pixels identified as a cropland based on ESA WorldCover.
+* Applying cropland mask, keep only pixels identified as a cropland based on ESA WorldCover.
 
- * Clipped for Myanmar and batch export the collection to Google Drive.
+* Clipped for Myanmar and batch export the collection to Google Drive.
 
 ![VI](./images/climag-evi-202304.png)
 
@@ -186,7 +186,7 @@ We utilized GEE to acquire a time series of EVI data. The EVI data was then proc
 
 ### Vegetation Indices and derivative product
 
-In this study, we employed a three-step coding approach to analyze the time series EVI data and derive vegetation index products. The first step utilized GEE to efficiently batch download the time series EVI data. 
+In this study, we employed a three-step coding approach to analyze the time series EVI data and derive vegetation index products. The first step utilized GEE to efficiently batch download the time series EVI data.
 
 * The code for downloading timeseries EVI in GEE: [gee-batch-export-mxd13q1.js](/notebooks/vegetation-conditions/gee-batch-export-mxd13q1.js)
 
@@ -210,11 +210,11 @@ The SOS, MOS, and EOS are typically derived from EVI. These metrics are calculat
 
 4. Metric Calculation: Identify the points in the fitted function where the thresholds are met. These points correspond to the SOS, MOS, and EOS.
 
-	* SOS: The time step where the fitted function first exceeds the lower threshold, marking the start of significant vegetation growth.
+* SOS: The time step where the fitted function first exceeds the lower threshold, marking the start of significant vegetation growth.
 
-	* MOS: The time step where the fitted function reaches the maximum vegetation index value, indicating the peak of the growing season.
+* MOS: The time step where the fitted function reaches the maximum vegetation index value, indicating the peak of the growing season.
 
-	* EOS: The time step where the fitted function falls below the lower threshold again, signifying the end of significant vegetation growth.
+* EOS: The time step where the fitted function falls below the lower threshold again, signifying the end of significant vegetation growth.
 
 Note that these metrics will depend on the choice of function, thresholds, and other methodological details. The equations for calculating SOS, MOS, and EOS may vary depending on the specific technique employed.
 
@@ -222,13 +222,13 @@ A how-to guideline on calculating the phenological metrics are available through
 
 ## Limitations and Assumptions
 
-Getting VI data with good quality for all period are challenging (pixels covered with cloud, snow/ice, aerosol quantity, shadow) for optic data (MODIS). Cultivated area year by year are varies, due to MODIS data quality and crop type is not described, so the seasonal parameters are for general cropland. 
+Getting VI data with good quality for all period are challenging (pixels covered with cloud, snow/ice, aerosol quantity, shadow) for optic data (MODIS). Cultivated area year by year are varies, due to MODIS data quality and crop type is not described, so the seasonal parameters are for general cropland.
 
 At this point, the analysis is also limited to seasonal crops due to difficulty to capture the dynamics of perennial crops within a year. The value may not represent for smaller cropland and presented result are only based upon the most current available remote sensing data. As the climate phenomena is a dynamic situation, the current realities may differ from what is depicted in this document.
 
 Ground check is necessary to ensure if satellite and field situation data are corresponding.
 
-## Potential Application 
+## Potential Application
 
 Above products provides an important starting point for continuous monitoring of the crop planting status. Continuous monitoring could inform the following assessments:
 
