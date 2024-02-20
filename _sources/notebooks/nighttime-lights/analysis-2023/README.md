@@ -1,4 +1,4 @@
-# Nighttime Lights
+# Nighttime Lights 2023 Analysis
 
 Nighttime lights have become a commonly used resource to estimate changes in local economic activity. This section shows changes in nighttime lights in Turkiye from before and after the earthquake.
 
