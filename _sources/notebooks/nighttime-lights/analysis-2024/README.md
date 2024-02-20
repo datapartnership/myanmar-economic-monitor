@@ -20,7 +20,7 @@ The main script ([_main.R](https://github.com/datapartnership/myanmar-economic-m
 
 ### Special Economic Zones
 
-```{figure} ../../reports/figures/ntl_sez_avg.png
+```{figure} ../../../reports/figures/ntl_sez_avg.png
 ---
 scale: 50%
 align: center
@@ -28,7 +28,7 @@ align: center
 Nighttime Lights
 ```
 
-```{figure} ../../reports/figures/ntl_sez_1.png
+```{figure} ../../../reports/figures/ntl_sez_1.png
 ---
 scale: 50%
 align: center
@@ -36,7 +36,7 @@ align: center
 Nighttime Lights
 ```
 
-```{figure} ../../reports/figures/ntl_sez_2.png
+```{figure} ../../../reports/figures/ntl_sez_2.png
 ---
 scale: 50%
 align: center
@@ -44,7 +44,7 @@ align: center
 Nighttime Lights
 ```
 
-```{figure} ../../reports/figures/ntl_sez_3.png
+```{figure} ../../../reports/figures/ntl_sez_3.png
 ---
 scale: 50%
 align: center
@@ -54,7 +54,7 @@ Nighttime Lights
 
 ### Border Locations
 
-```{figure} ../../reports/figures/ntl_border.png
+```{figure} ../../../reports/figures/ntl_border.png
 ---
 scale: 50%
 align: center
@@ -64,7 +64,7 @@ Nighttime Lights
 
 ### ADM 1 Units
 
-```{figure} ../../reports/figures/ntl_adm1.png
+```{figure} ../../../reports/figures/ntl_adm1.png
 ---
 scale: 50%
 align: center
@@ -74,7 +74,7 @@ Nighttime Lights
 
 ### Yangon
 
-```{figure} ../../reports/figures/ntl_adm1_yangon.png
+```{figure} ../../../reports/figures/ntl_adm1_yangon.png
 ---
 scale: 50%
 align: center
@@ -82,7 +82,7 @@ align: center
 Nighttime Lights
 ```
 
-```{figure} ../../reports/figures/ntl_adm2_yangon.png
+```{figure} ../../../reports/figures/ntl_adm2_yangon.png
 ---
 scale: 50%
 align: center
@@ -90,7 +90,7 @@ align: center
 Nighttime Lights
 ```
 
-```{figure} ../../reports/figures/ntl_adm3_yangon.png
+```{figure} ../../../reports/figures/ntl_adm3_yangon.png
 ---
 scale: 50%
 align: center

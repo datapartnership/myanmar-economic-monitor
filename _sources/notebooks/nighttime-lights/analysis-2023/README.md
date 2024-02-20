@@ -52,7 +52,7 @@ The below code analyzes the nighttime lights data, producing figures and tables.
 
 The below figures show maps of nighttime lights. The first figure shows nighttime lights in the latest year currently available (2022), and the second figure shows nighttime lights in each year.
 
-```{figure} ../../reports/figures/ntl_bm_2022.png
+```{figure} ../../../reports/figures/ntl_bm_2022.png
 ---
 scale: 50%
 align: center
@@ -60,7 +60,7 @@ align: center
 Nighttime lights in 2022
 ```
 
-```{figure} ../../reports/figures/ntl_bm_allyears.png
+```{figure} ../../../reports/figures/ntl_bm_allyears.png
 ---
 scale: 50%
 align: center
@@ -74,7 +74,7 @@ Nighttime lights
 
 The below figures show trends in average nighttime lights.
 
-```{figure} ../../reports/figures/ntl_trends_adm0.png
+```{figure} ../../../reports/figures/ntl_trends_adm0.png
 ---
 scale: 50%
 align: center
@@ -82,7 +82,7 @@ align: center
 Trends in Nighttime Lights at Country Level
 ```
 
-```{figure} ../../reports/figures/ntl_trends_adm1.png
+```{figure} ../../../reports/figures/ntl_trends_adm1.png
 ---
 scale: 50%
 align: center
@@ -92,7 +92,7 @@ Trends in Nighttime Lights at ADM 1
 
 #### Monthly
 
-```{figure} ../../reports/figures/ntl_trends_adm1_monthly.png
+```{figure} ../../../reports/figures/ntl_trends_adm1_monthly.png
 ---
 scale: 50%
 align: center
@@ -102,7 +102,7 @@ Trends in Nighttime Lights at ADM 1, Monthly
 
 The below figure shows trends in nighttime lights, showing trends in the z-score. The z-score is computed within each admin 1 unit.
 
-```{figure} ../../reports/figures/ntl_trends_adm1_monthly_zscore.png
+```{figure} ../../../reports/figures/ntl_trends_adm1_monthly_zscore.png
 ---
 scale: 50%
 align: center
@@ -114,7 +114,7 @@ Trends in Nighttime Lights at ADM 1 using Z-Score, Monthly
 
 The below maps show the percent change in nighttime lights relative to 2019.
 
-```{figure} ../../reports/figures/pc_2019_maps1.png
+```{figure} ../../../reports/figures/pc_2019_maps1.png
 ---
 scale: 50%
 align: center
@@ -122,7 +122,7 @@ align: center
 Percent Change in Nighttime Lights: AMD 1 Level
 ```
 
-```{figure} ../../reports/figures/pc_2019_maps2.png
+```{figure} ../../../reports/figures/pc_2019_maps2.png
 ---
 scale: 50%
 align: center
@@ -130,7 +130,7 @@ align: center
 Percent Change in Nighttime Lights: AMD 2 Level
 ```
 
-```{figure} ../../reports/figures/pc_2019_maps3.png
+```{figure} ../../../reports/figures/pc_2019_maps3.png
 ---
 scale: 50%
 align: center
@@ -142,7 +142,7 @@ Percent Change in Nighttime Lights: AMD 3 Level
 
 The below figure shows the location of inland gas flaring locations, which are concentrated within one location in Myanmar.
 
-```{figure} ../../reports/figures/ntl_bm_gf_2022.png
+```{figure} ../../../reports/figures/ntl_bm_gf_2022.png
 ---
 scale: 50%
 align: center
@@ -152,7 +152,7 @@ Gas Flaring Map
 
 The below figure shows trends in nighttime lights in gas flaring locations.
 
-```{figure} ../../reports/figures/ntl_gas_flaring_trends.png
+```{figure} ../../../reports/figures/ntl_gas_flaring_trends.png
 ---
 scale: 50%
 align: center
@@ -164,7 +164,7 @@ Trends in nighttime lights in gas flaring locations
 
 The below figure shows trends in nighttime lights within special economic zones, averaged across special economic zones.
 
-```{figure} ../../reports/figures/sez_ntl_trends_avg.png
+```{figure} ../../../reports/figures/sez_ntl_trends_avg.png
 ---
 scale: 50%
 align: center
@@ -174,7 +174,7 @@ Change in nighttime lights from 2012 to 2022 in Special Economic Zones, averaged
 
 The below figure shows trends in nighttime lights within special economic zones.
 
-```{figure} ../../reports/figures/sez_ntl_trends.png
+```{figure} ../../../reports/figures/sez_ntl_trends.png
 ---
 scale: 50%
 align: center
@@ -182,7 +182,7 @@ align: center
 Change in nighttime lights from 2012 to 2022 in Special Economic Zones
 ```
 
-```{figure} ../../reports/figures/sez_ntl_trends_select_zones.png
+```{figure} ../../../reports/figures/sez_ntl_trends_select_zones.png
 ---
 scale: 50%
 align: center
@@ -190,7 +190,7 @@ align: center
 Change in nighttime lights from 2012 to 2022 in Select Special Economic Zones
 ```
 
-```{figure} ../../reports/figures/sez_ntl_map.png
+```{figure} ../../../reports/figures/sez_ntl_map.png
 ---
 scale: 50%
 align: center
@@ -202,7 +202,7 @@ Change in nighttime lights from 2012 to 2022 in Special Economic Zones
 
 This section explores the association between GDP and nighttime lights using annual data. We use data since 2012, the start of the nighttime lights data.
 
-```{figure} ../../reports/figures/gdp_ntl_annual_scatter.png
+```{figure} ../../../reports/figures/gdp_ntl_annual_scatter.png
 ---
 scale: 50%
 align: center
@@ -210,7 +210,7 @@ align: center
 Association between Nighttime Lights and GDP
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_annual_scatter_log.png
+```{figure} ../../../reports/figures/gdp_ntl_annual_scatter_log.png
 ---
 scale: 50%
 align: center
@@ -218,7 +218,7 @@ align: center
 Association between Nighttime Lights and GDP, logging both NTL and GDP
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_annual_trends.png
+```{figure} ../../../reports/figures/gdp_ntl_annual_trends.png
 ---
 scale: 50%
 align: center
@@ -226,7 +226,7 @@ align: center
 Trends in GDP and Nighttime Lights
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_annual_trends_log.png
+```{figure} ../../../reports/figures/gdp_ntl_annual_trends_log.png
 ---
 scale: 50%
 align: center
@@ -234,7 +234,7 @@ align: center
 Trends in GDP and Nighttime Lights, Logged
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_annual_trends_pc.png
+```{figure} ../../../reports/figures/gdp_ntl_annual_trends_pc.png
 ---
 scale: 50%
 align: center
@@ -242,7 +242,7 @@ align: center
 Trends in GDP and Nighttime Lights: Percent Change since 2012
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_annual_trends_pc_log.png
+```{figure} ../../../reports/figures/gdp_ntl_annual_trends_pc_log.png
 ---
 scale: 50%
 align: center
@@ -275,7 +275,7 @@ Below shows regressions results, regressing GDP on average nighttime lights.
 
 This section explores the association between GDP and nighttime lights using annual data. We use available quarterly data from 2015 to 2019.
 
-```{figure} ../../reports/figures/gdp_ntl_quarterly_scatter.png
+```{figure} ../../../reports/figures/gdp_ntl_quarterly_scatter.png
 ---
 scale: 50%
 align: center
@@ -283,7 +283,7 @@ align: center
 Association between Nighttime Lights and GDP
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_quarterly_scatter_log.png
+```{figure} ../../../reports/figures/gdp_ntl_quarterly_scatter_log.png
 ---
 scale: 50%
 align: center
@@ -291,7 +291,7 @@ align: center
 Association between Nighttime Lights and GDP, logging both NTL and GDP
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_quarterly_trends.png
+```{figure} ../../../reports/figures/gdp_ntl_quarterly_trends.png
 ---
 scale: 50%
 align: center
@@ -299,7 +299,7 @@ align: center
 Trends in GDP and Nighttime Lights
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_quarterly_trends_log.png
+```{figure} ../../../reports/figures/gdp_ntl_quarterly_trends_log.png
 ---
 scale: 50%
 align: center
@@ -307,7 +307,7 @@ align: center
 Trends in GDP and Nighttime Lights, Logged
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_quarterly_trends_pc.png
+```{figure} ../../../reports/figures/gdp_ntl_quarterly_trends_pc.png
 ---
 scale: 50%
 align: center
@@ -315,7 +315,7 @@ align: center
 Trends in GDP and Nighttime Lights: Percent Change since 2012
 ```
 
-```{figure} ../../reports/figures/gdp_ntl_quarterly_trends_pc_log.png
+```{figure} ../../../reports/figures/gdp_ntl_quarterly_trends_pc_log.png
 ---
 scale: 50%
 align: center
