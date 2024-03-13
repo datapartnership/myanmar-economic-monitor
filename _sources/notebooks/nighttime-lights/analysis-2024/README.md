@@ -54,6 +54,22 @@ Nighttime Lights
 
 ### Border Locations
 
+```{figure} ../../../reports/figures/ntl_border_overall.png
+---
+scale: 50%
+align: center
+---
+Nighttime Lights
+```
+
+```{figure} ../../../reports/figures/ntl_border_country.png
+---
+scale: 50%
+align: center
+---
+Nighttime Lights
+```
+
 ```{figure} ../../../reports/figures/ntl_border.png
 ---
 scale: 50%
@@ -96,6 +112,24 @@ scale: 50%
 align: center
 ---
 Nighttime Lights
+```
+
+### Nighttime lights and RWI
+
+```{figure} ../../../reports/figures/rwi_ntl_cor.png
+---
+scale: 50%
+align: center
+---
+Nighttime Lights and RWI Correlation
+```
+
+```{figure} ../../../reports/figures/rwi_q4_ntl_trends.png
+---
+scale: 50%
+align: center
+---
+Nighttime Lights and RWI Trends
 ```
 
 ## Limitations
