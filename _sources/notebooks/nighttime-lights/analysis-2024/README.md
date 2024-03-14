@@ -14,7 +14,7 @@ We extract average nighttime lights within different units in Mynamar. We distin
 
 Code to replicate the analysis can be found [here](https://github.com/datapartnership/myanmar-economic-monitor/tree/ntl/notebooks/nighttime-lights).
 
-The main script ([_main.R](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/analysis-2024/_main.R)) loads all packages and runs all scripts for the analysis. 
+The main script ([_main.R](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/analysis-2024/_main.R)) loads all packages and runs all scripts for the analysis.
 
 ## Findings
 

@@ -21,11 +21,11 @@ To use the R programming language, the R kernel in Jupyter Notebook will
 be used within a `conda` environment.
 
 ``` r
-%%bash 
+%%bash
 conda update -n base -c defaults conda -y
 conda create -n renv -c conda-forge python=3.8 r r-essentials r-tidyverse r-arrow -y
 conda install -n renv openjdk -y
-pip install jupyter 
+pip install jupyter
 ```
 
 Once the environment is created, it will be activated and the Python
@@ -55,15 +55,15 @@ df <- df %>%
   mutate(datetime = from_utc_timestamp(datetime, tz = "UTC+6:30"),
          time_scope = if_else(
            hour(datetime) >= 7 & hour(datetime) < 19, "act",
-           "home")) 
+           "home"))
 
-valid_users <- df %>% 
+valid_users <- df %>%
   count(hex_id, uid, date, time_scope) %>%
   filter(n_distinct(time_scope) == 2) %>%
   pull(uid) %>%
   unique() %>% collect()
 
-df <- df %>% 
+df <- df %>%
   filter(uid %in% valid_users) %>%
   count(hex_id, uid, date) %>%
   ungroup() %>%
@@ -99,12 +99,12 @@ file.
 ``` r
 cities <- read_excel("coordinates.xlsx") %>% st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
 
-hexes <- cities %>% st_buffer(20000) %>% 
-  h3jsr::polygon_to_cells(res = 7) %>% enframe() %>% 
-  bind_cols(cities %>% st_drop_geometry()) %>% 
-  unnest(cols = "value") %>% 
-  rename(hex_id = value) %>% 
-  select(hex_id, district) %>% 
+hexes <- cities %>% st_buffer(20000) %>%
+  h3jsr::polygon_to_cells(res = 7) %>% enframe() %>%
+  bind_cols(cities %>% st_drop_geometry()) %>%
+  unnest(cols = "value") %>%
+  rename(hex_id = value) %>%
+  select(hex_id, district) %>%
   mutate(geometry = h3jsr::cell_to_polygon(hex_id)) %>% st_as_sf()
 ```
 
@@ -118,7 +118,7 @@ a city in terms relative to the others.
 ``` r
 pop <- rast("MMR_ppp_v2c_2015_UNadj.tif")
 
-pop_h <- terra::extract(pop, hexes, bind = TRUE, fun = sum, na.rm = TRUE) %>% st_as_sf() %>% 
+pop_h <- terra::extract(pop, hexes, bind = TRUE, fun = sum, na.rm = TRUE) %>% st_as_sf() %>%
   rename(pop = 3)
 
 wt <- pop_h %>% st_drop_geometry() %>% count(district, wt = pop) %>%
@@ -133,19 +133,19 @@ users and population, as well as to have a basis for the subsequent
 comparison with night lights images.
 
 ``` r
-hexes %>% 
- left_join(index) %>% 
-  group_by(date = as.Date(date), district) %>% 
+hexes %>%
+ left_join(index) %>%
+  group_by(date = as.Date(date), district) %>%
 summarise(
   n = sum(n, na.rm = T)
-) %>% 
-ggplot() + 
-  geom_line(aes(date, n)) + 
+) %>%
+ggplot() +
+  geom_line(aes(date, n)) +
   facet_wrap(~district, scales = "free_y", ncol = 3) +
   theme(text = element_text(family = "Roboto Condensed")) +
   labs(title = "Proxies of economic activity in Myanmar.", x = "", y = "Moving users",
        subtitle = "Number of moving users in Myanmar, aggregated by district.",
-       caption = "Source: Veraset Movement Dataset") 
+       caption = "Source: Veraset Movement Dataset")
 ```
 
 ![](images/plot_m_users_v2.png)
@@ -162,15 +162,15 @@ relative to the first Monday of the year.
 In the first case, the following results are obtained:
 
 ``` r
-hexes %>% 
-  left_join(index) %>% 
-  group_by(date = as.Date(date), district) %>% 
+hexes %>%
+  left_join(index) %>%
+  group_by(date = as.Date(date), district) %>%
   summarise(
     n = sum(n, na.rm = T)
-  ) %>% left_join(wt %>% select(1,3)) %>% 
+  ) %>% left_join(wt %>% select(1,3)) %>%
   mutate(n = n/wt) %>%
-  ggplot() + 
-  geom_line(aes(date, n)) + 
+  ggplot() +
+  geom_line(aes(date, n)) +
   facet_wrap(~district, scales = "free_y", ncol = 3) +
   theme(text = element_text(family = "Roboto Condensed")) +
   labs(title = "Proxies of economic activity in Myanmar.", x = "", y = "Weighted moving users",
@@ -183,23 +183,23 @@ hexes %>%
 And in terms of 100 base index = 2022-03-01:
 
 ``` r
-hexes %>% 
-  left_join(index) %>% 
-  group_by(date = as.Date(date), district) %>% 
+hexes %>%
+  left_join(index) %>%
+  group_by(date = as.Date(date), district) %>%
 
 
   summarise(
     n = sum(n, na.rm = T)
-  ) %>% group_by(district) %>% 
-  arrange(date) %>% 
-  mutate(n = n/n[3]) %>%  
-  ggplot() + 
-  geom_line(aes(date, n)) + 
+  ) %>% group_by(district) %>%
+  arrange(date) %>%
+  mutate(n = n/n[3]) %>%
+  ggplot() +
+  geom_line(aes(date, n)) +
   facet_wrap(~district, scales = "free_y", ncol = 3) +
   theme(text = element_text(family = "Roboto Condensed")) +
   labs(title = "Proxies of economic activity in Myanmar.", x = "", y = "Index",
        subtitle = "Activity Index [base 100 = 03-01-2022]",
-       caption = "Source: Veraset Movement Dataset") 
+       caption = "Source: Veraset Movement Dataset")
 ```
 
 ![](images/plot_index_v2.png)
@@ -213,12 +213,12 @@ analyzed. The `tmap` library is used.
 ``` r
 library(tmap)
 
-index  %>% 
-  group_by(hex_id) %>% 
-  summarise(n = mean(n, na.rm = T)) %>% 
-  left_join(hexes) %>% 
-  na.omit() %>% 
-  st_as_sf() %>% 
+index  %>%
+  group_by(hex_id) %>%
+  summarise(n = mean(n, na.rm = T)) %>%
+  left_join(hexes) %>%
+  na.omit() %>%
+  st_as_sf() %>%
  tm_shape() +
   tm_polygons( fill = "n", fill.scale = tm_scale_intervals(style = "kmeans",
                                                            values = "-carto.sunset"),
@@ -252,22 +252,22 @@ r_2022 <- bm_raster(roi_sf = cities,
                     date = 2022,
                     bearer = bearer)
 
-lights <- terra::extract(rast(r_2022), index  %>% 
-  group_by(hex_id) %>% 
-  summarise(n = mean(n, na.rm = T)) %>% 
-  left_join(hexes) %>% 
-  na.omit() %>% 
+lights <- terra::extract(rast(r_2022), index  %>%
+  group_by(hex_id) %>%
+  summarise(n = mean(n, na.rm = T)) %>%
+  left_join(hexes) %>%
+  na.omit() %>%
   st_as_sf(), fun = mean, bind = TRUE, method = "bilinear", na.rm = TRUE, ID = TRUE)  %>% st_as_sf() %>% rename(
   light = t2022
 )
 
-ggplot(lights, aes(n, light)) + 
+ggplot(lights, aes(n, light)) +
   geom_point() +
-  scale_x_log10() + 
+  scale_x_log10() +
   scale_y_log10() +
   geom_smooth(formula = y ~ log(x+1), method = "lm") +
-  labs(x = "Moving users (Veraset)", y = "Light intensity", 
-       title = "Correlation between users and light intensity") 
+  labs(x = "Moving users (Veraset)", y = "Light intensity",
+       title = "Correlation between users and light intensity")
 
 ggsave("plot_correlation.png", width = 8, height = 6, units = "in", dpi = 300)
 ```
