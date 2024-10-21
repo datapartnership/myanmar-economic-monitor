@@ -20,7 +20,7 @@ We use nighttime lights data from [VIIRS Black Marble](https://blackmarble.gsfc.
 
 # Methodology
 
-Within different units of analysis (e.g, administrative units) we use the sum of nighttime lights. Where relevant, we distinguish between lights generated from gas flaring and lights removing gas flaring. We use the [World Bank's Global Gas Flaring Tracker](https://www.worldbank.org/en/programs/gasflaringreduction/global-flaring-data) which indicates the location of gas flaring locations. When removing gas flaring lights, we remove lights within 10km of a gas flaring location; when looking at lights in gas flaring locations, we take the sum of lights within 10km of gas flaring locations. 
+Within different units of analysis (e.g, administrative units) we use the sum of nighttime lights. Where relevant, we distinguish between lights generated from gas flaring and lights removing gas flaring. We use the [World Bank's Global Gas Flaring Tracker](https://www.worldbank.org/en/programs/gasflaringreduction/global-flaring-data) which indicates the location of gas flaring locations. When removing gas flaring lights, we remove lights within 10km of a gas flaring location; when looking at lights in gas flaring locations, we take the sum of lights within 10km of gas flaring locations.
 
 # Code Setup
 
@@ -89,7 +89,7 @@ for(i in 0:2){
   for(iso3_i in iso3_code){
     gadm(iso3_code, level=i, path = file.path(gadm_dir))
   }
-} 
+}
 
 #### Load GADM Functions
 load_gadm <- function(i){
@@ -108,33 +108,33 @@ dir.create(file.path(data_dir, "elevation"))
 OUT_PATH <- file.path(data_dir, "elevation", "elev.tiff")
 
 if(!file.exists(OUT_PATH)){
-  
-  
+
+
   if(length(iso3_code) > 1){
-    
+
     # elev_list <- lapply(iso3_code, function(iso3_code_i){
     #   elevation_3s(country=iso3_code_i, path=tempdir())
-    # }) 
+    # })
     # elev_r <- do.call(mosaic, c(elev_list, fun="mean"))
-    
+
     elev_list <- lapply(iso3_code, function(iso3_code_i){
-      
+
       adm0_sf <- gadm(iso3_code, level=0, path = tempdir())
       get_elev_raster(locations = adm0_sf, z = 8)
-      
+
     })
     elev_r <- do.call(mosaic, c(elev_list, fun="mean"))
-    
+
   } else{
     adm0_sf <- load_gadm(0)
-    
+
     #elev_r <- elevation_3s(country=iso3_code, path=tempdir())
     elev_r <- get_elev_raster(locations = adm0_sf, z = 8)
-    
+
   }
-  
+
   writeRaster(elev_r, OUT_PATH, overwrite = T)
-  
+
 }
 
 #### NTL Months to Download
@@ -150,7 +150,7 @@ wbg_color_dark <- "#02224B"
 
 ## Download Cities
 
-We use a dataset from [Geonames](https://public.opendatasoft.com/explore/dataset/geonames-all-cities-with-a-population-1000/export/?flg=en-us&disjunctive.cou_name_en&sort=name) which indicates the location of cities with over 1,000 people. 
+We use a dataset from [Geonames](https://public.opendatasoft.com/explore/dataset/geonames-all-cities-with-a-population-1000/export/?flg=en-us&disjunctive.cou_name_en&sort=name) which indicates the location of cities with over 1,000 people.
 
 ```{r}
 #| warning: false
@@ -164,9 +164,9 @@ OUT_FILE_ALL <- file.path(data_dir, "cities", "cities_all.Rds")
 if(!file.exists(OUT_FILE_ALL)){
   # https://public.opendatasoft.com/explore/dataset/geonames-all-cities-with-a-population-1000/export/?flg=en-us&disjunctive.cou_name_en&sort=name
   city_df <- read_delim("https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/geonames-all-cities-with-a-population-1000/exports/csv?lang=en&timezone=America%2FNew_York&use_labels=true&delimiter=%3B", delim = ";")
-  
+
   saveRDS(city_df, OUT_FILE_ALL)
-} 
+}
 
 ## Country Cities
 OUT_FILE_COUNTRY_DF      <- file.path(data_dir, "cities", "cities_country_df.Rds")
@@ -176,26 +176,26 @@ OUT_FILE_COUNTRY_10K_SF  <- file.path(data_dir, "cities", "cities_country_10km_s
 OUT_FILE_COUNTRY_BUFF_SF <- file.path(data_dir, "cities", "cities_country_buff_sf.Rds")
 
 if(!file.exists(OUT_FILE_COUNTRY_SF)){
-  
+
   ## Cleanup
   city_country_df <- city_df[city_df$`Country Code` %in% iso2_code,] %>%
     clean_names()
-  
+
   city_country_df <- city_country_df %>%
     separate(coordinates, into = c("lat", "lon"), sep = ",")
-  
+
   ## Spatially Define
   city_country_sf <- city_country_df %>%
     st_as_sf(coords = c("lon", "lat"),
              crs = 4326)
-  
+
   ## Buffer
   city_country_5km_sf <- city_country_sf %>%
     st_buffer(dist = 5000)
-  
+
   city_country_10km_sf <- city_country_sf %>%
     st_buffer(dist = 10000)
-  
+
   ## Dynamic Buffer
   city_country_sf <- city_country_sf %>%
     dplyr::mutate(buffer = case_when(
@@ -206,31 +206,31 @@ if(!file.exists(OUT_FILE_COUNTRY_SF)){
       population >= 100000 ~ 10,
       TRUE ~ 5
     ))
-  
+
   city_sub_30km_buff_sf <- city_country_sf[city_country_sf$buffer %in% 30,] %>% st_buffer(dist = 30*1000)
   city_sub_25km_buff_sf <- city_country_sf[city_country_sf$buffer %in% 25,] %>% st_buffer(dist = 25*1000)
   city_sub_20km_buff_sf <- city_country_sf[city_country_sf$buffer %in% 20,] %>% st_buffer(dist = 20*1000)
   city_sub_15km_buff_sf <- city_country_sf[city_country_sf$buffer %in% 15,] %>% st_buffer(dist = 15*1000)
   city_sub_10km_buff_sf <- city_country_sf[city_country_sf$buffer %in% 10,] %>% st_buffer(dist = 10*1000)
   city_sub_5km_buff_sf  <- city_country_sf[city_country_sf$buffer %in% 5,]  %>% st_buffer(dist = 5*1000)
-  
+
   city_buff_sf <- bind_rows(city_sub_30km_buff_sf,
                             city_sub_25km_buff_sf,
                             city_sub_20km_buff_sf,
                             city_sub_15km_buff_sf,
                             city_sub_10km_buff_sf,
                             city_sub_5km_buff_sf)
-  
-  
+
+
   ## Export
   saveRDS(city_country_df, OUT_FILE_COUNTRY_DF)
-  
+
   saveRDS(city_country_5km_sf,  OUT_FILE_COUNTRY_5K_SF)
   saveRDS(city_country_10km_sf, OUT_FILE_COUNTRY_10K_SF)
   saveRDS(city_buff_sf,         OUT_FILE_COUNTRY_BUFF_SF)
   saveRDS(city_country_sf,      OUT_FILE_COUNTRY_SF)
-  
-} 
+
+}
 
 ```
 
@@ -249,41 +249,41 @@ dir.create(file.path(gas_flare_dir, "finaldata"))
 #### Download data
 # https://datacatalog.worldbank.org/search/dataset/0037743
 if(!file.exists(file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2017.xlsx"))){
-  download.file(url = "https://datacatalogfiles.worldbank.org/ddh-published/0037743/DR0045623/viirs_global_flaring_d.7_slope_0.029353_2017_web_v1.xlsx?versionId=2023-01-18T20:03:32.2273754Z", 
-                destfile = file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2017.xlsx"), 
+  download.file(url = "https://datacatalogfiles.worldbank.org/ddh-published/0037743/DR0045623/viirs_global_flaring_d.7_slope_0.029353_2017_web_v1.xlsx?versionId=2023-01-18T20:03:32.2273754Z",
+                destfile = file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2017.xlsx"),
                 mode = "wb")
 }
 
 if(!file.exists(file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2018.xlsx"))){
-  download.file(url = "https://datacatalogfiles.worldbank.org/ddh-published/0037743/DR0045622/viirs_global_flaring_d.7_slope_0.029353_2018_web.xlsx?versionId=2023-01-18T20:02:43.3965005Z", 
-                destfile = file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2018.xlsx"), 
+  download.file(url = "https://datacatalogfiles.worldbank.org/ddh-published/0037743/DR0045622/viirs_global_flaring_d.7_slope_0.029353_2018_web.xlsx?versionId=2023-01-18T20:02:43.3965005Z",
+                destfile = file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2018.xlsx"),
                 mode = "wb")
 }
 
 if(!file.exists(file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2019.xlsx"))){
-  download.file(url = "https://datacatalogfiles.worldbank.org/ddh-published/0037743/DR0045621/viirs_global_flaring_d.7_slope_0.029353_2019_web_v20201114-3.xlsx?versionId=2023-01-18T20:03:09.2456111Z", 
-                destfile = file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2019.xlsx"), 
+  download.file(url = "https://datacatalogfiles.worldbank.org/ddh-published/0037743/DR0045621/viirs_global_flaring_d.7_slope_0.029353_2019_web_v20201114-3.xlsx?versionId=2023-01-18T20:03:09.2456111Z",
+                destfile = file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2019.xlsx"),
                 mode = "wb")
 }
 
 if(!file.exists(file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2020.xlsx"))){
-  download.file(url = "https://datacatalogfiles.worldbank.org/ddh-published/0037743/DR0084248/2020%20Global%20Gas%20Flaring%20Volumes.xlsx?versionId=2023-01-18T20:03:53.8309309Z", 
-                destfile = file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2020.xlsx"), 
+  download.file(url = "https://datacatalogfiles.worldbank.org/ddh-published/0037743/DR0084248/2020%20Global%20Gas%20Flaring%20Volumes.xlsx?versionId=2023-01-18T20:03:53.8309309Z",
+                destfile = file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2020.xlsx"),
                 mode = "wb")
 }
 
 if(!file.exists(file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2021.xlsx"))){
-  download.file(url = "https://datacatalogfiles.worldbank.org/ddh-published/0037743/DR0087112/2021%20Global%20Gas%20Flaring%20Volumes.xlsx?versionId=2023-01-18T20:02:21.4951166Z", 
-                destfile = file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2021.xlsx"), 
+  download.file(url = "https://datacatalogfiles.worldbank.org/ddh-published/0037743/DR0087112/2021%20Global%20Gas%20Flaring%20Volumes.xlsx?versionId=2023-01-18T20:02:21.4951166Z",
+                destfile = file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2021.xlsx"),
                 mode = "wb")
 }
 
 #### Append data
 clean_data <- function(x){
-  x %>% 
-    clean_names() %>% 
+  x %>%
+    clean_names() %>%
     dplyr::filter(iso_code %in% iso3_code)
-} 
+}
 
 df_2021 <- read_xlsx(file.path(gas_flare_dir, "rawdata", "viirs_global_flaring_2021.xlsx"), 2) %>% clean_data()
 
@@ -320,7 +320,7 @@ gs_df <- gs_df %>%
   distinct() %>%
   dplyr::mutate(uid = 1:n())
 
-gs_sf <- gs_df %>% 
+gs_sf <- gs_df %>%
   st_as_sf(coords = c("longitude", "latitude"),
            crs = 4326)
 
@@ -374,8 +374,8 @@ r <- bm_raster(roi_sf = roi_sf,
 dir.create(file.path(ntl_bm_dir, "aggregated_individual_files"))
 
 #### Setup loops
-for(unit in c("adm0", 
-              "adm1", 
+for(unit in c("adm0",
+              "adm1",
               "adm2",
               "mmr_adm0",
               "mmr_adm1",
@@ -386,124 +386,124 @@ for(unit in c("adm0",
               "cities10km",
               "citiesbuff")){
   for(time_type in c("annual", "monthly")){
-    
+
     if(time_type == "annual"){
       time_vec <- 2012:2023
     }
-    
+
     if(time_type == "monthly"){
       time_vec <- ntl_months
     }
-    
+
     for(time_i in time_vec){
-      
+
       #### Only process if file doesn't exist
       dir.create(file.path(ntl_bm_dir, "aggregated_individual_files", unit))
       dir.create(file.path(ntl_bm_dir, "aggregated_individual_files", unit, time_type))
-      
-      OUT_FILE <- file.path(ntl_bm_dir, "aggregated_individual_files", unit, time_type, 
+
+      OUT_FILE <- file.path(ntl_bm_dir, "aggregated_individual_files", unit, time_type,
                             paste0("ntl_", time_i, ".Rds"))
-      
+
       if(!file.exists(OUT_FILE)){
-        
+
         #### Load Unit
         if(unit == "adm0"){
           roi_sf <- load_gadm(0)
         }
-        
+
         if(unit == "adm1"){
           roi_sf <- load_gadm(1)
         }
-        
+
         if(unit == "adm2"){
           roi_sf <- load_gadm(2)
         }
-        
+
         if(unit == "mmr_adm0"){
           roi_sf <- read_sf(file.path(data_dir, "Shapefiles", "Boundaries",
                                       "mmr_polbnda_adm0_250k_mimu.shp"))
         }
-        
+
         if(unit == "mmr_adm1"){
           roi_sf <- read_sf(file.path(data_dir, "Shapefiles", "Boundaries",
                                       "mmr_polbnda_adm1_250k_mimu.shp"))
         }
-        
+
         if(unit == "mmr_adm2"){
           roi_sf <- read_sf(file.path(data_dir, "Shapefiles", "Boundaries",
                                       "mmr_polbnda_adm2_250k_mimu_1.shp"))
         }
-        
+
         if(unit == "mmr_adm3"){
           roi_sf <- read_sf(file.path(data_dir, "Shapefiles", "mmr_polbnda_adm3_250k_mimu",
                                       "mmr_polbnda_adm3_250k_mimu.shp"))
         }
-        
+
         if(unit == "induszone5km"){
           roi_sf <- read_sf(file.path(data_dir, "Shapefiles",
                                       "industrial__special_economic_zones_sept2019",
                                       "industrial__special_economic_zones_sept2019.shp"))
-          
+
           roi_sf <- roi_sf %>% st_buffer(dist = 5*1000)
         }
-        
+
         if(unit == "cities5km"){
           roi_sf <- readRDS(file.path(data_dir, "cities", "cities_country_5km_sf.Rds"))
         }
-        
+
         if(unit == "cities10km"){
           roi_sf <- readRDS(file.path(data_dir, "cities", "cities_country_10km_sf.Rds"))
         }
-        
+
         if(unit == "citiesbuff"){
           roi_sf <- readRDS(file.path(data_dir, "cities", "cities_country_buff_sf.Rds"))
         }
-        
+
         #### Load Raster
         if(time_type == "annual"){
           bm_product <- "VNP46A4"
-          time_raster_i <- time_i 
+          time_raster_i <- time_i
         }
-        
+
         if(time_type == "monthly"){
           bm_product <- "VNP46A3"
-          
-          time_raster_i <- time_i %>% 
+
+          time_raster_i <- time_i %>%
             substring(1, 7) %>%
             str_replace_all("-", "_")
         }
-        
-        ntl_r <- rast(file.path(ntl_bm_dir, "rasters", time_type, 
+
+        ntl_r <- rast(file.path(ntl_bm_dir, "rasters", time_type,
                                 paste0(bm_product,"_NearNadir_Composite_Snow_Free_qflag_t",time_raster_i,".tif")))
-        
+
         #### Gas Flaring Mask
         gs_5km_sf  <- readRDS(file.path(gas_flare_dir, "finaldata", "gas_flare_locations_5km.Rds"))
         gs_10km_sf <- readRDS(file.path(gas_flare_dir, "finaldata", "gas_flare_locations_10km.Rds"))
-        
+
         ntl_gf_5km_r   <- mask(ntl_r, gs_5km_sf)
         ntl_nogf_5km_r <- mask(ntl_r, gs_5km_sf, inverse = T)
-        
+
         ntl_gf_10km_r   <- mask(ntl_r, gs_10km_sf)
         ntl_nogf_10km_r <- mask(ntl_r, gs_10km_sf, inverse = T)
-        
+
         #### Extract NTL
         roi_sf$ntl_sum          <- exact_extract(ntl_r, roi_sf, "sum")
-        
+
         roi_sf$ntl_gf_5km_sum   <- exact_extract(ntl_gf_5km_r, roi_sf, "sum")
         roi_sf$ntl_nogf_5km_sum <- exact_extract(ntl_nogf_5km_r, roi_sf, "sum")
-        
+
         roi_sf$ntl_gf_10km_sum   <- exact_extract(ntl_gf_10km_r, roi_sf, "sum")
         roi_sf$ntl_nogf_10km_sum <- exact_extract(ntl_nogf_10km_r, roi_sf, "sum")
-        
+
         #### Cleanup
         roi_sf$date <- time_i
-        
+
         roi_df <- roi_sf %>%
           st_drop_geometry()
-        
+
         #### Export
         saveRDS(roi_df, OUT_FILE)
-        
+
       }
     }
   }
@@ -512,8 +512,8 @@ for(unit in c("adm0",
 #### Append Files
 dir.create(file.path(ntl_bm_dir, "aggregated"))
 
-for(unit in c("adm0", 
-              "adm1", 
+for(unit in c("adm0",
+              "adm1",
               "adm2",
               "mmr_adm0",
               "mmr_adm1",
@@ -524,16 +524,16 @@ for(unit in c("adm0",
               "cities10km",
               "citiesbuff")){
   for(time_type in c("annual", "monthly")){
-    
+
     ntl_df <- file.path(ntl_bm_dir, "aggregated_individual_files", unit, time_type) %>%
       list.files(full.names = T,
                  pattern = ".Rds") %>%
       map_df(readRDS)
-    
+
     saveRDS(ntl_df,   file.path(ntl_bm_dir, "aggregated", paste0("ntl_", unit, "_", time_type, ".Rds")))
     write_csv(ntl_df, file.path(ntl_bm_dir, "aggregated", paste0("ntl_", unit, "_", time_type, ".csv")))
     write_dta(ntl_df, file.path(ntl_bm_dir, "aggregated", paste0("ntl_", unit, "_", time_type, ".dta")))
-    
+
   }
 }
 
@@ -640,7 +640,7 @@ ocean_colors <- ocean.deep(100)
 ocean_colors[98:100] <- "#FFFFFF"
 
 ggplot() +
-  geom_spatraster(data = slope_r, 
+  geom_spatraster(data = slope_r,
                   show.legend = FALSE,
                   maxcell = 9e+07) +
   scale_fill_gradient(low = "#49232E",
@@ -662,7 +662,7 @@ ggplot() +
         plot.subtitle = element_text(face = "italic", hjust = 0.5, size = 16),
         legend.position = c(0.2, 0.15)) +
   guides(fill = guide_colorbar(direction = "horizontal",
-                               label = FALSE,         
+                               label = FALSE,
                                title.position = "top"))
 ```
 # Diagnostics
@@ -683,7 +683,7 @@ ntl_df %>%
     name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flares",
     name == "ntl_gf_10km_sum" ~ "NTL: Gas Flares"
   )) %>%
-  
+
   ggplot() +
   geom_col(aes(x = date,
                y = value,
@@ -716,14 +716,14 @@ ntl_df %>%
 
 ## NTL vs City Population
 
-We use a dataset from [Geonames] that maps the locations of all cities with other 1,000 people. We extract total nighttime lights withing a 5km buffer of each city. The below figure compares nighttime lights with population. 
+We use a dataset from [Geonames] that maps the locations of all cities with other 1,000 people. We extract total nighttime lights withing a 5km buffer of each city. The below figure compares nighttime lights with population.
 
 ```{r}
 city_df <- readRDS(file.path(data_dir, "cities", "cities_country_df.Rds"))
 city_df <- city_df %>%
   dplyr::select(geoname_id, lat, lon)
 
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "citiesbuff", "_", "annual", ".Rds")))
 
 ntl_coord_df <- ntl_df %>%
@@ -739,7 +739,7 @@ ntl_df %>%
   ggplot() +
   geom_sf(data = adm0_sf) +
   geom_point(data = ntl_coord_df,
-             aes(x = lon, 
+             aes(x = lon,
                  y = lat,
                  fill = log(ntl_sum),
                  size = ntl_sum),
@@ -757,7 +757,7 @@ ntl_df %>%
 
 
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "cities10km", "_", "annual", ".Rds")))
 
 ntl_df %>%
@@ -766,7 +766,7 @@ ntl_df %>%
   ggplot(aes(x = log(ntl_sum),
              y = log(population))) +
   geom_point(fill = wbg_color_dark) +
-  geom_smooth(method=lm, 
+  geom_smooth(method=lm,
               se=FALSE,
               color = wbg_color_light) +
   stat_cor() +
@@ -784,18 +784,18 @@ OUT_FILE <- file.path(data_dir, "wdi", "gdp.Rds")
 
 if(!file.exists(OUT_FILE)){
   gdp_df <- WDI(indicator = c("NY.GDP.PCAP.CD",
-                              "NY.GDP.MKTP.CD"), 
-                country = iso3_code, 
-                start = 2012, 
+                              "NY.GDP.MKTP.CD"),
+                country = iso3_code,
+                start = 2012,
                 end = 2023)
-  
+
   saveRDS(gdp_df, OUT_FILE)
 } else{
   gdp_df <- readRDS(OUT_FILE)
 }
 
 # Correlation with GDP
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "adm0", "_", "annual", ".Rds")))
 
 ntl_df <- ntl_df %>%
@@ -813,7 +813,7 @@ ntl_gdp_df <- ntl_df %>%
 
 ## Line Plots
 ntl_gdp_df %>%
-  dplyr::select(year, 
+  dplyr::select(year,
                 ntl_sum,
                 ntl_gf_10km_sum,
                 ntl_nogf_10km_sum,
@@ -842,7 +842,7 @@ ntl_gdp_df %>%
 
 ## Correlation: GDP
 ntl_gdp_df %>%
-  dplyr::select(ntl_sum, 
+  dplyr::select(ntl_sum,
                 ntl_gf_10km_sum,
                 ntl_nogf_10km_sum,
                 ny_gdp_mktp_cd) %>%
@@ -852,11 +852,11 @@ ntl_gdp_df %>%
     name == "ntl_gf_10km_sum" ~ "NTL: Gas Flare",
     name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flare",
   )) %>%
-  
+
   ggplot(aes(x = value,
              y = ny_gdp_mktp_cd)) +
   geom_point() +
-  geom_smooth(method=lm, 
+  geom_smooth(method=lm,
               se=FALSE,
               color = wbg_color_light) +
   stat_cor() +
@@ -865,11 +865,11 @@ ntl_gdp_df %>%
        title = "Correlation of Nighttime Lights with GDP") +
   facet_wrap(~name,
              scales = "free") +
-  theme_manual 
+  theme_manual
 
 ## Correlation: GDP
 ntl_gdp_df %>%
-  dplyr::select(ntl_sum, 
+  dplyr::select(ntl_sum,
                 ntl_gf_10km_sum,
                 ntl_nogf_10km_sum,
                 ny_gdp_pcap_cd) %>%
@@ -879,11 +879,11 @@ ntl_gdp_df %>%
     name == "ntl_gf_10km_sum" ~ "NTL: Gas Flare",
     name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flare",
   )) %>%
-  
+
   ggplot(aes(x = value,
              y = ny_gdp_pcap_cd)) +
   geom_point() +
-  geom_smooth(method=lm, 
+  geom_smooth(method=lm,
               se=FALSE,
               color = wbg_color_light) +
   stat_cor() +
@@ -902,7 +902,7 @@ ntl_gdp_df %>%
 
 ### Country Level
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "adm0", "_", "annual", ".Rds")))
 
 ntl_df %>%
@@ -917,7 +917,7 @@ ntl_df %>%
 
 
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "adm0", "_", "annual", ".Rds")))
 
 ntl_df %>%
@@ -944,7 +944,7 @@ ntl_df %>%
 
 ### ADM 1: Top ADM Units
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "adm1", "_", "annual", ".Rds")))
 
 top_adm <- ntl_df %>%
@@ -961,11 +961,11 @@ ntl_df %>%
   facet_wrap(~NAME_1) +
   labs(x = NULL,
        y = "Nighttime Lights") +
-  theme_manual 
+  theme_manual
 ```
 
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "adm1", "_", "annual", ".Rds")))
 
 ntl_df %>%
@@ -993,7 +993,7 @@ ntl_df %>%
 
 ### ADM 2: Top ADM Units
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "adm2", "_", "annual", ".Rds")))
 
 top_adm <- ntl_df %>%
@@ -1014,7 +1014,7 @@ ntl_df %>%
 ```
 
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "adm2", "_", "annual", ".Rds")))
 
 ntl_df %>%
@@ -1042,7 +1042,7 @@ ntl_df %>%
 
 ### Top Cities
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "citiesbuff", "_", "annual", ".Rds")))
 
 top_adm <- ntl_df %>%
@@ -1063,7 +1063,7 @@ ntl_df %>%
 ```
 
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
                             paste0("ntl_", "cities5km", "_", "annual", ".Rds")))
 
 ntl_df %>%
@@ -1212,7 +1212,7 @@ ntl_df %>%
   group_by(date) %>%
   dplyr::summarise(ntl_sum = sum(ntl_sum, na.rm = T)) %>%
   ungroup() %>%
-  
+
   ggplot() +
   geom_col(aes(x = date,
                y = ntl_sum))
@@ -1227,7 +1227,7 @@ ntl_df %>%
   group_by(date) %>%
   dplyr::summarise(ntl_sum = sum(ntl_sum, na.rm = T)) %>%
   ungroup() %>%
-  
+
   ggplot() +
   geom_col(aes(x = date,
                y = ntl_sum))
@@ -1238,10 +1238,10 @@ ntl_df %>%
 ## Load
 ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", "ntl_mmr_adm3_annual.Rds"))
 
-acled_1_df <- read_dta(file.path(data_dir, "Conflict", 
+acled_1_df <- read_dta(file.path(data_dir, "Conflict",
                                  "ACLED_01_Jan_2021_21_Oct_2024_township_monthly_spatial.dta"))
 
-acled_2_df <- read_dta(file.path(data_dir, "Conflict", 
+acled_2_df <- read_dta(file.path(data_dir, "Conflict",
                                  "ACLED_Apr_2022_Sep_2024_township_spatial_period_change.dta"))
 
 ## Cleanup
@@ -1257,8 +1257,8 @@ acled_1_df <- acled_1_df %>%
   dplyr::rename(date = date_ymd)
 
 acled_2_df <- acled_2_df %>%
-  dplyr::select(TS_PCODE, 
-                apr2022sep2022, 
+  dplyr::select(TS_PCODE,
+                apr2022sep2022,
                 oct2022mar2023,
                 apr2023sep2023,
                 oct2023mar2024,
@@ -1282,7 +1282,7 @@ ntl_conf_df <- ntl_df %>%
 ntl_conf_agg_df <- ntl_conf_df %>%
   group_by(date, conflict_category_fct) %>%
   dplyr::summarise(ntl_sum = mean(ntl_sum)) %>%
-  ungroup() 
+  ungroup()
 
 ntl_conf_agg_df %>%
   ggplot() +
@@ -1304,5 +1304,3 @@ ntl_conf_agg_df %>%
        x = NULL) +
   theme_classic2()
 ```
-
-
