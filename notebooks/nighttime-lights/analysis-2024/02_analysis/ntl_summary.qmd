@@ -2,7 +2,7 @@
 title: "Nighttime Lights Summary"
 author: "Data Lab"
 date: "4/18/2024"
-format: 
+format:
   html:
     toc: true
     code-fold: true
@@ -30,12 +30,9 @@ ntl_bm_dir     <- file.path(data_dir, "Nighttime Lights BlackMarble")
 sez_dir        <- file.path(data_dir, "SEZ")
 gadm_dir       <- file.path(data_dir, "GADM")
 
-theme_manual <- theme_classic2() + 
+theme_manual <- theme_classic2() +
   theme(strip.background = element_blank(),
         strip.text = element_text(face = "bold"),
         plot.title = element_text(face = "bold"))
 
 ```
-
-
-
