@@ -24,9 +24,13 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 docs = [
-	"docutils==0.17.1",     # https://jupyterbook.org/en/stable/content/citations.html?highlight=docutils#citations-and-bibliographies
-	"jupyter-book>=0.15.1",
+	"docutils==0.17.1",     # Pin to avoid compatibility issues
+	"sphinx>=4.0,<6.0",     # Pin Sphinx to compatible version range
+	"jupyter-book>=0.15.1,<0.16.0",  # Pin to stable version range
+	"myst-parser>=0.18.0",  # Ensure MyST parser compatibility
+	"sphinx-book-theme>=0.3.3",  # Pin theme version
 ]
+
 [project.urls]
 "Homepage" = "https://datapartnership.github.io/myanmar-economic-monitor"
 "Bug Reports" = "https://github.com/datapartnership/myanmar-economic-monitor/issues"
