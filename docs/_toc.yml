@@ -23,6 +23,9 @@ parts:
         url: https://raw.githack.com/datapartnership/myanmar-economic-monitor/refs/heads/main/notebooks/nighttime-lights/analysis-2024-q4/nighttime_lights.html
       - file: notebooks/conflict/conflict-and-ntl.ipynb
       - file: notebooks/conflict/conflict-and-ntl-updated.ipynb
+  - caption: Myanmar Update 2025
+    chapters:
+      - file: notebooks/-lights/analysis-2025/earthquake_ntl.ipynb
   - caption: Additional Resources
     chapters:
       - file: docs/3-add-resources.md
