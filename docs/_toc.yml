@@ -26,6 +26,7 @@ parts:
   - caption: Myanmar Update 2025
     chapters:
       - file: notebooks/-lights/analysis-2025/earthquake_ntl.ipynb
+      - file: notebooks/vegetation-conditions/evi-analytics-update-2025.ipynb
   - caption: Additional Resources
     chapters:
       - file: docs/3-add-resources.md
