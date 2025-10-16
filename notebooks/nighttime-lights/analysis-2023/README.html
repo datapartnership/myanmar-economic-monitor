@@ -7,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nighttime Lights 2023 Analysis &#8212; Myanmar Economic Monitor</title>
   
   
@@ -70,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Monitoring vegetation conditions" href="../../vegetation-conditions/README.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Oct 15, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 16, 2025"/>
   </head>
   
   
@@ -189,6 +188,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2025</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../analysis-2025/earthquake_ntl.html">Earthquake Impact on Nightlights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collection-2/ntl_collection2.html">Nighttime Lights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../airpollution/air_pollution.html">Air Pollution in Myanmar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vegetation-conditions/evi-analytics-update-2025.html">Crop Productivity Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
@@ -443,10 +445,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="nighttime-lights-2023-analysis">
+  <div class="tex2jax_ignore mathjax_ignore section" id="nighttime-lights-2023-analysis">
 <h1>Nighttime Lights 2023 Analysis<a class="headerlink" href="#nighttime-lights-2023-analysis" title="Permalink to this heading">#</a></h1>
 <p>Nighttime lights have become a commonly used resource to estimate changes in local economic activity. This section shows changes in nighttime lights in Turkiye from before and after the earthquake.</p>
-<section id="data">
+<div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
 <p>We use nighttime lights data from the VIIRS Black Marble dataset. Raw nighttime lights data requires correction due to cloud cover and stray light, such as lunar light. The Black Marble dataset applies advanced algorithms to correct raw nighttime light values and calibrate data so that trends in lights over time can be meaningfully analyzed. We use daily and monthly data from VIIRS Black Marble.</p>
 <p>The data for the analysis can be accessed from:</p>
@@ -459,17 +461,17 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
-<section id="methodology">
+</div>
+<div class="section" id="methodology">
 <h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h2>
 <p>We extract average nighttime lights within each administrative unit in Mynamar. We distinguish lights between lights observed in gas flaring locations and lights in other locations. Oil extraction and production involves gas flaring, which produces significant volumes of light. Separately examining lights in gas flaring and other locations allows distinguishing between lights generated due to oil production versus other sources of human activity. We use data on the locations of gas flaring sites from the <a class="reference external" href="https://www.worldbank.org/en/programs/gasflaringreduction">Global Gas Flaring Reduction Partnership</a>; we remove lights within 5km of gas flaring sites.</p>
-</section>
-<section id="implementation">
+</div>
+<div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h2>
 <p>Code to replicate the analysis can be found <a class="reference external" href="https://github.com/datapartnership/myanmar-economic-monitor/tree/ntl/notebooks/nighttime-lights">here</a>.</p>
 <p>The code largely relies on an R package (<code class="docutils literal notranslate"><span class="pre">blackmarbler</span></code>) that is currently being created to facilitate downloading and processing Black Marble nighttime lights data. The package <a class="reference external" href="https://ramarty.github.io/blackmarbler/">documentation</a> provides some generic examples for how to download data, make a map of nighttime lights, and show trends in nighttime lights. The below code leverages the package to produce analytics for a country.</p>
 <p>The main script (<a class="reference external" href="https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/_main.R">_main.R</a>) loads all packages and runs all scripts for the analysis. Below we document scripts for (1) creating analysis-ready datasets and (2) producing analytics (eg, figures) of nighttime lights data.</p>
-<section id="create-analysis-ready-nighttime-lights-datasets">
+<div class="section" id="create-analysis-ready-nighttime-lights-datasets">
 <h3>Create Analysis-Ready Nighttime Lights Datasets<a class="headerlink" href="#create-analysis-ready-nighttime-lights-datasets" title="Permalink to this heading">#</a></h3>
 <p>The below code downloads and processes nighttime lights data.</p>
 <ul class="simple">
@@ -478,8 +480,8 @@ document.write(`
 <li><p><a class="reference external" href="https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/03_aggregate">03_aggregate.R</a>: Aggregates nighttime lights to administrative levels 0, 1 and 2. Calculates average nighttime lights within each administrative unit. The script produces a separate file for each time period. For example, for daily data, a single dataset is saved for aggregated nighttime lights for January 1, 2023, at the ADM2 level. The next script appends files across time periods (eg, days) into a single dataset. Separate files are saved in order to facilitate aggregating new data, as aggregating data can take some time. The script skips aggregating data that has already been processed.</p></li>
 <li><p><a class="reference external" href="https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/04_append.R">04_append.R</a>: Appends aggregated data for each time period. Creates a separate datasets for annual, monthly, and daily nighttime lights data.</p></li>
 </ul>
-</section>
-<section id="nighttime-lights-analytics">
+</div>
+<div class="section" id="nighttime-lights-analytics">
 <h3>Nighttime Lights Analytics<a class="headerlink" href="#nighttime-lights-analytics" title="Permalink to this heading">#</a></h3>
 <p>The below code analyzes the nighttime lights data, producing figures and tables.</p>
 <ul class="simple">
@@ -488,168 +490,126 @@ document.write(`
 <li><p><a class="reference external" href="https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/05_map_ntl_annual_separate.R">05_map_ntl_annual_separate.R</a>: Produce maps of nighttime lights for each year, separately</p></li>
 <li><p><a class="reference external" href="https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/05_map_ntl_annual_together.R">05_map_ntl_annual_together.R</a>: Produce a figure showing maps of nighttime lights for each year available</p></li>
 </ul>
-</section>
-</section>
-<section id="findings">
+</div>
+</div>
+<div class="section" id="findings">
 <h2>Findings<a class="headerlink" href="#findings" title="Permalink to this heading">#</a></h2>
-<section id="maps-of-nighttime-lights">
+<div class="section" id="maps-of-nighttime-lights">
 <h3>Maps of Nighttime Lights<a class="headerlink" href="#maps-of-nighttime-lights" title="Permalink to this heading">#</a></h3>
 <p>The below figures show maps of nighttime lights. The first figure shows nighttime lights in the latest year currently available (2022), and the second figure shows nighttime lights in each year.</p>
-<figure class="align-center" id="id1">
+<div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="../../../_images/ntl_bm_2022.png"><img alt="../../../_images/ntl_bm_2022.png" src="../../../_images/ntl_bm_2022.png" style="width: 300.0px; height: 600.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Nighttime lights in 2022</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id2">
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Nighttime lights in 2022</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../../../_images/ntl_bm_allyears.png"><img alt="../../../_images/ntl_bm_allyears.png" src="../../../_images/ntl_bm_allyears.png" style="width: 1050.0px; height: 1800.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Nighttime lights</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="trends-in-nighttime-lights">
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Nighttime lights</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</div>
+</div>
+<div class="section" id="trends-in-nighttime-lights">
 <h3>Trends in Nighttime Lights<a class="headerlink" href="#trends-in-nighttime-lights" title="Permalink to this heading">#</a></h3>
-<section id="annual">
+<div class="section" id="annual">
 <h4>Annual<a class="headerlink" href="#annual" title="Permalink to this heading">#</a></h4>
 <p>The below figures show trends in average nighttime lights.</p>
-<figure class="align-center" id="id3">
+<div class="figure align-center" id="id3">
 <a class="reference internal image-reference" href="../../../_images/ntl_trends_adm0.png"><img alt="../../../_images/ntl_trends_adm0.png" src="../../../_images/ntl_trends_adm0.png" style="width: 750.0px; height: 450.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Trends in Nighttime Lights at Country Level</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id4">
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Trends in Nighttime Lights at Country Level</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="../../../_images/ntl_trends_adm1.png"><img alt="../../../_images/ntl_trends_adm1.png" src="../../../_images/ntl_trends_adm1.png" style="width: 1200.0px; height: 900.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Trends in Nighttime Lights at ADM 1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="monthly">
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Trends in Nighttime Lights at ADM 1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</div>
+</div>
+<div class="section" id="monthly">
 <h4>Monthly<a class="headerlink" href="#monthly" title="Permalink to this heading">#</a></h4>
-<figure class="align-center" id="id5">
+<div class="figure align-center" id="id5">
 <a class="reference internal image-reference" href="../../../_images/ntl_trends_adm1_monthly.png"><img alt="../../../_images/ntl_trends_adm1_monthly.png" src="../../../_images/ntl_trends_adm1_monthly.png" style="width: 1200.0px; height: 900.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Trends in Nighttime Lights at ADM 1, Monthly</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Trends in Nighttime Lights at ADM 1, Monthly</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</div>
 <p>The below figure shows trends in nighttime lights, showing trends in the z-score. The z-score is computed within each admin 1 unit.</p>
-<figure class="align-center" id="id6">
+<div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="../../../_images/ntl_trends_adm1_monthly_zscore.png"><img alt="../../../_images/ntl_trends_adm1_monthly_zscore.png" src="../../../_images/ntl_trends_adm1_monthly_zscore.png" style="width: 1200.0px; height: 900.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Trends in Nighttime Lights at ADM 1 using Z-Score, Monthly</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-<section id="maps-of-changes-in-nighttime-lights">
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Trends in Nighttime Lights at ADM 1 using Z-Score, Monthly</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="maps-of-changes-in-nighttime-lights">
 <h3>Maps of Changes in Nighttime Lights<a class="headerlink" href="#maps-of-changes-in-nighttime-lights" title="Permalink to this heading">#</a></h3>
 <p>The below maps show the percent change in nighttime lights relative to 2019.</p>
-<figure class="align-center" id="id7">
+<div class="figure align-center" id="id7">
 <a class="reference internal image-reference" href="../../../_images/pc_2019_maps1.png"><img alt="../../../_images/pc_2019_maps1.png" src="../../../_images/pc_2019_maps1.png" style="width: 1200.0px; height: 750.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 1 Level</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id8">
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 1 Level</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id8">
 <a class="reference internal image-reference" href="../../../_images/pc_2019_maps2.png"><img alt="../../../_images/pc_2019_maps2.png" src="../../../_images/pc_2019_maps2.png" style="width: 1200.0px; height: 750.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 2 Level</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id9">
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 2 Level</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id9">
 <a class="reference internal image-reference" href="../../../_images/pc_2019_maps3.png"><img alt="../../../_images/pc_2019_maps3.png" src="../../../_images/pc_2019_maps3.png" style="width: 1200.0px; height: 750.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 3 Level</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="gas-flaring-nighttime-lights">
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Percent Change in Nighttime Lights: AMD 3 Level</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</div>
+</div>
+<div class="section" id="gas-flaring-nighttime-lights">
 <h3>Gas Flaring Nighttime Lights<a class="headerlink" href="#gas-flaring-nighttime-lights" title="Permalink to this heading">#</a></h3>
 <p>The below figure shows the location of inland gas flaring locations, which are concentrated within one location in Myanmar.</p>
-<figure class="align-center" id="id10">
+<div class="figure align-center" id="id10">
 <a class="reference internal image-reference" href="../../../_images/ntl_bm_gf_2022.png"><img alt="../../../_images/ntl_bm_gf_2022.png" src="../../../_images/ntl_bm_gf_2022.png" style="width: 750.0px; height: 900.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Gas Flaring Map</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Gas Flaring Map</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</div>
 <p>The below figure shows trends in nighttime lights in gas flaring locations.</p>
-<figure class="align-center" id="id11">
+<div class="figure align-center" id="id11">
 <a class="reference internal image-reference" href="../../../_images/ntl_gas_flaring_trends.png"><img alt="../../../_images/ntl_gas_flaring_trends.png" src="../../../_images/ntl_gas_flaring_trends.png" style="width: 1050.0px; height: 525.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Trends in nighttime lights in gas flaring locations</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="special-economic-zones">
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Trends in nighttime lights in gas flaring locations</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</div>
+</div>
+<div class="section" id="special-economic-zones">
 <h3>Special Economic Zones<a class="headerlink" href="#special-economic-zones" title="Permalink to this heading">#</a></h3>
 <p>The below figure shows trends in nighttime lights within special economic zones, averaged across special economic zones.</p>
-<figure class="align-center" id="id12">
+<div class="figure align-center" id="id12">
 <a class="reference internal image-reference" href="../../../_images/sez_ntl_trends_avg.png"><img alt="../../../_images/sez_ntl_trends_avg.png" src="../../../_images/sez_ntl_trends_avg.png" style="width: 900.0px; height: 600.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Change in nighttime lights from 2012 to 2022 in Special Economic Zones, averaged across zones</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Change in nighttime lights from 2012 to 2022 in Special Economic Zones, averaged across zones</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</div>
 <p>The below figure shows trends in nighttime lights within special economic zones.</p>
-<figure class="align-center" id="id13">
+<div class="figure align-center" id="id13">
 <a class="reference internal image-reference" href="../../../_images/sez_ntl_trends.png"><img alt="../../../_images/sez_ntl_trends.png" src="../../../_images/sez_ntl_trends.png" style="width: 2250.0px; height: 3000.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Change in nighttime lights from 2012 to 2022 in Special Economic Zones</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id14">
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Change in nighttime lights from 2012 to 2022 in Special Economic Zones</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id14">
 <a class="reference internal image-reference" href="../../../_images/sez_ntl_trends_select_zones.png"><img alt="../../../_images/sez_ntl_trends_select_zones.png" src="../../../_images/sez_ntl_trends_select_zones.png" style="width: 900.0px; height: 600.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Change in nighttime lights from 2012 to 2022 in Select Special Economic Zones</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id15">
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Change in nighttime lights from 2012 to 2022 in Select Special Economic Zones</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id15">
 <a class="reference internal image-reference" href="../../../_images/sez_ntl_map.png"><img alt="../../../_images/sez_ntl_map.png" src="../../../_images/sez_ntl_map.png" style="width: 900.0px; height: 900.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Change in nighttime lights from 2012 to 2022 in Special Economic Zones</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="gdp-vs-nighttime-lights-annual">
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Change in nighttime lights from 2012 to 2022 in Special Economic Zones</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</div>
+</div>
+<div class="section" id="gdp-vs-nighttime-lights-annual">
 <h3>GDP vs Nighttime Lights: Annual<a class="headerlink" href="#gdp-vs-nighttime-lights-annual" title="Permalink to this heading">#</a></h3>
 <p>This section explores the association between GDP and nighttime lights using annual data. We use data since 2012, the start of the nighttime lights data.</p>
-<figure class="align-center" id="id16">
+<div class="figure align-center" id="id16">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_annual_scatter.png"><img alt="../../../_images/gdp_ntl_annual_scatter.png" src="../../../_images/gdp_ntl_annual_scatter.png" style="width: 750.0px; height: 525.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Association between Nighttime Lights and GDP</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id17">
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Association between Nighttime Lights and GDP</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id17">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_annual_scatter_log.png"><img alt="../../../_images/gdp_ntl_annual_scatter_log.png" src="../../../_images/gdp_ntl_annual_scatter_log.png" style="width: 750.0px; height: 525.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Association between Nighttime Lights and GDP, logging both NTL and GDP</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id18">
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Association between Nighttime Lights and GDP, logging both NTL and GDP</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id18">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_annual_trends.png"><img alt="../../../_images/gdp_ntl_annual_trends.png" src="../../../_images/gdp_ntl_annual_trends.png" style="width: 900.0px; height: 675.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Trends in GDP and Nighttime Lights</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id19">
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Trends in GDP and Nighttime Lights</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id19">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_annual_trends_log.png"><img alt="../../../_images/gdp_ntl_annual_trends_log.png" src="../../../_images/gdp_ntl_annual_trends_log.png" style="width: 900.0px; height: 675.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Trends in GDP and Nighttime Lights, Logged</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id20">
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Trends in GDP and Nighttime Lights, Logged</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id20">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_annual_trends_pc.png"><img alt="../../../_images/gdp_ntl_annual_trends_pc.png" src="../../../_images/gdp_ntl_annual_trends_pc.png" style="width: 1050.0px; height: 525.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Trends in GDP and Nighttime Lights: Percent Change since 2012</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id21">
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Trends in GDP and Nighttime Lights: Percent Change since 2012</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id21">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_annual_trends_pc_log.png"><img alt="../../../_images/gdp_ntl_annual_trends_pc_log.png" src="../../../_images/gdp_ntl_annual_trends_pc_log.png" style="width: 1125.0px; height: 525.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Trends in GDP and Nighttime Lights: Percent Change since 2012 (Logged)</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Trends in GDP and Nighttime Lights: Percent Change since 2012 (Logged)</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</div>
 <p>Below shows regressions results, regressing GDP on average nighttime lights.</p>
 <table style="text-align:center"><tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="2"><em>Dependent variable:</em></td></tr>
 <tr><td></td><td colspan="2" style="border-bottom: 1px solid black"></td></tr>
@@ -669,46 +629,34 @@ document.write(`
 <tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.506</td><td>0.551</td></tr>
 <tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="2" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
 </table>
-</section>
-<section id="gdp-vs-nighttime-lights-quarterly">
+</div>
+<div class="section" id="gdp-vs-nighttime-lights-quarterly">
 <h3>GDP vs Nighttime Lights: Quarterly<a class="headerlink" href="#gdp-vs-nighttime-lights-quarterly" title="Permalink to this heading">#</a></h3>
 <p>This section explores the association between GDP and nighttime lights using annual data. We use available quarterly data from 2015 to 2019.</p>
-<figure class="align-center" id="id22">
+<div class="figure align-center" id="id22">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_quarterly_scatter.png"><img alt="../../../_images/gdp_ntl_quarterly_scatter.png" src="../../../_images/gdp_ntl_quarterly_scatter.png" style="width: 750.0px; height: 525.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Association between Nighttime Lights and GDP</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id23">
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Association between Nighttime Lights and GDP</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id23">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_quarterly_scatter_log.png"><img alt="../../../_images/gdp_ntl_quarterly_scatter_log.png" src="../../../_images/gdp_ntl_quarterly_scatter_log.png" style="width: 750.0px; height: 525.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Association between Nighttime Lights and GDP, logging both NTL and GDP</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id24">
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Association between Nighttime Lights and GDP, logging both NTL and GDP</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id24">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_quarterly_trends.png"><img alt="../../../_images/gdp_ntl_quarterly_trends.png" src="../../../_images/gdp_ntl_quarterly_trends.png" style="width: 900.0px; height: 675.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Trends in GDP and Nighttime Lights</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id25">
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Trends in GDP and Nighttime Lights</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id25">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_quarterly_trends_log.png"><img alt="../../../_images/gdp_ntl_quarterly_trends_log.png" src="../../../_images/gdp_ntl_quarterly_trends_log.png" style="width: 900.0px; height: 675.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Trends in GDP and Nighttime Lights, Logged</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id26">
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Trends in GDP and Nighttime Lights, Logged</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id26">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_quarterly_trends_pc.png"><img alt="../../../_images/gdp_ntl_quarterly_trends_pc.png" src="../../../_images/gdp_ntl_quarterly_trends_pc.png" style="width: 1050.0px; height: 525.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Trends in GDP and Nighttime Lights: Percent Change since 2012</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id27">
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Trends in GDP and Nighttime Lights: Percent Change since 2012</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-center" id="id27">
 <a class="reference internal image-reference" href="../../../_images/gdp_ntl_quarterly_trends_pc_log.png"><img alt="../../../_images/gdp_ntl_quarterly_trends_pc_log.png" src="../../../_images/gdp_ntl_quarterly_trends_pc_log.png" style="width: 1050.0px; height: 525.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Trends in GDP and Nighttime Lights: Percent Change since 2012 (Logged)</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Trends in GDP and Nighttime Lights: Percent Change since 2012 (Logged)</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+</div>
 <p>Below shows regressions results, regressing GDP on average nighttime lights.</p>
 <table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
 <tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
@@ -733,13 +681,13 @@ document.write(`
 <tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.080</td><td>0.087</td><td>0.060</td><td>0.066</td></tr>
 <tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
 </table>
-</section>
-</section>
-<section id="limitations">
+</div>
+</div>
+<div class="section" id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
 <p>Nighttime lights are a common data source for measuring local economic activity. However, it is a proxy that is strongly—although imperfectly—correlated with measures of interest, such as population, local GDP, and wealth. Consequently, care must be taken in interpreting reasons for changes in lights.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -853,7 +801,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 15, 2025.
+  Last updated on Oct 16, 2025.
   <br/>
 </p>
   </div>

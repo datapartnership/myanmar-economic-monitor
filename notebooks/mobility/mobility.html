@@ -7,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activity proxies in Myanmar &#8212; Myanmar Economic Monitor</title>
   
   
@@ -70,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="The Story of Sagaing" href="../sample-indicators/sagaing-story.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Oct 15, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 16, 2025"/>
   </head>
   
   
@@ -189,6 +188,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2025</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/analysis-2025/earthquake_ntl.html">Earthquake Impact on Nightlights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl_collection2.html">Nighttime Lights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../airpollution/air_pollution.html">Air Pollution in Myanmar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-2025.html">Crop Productivity Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
@@ -433,24 +435,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="activity-proxies-in-myanmar">
+  <div class="tex2jax_ignore mathjax_ignore section" id="activity-proxies-in-myanmar">
 <h1>Activity proxies in Myanmar<a class="headerlink" href="#activity-proxies-in-myanmar" title="Permalink to this heading">#</a></h1>
-<section id="introduction">
+<div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>This document presents an assessment of Veraset data to be used as an estimation of Mobility in Myanmar.</p>
-</section>
-<section id="about-veraset-movement-data">
+</div>
+<div class="section" id="about-veraset-movement-data">
 <h2>About Veraset Movement Data<a class="headerlink" href="#about-veraset-movement-data" title="Permalink to this heading">#</a></h2>
 <p>Veraset Movement is an unfiltered stream of location and proximity data that Veraset has aggregated from data suppliers.</p>
 <p>How does Veraset source its data?</p>
 <p>Veraset sources data from direct relationships with third-party applications and software development kits (SDKs) as well as data aggregators. It is then cleansed for data sinks and other anomalies and deduplicated by event date. <a class="reference external" href="https://www.veraset.com/solutions/movement">Source</a></p>
 <p>Can Veraset reveal the sources of its data?</p>
 <p>While Veraset obtains data from a variety of sources, it does not typically disclose the specific sources of its data. This is to protect the privacy and confidentiality of its data providers. However, Veraset is committed to transparency and ensures that all its data is sourced in accordance with applicable laws and ethical guidelines.<a class="reference external" href="https://www.veraset.com/solutions/movement">Source</a></p>
-</section>
-<section id="veraset-sample">
+</div>
+<div class="section" id="veraset-sample">
 <h2>Veraset Sample<a class="headerlink" href="#veraset-sample" title="Permalink to this heading">#</a></h2>
 <p>This step creates an assessment of Veraset Movement Data for Maynmar between January 2020 to March 2024.</p>
-<section id="number-of-users-across-the-years">
+<div class="section" id="number-of-users-across-the-years">
 <h3>Number of Users across the years<a class="headerlink" href="#number-of-users-across-the-years" title="Permalink to this heading">#</a></h3>
 <p>The first step in the analysis consists on determining how many users were registered across the years in the region. From 2020 to March 2021, we observe considerable daily variations in number of users. Around March 2021, we observe a stark decline in number of users that might be related to the begining of internet restrictions. In October of 2021, we observe an increase in number of users that falls again around mid March of 2022, <strong>which might be related to changes policies about how location data is collected</strong>. After that, the number of users stayed stable and considerably low with respect to 2020.</p>
 <div class="cell tag_remove-input docutils container">
@@ -468,8 +470,8 @@ document.write(`
 <img alt="../../_images/af81b9249b114ba9e26fb7f2b75615428ca2680661b182eac1d6dc167a2ec319.png" src="../../_images/af81b9249b114ba9e26fb7f2b75615428ca2680661b182eac1d6dc167a2ec319.png" />
 </div>
 </div>
-</section>
-<section id="pings-per-user-distribution">
+</div>
+<div class="section" id="pings-per-user-distribution">
 <h3>Pings per user distribution<a class="headerlink" href="#pings-per-user-distribution" title="Permalink to this heading">#</a></h3>
 <p>We also studied the number of pings (connections) a user had across the years to understand whether the data can be used for longitudinal analysis. The two boxplots below are showing the same information but the boxplot on the right has limited its x-axis to 100 so that we can observe with greater detail users that had less than a 100 pings across the 4 years. We can observe that 75% of users had less than 28 pings across the 4 years.</p>
 <div class="cell tag_remove-input docutils container">
@@ -492,8 +494,8 @@ dtype: float64
 <img alt="../../_images/7cecca86a54b063679ad7a5a6dc187c0114c3758c352133331ded1a8e8c725ea.png" src="../../_images/7cecca86a54b063679ad7a5a6dc187c0114c3758c352133331ded1a8e8c725ea.png" />
 </div>
 </div>
-</section>
-<section id="pings-per-user-across-each-month">
+</div>
+<div class="section" id="pings-per-user-across-each-month">
 <h3>Pings per user across each month<a class="headerlink" href="#pings-per-user-across-each-month" title="Permalink to this heading">#</a></h3>
 <p>Next, we analyze the distribution of pings per users across each month. We can observe that across the years, most of the users in the sample have less than 30 ping per month which we could translate to approximately, less than 1 ping per day. Similar to what we did above, the second boxplot shows the same information as the first one but limited the x-axis to have a gretare detail in the area where most of the sample is concentrated, low number of pings per month.</p>
 <div class="cell tag_remove-input docutils container">
@@ -504,8 +506,8 @@ dtype: float64
 <img alt="../../_images/1ca46a25ac27dfa62b7fc3d53246bda3afed1ccc5fb5a846c6520ad4a89098d4.png" src="../../_images/1ca46a25ac27dfa62b7fc3d53246bda3afed1ccc5fb5a846c6520ad4a89098d4.png" />
 </div>
 </div>
-</section>
-<section id="users-suitable-for-a-longitudinal-analysis">
+</div>
+<div class="section" id="users-suitable-for-a-longitudinal-analysis">
 <h3>Users suitable for a longitudinal analysis<a class="headerlink" href="#users-suitable-for-a-longitudinal-analysis" title="Permalink to this heading">#</a></h3>
 <p>In order to perform a longitudinal analysis, we are filtering the data to keep only useres that had at least 30 pings in a month, which are around 1,300,000.
 Then, we check for how many months these users keep these level of connection intensity. We observe that 75% of the users were able to keep the 30 pings per month for less than 2 months of the total 51 months. None of the users were able to keep the 30 pings per month across the 4 years.</p>
@@ -537,8 +539,8 @@ dtype: float64
 </div>
 </div>
 </div>
-</section>
-<section id="pings-by-date">
+</div>
+<div class="section" id="pings-by-date">
 <h3>Pings by date<a class="headerlink" href="#pings-by-date" title="Permalink to this heading">#</a></h3>
 <p>Another way to assess the data is by studying the number of pings registered by date. The plot seems to be correlated with number of users per date. The orange line plots the 2nd of April when internet restrictions started according to this <a class="reference external" href="https://www.reuters.com/graphics/MYANMAR-POLITICS/INTERNET-RESTRICTION/rlgpdbreepo/">Source</a></p>
 <div class="cell tag_remove-input docutils container">
@@ -546,8 +548,8 @@ dtype: float64
 <img alt="../../_images/7b29d95b62db4d0ad3a9698d436d84a1a8c4f6b7ea64a2cbc57f0b360549e1ac.png" src="../../_images/7b29d95b62db4d0ad3a9698d436d84a1a8c4f6b7ea64a2cbc57f0b360549e1ac.png" />
 </div>
 </div>
-</section>
-<section id="by-region">
+</div>
+<div class="section" id="by-region">
 <h3>By region<a class="headerlink" href="#by-region" title="Permalink to this heading">#</a></h3>
 <p>Finally, we studied the number of pings by date and number of users by date across four regions:</p>
 <ul class="simple">
@@ -583,14 +585,14 @@ Then, we compared the two variables with the conflict index by region. At first 
 <img alt="../../_images/7be33e5db881e903daea776fb11181fcef613e136d9413be1f82fede1a92b9a4.png" src="../../_images/7be33e5db881e903daea776fb11181fcef613e136d9413be1f82fede1a92b9a4.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="conclusions">
+</div>
+</div>
+<div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
 <p>We observe that Veraset data varies considerably across the studied period. Unfortunately, we cannot attribute this to a cause, although we hypothesize that this could be related to restrictions to the internet access as well as changes in data collection policies.</p>
 <p>In order to use this data for mobility analysis we need to have users that have several connections per day and maintain the connection intensity across the months. Across the four years, the number of users suitable for these type of longitudinal analysis is low. However, the sample might be useful for shorter analysis timespans, subject to the analysis of the data in different timespans.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -694,7 +696,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 15, 2025.
+  Last updated on Oct 16, 2025.
   <br/>
 </p>
   </div>

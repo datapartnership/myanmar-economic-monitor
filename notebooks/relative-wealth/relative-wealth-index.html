@@ -7,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demographics of Myanmar &#8212; Myanmar Economic Monitor</title>
   
   
@@ -70,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Data Lab Strategic Brief: Myanmar Economic Monitor" href="../../reports/myanmar-economic-monitor-strategic-brief.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Oct 15, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 16, 2025"/>
   </head>
   
   
@@ -189,6 +188,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2025</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/analysis-2025/earthquake_ntl.html">Earthquake Impact on Nightlights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl_collection2.html">Nighttime Lights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../airpollution/air_pollution.html">Air Pollution in Myanmar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-2025.html">Crop Productivity Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
@@ -441,13 +443,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="demographics-of-myanmar">
+  <div class="tex2jax_ignore mathjax_ignore section" id="demographics-of-myanmar">
 <h1>Demographics of Myanmar<a class="headerlink" href="#demographics-of-myanmar" title="Permalink to this heading">#</a></h1>
 <p>To overcome gaps in official demographic statistics, the team has turned to private sector data sources. The Data Lab used algorithmically generated data such as that released by <a class="reference external" href="https://dataforgood.facebook.com/dfg/docs/methodology-high-resolution-population-density-maps">Meta</a>.</p>
 <p>Additionally, the team also extracted the <a class="reference external" href="https://dataforgood.facebook.com/dfg/tools/relative-wealth-index">Relative Wealth Index</a> data from Meta which helps identify differences in standard of living in the population.</p>
-<section id="data">
+<div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
-<section id="high-resolution-population-density">
+<div class="section" id="high-resolution-population-density">
 <h3>High Resolution Population Density<a class="headerlink" href="#high-resolution-population-density" title="Permalink to this heading">#</a></h3>
 <p>In partnership with the Center for International Earth Science Information Network (CIESIN) at Columbia University, Meta uses state-of-the-art computer vision techniques to identify buildings from publicly accessible mapping services to create these population datasets. These maps are available at 30-meter resolution. These maps aren’t built using Facebook data and instead rely on applying machine vision AI to satellite imagery and census information. This data is made accessible to this team through the <a class="reference external" href="https://datapartnership.org/">Development Data Partnership</a>. <strong>The available version of the data was last updated in 2019.</strong></p>
 <p>The Population Data is demographically disaggregated into the following categories</p>
@@ -459,20 +461,20 @@ document.write(`
 <li><p>Women of Reproductive Age (15-49)</p></li>
 <li><p>Youth (15-24)</p></li>
 </ul>
-</section>
-<section id="relative-wealth-index">
+</div>
+<div class="section" id="relative-wealth-index">
 <h3>Relative Wealth Index<a class="headerlink" href="#relative-wealth-index" title="Permalink to this heading">#</a></h3>
 <p>The Meta Relative Wealth Index predicts the relative standard of living within countries using privacy protecting connectivity data, satellite imagery, and other novel data sources. To calculate this index, Meta uses measurements of household wealth collected through <em>face-to-face surveys conducted by the United States Agency for International Development</em> with 1,457,315 unique households living in 66,819 villages in 56 different LMICs around the world. Following this, they use spatial markers to link villages to non-traditional data sources , including satellite imagery, cellular network data, topographic maps, and <em>privacy protecting connectivity data from Facebook</em>. They process the non-traditional data using deep learning and other computational algorithms, which convert the raw data to a set of quantitative features for each village. They use these features to train a supervised machine learning model that predicts the relative wealth of each populated 2.4km2 grid cell on the planet, even in regions where no ground truth data exists (Chi et. al., 2022).</p>
 <p>The Relative Wealth Index is a number that compared the wealth within the country where negative RWI implies poorer areas and positive RWI implies richer areas.</p>
-</section>
-</section>
-<section id="methodology-and-implementation">
+</div>
+</div>
+<div class="section" id="methodology-and-implementation">
 <h2>Methodology and Implementation<a class="headerlink" href="#methodology-and-implementation" title="Permalink to this heading">#</a></h2>
 <p>The data extracted from Meta was then aggregated to different admin levels using the shapefiles available on <a class="reference external" href="https://themimu.info/news/updated-shapefiles">Myanmar information Management Unit</a>. These datasets are made available on <a class="reference external" href="https://worldbankgroup.sharepoint.com.mcas.ms/teams/DevelopmentDataPartnershipCommunity-WBGroup/Shared%20Documents/Forms/AllItems.aspx?csf=1&amp;web=1&amp;e=Yvwh8r&amp;cid=fccdf23e%2D94d5%2D48bf%2Db75d%2D0af291138bde&amp;FolderCTID=0x012000CFAB9FF0F938A64EBB297E7E16BDFCFD&amp;id=%2Fteams%2FDevelopmentDataPartnershipCommunity%2DWBGroup%2FShared%20Documents%2FProjects%2FData%20Lab%2FMyanmar%20Economic%20Monitor%2FData&amp;viewid=80cdadb3%2D8bb3%2D47ae%2D8b18%2Dc1dd89c373c5">SharePoint</a>.</p>
-</section>
-<section id="findings">
+</div>
+<div class="section" id="findings">
 <h2>Findings<a class="headerlink" href="#findings" title="Permalink to this heading">#</a></h2>
-<section id="popultion-estimates">
+<div class="section" id="popultion-estimates">
 <h3>Popultion Estimates<a class="headerlink" href="#popultion-estimates" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -484,7 +486,7 @@ document.write(`
 <img alt="../../_images/62d8f308d919087d1a90d4eddc3f97aa2306134949bd4a488bae0caf924f6c6e.png" src="../../_images/62d8f308d919087d1a90d4eddc3f97aa2306134949bd4a488bae0caf924f6c6e.png" />
 </div>
 </div>
-<section id="observations-and-limitations">
+<div class="section" id="observations-and-limitations">
 <h4>Observations and Limitations<a class="headerlink" href="#observations-and-limitations" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The data is from 2019. Myanmar has seen a lot of conflict and political unrest, aside from a pandemic since then. The numbers shown here do not reflect any of the recent changes in population movement.</p></li>
@@ -492,32 +494,32 @@ document.write(`
 <li><p>Bago, a township north of Yangon is the most populous township.</p></li>
 <li><p>Yangon is the most populous region</p></li>
 </ul>
-</section>
-</section>
-<section id="relative-wealth-distribution">
+</div>
+</div>
+<div class="section" id="relative-wealth-distribution">
 <h3>Relative Wealth Distribution<a class="headerlink" href="#relative-wealth-distribution" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../_images/12a7b8c2a37a4a0de57b995f5133db380a0a9f1efe86dd8354957f38d3d70746.png" src="../../_images/12a7b8c2a37a4a0de57b995f5133db380a0a9f1efe86dd8354957f38d3d70746.png" />
 </div>
 </div>
-<section id="id1">
+<div class="section" id="id1">
 <h4>Observations and Limitations<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The algorithm Meta used uses input data collected before <a class="reference external" href="https://www.pnas.org/doi/10.1073/pnas.2113658119">2018</a>. This means that any recent changes in wealth are not reflected in the figures.</p></li>
 <li><p>The most populous district (Bago) is not the richest one. The SEZ Yangon (West) is wealthier.</p></li>
 </ul>
-</section>
-</section>
-<section id="comparing-relative-wealth-across-the-regions-of-myanmar">
+</div>
+</div>
+<div class="section" id="comparing-relative-wealth-across-the-regions-of-myanmar">
 <h3>Comparing Relative Wealth across the Regions of Myanmar<a class="headerlink" href="#comparing-relative-wealth-across-the-regions-of-myanmar" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../_images/817ebb745705c618410a86a4646eedf46c556738ec46a1806612d44478c07934.png" src="../../_images/817ebb745705c618410a86a4646eedf46c556738ec46a1806612d44478c07934.png" />
 </div>
 </div>
-</section>
-<section id="comparing-relative-wealth-in-the-townships-in-bago-district-and-yangon-west">
+</div>
+<div class="section" id="comparing-relative-wealth-in-the-townships-in-bago-district-and-yangon-west">
 <h3>Comparing Relative Wealth in the Townships in Bago District and Yangon (West)<a class="headerlink" href="#comparing-relative-wealth-in-the-townships-in-bago-district-and-yangon-west" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -529,16 +531,16 @@ document.write(`
 <img alt="../../_images/bc9b6571c30f7e8dae51304158d31ab32ca73600b69b4a588bafcf55e012c0f8.png" src="../../_images/bc9b6571c30f7e8dae51304158d31ab32ca73600b69b4a588bafcf55e012c0f8.png" />
 </div>
 </div>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h3>Observations and Limitations<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Yangon (West) is significantly wealthier. However, Hlaing, the richest township is also much smaller in area compared to the Bago township.</p></li>
 <li><p>There is a lot of income inequality in the most populous district of Myanmar with the average being relatively poor than the rest of the nation. This average is likely brought down by the extremely ric parts of Yangon (West).</p></li>
 </ul>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -650,7 +652,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 15, 2025.
+  Last updated on Oct 16, 2025.
   <br/>
 </p>
   </div>
