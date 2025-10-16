@@ -26,7 +26,7 @@ parts:
   - caption: Myanmar Update 2025
     chapters:
       - file: notebooks/nighttime-lights/analysis-2025/earthquake_ntl.ipynb
-      - file: notebooks/nightime-lights/collection-2/ntl-collection2.ipynb
+      - file: notebooks/nighttime-lights/collection-2/ntl_collection2.ipynb
       - file: notebooks/airpollution/air_pollution.ipynb
 
   - caption: Additional Resources
