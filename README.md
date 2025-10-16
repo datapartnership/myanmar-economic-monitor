@@ -13,7 +13,7 @@ The Myanmar Prosperity team is responsible for undertaking macroeconomic surveil
 
 ## Data
 
-The following datasets are used in this assignmet. Further details about each dataset -- licensing, frequency of updates, access instructions, etc. -- accompany each data product in which they were used.
+The following datasets are used in this assignment. Further details about each dataset -- licensing, frequency of updates, access instructions, etc. -- accompany each data product in which they were used.
 
 * [ACLED](https://worldbank.github.io/iraq-economic-monitoring/docs/2-data.html#(https://datacatalog.worldbank.org/int/search/dataset/0061835/acled---middle-east)) - Time-stamped, geolocated points where conflicts (protests, attacks, etc.) have occured, collected globally based on news and crowdsourced data.
 
