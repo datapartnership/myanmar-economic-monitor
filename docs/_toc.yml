@@ -25,7 +25,9 @@ parts:
       - file: notebooks/conflict/conflict-and-ntl-updated.ipynb
   - caption: Myanmar Update 2025
     chapters:
-      - file: notebooks/-lights/analysis-2025/earthquake_ntl.ipynb
+      - file: notebooks/nighttime-lights/analysis-2025/earthquake_ntl.ipynb
+      - file: notebooks/nighttime-lights/collection-2/ntl_collection2.ipynb
+      - file: notebooks/airpollution/air_pollution.ipynb
       - file: notebooks/vegetation-conditions/evi-analytics-update-2025.ipynb
   - caption: Additional Resources
     chapters:
