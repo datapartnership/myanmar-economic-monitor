@@ -136,7 +136,7 @@ leaflet() %>%
 #| message: false
 
 ## Load boundaries
-adm0_sf <- read_sf(file.path(boundaries_dir, 
+adm0_sf <- read_sf(file.path(boundaries_dir,
                              "RawData",
                              "mmr_polbnda_adm0_250k_mimu.shp"))
 
@@ -818,7 +818,7 @@ ntl_gdp_df <- gdp_long_df %>%
     quarter == "Q4" ~ 1
   )) %>%
   mutate(date = paste0(year, "-", start_month, "-01") %>% ymd()) %>%
-  dplyr::mutate(gdp = value %>% as.numeric()) 
+  dplyr::mutate(gdp = value %>% as.numeric())
 
 ## Country figure
 ntl_gdp_df %>%
@@ -827,12 +827,12 @@ ntl_gdp_df %>%
   dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum),
                    gdp = sum(gdp)) %>%
   ungroup() %>%
-  
+
   dplyr::mutate(gdp = log(gdp),
                 ntl_bm_sum = log(ntl_bm_sum)) %>%
   dplyr::filter(!is.na(gdp),
                 !is.na(ntl_bm_sum)) %>%
-  
+
   ggplot(aes(x = ntl_bm_sum,
              y = gdp)) +
   geom_point() +
@@ -852,12 +852,12 @@ ntl_gdp_df %>%
                    gdp = sum(gdp)) %>%
   ungroup() %>%
 <<<<<<< HEAD
-  
+
   dplyr::mutate(gdp = log(gdp),
                 ntl_bm_sum = log(ntl_bm_sum)) %>%
   dplyr::filter(!is.na(gdp),
                 !is.na(ntl_bm_sum)) %>%
-  
+
 =======
 
 >>>>>>> 3e8ee4f4b408019a25df70f5b7521f5e7c3199a3
@@ -881,12 +881,12 @@ ntl_gdp_df %>%
                    gdp = sum(gdp)) %>%
   ungroup() %>%
 <<<<<<< HEAD
-  
+
   dplyr::mutate(gdp = log(gdp),
                 ntl_bm_sum = log(ntl_bm_sum)) %>%
   dplyr::filter(!is.na(gdp),
                 !is.na(ntl_bm_sum)) %>%
-  
+
 =======
 
 >>>>>>> 3e8ee4f4b408019a25df70f5b7521f5e7c3199a3
@@ -909,12 +909,12 @@ ntl_gdp_df %>%
                    gdp = sum(gdp)) %>%
   ungroup() %>%
 <<<<<<< HEAD
-  
+
   dplyr::mutate(gdp = log(gdp),
                 ntl_bm_sum = log(ntl_bm_sum)) %>%
   dplyr::filter(!is.na(gdp),
                 !is.na(ntl_bm_sum)) %>%
-  
+
 =======
 
 >>>>>>> 3e8ee4f4b408019a25df70f5b7521f5e7c3199a3
@@ -943,16 +943,16 @@ ntl_gdp_df %>%
   dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum),
                    gdp = sum(gdp)) %>%
   ungroup() %>%
-  
+
   dplyr::mutate(gdp = log(gdp),
                 ntl_bm_sum = log(ntl_bm_sum)) %>%
   dplyr::filter(!is.na(gdp),
                 !is.na(ntl_bm_sum)) %>%
-  
+
   arrange(date) %>%
   dplyr::mutate(gdp = c(diff(gdp), NA),
                 ntl_bm_sum = c(diff(ntl_bm_sum), NA))  %>%
-  
+
   ggplot(aes(x = ntl_bm_sum,
              y = gdp)) +
   geom_point() +
@@ -978,16 +978,16 @@ ntl_gdp_df %>%
   dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum),
                    gdp = sum(gdp)) %>%
   ungroup() %>%
-  
+
   dplyr::mutate(gdp = log(gdp),
                 ntl_bm_sum = log(ntl_bm_sum)) %>%
   dplyr::filter(!is.na(gdp),
                 !is.na(ntl_bm_sum)) %>%
-  
+
   arrange(date) %>%
   dplyr::mutate(gdp = c(diff(gdp), NA),
                 ntl_bm_sum = c(diff(ntl_bm_sum), NA))  %>%
-  
+
   ggplot(aes(x = ntl_bm_sum,
              y = gdp)) +
   geom_point() +
