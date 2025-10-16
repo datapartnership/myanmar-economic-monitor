@@ -13,17 +13,17 @@ The Myanmar Prosperity team is responsible for undertaking macroeconomic surveil
 
 ## Data
 
-The following datasets are used in this assignment. Further details about each dataset -- licensing, frequency of updates, access instructions, etc. -- accompany each data product in which they were used.
+The following datasets are used in this assignmet. Further details about each dataset -- licensing, frequency of updates, access instructions, etc. -- accompany each data product in which they were used.
 
 * [ACLED](https://worldbank.github.io/iraq-economic-monitoring/docs/2-data.html#(https://datacatalog.worldbank.org/int/search/dataset/0061835/acled---middle-east)) - Time-stamped, geolocated points where conflicts (protests, attacks, etc.) have occured, collected globally based on news and crowdsourced data.
 
 * [BlackMarble](http://blackmarble.gsfc.nasa.gov/) - Visible Infrared Imaging Radiometer Suite (VIIRS) Nighttime Lights from NASA.
 
-* [MODIS](https://modis.gsfc.nasa.gov/) - NASA's 'Modern Resolution Imaging Spectroradiometer' dataset, used to monitor changes in surface vegetation. 
+* [MODIS](https://modis.gsfc.nasa.gov/) - NASA's 'Modern Resolution Imaging Spectroradiometer' dataset, used to monitor changes in surface vegetation.
 
 * [Veraset Movement Data](https://docs.datapartnership.org/partners/veraset/README.html). Veraset Movement is an unfiltered stream of location and proximity data that Veraset has aggregated from data suppliers. The data can be requested (for purchase) through the [Development Data Partnership](https://datapartnership.org/).
 
-  
+
 
 #### Data Availability Statement
 

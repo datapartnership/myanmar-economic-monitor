@@ -1,3 +1,4 @@
+
 ---
 title: "Nighttime Lights Analysis"
 author: "Data Lab"
@@ -1002,3 +1003,1009 @@ ntl_gdp_df %>%
 # Limitations
 
 Nighttime lights are a common data source for measuring local economic activity. However, it is a proxy that is strongly—although imperfectly—correlated with measures of interest, such as population, local GDP, and wealth. Consequently, care must be taken in interpreting reasons for changes in nighttime lights.
+=======
+---
+title: "Nighttime Lights Analysis"
+author: "Data Lab"
+date: "4/18/2024"
+format:
+  html:
+    toc: true
+    code-fold: true
+---
+
+Nighttime lights have become a commonly used resource to estimate changes in local economic activity. This section shows changes in nighttime lights in Myanmar.
+
+# Data
+
+We use nighttime lights data from the VIIRS Black Marble dataset. Raw nighttime lights data requires correction due to cloud cover and stray light, such as lunar light. The Black Marble dataset applies advanced algorithms to correct raw nighttime light values and calibrate data so that trends in lights over time can be meaningfully analyzed. From VIIRS Black Marble, we use data from January 2012 through present—where data is available at a 500-meter resolution.
+
+# Methodology
+
+We extract average nighttime lights within different units in Myanmar. We distinguish lights between lights observed in gas flaring locations and lights in other locations. Oil extraction and production involves gas flaring, which produces significant volumes of light. Separately examining lights in gas flaring and other locations allows distinguishing between lights generated due to oil production versus other sources of human activity. We use data on the locations of gas flaring sites from the [Global Gas Flaring Reduction Partnership](https://www.worldbank.org/en/programs/gasflaringreduction); we remove lights within 5km of gas flaring sites.
+
+# Code Setup
+
+Code to download and aggregate nighttime lights data can be found [here](https://github.com/datapartnership/myanmar-economic-monitor/tree/main/notebooks/nighttime-lights/analysis-2024/01_process_data).
+
+This notebook uses the processed data for analysis.
+
+```{r}
+#| warning: false
+#| message: false
+
+#### Setup
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(leaflet.providers)
+library(ggpubr)
+library(terra)
+library(tidyterra)
+library(gtools)
+library(readxl)
+library(janitor)
+
+data_dir <- "~/Dropbox/World Bank/Side Work/Myanmar Economic Monitor/data"
+
+boundaries_dir <- file.path(data_dir, "Boundaries")
+ntl_bm_dir     <- file.path(data_dir, "Nighttime Lights BlackMarble")
+sez_dir        <- file.path(data_dir, "SEZ")
+gadm_dir       <- file.path(data_dir, "GADM")
+
+theme_manual <- theme_classic2() +
+  theme(strip.background = element_blank(),
+        strip.text = element_text(face = "bold"),
+        plot.title = element_text(face = "bold"))
+
+```
+
+# Map of nighttime lights
+
+## Interactive map over time
+
+We first show a map of nighttime lights. Most of the country is dark, with lights concentrated within cities.
+
+```{r}
+#| warning: false
+#| message: false
+
+## Load boundaries
+adm0_sf <- read_sf(file.path(boundaries_dir,
+                             "RawData",
+                             "mmr_polbnda_adm0_250k_mimu.shp"))
+
+## Load/prep raster
+prep_r <- function(year_i){
+  r <- rast(file.path(ntl_bm_dir, "FinalData", "VNP46A4_rasters",
+                      paste0("VNP46A4_t",year_i,".tif")))
+  r <- r %>% mask(adm0_sf)
+  r[][r[] == 0] <- NA
+  r[] <- log(r[] + 1)
+  r[] <- log(r[] + 1)
+  return(r)
+}
+
+r_2012 <- prep_r(2012)
+r_2013 <- prep_r(2013)
+r_2014 <- prep_r(2014)
+r_2015 <- prep_r(2015)
+r_2016 <- prep_r(2016)
+r_2017 <- prep_r(2017)
+r_2018 <- prep_r(2018)
+r_2019 <- prep_r(2019)
+r_2020 <- prep_r(2020)
+r_2021 <- prep_r(2021)
+r_2022 <- prep_r(2022)
+r_2023 <- prep_r(2023)
+
+## Make map
+pal <- colorNumeric(c("yellow", "orange", "red"), unique(c(r_2012[],
+                                                           r_2013[],
+                                                           r_2014[],
+                                                           r_2015[],
+                                                           r_2016[],
+                                                           r_2017[],
+                                                           r_2018[],
+                                                           r_2019[],
+                                                           r_2020[],
+                                                           r_2021[],
+                                                           r_2022[],
+                                                           r_2023[])),
+                    na.color = "transparent")
+
+leaflet() %>%
+  addProviderTiles(providers$CartoDB.DarkMatter) %>%
+  addRasterImage(r_2012, colors = pal, opacity = 1, group = "2012") %>%
+  addRasterImage(r_2013, colors = pal, opacity = 1, group = "2013") %>%
+  addRasterImage(r_2014, colors = pal, opacity = 1, group = "2014") %>%
+  addRasterImage(r_2015, colors = pal, opacity = 1, group = "2015") %>%
+  addRasterImage(r_2016, colors = pal, opacity = 1, group = "2016") %>%
+  addRasterImage(r_2017, colors = pal, opacity = 1, group = "2017") %>%
+  addRasterImage(r_2018, colors = pal, opacity = 1, group = "2018") %>%
+  addRasterImage(r_2019, colors = pal, opacity = 1, group = "2019") %>%
+  addRasterImage(r_2020, colors = pal, opacity = 1, group = "2020") %>%
+  addRasterImage(r_2021, colors = pal, opacity = 1, group = "2021") %>%
+  addRasterImage(r_2022, colors = pal, opacity = 1, group = "2022") %>%
+  addRasterImage(r_2023, colors = pal, opacity = 1, group = "2023") %>%
+  addLayersControl(
+    baseGroups = paste0(2012:2023),
+    options = layersControlOptions(collapsed=FALSE)
+  )
+```
+
+## NTL: Static Map
+
+```{r}
+#| warning: false
+#| message: false
+
+## Load boundaries
+adm0_sf <- read_sf(file.path(boundaries_dir,
+                             "RawData",
+                             "mmr_polbnda_adm0_250k_mimu.shp"))
+
+## Load/prep raster
+prep_r <- function(year_i){
+  r <- rast(file.path(ntl_bm_dir, "FinalData", "VNP46A4_rasters",
+                      paste0("VNP46A4_t",year_i,".tif")))
+  r <- r %>% mask(adm0_sf)
+  #r[][r[] == 0] <- NA
+  r[] <- log(r[] + 1)
+  return(r)
+}
+
+r_2023 <- prep_r(2023)
+
+ggplot() +
+  geom_spatraster(data = r_2023) +
+  scale_fill_gradient2(low = "black",
+                       mid = "yellow",
+                       high = "red",
+                       midpoint = 2,
+                       na.value = "transparent") +
+  labs(title = "Nighttime Lights: 2023") +
+  coord_sf() +
+  theme_void() +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5),
+        legend.position = "none")
+
+```
+
+
+## NTL: Percent change from 2019
+
+```{r}
+#| warning: false
+#| message: false
+
+adm3_sf <- read_sf(file.path(gadm_dir,
+                             "rawdata",
+                             paste0("gadm41_MMR_",3,".json")))
+
+ntl3_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                             paste0("adm3", "_", "VNP46A4", ".Rds")))
+
+ntl3_df <- ntl3_df %>%
+  dplyr::select(GID_3, date, ntl_bm_sum) %>%
+  group_by(GID_3) %>%
+  dplyr::mutate(ntl_bm_sum_2019 = ntl_bm_sum[date == 2019]) %>%
+  ungroup() %>%
+  mutate(ntl_bm_sum_pc19 = (ntl_bm_sum - ntl_bm_sum_2019) / ntl_bm_sum_2019 * 100)
+
+ntl3_df$ntl_bm_sum_pc19[ntl3_df$ntl_bm_sum_pc19 > 100] <- 100
+ntl3_df$ntl_bm_sum_pc19[ntl3_df$ntl_bm_sum_pc19 < -100] <- -100
+
+adm3_sf <- adm3_sf %>%
+  left_join(ntl3_df, by = "GID_3")
+
+adm3_sf %>%
+  dplyr::filter(date %in% 2020:2023) %>%
+  ggplot() +
+  geom_sf(aes(fill = ntl_bm_sum_pc19)) +
+  facet_wrap(~date,
+             nrow = 1) +
+  labs(fill = c("% Change"),
+       title = "Percent Change in Nighttime Lights from 2019: ADM3 Level") +
+  scale_fill_gradient2(low = "red",
+                       mid = "white",
+                       high = "forestgreen",
+                       midpoint = 0,
+                       limits = c(-100, 100),
+                       breaks = c(-100, -50, 0, 50, 100),
+                       labels = c("< -100", "-50", "0", "50", "> 100")) +
+  theme_manual +
+  theme_void()
+
+adm3_sf %>%
+  dplyr::filter(date %in% 2023) %>%
+  ggplot() +
+  geom_sf(aes(fill = log(ntl_bm_sum+1) )) +
+  scale_fill_gradient2(low = "black",
+                       mid = "yellow",
+                       high = "red",
+                       midpoint = 5) +
+  labs(fill = "2023 NTL, Logged") +
+  theme_manual +
+  theme_void()
+
+adm3_sf %>%
+  dplyr::filter(date %in% 2023) %>%
+  ggplot() +
+  geom_sf(aes(fill = ntl_bm_sum )) +
+  scale_fill_gradient2(low = "black",
+                       mid = "yellow",
+                       high = "red",
+                       midpoint = 6500) +
+  labs(fill = "2023 NTL") +
+  theme_manual +
+  theme_void()
+
+
+```
+
+## Per Capita NTL: Percent change from 2019
+
+In this section, we examine the percent change in per capita nighttime lights from 2019. We use population data from the 2016 census to determine population. For each year, we divide total nighttime lights by population to get per capita nighttime lights.
+
+```{r}
+#| warning: false
+#| message: false
+
+## Census
+census_df <- read_xlsx(file.path(data_dir,
+                                 "Census",
+                                 "BaselineData_Census_Dataset_SR_District_Township_MIMU_16Jun2016_ENG.xlsx"),
+                       sheet = 2,
+                       skip = 3)
+
+census_df <- census_df %>%
+  clean_names()
+
+census_df <- census_df %>%
+  dplyr::filter(!is.na(district_pcode)) %>%
+  group_by(district_pcode) %>%
+  dplyr::summarise(both_sexes_7 = sum(both_sexes_7)) %>%
+  ungroup()
+
+## ADM2 File
+adm2_sf <- read_sf(file.path(boundaries_dir,
+                             "RawData",
+                             "mmr_polbnda_adm2_250k_mimu_1.shp"))
+
+adm2_sf <- adm2_sf %>%
+  dplyr::rename(district_pcode = DT_PCODE)
+
+## NTL
+ntl2_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                             paste0("admbound2", "_", "VNP46A4", ".Rds")))
+
+ntl2_df <- ntl2_df %>%
+  dplyr::select(DT_PCODE, date, ntl_bm_sum) %>%
+  group_by(DT_PCODE) %>%
+  dplyr::mutate(ntl_bm_sum_2019 = ntl_bm_sum[date == 2019]) %>%
+  ungroup() %>%
+  dplyr::rename(district_pcode = DT_PCODE)
+
+## Merge
+adm2_sf <- adm2_sf %>%
+  left_join(ntl2_df, by = "district_pcode") %>%
+  left_join(census_df, by = "district_pcode")
+
+## Cleanup
+data_sf <- adm2_sf %>%
+  dplyr::mutate(ntl_bm_sum_pc = ntl_bm_sum/both_sexes_7,
+                ntl_bm_sum_pc_2019 = ntl_bm_sum_2019/both_sexes_7) %>%
+  mutate(pc19 = (ntl_bm_sum_pc - ntl_bm_sum_pc_2019) / ntl_bm_sum_pc_2019 * 100)
+
+data_sf$pc19[data_sf$pc19 > 100] <- 100
+data_sf$pc19[data_sf$pc19 < -100] <- -100
+
+## Map
+data_sf %>%
+  dplyr::filter(date %in% 2020:2023) %>%
+  ggplot() +
+  geom_sf(aes(fill = pc19)) +
+  facet_wrap(~date,
+             nrow = 1) +
+  labs(fill = c("% Change"),
+       title = "Percent Change in per Capita Nighttime Lights from 2019: ADM2 Level") +
+  scale_fill_gradient2(low = "red",
+                       mid = "white",
+                       high = "forestgreen",
+                       midpoint = 0,
+                       limits = c(-100, 100),
+                       breaks = c(-100, -50, 0, 50, 100),
+                       labels = c("< -100", "-50", "0", "50", "> 100")) +
+  theme_manual +
+  theme_void()
+```
+
+# Spatial Disparities
+```{r, fig.height=3}
+#| warning: false
+#| message: false
+
+ntl1_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                             paste0("admbound1", "_", "VNP46A4", ".Rds")))
+
+## Yangon
+ntl1_df %>%
+  group_by(date) %>%
+  dplyr::mutate(ntl_bm_sum_yangon = ntl_bm_sum[ST == "Yangon"]) %>%
+  ungroup() %>%
+
+  mutate(pc = (ntl_bm_sum - ntl_bm_sum_yangon)/ntl_bm_sum_yangon*100) %>%
+
+  dplyr::filter(date >= 2019) %>%
+
+  ggplot() +
+  geom_histogram(aes(x = pc),
+                 fill = "dodgerblue3",
+                 color = "black",
+                 nbin = 10) +
+  facet_wrap(~date, nrow = 1) +
+  labs(title = "% Difference in Nightime Lights Relative to Yangon",
+       x = "% Difference in Nightime Lights Relative to Yangon",
+       y = "N Districts") +
+  theme_manual
+
+## Yangon
+ntl1_df %>%
+  group_by(date) %>%
+  dplyr::mutate(ntl_bm_sum_npt = ntl_bm_sum[ST == "Nay Pyi Taw"]) %>%
+  ungroup() %>%
+
+  mutate(pc = (ntl_bm_sum - ntl_bm_sum_npt)/ntl_bm_sum_npt*100) %>%
+
+  dplyr::filter(date >= 2019) %>%
+
+  ggplot() +
+  geom_histogram(aes(x = pc),
+                 fill = "dodgerblue3",
+                 color = "black",
+                 nbin = 10) +
+  facet_wrap(~date, nrow = 1) +
+  labs(title = "% Difference in Nightime Lights Relative to Nay Pyi Ta",
+       x = "% Difference in Nightime Lights Relative to Nay Pyi Ta",
+       y = "N Districts") +
+  theme_manual
+```
+
+
+
+# Trends in NTL in Administrative Zones
+
+```{r}
+#| warning: false
+#| message: false
+
+adm0_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                             paste0("adm0", "_", "VNP46A4", ".Rds")))
+
+adm1_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                             paste0("adm1", "_", "VNP46A4", ".Rds")))
+
+adm2_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                             paste0("adm2", "_", "VNP46A4", ".Rds")))
+
+adm3_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                             paste0("adm3", "_", "VNP46A4", ".Rds")))
+
+adm0_df %>%
+  mutate(ntl_bm_sum = ntl_bm_sum / 1000) %>%
+  mutate(ntl_bm_sum_round = round(ntl_bm_sum, 1)) %>%
+  ggplot(aes(x = date, y = ntl_bm_sum)) +
+  geom_col(fill = "gray70") +
+  geom_text(aes(label = ntl_bm_sum_round)) +
+  labs(x = NULL,
+       y = "NTL Radiance\n(Values in thousands)",
+       title = "Sum of nighttime lights within ADM1 units") +
+  theme_manual
+
+adm1_df %>%
+  mutate(ntl_bm_sum = ntl_bm_sum / 1000) %>%
+  mutate(ntl_bm_sum_round = round(ntl_bm_sum, 1)) %>%
+  ggplot(aes(x = date, y = ntl_bm_sum)) +
+  geom_col(fill = "gray50") +
+  #geom_text(aes(label = ntl_bm_sum_round)) +
+  labs(x = NULL,
+       y = "NTL Radiance\n(Values in thousands)",
+       title = "Sum of nighttime lights within ADM1 units") +
+  facet_wrap(~NAME_1) +
+  theme_manual
+
+adm1_pc_df <- adm1_df %>%
+  mutate(ntl_bm_sum = ntl_bm_sum / 1000) %>%
+  mutate(ntl_bm_sum_round = round(ntl_bm_sum, 1)) %>%
+  dplyr::filter(date %in% c(2021, 2023)) %>%
+  pivot_wider(id_cols = NAME_1,
+              names_from = date,
+              values_from = ntl_bm_sum) %>%
+  mutate(pc = (`2023` - `2021`) / `2021` * 100,
+         change = (`2023` - `2021`)) %>%
+  mutate(pc_lab = paste0(round(pc, 2), "%"),
+         change_lab = round(change, 2))
+
+adm1_pc_df %>%
+  ggplot(aes(x = pc,
+             y = reorder(NAME_1, pc) )) +
+  geom_col(fill = "gray70") +
+  geom_text(aes(label = pc_lab)) +
+  xlim(-110, 110) +
+  labs(x = "% change in nighttime lights from 2021 to 2023",
+       y = NULL) +
+  theme_manual
+
+adm1_pc_df %>%
+  ggplot(aes(x = change,
+             y = reorder(NAME_1, change) )) +
+  geom_col(fill = "gray70") +
+  geom_text(aes(label = change_lab)) +
+  xlim(-15, 15) +
+  labs(x = "Change in nighttime lights from 2021 to 2023",
+       y = NULL) +
+  theme_manual
+
+adm1_df %>%
+  filter(NAME_1 == "Yangon") %>%
+  ggplot(aes(x = date, y = ntl_bm_sum)) +
+  geom_col() +
+  labs(x = NULL,
+       y = "NTL Radiance",
+       title = "Sum of nighttime lights within Yangon") +
+  theme_manual
+
+adm2_df %>%
+  filter(NAME_1 == "Yangon") %>%
+  ggplot(aes(x = date, y = ntl_bm_sum)) +
+  geom_col() +
+  facet_wrap(~NAME_2) +
+  labs(x = NULL,
+       y = "NTL Radiance",
+       title = "Sum of nighttime lights within ADM2 units in Yangon") +
+  theme_manual
+
+adm3_df %>%
+  mutate(NAME_3_clean = paste(NAME_2, NAME_3)) %>%
+  filter(NAME_1 == "Yangon") %>%
+  ggplot(aes(x = date, y = ntl_bm_sum)) +
+  geom_col() +
+  facet_wrap(~NAME_3_clean,
+             scales = "free_y") +
+  labs(x = NULL,
+       y = "NTL Radiance",
+       title = "Sum of nighttime lights within ADM3 units in Yangon") +
+  theme_manual
+```
+
+# Trends in NTL in SEZs
+
+## Average across SEZs and non-SEZ locations
+
+```{r}
+#| warning: false
+#| message: false
+
+sez_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                            paste0("admsez", "_", "VNP46A4", ".Rds")))
+
+nonsez_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                               paste0("adm0_rm_sez", "_", "VNP46A4", ".Rds")))
+
+sez_df <- sez_df %>%
+  mutate(Name_id = Name %>%
+           as.factor() %>%
+           as.numeric()) %>%
+  mutate(Name = Name %>%
+           str_replace_all(" Industrial Zone",
+                           "\nIndustrial Zone") %>%
+           str_replace_all(" Economic Zone",
+                           "\nEconomic Zone") %>%
+           str_replace_all(" Industrial Complex",
+                           "\nIndustrial Complex") %>%
+           str_replace_all(" New Resort",
+                           "\nNew Resort"))
+
+sez_df %>%
+  group_by(date) %>%
+  dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum)) %>%
+  ungroup() %>%
+  mutate(ntl_bm_sum = ntl_bm_sum / 1000) %>%
+  mutate(ntl_bm_sum_round = round(ntl_bm_sum, 1)) %>%
+  ggplot(aes(x = date, y = ntl_bm_sum)) +
+  geom_col(fill = "gray70") +
+  geom_text(aes(label = ntl_bm_sum_round)) +
+  labs(x = NULL,
+       y = "NTL Radiance\n(Values in thousands)",
+       title = NULL) + # "Average nighttime lights across special economic zones"
+   theme_manual
+
+nonsez_df %>%
+  mutate(ntl_bm_sum = ntl_bm_sum / 1000) %>%
+  mutate(ntl_bm_sum_round = round(ntl_bm_sum, 1)) %>%
+  ggplot(aes(x = date, y = ntl_bm_sum)) +
+  geom_col(fill = "gray70") +
+  geom_text(aes(label = ntl_bm_sum_round)) +
+  labs(x = NULL,
+       y = "NTL Radiance\n(Values in thousands)",
+       title = NULL) + # "Average nighttime lights across Myanmar,\nexcluding special economic zones"
+  theme_manual
+
+```
+
+## Individual SEZs
+
+```{r, fig.height=30}
+#| warning: false
+#| message: false
+
+sez_df %>%
+  #dplyr::filter(Name_id %in% 1:30) %>%
+  ggplot(aes(x = date, y = ntl_bm_sum)) +
+  geom_col() +
+  facet_wrap(~Name,
+             scales = "free_y",
+             ncol = 4) +
+  labs(x = NULL,
+       y = "NTL Radiance") +
+  theme_manual +
+  theme(strip.text = element_text(size = 8))
+
+
+sez_df %>%
+  group_by(Name) %>%
+  mutate(n = n()) %>%
+  ungroup() %>%
+  filter(n == 12) %>%
+  dplyr::filter(date %in% c(2021, 2023)) %>%
+  pivot_wider(id_cols = Name,
+              values_from = ntl_bm_sum,
+              names_from = date) %>%
+  dplyr::mutate(change = `2023` - `2021`) %>%
+  ggplot() +
+  geom_vline(aes(xintercept = 0), color = "red") +
+  geom_histogram(aes(x = change),
+                 fill = "gray80",
+                 color = "black") +
+  theme_manual +
+  labs(x = "Change in nighttime lights radiance",
+       y = "N SEZs")
+
+```
+
+# Border Locations
+
+## Average across borders
+```{r}
+#| warning: false
+#| message: false
+
+border_df <- bind_rows(
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("admborder_1km", "_", "VNP46A4", ".Rds"))) %>%
+    mutate(buffer = 1),
+
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("admborder_2_5km", "_", "VNP46A4", ".Rds"))) %>%
+    mutate(buffer = 2.5),
+
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("admborder_5km", "_", "VNP46A4", ".Rds"))) %>%
+    mutate(buffer = 5),
+
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("admborder_10km", "_", "VNP46A4", ".Rds"))) %>%
+    mutate(buffer = 10)
+) %>%
+  mutate(buffer = factor(buffer))
+
+nonborder_df <- bind_rows(
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("adm0_rm_border_1km", "_", "VNP46A4", ".Rds"))) %>%
+    mutate(buffer = 1),
+
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("adm0_rm_border_2_5km", "_", "VNP46A4", ".Rds"))) %>%
+    mutate(buffer = 2.5),
+
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("adm0_rm_border_5km", "_", "VNP46A4", ".Rds"))) %>%
+    mutate(buffer = 5),
+
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("adm0_rm_border_10km", "_", "VNP46A4", ".Rds"))) %>%
+    mutate(buffer = 10)
+) %>%
+  mutate(buffer = factor(buffer))
+
+border_df <- border_df %>%
+  mutate(border_country = case_when(
+    border_town == "Kan Paik Ti" ~ "China",
+    border_town == "Lwegel" ~ "China",
+    border_town == "Mese" ~ "Thailand",
+    border_town == "Myawaddy" ~ "Thailand",
+    border_town == "Rihkhawdar" ~ "India",
+    border_town == "Thantlang" ~ "India",
+    border_town == "Tamu" ~ "India",
+    border_town == "Myeik" ~ "Port",
+    border_town == "Kawthoung" ~ "Thailand",
+    border_town == "Sittwe" ~ "Port",
+    border_town == "Maungdaw" ~ "Bangladesh",
+    border_town == "Muse" ~ "China",
+    border_town == "Chinshwehaw" ~ "China",
+    border_town == "Kengtung" ~ "China", ## ?? Not exactly on border. Thailand too?
+    border_town == "Tachileik" ~ "Thailand"
+  ))
+
+border_df %>%
+  group_by(date, buffer) %>%
+  dplyr::summarise(ntl_bm_sum = sum(ntl_bm_sum)) %>%
+  ungroup() %>%
+
+  ggplot(aes(x = date, y = ntl_bm_sum, color = buffer)) +
+  geom_line() +
+  labs(color = "Buffer (km)") +
+  labs(x = NULL,
+       y = "NTL Radiance",
+       title = "Nighttime lights across border locations") +
+  theme_manual
+
+nonborder_df %>%
+  ggplot(aes(x = date, y = ntl_bm_sum, color = buffer)) +
+  geom_line() +
+  labs(color = "Buffer (km)") +
+  labs(x = NULL,
+       y = "NTL Radiance",
+       title = "Nighttime lights across Myanmar, removing border locations") +
+  theme_manual
+```
+
+## Average across borders by border country
+
+```{r}
+#| warning: false
+#| message: false
+
+border_df %>%
+  group_by(date, buffer, border_country) %>%
+  dplyr::summarise(ntl_bm_sum = sum(ntl_bm_sum)) %>%
+  ungroup() %>%
+
+  ggplot(aes(x = date, y = ntl_bm_sum, color = buffer)) +
+  geom_line() +
+  facet_wrap(~border_country, scales = "free_y") +
+  labs(color = "Buffer (km)") +
+  labs(x = NULL,
+       y = "NTL Radiance",
+       title = "Nighttime lights across border locations") +
+  theme_manual
+```
+
+## Individual borders
+
+```{r}
+#| warning: false
+#| message: false
+
+border_df %>%
+  ggplot(aes(x = date, y = ntl_bm_sum, color = buffer)) +
+  geom_line() +
+  facet_wrap(~border_town, scales = "free_y") +
+  labs(color = "Buffer (km)") +
+  labs(x = NULL,
+       y = "NTL Radiance",
+       title = "Average nighttime lights across border locations") +
+  theme_manual
+```
+
+# Comparing NTL with RWI
+
+Here we compare nighttime lights with the Facebook Relative Wealth Index
+
+```{r}
+#| warning: false
+#| message: false
+
+# Load data --------------------------------------------------------------------
+rwi_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                            paste0("admrwi", "_", "VNP46A4", ".Rds")))
+
+rwi_df <- rwi_df %>%
+  mutate(ntl_bm_sum_ln = log(ntl_bm_sum + 1))
+
+rwi_df$rwi_q4 <- rwi_df$rwi %>%
+  quantcut(q = 4, na.rm = TRUE) %>%
+  as.numeric() %>%
+  factor()
+
+rwi_df$rwi_q5 <- rwi_df$rwi %>%
+  quantcut(q = 5, na.rm = TRUE) %>%
+  as.numeric() %>%
+  factor()
+
+# Scatterplot ------------------------------------------------------------------
+rwi_df %>%
+  dplyr::filter(date == 2022) %>%
+  ggplot(aes(x = ntl_bm_sum_ln,
+             y = rwi)) +
+  geom_point() +
+  #geom_smooth(method='lm', formula= y~x, se = F, color = "darkorange") +
+  labs(x = "Nighttime lights, logged",
+       y = "Relative Wealth Index",
+       title = "Association between nighttime lights and relative wealth index") +
+  theme_classic2()
+
+# Trends -----------------------------------------------------------------------
+rwi_df %>%
+  group_by(date, rwi_q4) %>%
+  dplyr::summarise(ntl_bm_sum = sum(ntl_bm_sum)) %>%
+  ungroup() %>%
+  ggplot(aes(x = date,
+             y = ntl_bm_sum)) +
+  geom_col() +
+  facet_wrap(~rwi_q4,
+             scales = "free_y") +
+  labs(x = NULL,
+       y = "Nighttime lights radiance",
+       title = "Nighttime lights by RWI quantile") +
+  theme_classic2() +
+  theme(strip.background = element_blank())
+
+```
+
+# Correlation with GDP
+```{r}
+#| warning: false
+#| message: false
+
+#### GDP
+gdp_df <- read_xlsx(file.path(data_dir, "GDP", "RawData", "Quarterly GDP_2024.xlsx"),
+                    skip = 1)
+
+gdp_df <- gdp_df %>%
+  clean_names()
+
+gdp_df <- gdp_df %>%
+  dplyr::filter(!is.na(months),
+                !is.na(quarter)) %>%
+  dplyr::select(-c(paste0("x", 19:21))) %>%
+  dplyr::select(-c(paste0("x", 23:29))) %>%
+  dplyr::select(-x2021)
+
+gdp_long_df <- gdp_df %>%
+  pivot_longer(cols = -c(months, quarter, sub_group, economic_activity)) %>%
+  mutate(base_year = name %>%
+           str_replace_all("x", "") %>%
+           str_replace_all("_.*", "") %>%
+           as.numeric(),
+         end_year = base_year + 1,
+         year = case_when(
+           quarter %in% c("Q1", "Q2", "Q3") ~ base_year,
+           TRUE ~ end_year
+         ))
+
+#### NTL
+ntl_df <- bind_rows(
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("adm0", "_", "VNP46A3", ".Rds"))) %>%
+    mutate(unit = "Country"),
+
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("adm0_rm_border_10km", "_", "VNP46A3", ".Rds"))) %>%
+    mutate(unit = "Country, Excluding Borders"),
+
+  readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
+                    paste0("admsez", "_", "VNP46A3", ".Rds"))) %>%
+    mutate(unit = "SEZs")
+)
+
+ntl_df <- ntl_df %>%
+  dplyr::mutate(base_year = date %>% year,
+                month = date %>% month,
+                quarter = case_when(
+                  month %in% 4:6 ~ "Q1",
+                  month %in% 7:9 ~ "Q2",
+                  month %in% 10:12 ~ "Q3",
+                  month %in% 1:3 ~ "Q4"
+                )) %>%
+  group_by(unit, base_year, quarter) %>%
+  dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum)) %>%
+  ungroup()
+
+## Merge
+ntl_gdp_df <- gdp_long_df %>%
+  left_join(ntl_df, by = c("base_year", "quarter")) %>%
+  mutate(start_month = case_when(
+    quarter == "Q1" ~ 4,
+    quarter == "Q2" ~ 7,
+    quarter == "Q3" ~ 10,
+    quarter == "Q4" ~ 1
+  )) %>%
+  mutate(date = paste0(year, "-", start_month, "-01") %>% ymd()) %>%
+  dplyr::mutate(gdp = value %>% as.numeric())
+
+## Country figure
+ntl_gdp_df %>%
+  filter(unit %in% "Country") %>%
+  group_by(date) %>%
+  dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum),
+                   gdp = sum(gdp)) %>%
+  ungroup() %>%
+
+  dplyr::mutate(gdp = log(gdp),
+                ntl_bm_sum = log(ntl_bm_sum)) %>%
+  dplyr::filter(!is.na(gdp),
+                !is.na(ntl_bm_sum)) %>%
+
+  ggplot(aes(x = ntl_bm_sum,
+             y = gdp)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se = F) +
+  stat_cor(p.accuracy = 0.001, r.accuracy = 0.01) +
+  labs(title = NULL, # "Correlation between quarterly GDP and NTL"
+       x = "Nighttime lights, log",
+       y = "GDP, log") +
+  theme_manual
+
+## Country figure
+ntl_gdp_df %>%
+  filter(unit %in% "Country") %>%
+  group_by(date) %>%
+  dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum),
+                   gdp = sum(gdp)) %>%
+  ungroup() %>%
+<<<<<<< HEAD
+
+  dplyr::mutate(gdp = log(gdp),
+                ntl_bm_sum = log(ntl_bm_sum)) %>%
+  dplyr::filter(!is.na(gdp),
+                !is.na(ntl_bm_sum)) %>%
+
+=======
+
+>>>>>>> 3e8ee4f4b408019a25df70f5b7521f5e7c3199a3
+  ggplot(aes(x = ntl_bm_sum,
+             y = gdp)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se = F) +
+  stat_cor(p.accuracy = 0.001, r.accuracy = 0.01) +
+  labs(title = NULL, # "Correlation between quarterly GDP and NTL"
+       x = "Nighttime lights, log",
+       y = "GDP, log") +
+  theme_manual
+
+## Country figure
+ntl_gdp_df %>%
+  filter(unit %in% "SEZs",
+         economic_activity %in% "Manufacturing") %>%
+  group_by(date) %>%
+  dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum),
+                   gdp = sum(gdp)) %>%
+  ungroup() %>%
+<<<<<<< HEAD
+
+  dplyr::mutate(gdp = log(gdp),
+                ntl_bm_sum = log(ntl_bm_sum)) %>%
+  dplyr::filter(!is.na(gdp),
+                !is.na(ntl_bm_sum)) %>%
+
+=======
+
+>>>>>>> 3e8ee4f4b408019a25df70f5b7521f5e7c3199a3
+  ggplot(aes(x = ntl_bm_sum,
+             y = gdp)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se = F) +
+  stat_cor(p.accuracy = 0.001, r.accuracy = 0.01) +
+  labs(title = NULL, # "Correlation between quarterly Manufacturing GDP and SEZ NTL"
+       x = "SEZ Nighttime lights, log",
+       y = "Manufacturing GDP, log") +
+  theme_manual
+
+## Country figure
+ntl_gdp_df %>%
+  filter(unit %in% "Country, Excluding Borders") %>%
+  group_by(date) %>%
+  dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum),
+                   gdp = sum(gdp)) %>%
+  ungroup() %>%
+<<<<<<< HEAD
+
+  dplyr::mutate(gdp = log(gdp),
+                ntl_bm_sum = log(ntl_bm_sum)) %>%
+  dplyr::filter(!is.na(gdp),
+                !is.na(ntl_bm_sum)) %>%
+
+=======
+
+>>>>>>> 3e8ee4f4b408019a25df70f5b7521f5e7c3199a3
+  ggplot(aes(x = ntl_bm_sum,
+             y = gdp)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se = F) +
+  stat_cor(p.accuracy = 0.001, r.accuracy = 0.01) +
+  labs(title = NULL, # "Correlation between GDP and non-border NTL"
+       x = "Non-Border Nighttime lights, log",
+       y = "GDP, log") +
+  theme_manual
+```
+
+
+```{r}
+#| warning: false
+#| message: false
+
+## Country figure
+ntl_gdp_df %>%
+  filter(unit %in% "SEZs",
+         economic_activity %in% "Manufacturing") %>%
+  group_by(date) %>%
+  dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum),
+                   gdp = sum(gdp)) %>%
+  ungroup() %>%
+
+  dplyr::mutate(gdp = log(gdp),
+                ntl_bm_sum = log(ntl_bm_sum)) %>%
+  dplyr::filter(!is.na(gdp),
+                !is.na(ntl_bm_sum)) %>%
+
+  arrange(date) %>%
+  dplyr::mutate(gdp = c(diff(gdp), NA),
+                ntl_bm_sum = c(diff(ntl_bm_sum), NA))  %>%
+
+  ggplot(aes(x = ntl_bm_sum,
+             y = gdp)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se = F) +
+  stat_cor(p.accuracy = 0.001, r.accuracy = 0.01) +
+  labs(title = NULL, # "Correlation between quarterly Manufacturing GDP and SEZ NTL\nFirst Difference"
+       x = "SEZ Nighttime lights, log",
+       y = "Manufacturing GDP, log") +
+  theme_manual
+```
+
+```{r}
+#| warning: false
+#| message: false
+
+## Country figure
+ntl_gdp_df %>%
+  filter(unit %in% "SEZs",
+         economic_activity %in% "Manufacturing",
+         date < ymd("2020-01-01")) %>%
+  group_by(date) %>%
+  dplyr::summarise(ntl_bm_sum = mean(ntl_bm_sum),
+                   gdp = sum(gdp)) %>%
+  ungroup() %>%
+
+  dplyr::mutate(gdp = log(gdp),
+                ntl_bm_sum = log(ntl_bm_sum)) %>%
+  dplyr::filter(!is.na(gdp),
+                !is.na(ntl_bm_sum)) %>%
+
+  arrange(date) %>%
+  dplyr::mutate(gdp = c(diff(gdp), NA),
+                ntl_bm_sum = c(diff(ntl_bm_sum), NA))  %>%
+
+  ggplot(aes(x = ntl_bm_sum,
+             y = gdp)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se = F) +
+  stat_cor(p.accuracy = 0.001, r.accuracy = 0.01) +
+  labs(title = NULL, # "Correlation between quarterly Manufacturing GDP and SEZ NTL\nFirst Difference (Using data up to 2020)"
+       x = "SEZ Nighttime lights, log",
+       y = "Manufacturing GDP, log") +
+  theme_manual
+```
+
+# Limitations
+
+Nighttime lights are a common data source for measuring local economic activity. However, it is a proxy that is strongly—although imperfectly—correlated with measures of interest, such as population, local GDP, and wealth. Consequently, care must be taken in interpreting reasons for changes in nighttime lights.
+>>>>>>> origin/main
