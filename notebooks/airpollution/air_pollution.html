@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Nighttime Lights in Myanmar" href="../nighttime-lights/collection-2/ntl_collection2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Oct 16, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 22, 2025"/>
   </head>
   
   
@@ -454,6 +454,75 @@ For more details on the Sentinel-5p mission and TROPOMI instrument, see:</p>
 <li><p>While the principal emissions of an aircraft are CO2 and H2O, other major emissions include nitric oxide and nitrogen dioxide (Miake-Lye &amp; Hauglustaine, 2022).</p></li>
 <li><p>Any construction activity involving diesel fuel non-road mobile machinery will result in NOx emissions.</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create 10km buffer around each industrial zone point</span>
+<span class="c1"># First convert to a projected CRS for accurate distance calculations (UTM Zone 46N for Myanmar)</span>
+<span class="n">ind_projected</span> <span class="o">=</span> <span class="n">ind</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:32646&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create 10km buffer (10000 meters)</span>
+<span class="n">ind_buffered</span> <span class="o">=</span> <span class="n">ind_projected</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">ind_buffered</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ind_projected</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+
+<span class="c1"># Convert back to geographic CRS for consistency with other datasets</span>
+<span class="n">ind_buffered</span> <span class="o">=</span> <span class="n">ind_buffered</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind_buffered</span><span class="o">.</span><span class="n">to_file</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/f856a5ec55ad74b1d8bba8723e38dbc2d8a48cc0dde0b3c30b2de89cbebf71dd.png" src="../../_images/f856a5ec55ad74b1d8bba8723e38dbc2d8a48cc0dde0b3c30b2de89cbebf71dd.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_ind</span> <span class="o">=</span> <span class="n">unique_points</span><span class="p">[[</span><span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span>
+    <span class="n">ind_buffered</span><span class="p">[[</span><span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">]],</span> 
+    <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> 
+    <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;intersects&#39;</span>
+<span class="p">)</span>
+
+<span class="n">mmr_no2_ind</span> <span class="o">=</span> <span class="n">mmr_no2_ind</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pick_deepest_polygon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_ind</span> <span class="o">=</span> <span class="n">mmr_no2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">mmr_no2_ind</span><span class="p">[[</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">]],</span>
+    <span class="n">on</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">],</span>
+    <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_adm3</span><span class="p">[[</span><span class="s1">&#39;ADM3_EN&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM3_MY&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM3_PCODE&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM2_EN&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM2_MY&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM2_PCODE&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;ADM1_EN&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM1_MY&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM1_ALTPC&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM1_PCODE&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;start_date&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;NO2_column_number_density&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">NO2_FOLDER</span><span class="o">/</span><span class="s1">&#39;myanmar_no2_adm3.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_ind</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">NO2_FOLDER</span><span class="o">/</span><span class="s1">&#39;myanmar_no2_industrial_zones.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="trend-in-no2-change-annually">
 <h2>Trend in NO2 Change Annually<a class="headerlink" href="#trend-in-no2-change-annually" title="Permalink to this heading">#</a></h2>
@@ -571,7 +640,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 16, 2025.
+  Last updated on Oct 22, 2025.
   <br/>
 </p>
   </div>

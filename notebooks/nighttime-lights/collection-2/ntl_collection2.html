@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Earthquake Impact on Nightlights in Myanmar" href="../analysis-2025/earthquake_ntl.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Oct 16, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 22, 2025"/>
   </head>
   
   
@@ -389,7 +389,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -405,6 +407,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trends-in-earthquake-impacted-regions">Trends in Earthquake Impacted Regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nighttime-lights-in-industrial-zones">Nighttime Lights in Industrial Zones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-distribution-of-nighttime-lights">Spatial Distribution of Nighttime Lights</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -420,51 +432,76 @@ document.write(`
 <p>This notebook uses VIIRS Nighttime Lights Collection 2 monthly and annual products. For all analyses and visualizations where the year 2025 is shown, monthly data are aggregated to the annual level to ensure completeness, as the official annual product for 2025 may not be available yet. All other years use the official annual product where possible.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/dc4e1ee060ddcc93c038720769d58f517f1cb75b827dc0bc0673076e93082c68.png" src="../../../_images/dc4e1ee060ddcc93c038720769d58f517f1cb75b827dc0bc0673076e93082c68.png" />
+<img alt="../../../_images/f76569f49b6666211969da281d10d56dd656b8b504b5926b7a5516f0cdf00de4.png" src="../../../_images/f76569f49b6666211969da281d10d56dd656b8b504b5926b7a5516f0cdf00de4.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/f71cec4a11366eecc2f96658bd0e3ecaea58c026e219768a7883723b9777edbc.png" src="../../../_images/f71cec4a11366eecc2f96658bd0e3ecaea58c026e219768a7883723b9777edbc.png" />
+<img alt="../../../_images/05ecccce6ef3daa51b1648965b8fecc5b25e2114e7cc4e65fbca87c4f94a27ac.png" src="../../../_images/05ecccce6ef3daa51b1648965b8fecc5b25e2114e7cc4e65fbca87c4f94a27ac.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/5ba01a73e26a99452e516371394479751be7a62e8bfb58f7a461a615cef782da.png" src="../../../_images/5ba01a73e26a99452e516371394479751be7a62e8bfb58f7a461a615cef782da.png" />
+<img alt="../../../_images/d0ca4c62351dc25b104f52fd874c107963b96ce7841602e431d16d31211d0399.png" src="../../../_images/d0ca4c62351dc25b104f52fd874c107963b96ce7841602e431d16d31211d0399.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/gs/_227cnyd0pq1fr817_0jbcyw0000gp/T/ipykernel_87311/1568446717.py:19: UserWarning: Glyph 8594 (\N{RIGHTWARDS ARROW}) missing from font(s) Open Sans.
-  plt.tight_layout()
-/Users/ssarva/Library/Python/3.13/lib/python/site-packages/IPython/core/pylabtools.py:170: UserWarning: Glyph 8594 (\N{RIGHTWARDS ARROW}) missing from font(s) Open Sans.
-  fig.canvas.print_figure(bytes_io, **kw)
-</pre></div>
-</div>
-<img alt="../../../_images/6027bef9b013eae2f0505149e5adf762b7c08694b3abe4750bee0eba591b79c4.png" src="../../../_images/6027bef9b013eae2f0505149e5adf762b7c08694b3abe4750bee0eba591b79c4.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ntl_annual_adm1</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">ntl_annual_adm1</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">])</span>
-<span class="n">ntl_annual_adm1</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ntl_annual_adm1</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
-
-<span class="n">ntl_monthly_adm1</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">ntl_monthly_adm1</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">])</span>
-<span class="n">ntl_monthly_agg_adm1</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">ntl_monthly_adm1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
-        <span class="p">[</span><span class="s2">&quot;ADM1_PCODE&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM1_EN&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;YS&quot;</span><span class="p">)]</span>
-    <span class="p">)[</span><span class="s2">&quot;ntl_sum&quot;</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="p">)</span>
-<span class="n">ntl_monthly_agg_adm1</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ntl_monthly_agg_adm1</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
-</pre></div>
-</div>
+<img alt="../../../_images/c67f953ab8ca3c1fa3290b19cc22785fe929c0b42b4312cd4b7994e7072ed061.png" src="../../../_images/c67f953ab8ca3c1fa3290b19cc22785fe929c0b42b4312cd4b7994e7072ed061.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/13e7dadeda6390ff2c95533795b5e8f926cfeb6835dd8e0255d37578da8f48b7.png" src="../../../_images/13e7dadeda6390ff2c95533795b5e8f926cfeb6835dd8e0255d37578da8f48b7.png" />
+<img alt="../../../_images/19685b8a1fec3e22a01aa09530968107d73017628f14a218e0c80185974c3919.png" src="../../../_images/19685b8a1fec3e22a01aa09530968107d73017628f14a218e0c80185974c3919.png" />
+</div>
+</div>
+<div class="section" id="trends-in-earthquake-impacted-regions">
+<h2>Trends in Earthquake Impacted Regions<a class="headerlink" href="#trends-in-earthquake-impacted-regions" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/f526d8cf50f5d52efff4eff7b2398e79d45f2421c40f7522d44722e7c4bf56c9.png" src="../../../_images/f526d8cf50f5d52efff4eff7b2398e79d45f2421c40f7522d44722e7c4bf56c9.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/a16d08234b7fdbb9356fc1440cde22a1607a8befea57384e887af4afa533f643.png" src="../../../_images/a16d08234b7fdbb9356fc1440cde22a1607a8befea57384e887af4afa533f643.png" />
+</div>
+</div>
+</div>
+<div class="section" id="nighttime-lights-in-industrial-zones">
+<h2>Nighttime Lights in Industrial Zones<a class="headerlink" href="#nighttime-lights-in-industrial-zones" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/95908e55c1a1ecc37ea72de7494f0192b514b5a6632dece67a70e2a57b0f71fc.png" src="../../../_images/95908e55c1a1ecc37ea72de7494f0192b514b5a6632dece67a70e2a57b0f71fc.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/52d89160d17a856caf32794e797d5d25312ec164348c50e7cfa8c590579d9235.png" src="../../../_images/52d89160d17a856caf32794e797d5d25312ec164348c50e7cfa8c590579d9235.png" />
+</div>
+</div>
+</div>
+<div class="section" id="spatial-distribution-of-nighttime-lights">
+<h2>Spatial Distribution of Nighttime Lights<a class="headerlink" href="#spatial-distribution-of-nighttime-lights" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/4e0e7f0c94b00b2b17be8a9d62afe591b37b1624030484a601ce4c7d29b0a4ae.png" src="../../../_images/4e0e7f0c94b00b2b17be8a9d62afe591b37b1624030484a601ce4c7d29b0a4ae.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/19651c4e92a3174bcac683720aa77e8156c5b692fbc8f2845fd0ef420d505214.png" src="../../../_images/19651c4e92a3174bcac683720aa77e8156c5b692fbc8f2845fd0ef420d505214.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/d1aeabc50d2f66e3cf1c74b0bca0bdf38a699ed6a33e2bb672c44eb8d4fab93d.png" src="../../../_images/d1aeabc50d2f66e3cf1c74b0bca0bdf38a699ed6a33e2bb672c44eb8d4fab93d.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/4174aa895c82e449da8251153926bf7477af3fe75d7866b2373a1645702f35ea.png" src="../../../_images/4174aa895c82e449da8251153926bf7477af3fe75d7866b2373a1645702f35ea.png" />
+</div>
 </div>
 </div>
 </div>
@@ -524,6 +561,23 @@ document.write(`
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trends-in-earthquake-impacted-regions">Trends in Earthquake Impacted Regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nighttime-lights-in-industrial-zones">Nighttime Lights in Industrial Zones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-distribution-of-nighttime-lights">Spatial Distribution of Nighttime Lights</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -545,7 +599,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 16, 2025.
+  Last updated on Oct 22, 2025.
   <br/>
 </p>
   </div>
