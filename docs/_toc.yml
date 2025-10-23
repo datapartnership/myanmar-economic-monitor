@@ -29,6 +29,7 @@ parts:
       - file: notebooks/nighttime-lights/collection-2/ntl_collection2.ipynb
       - file: notebooks/airpollution/air_pollution.ipynb
       - file: notebooks/vegetation-conditions/evi-analytics-update-2025.ipynb
+      - file: notebooks/vegetation-conditions/evi-manufacturing-analysis.ipynb
   - caption: Additional Resources
     chapters:
       - file: docs/3-add-resources.md
