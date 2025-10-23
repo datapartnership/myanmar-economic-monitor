@@ -459,14 +459,14 @@ For more details on the Sentinel-5p mission and TROPOMI instrument, see:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create 10km buffer around each industrial zone point</span>
 <span class="c1"># First convert to a projected CRS for accurate distance calculations (UTM Zone 46N for Myanmar)</span>
-<span class="n">ind_projected</span> <span class="o">=</span> <span class="n">ind</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:32646&#39;</span><span class="p">)</span>
+<span class="n">ind_projected</span> <span class="o">=</span> <span class="n">ind</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:32646&quot;</span><span class="p">)</span>
 
 <span class="c1"># Create 10km buffer (10000 meters)</span>
 <span class="n">ind_buffered</span> <span class="o">=</span> <span class="n">ind_projected</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">ind_buffered</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ind_projected</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+<span class="n">ind_buffered</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ind_projected</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
 
 <span class="c1"># Convert back to geographic CRS for consistency with other datasets</span>
-<span class="n">ind_buffered</span> <span class="o">=</span> <span class="n">ind_buffered</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
+<span class="n">ind_buffered</span> <span class="o">=</span> <span class="n">ind_buffered</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -486,10 +486,8 @@ For more details on the Sentinel-5p mission and TROPOMI instrument, see:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_ind</span> <span class="o">=</span> <span class="n">unique_points</span><span class="p">[[</span><span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span>
-    <span class="n">ind_buffered</span><span class="p">[[</span><span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">]],</span> 
-    <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> 
-    <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;intersects&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_ind</span> <span class="o">=</span> <span class="n">unique_points</span><span class="p">[[</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span>
+    <span class="n">ind_buffered</span><span class="p">[[</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="s2">&quot;Name&quot;</span><span class="p">]],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s2">&quot;intersects&quot;</span>
 <span class="p">)</span>
 
 <span class="n">mmr_no2_ind</span> <span class="o">=</span> <span class="n">mmr_no2_ind</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pick_deepest_polygon</span><span class="p">)</span>
@@ -500,9 +498,9 @@ For more details on the Sentinel-5p mission and TROPOMI instrument, see:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_ind</span> <span class="o">=</span> <span class="n">mmr_no2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
-    <span class="n">mmr_no2_ind</span><span class="p">[[</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">]],</span>
-    <span class="n">on</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">],</span>
-    <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span>
+    <span class="n">mmr_no2_ind</span><span class="p">[[</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;Name&quot;</span><span class="p">]],</span>
+    <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
+    <span class="n">how</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -510,16 +508,30 @@ For more details on the Sentinel-5p mission and TROPOMI instrument, see:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_adm3</span><span class="p">[[</span><span class="s1">&#39;ADM3_EN&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM3_MY&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM3_PCODE&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM2_EN&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM2_MY&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM2_PCODE&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;ADM1_EN&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM1_MY&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM1_ALTPC&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM1_PCODE&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;start_date&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;NO2_column_number_density&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">NO2_FOLDER</span><span class="o">/</span><span class="s1">&#39;myanmar_no2_adm3.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_adm3</span><span class="p">[</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;ADM3_EN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ADM3_MY&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ADM3_PCODE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ADM2_EN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ADM2_MY&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ADM2_PCODE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ADM1_EN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ADM1_MY&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ADM1_ALTPC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ADM1_PCODE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start_date&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NO2_column_number_density&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">NO2_FOLDER</span> <span class="o">/</span> <span class="s2">&quot;myanmar_no2_adm3.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_ind</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">NO2_FOLDER</span><span class="o">/</span><span class="s1">&#39;myanmar_no2_industrial_zones.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mmr_no2_ind</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">NO2_FOLDER</span> <span class="o">/</span> <span class="s2">&quot;myanmar_no2_industrial_zones.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
