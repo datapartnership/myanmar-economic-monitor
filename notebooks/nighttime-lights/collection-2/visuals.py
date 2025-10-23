@@ -986,9 +986,27 @@ def plot_maps_by_category(gdf: gpd.GeoDataFrame,
         if vmax is None:
             vmax = all_values.max()
     
+    # Create a diverging normalization centered at zero
+    import matplotlib.colors as mcolors
+    
+    # Check if we have data crossing zero to determine if we need diverging colormap
+    has_negative = vmin < 0
+    has_positive = vmax > 0
+    
+    if has_negative and has_positive:
+        # Use diverging normalization centered at zero
+        # Make the scale symmetric around zero for balanced visualization
+        max_abs = max(abs(vmin), abs(vmax))
+        norm = mcolors.TwoSlopeNorm(vcenter=0, vmin=-max_abs, vmax=max_abs)
+        # Update vmin/vmax to be symmetric for consistent display
+        vmin = -max_abs
+        vmax = max_abs
+    else:
+        # Use regular normalization for data that doesn't cross zero
+        norm = mcolors.Normalize(vmin=vmin, vmax=vmax)
+    
     # Plot each category as a separate map
     mappable = None  # Store the mappable for shared colorbar
-    norm = None  # Store the normalization for consistent scaling
     
     for i, (category, title) in enumerate(zip(categories, titles)):
         ax = axes[i]
@@ -1004,21 +1022,16 @@ def plot_maps_by_category(gdf: gpd.GeoDataFrame,
             ax.axis('off')
             continue
         
-        # Plot the map without individual legend
+        # Plot the map without individual legend using the diverging normalization
         plot_result = category_data.plot(column=value_col,
                                         cmap=cmap,
                                         legend=False,  # No individual legends
                                         ax=ax,
-                                        vmin=vmin,
-                                        vmax=vmax)
+                                        norm=norm)
         
-        # Store the mappable and normalization from the first successful plot
+        # Store the mappable from the first successful plot
         if mappable is None and len(ax.collections) > 0:
             mappable = ax.collections[0]
-            # Create a consistent normalization object for the full data range
-            import matplotlib.colors as mcolors
-            norm = mcolors.Normalize(vmin=vmin, vmax=vmax)
-            mappable.set_norm(norm)
             
         # Overlay boundary if provided
         if boundary_gdf is not None:
