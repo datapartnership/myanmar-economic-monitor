@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EVI, Nighttime Lights, and GDP Analysis &#8212; Myanmar Economic Monitor</title>
+    <title>EVI and GDP Analysis &#8212; Myanmar Economic Monitor</title>
   
   
   
@@ -61,8 +61,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/vegetation-conditions/evi-manufacturing-analysis';</script>
     <link rel="canonical" href="https://github.com/datapartnership/myanmar-economic-monitor/notebooks/vegetation-conditions/evi-manufacturing-analysis.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -71,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Crop Productivity Analysis" href="evi-analytics-update-2025.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Oct 23, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 30, 2025"/>
   </head>
   
   
@@ -194,7 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl_collection2.html">Nighttime Lights in Myanmar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../airpollution/air_pollution.html">Air Pollution in Myanmar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evi-analytics-update-2025.html">Crop Productivity Analysis</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">EVI, Nighttime Lights, and GDP Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">EVI and GDP Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -405,7 +403,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>EVI, Nighttime Lights, and GDP Analysis</h1>
+    <h1>EVI and GDP Analysis</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -416,8 +414,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp-and-nigthtime-lights">GDP and Nigthtime Lights</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-and-post-2021-coup-d-etat">Pre and Post 2021 coup d’état</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harvested-area-and-satellite-derived-crop-area-ranking-2021-2023">Harvested Area and Satellite-Derived Crop Area Ranking (2021-2023)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-exports">EVI and Exports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp-and-evi">GDP and EVI</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-0">Admin Level 0</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-1">Admin Level 1</a></li>
@@ -434,8 +432,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="evi-nighttime-lights-and-gdp-analysis">
-<h1>EVI, Nighttime Lights, and GDP Analysis<a class="headerlink" href="#evi-nighttime-lights-and-gdp-analysis" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="evi-and-gdp-analysis">
+<h1>EVI and GDP Analysis<a class="headerlink" href="#evi-and-gdp-analysis" title="Permalink to this heading">#</a></h1>
 <div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
 <p>This analysis utilizes the following datasets:</p>
@@ -445,607 +443,565 @@ document.write(`
 <li><p>Enhanced Vegetation Index (EVI) Data: Derived from MODIS satellite imagery</p></li>
 </ul>
 </div>
-<div class="section" id="gdp-and-nigthtime-lights">
-<h2>GDP and Nigthtime Lights<a class="headerlink" href="#gdp-and-nigthtime-lights" title="Permalink to this heading">#</a></h2>
+<div class="section" id="harvested-area-and-satellite-derived-crop-area-ranking-2021-2023">
+<h2>Harvested Area and Satellite-Derived Crop Area Ranking (2021-2023)<a class="headerlink" href="#harvested-area-and-satellite-derived-crop-area-ranking-2021-2023" title="Permalink to this heading">#</a></h2>
+<p>The table below presents the ranking of crops based on actual harvested area versus satellite-derived crop area for the years 2021 to 2023.
+To make both metrics comparable, both actual harvested area and satellite-derived crop area has been scaled to the same unit (acres) for consistency in analysis. Then, these metrics are ranked within each year to show the relative position of each crop and illustrate how closely the satellite-derived data aligns with actual harvested area.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/fdfed83f247ee070177f741d90f8727ba5c9594a168da44b62eff79d7f9200df.png" src="../../_images/fdfed83f247ee070177f741d90f8727ba5c9594a168da44b62eff79d7f9200df.png" />
-</div>
-</div>
-<div class="cell tag_remove-input tag_hide-output docutils container">
-<details class="hide above-output">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell outputs</span>
-<span class="expanded">Hide code cell outputs</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>       <td>gdp_overall</td>   <th>  R-squared:         </th> <td>   0.052</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>  -0.034</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>  0.6025</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Thu, 23 Oct 2025</td> <th>  Prob (F-statistic):</th>  <td> 0.454</td> 
-</tr>
-<tr>
-  <th>Time:</th>                 <td>17:48:31</td>     <th>  Log-Likelihood:    </th> <td> -226.39</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>    13</td>      <th>  AIC:               </th> <td>   456.8</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>    11</td>      <th>  BIC:               </th> <td>   457.9</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>adm1_name</th>
+      <th>year</th>
+      <th>actual_harvested_area_acres</th>
+      <th>satellite_derived_crop_area_acres</th>
+      <th>actual_rank</th>
+      <th>satellite_rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sagaing</td>
+      <td>2021</td>
+      <td>15987316.0</td>
+      <td>4.130755e+06</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ayeyarwady</td>
+      <td>2021</td>
+      <td>15201800.0</td>
+      <td>3.081872e+06</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Bago</td>
+      <td>2021</td>
+      <td>11755932.0</td>
+      <td>2.703700e+06</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mandalay</td>
+      <td>2021</td>
+      <td>8577972.0</td>
+      <td>2.535370e+06</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Magway</td>
+      <td>2021</td>
+      <td>8399246.0</td>
+      <td>2.458484e+06</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Shan</td>
+      <td>2021</td>
+      <td>7350252.0</td>
+      <td>1.766013e+06</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Yangon</td>
+      <td>2021</td>
+      <td>3867994.0</td>
+      <td>1.114021e+06</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Kachin</td>
+      <td>2021</td>
+      <td>1765052.0</td>
+      <td>5.816761e+05</td>
+      <td>11</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Mon</td>
+      <td>2021</td>
+      <td>2769996.0</td>
+      <td>3.521272e+05</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Nay Pyi Taw</td>
+      <td>2021</td>
+      <td>1129940.0</td>
+      <td>3.304822e+05</td>
+      <td>13</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Rakhine</td>
+      <td>2021</td>
+      <td>2657114.0</td>
+      <td>2.695892e+05</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Kayin</td>
+      <td>2021</td>
+      <td>2721644.0</td>
+      <td>1.880455e+05</td>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Kayah</td>
+      <td>2021</td>
+      <td>423672.0</td>
+      <td>8.675165e+04</td>
+      <td>14</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Tanintharyi</td>
+      <td>2021</td>
+      <td>1536946.0</td>
+      <td>3.151975e+04</td>
+      <td>12</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Chin</td>
+      <td>2021</td>
+      <td>249832.0</td>
+      <td>2.394367e+04</td>
+      <td>15</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Sagaing</td>
+      <td>2022</td>
+      <td>15871604.0</td>
+      <td>3.549767e+06</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Ayeyarwady</td>
+      <td>2022</td>
+      <td>15490850.0</td>
+      <td>2.770773e+06</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Bago</td>
+      <td>2022</td>
+      <td>12258320.0</td>
+      <td>2.552305e+06</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Mandalay</td>
+      <td>2022</td>
+      <td>8851560.0</td>
+      <td>2.462880e+06</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Magway</td>
+      <td>2022</td>
+      <td>8727334.0</td>
+      <td>2.296643e+06</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Shan</td>
+      <td>2022</td>
+      <td>7410340.0</td>
+      <td>1.506168e+06</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Yangon</td>
+      <td>2022</td>
+      <td>3866824.0</td>
+      <td>1.091361e+06</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Kachin</td>
+      <td>2022</td>
+      <td>1858340.0</td>
+      <td>5.108333e+05</td>
+      <td>11</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Mon</td>
+      <td>2022</td>
+      <td>2828608.0</td>
+      <td>3.542614e+05</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Nay Pyi Taw</td>
+      <td>2022</td>
+      <td>1127210.0</td>
+      <td>3.258524e+05</td>
+      <td>13</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Rakhine</td>
+      <td>2022</td>
+      <td>2666394.0</td>
+      <td>3.226468e+05</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Kayin</td>
+      <td>2022</td>
+      <td>2717198.0</td>
+      <td>1.521271e+05</td>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Kayah</td>
+      <td>2022</td>
+      <td>437624.0</td>
+      <td>4.594436e+04</td>
+      <td>14</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Tanintharyi</td>
+      <td>2022</td>
+      <td>1567170.0</td>
+      <td>2.337197e+04</td>
+      <td>12</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Chin</td>
+      <td>2022</td>
+      <td>235168.0</td>
+      <td>2.298955e+04</td>
+      <td>15</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Sagaing</td>
+      <td>2023</td>
+      <td>15737204.0</td>
+      <td>3.962762e+06</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Ayeyarwady</td>
+      <td>2023</td>
+      <td>15600272.0</td>
+      <td>3.029523e+06</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Bago</td>
+      <td>2023</td>
+      <td>13694134.0</td>
+      <td>2.708850e+06</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Mandalay</td>
+      <td>2023</td>
+      <td>9080864.0</td>
+      <td>2.645312e+06</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Magway</td>
+      <td>2023</td>
+      <td>9900750.0</td>
+      <td>2.461605e+06</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Shan</td>
+      <td>2023</td>
+      <td>7783626.0</td>
+      <td>1.762997e+06</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Yangon</td>
+      <td>2023</td>
+      <td>4259410.0</td>
+      <td>1.120116e+06</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Kachin</td>
+      <td>2023</td>
+      <td>1905864.0</td>
+      <td>5.888002e+05</td>
+      <td>11</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Mon</td>
+      <td>2023</td>
+      <td>2896838.0</td>
+      <td>3.713771e+05</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Nay Pyi Taw</td>
+      <td>2023</td>
+      <td>937660.0</td>
+      <td>3.462616e+05</td>
+      <td>13</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Rakhine</td>
+      <td>2023</td>
+      <td>2647330.0</td>
+      <td>3.207161e+05</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Kayin</td>
+      <td>2023</td>
+      <td>2737796.0</td>
+      <td>1.887121e+05</td>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Kayah</td>
+      <td>2023</td>
+      <td>445018.0</td>
+      <td>6.576126e+04</td>
+      <td>14</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Tanintharyi</td>
+      <td>2023</td>
+      <td>1608060.0</td>
+      <td>3.651315e+04</td>
+      <td>12</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Chin</td>
+      <td>2023</td>
+      <td>272288.0</td>
+      <td>2.469428e+04</td>
+      <td>15</td>
+      <td>15</td>
+    </tr>
+  </tbody>
 </table>
-<table class="simpletable">
-<tr>
-      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th> <td> 6.802e+07</td> <td> 1.08e+07</td> <td>    6.317</td> <td> 0.000</td> <td> 4.43e+07</td> <td> 9.17e+07</td>
-</tr>
-<tr>
-  <th>ntl_sum</th>   <td>    2.7813</td> <td>    3.583</td> <td>    0.776</td> <td> 0.454</td> <td>   -5.106</td> <td>   10.668</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 0.067</td> <th>  Durbin-Watson:     </th> <td>   0.370</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.967</td> <th>  Jarque-Bera (JB):  </th> <td>   0.087</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td>-0.010</td> <th>  Prob(JB):          </th> <td>   0.957</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 2.600</td> <th>  Cond. No.          </th> <td>1.21e+07</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 1.21e+07. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
-</details>
+</div></div></div>
 </div>
+<p>The following chart illustrates the comparison between actual harvested area and satellite-derived crop area for various crops from 2021 to 2023. The chart conveys how closely the satellite-derived data aligns with actual harvested area.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/85f198007960f9607ea2406c0796451633ab1d5fd5de88082332c2e65ed6f011.png" src="../../_images/85f198007960f9607ea2406c0796451633ab1d5fd5de88082332c2e65ed6f011.png" />
+<img alt="../../_images/4bdf588251e5d31d3507eb3b335cc0ea988780b50c7788c587f787f8d8d1a216.png" src="../../_images/4bdf588251e5d31d3507eb3b335cc0ea988780b50c7788c587f787f8d8d1a216.png" />
 </div>
 </div>
-<div class="cell tag_remove-input tag_hide-output docutils container">
-<details class="hide above-output">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell outputs</span>
-<span class="expanded">Hide code cell outputs</span>
-</summary>
+<p>The chart below illustrates the relationship between the EVI and crop yield based on admin level 1 data from 2021-2023. The crop yield is calculated based on total output in tons divided by harvested area in acres.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evi_adm1_annual</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">evi_adm1_raw</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">adm1_name</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;adm1_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;Bago&quot;</span> <span class="k">if</span> <span class="s2">&quot;Bago&quot;</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="p">(</span><span class="s2">&quot;Shan&quot;</span> <span class="k">if</span> <span class="s2">&quot;Shan&quot;</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;adm1_name&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s2">&quot;YS&quot;</span><span class="p">)])</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;EVI&quot;</span><span class="p">:</span> <span class="s2">&quot;median&quot;</span><span class="p">})</span>
+<span class="p">)</span>
+
+<span class="n">crops_evi</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">crops</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;adm1_name&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;harvested_area_in_acres&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span> <span class="s2">&quot;output_in_tons&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">date</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">),</span>
+        <span class="n">crop_yield</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;output_in_tons&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;harvested_area_in_acres&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;adm1_name&quot;</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">evi_adm1_annual</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">clean_names</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">evi_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;evi&quot;</span><span class="p">]),</span>
+        <span class="n">crop_yield_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;crop_yield&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">crops_evi</span><span class="o">.</span><span class="n">pipe</span><span class="p">((</span><span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;evi&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;crop_yield&quot;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">p9</span><span class="o">.</span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;evi&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;crop_yield&quot;</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;lm&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">p9</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Median EVI&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Crop Yield (tons per acre)&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;EVI vs Crop Yield (Admin 1 Level)&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">p9</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>    <td>np.log1p(gdp_overall)</td> <th>  R-squared:         </th> <td>   0.076</td>
-</tr>
-<tr>
-  <th>Model:</th>                     <td>OLS</td>          <th>  Adj. R-squared:    </th> <td>  -0.008</td>
-</tr>
-<tr>
-  <th>Method:</th>               <td>Least Squares</td>     <th>  F-statistic:       </th> <td>  0.8999</td>
-</tr>
-<tr>
-  <th>Date:</th>               <td>Thu, 23 Oct 2025</td>    <th>  Prob (F-statistic):</th>  <td> 0.363</td> 
-</tr>
-<tr>
-  <th>Time:</th>                   <td>17:48:32</td>        <th>  Log-Likelihood:    </th> <td>  9.2761</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>        <td>    13</td>         <th>  AIC:               </th> <td>  -14.55</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>            <td>    11</td>         <th>  BIC:               </th> <td>  -13.42</td>
-</tr>
-<tr>
-  <th>Df Model:</th>                <td>     1</td>         <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>        <td>nonrobust</td>       <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-          <td></td>             <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th>         <td>   16.0652</td> <td>    2.188</td> <td>    7.343</td> <td> 0.000</td> <td>   11.250</td> <td>   20.880</td>
-</tr>
-<tr>
-  <th>np.log1p(ntl_sum)</th> <td>    0.1397</td> <td>    0.147</td> <td>    0.949</td> <td> 0.363</td> <td>   -0.184</td> <td>    0.464</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 0.593</td> <th>  Durbin-Watson:     </th> <td>   0.360</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.743</td> <th>  Jarque-Bera (JB):  </th> <td>   0.224</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td>-0.304</td> <th>  Prob(JB):          </th> <td>   0.894</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 2.788</td> <th>  Cond. No.          </th> <td>    913.</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
-</details>
+<img alt="../../_images/d8d340444a95853a3abe9a580bd299c17121146fd3bb6a114363b186e3be0a07.png" src="../../_images/d8d340444a95853a3abe9a580bd299c17121146fd3bb6a114363b186e3be0a07.png" />
 </div>
+</div>
+</div>
+<div class="section" id="evi-and-exports">
+<h2>EVI and Exports<a class="headerlink" href="#evi-and-exports" title="Permalink to this heading">#</a></h2>
+<p>The figure below illustrates the relationship between EVI and crop exports with its 3, 6, and 9 months lagged values.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/baa509c085686f08be6aff5fa5ad40016a173b04f08a00e3180d710c1b69d58b.png" src="../../_images/baa509c085686f08be6aff5fa5ad40016a173b04f08a00e3180d710c1b69d58b.png" />
+<img alt="../../_images/7e98fbaf90a8ad2ef2dc44418bb1f17978a1e00fd324bd1aaa1adabde350790d.png" src="../../_images/7e98fbaf90a8ad2ef2dc44418bb1f17978a1e00fd324bd1aaa1adabde350790d.png" />
 </div>
 </div>
-<div class="cell tag_remove-input tag_hide-output docutils container">
-<details class="hide above-output">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell outputs</span>
-<span class="expanded">Hide code cell outputs</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>           <td>gdp</td>       <th>  R-squared:         </th> <td>   0.636</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.604</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   20.36</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Thu, 23 Oct 2025</td> <th>  Prob (F-statistic):</th> <td>8.27e-08</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>17:48:32</td>     <th>  Log-Likelihood:    </th> <td> -647.06</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>    39</td>      <th>  AIC:               </th> <td>   1302.</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>    35</td>      <th>  BIC:               </th> <td>   1309.</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-                                <td></td>                                  <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th>                                                    <td> 2.849e+07</td> <td> 2.81e+06</td> <td>   10.152</td> <td> 0.000</td> <td> 2.28e+07</td> <td> 3.42e+07</td>
-</tr>
-<tr>
-  <th>C(sub_group, Treatment(reference='Services'))[T.Agriculture]</th> <td>-1.238e+07</td> <td> 1.61e+06</td> <td>   -7.699</td> <td> 0.000</td> <td>-1.56e+07</td> <td>-9.12e+06</td>
-</tr>
-<tr>
-  <th>C(sub_group, Treatment(reference='Services'))[T.Industry]</th>    <td>-5.023e+06</td> <td> 1.61e+06</td> <td>   -3.123</td> <td> 0.004</td> <td>-8.29e+06</td> <td>-1.76e+06</td>
-</tr>
-<tr>
-  <th>ntl_sum</th>                                                      <td>    0.9220</td> <td>    0.881</td> <td>    1.046</td> <td> 0.303</td> <td>   -0.868</td> <td>    2.711</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 2.049</td> <th>  Durbin-Watson:     </th> <td>   0.525</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.359</td> <th>  Jarque-Bera (JB):  </th> <td>   1.433</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td>-0.469</td> <th>  Prob(JB):          </th> <td>   0.488</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 3.061</td> <th>  Cond. No.          </th> <td>1.34e+07</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 1.34e+07. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
-</details>
-</div>
+<p>The figure below compares the changes in EVI values on monthly basis for year 2024 and 2025 on national level.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/ba094a0d4dddda9a6c36e2fd5967127faafd892ca2a64d1bc431c140fe819e27.png" src="../../_images/ba094a0d4dddda9a6c36e2fd5967127faafd892ca2a64d1bc431c140fe819e27.png" />
+<img alt="../../_images/65d17d175a2beb54048287d41a0604bceb61a67929ab3acd56fcac33d14f019c.png" src="../../_images/65d17d175a2beb54048287d41a0604bceb61a67929ab3acd56fcac33d14f019c.png" />
 </div>
 </div>
-<div class="cell tag_remove-input tag_hide-output docutils container">
-<details class="hide above-output">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell outputs</span>
-<span class="expanded">Hide code cell outputs</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>      <td>np.log1p(gdp)</td>  <th>  R-squared:         </th> <td>   0.639</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.608</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   20.66</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Thu, 23 Oct 2025</td> <th>  Prob (F-statistic):</th> <td>7.02e-08</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>17:48:32</td>     <th>  Log-Likelihood:    </th> <td>  17.078</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>    39</td>      <th>  AIC:               </th> <td>  -26.16</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>    35</td>      <th>  BIC:               </th> <td>  -19.50</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-                                <td></td>                                  <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th>                                                    <td>   15.7747</td> <td>    1.616</td> <td>    9.761</td> <td> 0.000</td> <td>   12.494</td> <td>   19.056</td>
-</tr>
-<tr>
-  <th>C(sub_group, Treatment(reference='Services'))[T.Agriculture]</th> <td>   -0.5006</td> <td>    0.065</td> <td>   -7.742</td> <td> 0.000</td> <td>   -0.632</td> <td>   -0.369</td>
-</tr>
-<tr>
-  <th>C(sub_group, Treatment(reference='Services'))[T.Industry]</th>    <td>   -0.1884</td> <td>    0.065</td> <td>   -2.914</td> <td> 0.006</td> <td>   -0.320</td> <td>   -0.057</td>
-</tr>
-<tr>
-  <th>np.log1p(ntl_sum)</th>                                            <td>    0.0990</td> <td>    0.109</td> <td>    0.911</td> <td> 0.369</td> <td>   -0.122</td> <td>    0.320</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 6.399</td> <th>  Durbin-Watson:     </th> <td>   0.486</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.041</td> <th>  Jarque-Bera (JB):  </th> <td>   5.274</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td>-0.875</td> <th>  Prob(JB):          </th> <td>  0.0716</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 3.424</td> <th>  Cond. No.          </th> <td>    914.</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
-</details>
-</div>
+<p>The figure below compares the changes in EVI values on monthly basis for year 2024 and 2025 across administrative level 1 regions in Myanmar.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/14f9bdbbd14de8b70046abe640f67cb1cab7c698b95dd283a5699baa97130137.png" src="../../_images/14f9bdbbd14de8b70046abe640f67cb1cab7c698b95dd283a5699baa97130137.png" />
-</div>
-</div>
-<div class="cell tag_remove-input tag_hide-output docutils container">
-<details class="hide above-output">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell outputs</span>
-<span class="expanded">Hide code cell outputs</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>           <td>gdp</td>       <th>  R-squared:         </th> <td>   0.428</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.416</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   38.59</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Thu, 23 Oct 2025</td> <th>  Prob (F-statistic):</th> <td>1.10e-18</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>17:48:32</td>     <th>  Log-Likelihood:    </th> <td> -2558.7</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>   159</td>      <th>  AIC:               </th> <td>   5125.</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>   155</td>      <th>  BIC:               </th> <td>   5138.</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-                                <td></td>                                  <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th>                                                    <td> 9.565e+06</td> <td> 6.79e+05</td> <td>   14.086</td> <td> 0.000</td> <td> 8.22e+06</td> <td> 1.09e+07</td>
-</tr>
-<tr>
-  <th>C(sub_group, Treatment(reference='Services'))[T.Agriculture]</th> <td>-4.621e+06</td> <td> 4.64e+05</td> <td>   -9.960</td> <td> 0.000</td> <td>-5.54e+06</td> <td> -3.7e+06</td>
-</tr>
-<tr>
-  <th>C(sub_group, Treatment(reference='Services'))[T.Industry]</th>    <td>-1.233e+06</td> <td> 4.64e+05</td> <td>   -2.657</td> <td> 0.009</td> <td>-2.15e+06</td> <td>-3.16e+05</td>
-</tr>
-<tr>
-  <th>ntl_sum</th>                                                      <td>   -2.5070</td> <td>    0.819</td> <td>   -3.061</td> <td> 0.003</td> <td>   -4.125</td> <td>   -0.889</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 7.516</td> <th>  Durbin-Watson:     </th> <td>   1.562</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.023</td> <th>  Jarque-Bera (JB):  </th> <td>   7.421</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td> 0.485</td> <th>  Prob(JB):          </th> <td>  0.0245</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 2.577</td> <th>  Cond. No.          </th> <td>3.01e+06</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 3.01e+06. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
-</details>
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../../_images/f4e79c37dfe960c87699b32081934ba062f6ac86437cd95da41bd6fd7e8455b1.png" src="../../_images/f4e79c37dfe960c87699b32081934ba062f6ac86437cd95da41bd6fd7e8455b1.png" />
-</div>
-</div>
-<div class="cell tag_remove-input tag_hide-output docutils container">
-<details class="hide above-output">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell outputs</span>
-<span class="expanded">Hide code cell outputs</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>      <td>np.log1p(gdp)</td>  <th>  R-squared:         </th> <td>   0.469</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.459</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   45.64</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Thu, 23 Oct 2025</td> <th>  Prob (F-statistic):</th> <td>3.39e-21</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>17:48:32</td>     <th>  Log-Likelihood:    </th> <td> -129.62</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>   159</td>      <th>  AIC:               </th> <td>   267.2</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>   155</td>      <th>  BIC:               </th> <td>   279.5</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-                                <td></td>                                  <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th>                                                    <td>   23.4640</td> <td>    1.942</td> <td>   12.082</td> <td> 0.000</td> <td>   19.628</td> <td>   27.300</td>
-</tr>
-<tr>
-  <th>C(sub_group, Treatment(reference='Services'))[T.Agriculture]</th> <td>   -1.1152</td> <td>    0.108</td> <td>  -10.367</td> <td> 0.000</td> <td>   -1.328</td> <td>   -0.903</td>
-</tr>
-<tr>
-  <th>C(sub_group, Treatment(reference='Services'))[T.Industry]</th>    <td>   -0.2105</td> <td>    0.108</td> <td>   -1.957</td> <td> 0.052</td> <td>   -0.423</td> <td>    0.002</td>
-</tr>
-<tr>
-  <th>np.log1p(ntl_sum)</th>                                            <td>   -0.5694</td> <td>    0.144</td> <td>   -3.946</td> <td> 0.000</td> <td>   -0.854</td> <td>   -0.284</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td>11.110</td> <th>  Durbin-Watson:     </th> <td>   1.879</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.004</td> <th>  Jarque-Bera (JB):  </th> <td>  12.085</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td>-0.674</td> <th>  Prob(JB):          </th> <td> 0.00238</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 2.933</td> <th>  Cond. No.          </th> <td>    598.</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
-</details>
-</div>
-</div>
-<div class="section" id="pre-and-post-2021-coup-d-etat">
-<h2>Pre and Post 2021 coup d’état<a class="headerlink" href="#pre-and-post-2021-coup-d-etat" title="Permalink to this heading">#</a></h2>
-<p>The figure below shows the trend of EVI in Myanmar from 2012 to 2024, with a blue dotted line marking the 2021 coup d’état.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../../_images/cc40e0f15ec8abaafc88e4c12b320691e58a1d47cc4618971f58f2f76f57e5e3.png" src="../../_images/cc40e0f15ec8abaafc88e4c12b320691e58a1d47cc4618971f58f2f76f57e5e3.png" />
-</div>
-</div>
-<p>The figure below illustrates the trend of EVI values across administrative level 1 regions in Myanmar from 2012 to 2024, with a blue dotted line marking the 2021 coup d’état.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../../_images/25be763628b8b49488812db7c047702a0beabae028f925025c6884f5292da17f.png" src="../../_images/25be763628b8b49488812db7c047702a0beabae028f925025c6884f5292da17f.png" />
+<img alt="../../_images/2d38cac8f6317d2180552741bfda62594167ac9e41af679c8549a8c96b659248.png" src="../../_images/2d38cac8f6317d2180552741bfda62594167ac9e41af679c8549a8c96b659248.png" />
 </div>
 </div>
 </div>
 <div class="section" id="gdp-and-evi">
 <h2>GDP and EVI<a class="headerlink" href="#gdp-and-evi" title="Permalink to this heading">#</a></h2>
+<p>The GDP in the subsequent analysis has been filtered to include only the agriculture, excluding the forestry and fishing sector, to better align with the vegetation index data.</p>
 <div class="section" id="admin-level-0">
 <h3>Admin Level 0<a class="headerlink" href="#admin-level-0" title="Permalink to this heading">#</a></h3>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../../_images/bdb3e7ce67d3efa458d2b56b31fcbfe06a389cf17ef9398636ccc3984632a0ef.png" src="../../_images/bdb3e7ce67d3efa458d2b56b31fcbfe06a389cf17ef9398636ccc3984632a0ef.png" />
-</div>
-</div>
-<div class="cell tag_remove-input tag_hide-output docutils container">
-<details class="hide above-output">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell outputs</span>
-<span class="expanded">Hide code cell outputs</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>    <td>np.log1p(gdp_overall)</td> <th>  R-squared:         </th> <td>   0.049</td>
-</tr>
-<tr>
-  <th>Model:</th>                     <td>OLS</td>          <th>  Adj. R-squared:    </th> <td>  -0.024</td>
-</tr>
-<tr>
-  <th>Method:</th>               <td>Least Squares</td>     <th>  F-statistic:       </th> <td>  0.6670</td>
-</tr>
-<tr>
-  <th>Date:</th>               <td>Thu, 23 Oct 2025</td>    <th>  Prob (F-statistic):</th>  <td> 0.429</td> 
-</tr>
-<tr>
-  <th>Time:</th>                   <td>17:48:34</td>        <th>  Log-Likelihood:    </th> <td>  5.7683</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>        <td>    15</td>         <th>  AIC:               </th> <td>  -7.537</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>            <td>    13</td>         <th>  BIC:               </th> <td>  -6.120</td>
-</tr>
-<tr>
-  <th>Df Model:</th>                <td>     1</td>         <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>        <td>nonrobust</td>       <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-        <td></td>           <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th>     <td>   17.2666</td> <td>    1.011</td> <td>   17.071</td> <td> 0.000</td> <td>   15.081</td> <td>   19.452</td>
-</tr>
-<tr>
-  <th>np.log1p(evi)</th> <td>    3.6825</td> <td>    4.509</td> <td>    0.817</td> <td> 0.429</td> <td>   -6.058</td> <td>   13.423</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 1.052</td> <th>  Durbin-Watson:     </th> <td>   0.228</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.591</td> <th>  Jarque-Bera (JB):  </th> <td>   0.683</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td>-0.495</td> <th>  Prob(JB):          </th> <td>   0.711</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 2.663</td> <th>  Cond. No.          </th> <td>    104.</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
-</details>
-</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../_images/d77ada0e97177a05e2487d39984654facd7dcf959d7185a7d48bb6680a1c2731.png" src="../../_images/d77ada0e97177a05e2487d39984654facd7dcf959d7185a7d48bb6680a1c2731.png" />
 </div>
 </div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../../_images/c39d341e04746977c0624daaa50f0f3b229b60d1ad51535bebdab9826a3702f8.png" src="../../_images/c39d341e04746977c0624daaa50f0f3b229b60d1ad51535bebdab9826a3702f8.png" />
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../../_images/4f18c60113951568a90460d1fc7f8dbfc25f3982a4810baab077e57d70c5e95a.png" src="../../_images/4f18c60113951568a90460d1fc7f8dbfc25f3982a4810baab077e57d70c5e95a.png" />
-</div>
-</div>
 <p>The following figure illustrates the correlation matrix between EVI, Nighttime Lights, and Overall GDP at national level.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/fe52dbcb2b973d6de291f88d2e226d6ab29de7598638f7305aca538ca2a9fbd6.png" src="../../_images/fe52dbcb2b973d6de291f88d2e226d6ab29de7598638f7305aca538ca2a9fbd6.png" />
+<img alt="../../_images/d2dc1f94c66b087ac11704214e7fcd964089e50c7662c8a763542e242a661b09.png" src="../../_images/d2dc1f94c66b087ac11704214e7fcd964089e50c7662c8a763542e242a661b09.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><table style="text-align:center"><tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align:left"></td><td colspan="3"><em>Dependent variable: gdp_agri</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
+<tr><td style="text-align:left"></td><td colspan="3"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
 <tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
 
-<tr><td style="text-align:left">Intercept</td><td>592841.152<sup></sup></td><td>4282023.508<sup>***</sup></td><td>4217814.775<sup>**</sup></td></tr>
-<tr><td style="text-align:left"></td><td>(1088883.844)</td><td>(1408888.737)</td><td>(1910368.963)</td></tr>
-<tr><td style="text-align:left">evi</td><td>9609467.907<sup>**</sup></td><td>5235564.812<sup></sup></td><td>-6979692.086<sup>*</sup></td></tr>
-<tr><td style="text-align:left"></td><td>(4018051.710)</td><td>(3935080.638)</td><td>(3887248.222)</td></tr>
-<tr><td style="text-align:left">evi_lag_1</td><td></td><td></td><td>23661498.811<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td><td>(2171452.614)</td></tr>
-<tr><td style="text-align:left">evi_lag_2</td><td></td><td></td><td>-15805912.222<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td><td>(4280761.073)</td></tr>
-<tr><td style="text-align:left">ntl_sum</td><td></td><td>-3.501<sup>***</sup></td><td>-1.859<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td>(0.964)</td><td>(0.592)</td></tr>
+<tr><td style="text-align:left">Intercept</td><td>16.994<sup>***</sup></td><td>18.880<sup>***</sup></td><td>21.795<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.612)</td><td>(1.828)</td><td>(1.223)</td></tr>
+<tr><td style="text-align:left">evi_lag_1_log</td><td></td><td></td><td>1.115<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.132)</td></tr>
+<tr><td style="text-align:left">evi_log</td><td>1.701<sup>***</sup></td><td>-0.788<sup>***</sup></td><td>-0.396<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.447)</td><td>(0.218)</td><td>(0.147)</td></tr>
+<tr><td style="text-align:left">is_crop_season[T.True]</td><td></td><td>1.867<sup>***</sup></td><td>1.484<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.113)</td><td>(0.086)</td></tr>
+<tr><td style="text-align:left">ntl_sum_log</td><td></td><td>-0.496<sup>***</sup></td><td>-0.540<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.133)</td><td>(0.086)</td></tr>
 
 <td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align: left">Observations</td><td>60</td><td>53</td><td>53</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.090</td><td>0.271</td><td>0.791</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.074</td><td>0.242</td><td>0.774</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>1756636.580 (df=58)</td><td>1569664.870 (df=50)</td><td>857848.359 (df=48)</td></tr><tr><td style="text-align: left">F Statistic</td><td>5.720<sup>**</sup> (df=1; 58)</td><td>9.303<sup>***</sup> (df=2; 50)</td><td>45.425<sup>***</sup> (df=4; 48)</td></tr>
+<tr><td style="text-align: left">Observations</td><td>60</td><td>53</td><td>53</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.200</td><td>0.899</td><td>0.959</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.186</td><td>0.893</td><td>0.956</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.749 (df=58)</td><td>0.272 (df=49)</td><td>0.175 (df=48)</td></tr><tr><td style="text-align: left">F Statistic</td><td>14.463<sup>***</sup> (df=1; 58)</td><td>146.070<sup>***</sup> (df=3; 49)</td><td>283.827<sup>***</sup> (df=4; 48)</td></tr>
 <tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="3" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
 </div>
-<div class="cell tag_remove-input tag_hide-output docutils container">
-<details class="hide above-output">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell outputs</span>
-<span class="expanded">Hide code cell outputs</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output text_html"><table style="text-align:center"><tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align:left"></td><td colspan="3"><em>Dependent variable: np.log1p(gdp_agri)</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
-<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-
-<tr><td style="text-align:left">Intercept</td><td>12.825<sup>***</sup></td><td>28.476<sup>***</sup></td><td>22.176<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td>(0.521)</td><td>(4.567)</td><td>(2.947)</td></tr>
-<tr><td style="text-align:left">np.log1p(evi)</td><td>7.991<sup>***</sup></td><td>5.540<sup>**</sup></td><td>-0.862<sup></sup></td></tr>
-<tr><td style="text-align:left"></td><td>(2.188)</td><td>(2.228)</td><td>(2.535)</td></tr>
-<tr><td style="text-align:left">np.log1p(evi_lag_1)</td><td></td><td></td><td>12.440<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td><td>(1.393)</td></tr>
-<tr><td style="text-align:left">np.log1p(evi_lag_2)</td><td></td><td></td><td>-8.323<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td><td>(2.825)</td></tr>
-<tr><td style="text-align:left">np.log1p(ntl_sum)</td><td></td><td>-1.121<sup>***</sup></td><td>-0.614<sup>**</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td>(0.327)</td><td>(0.233)</td></tr>
-
-<td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align: left">Observations</td><td>60</td><td>53</td><td>53</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.187</td><td>0.330</td><td>0.749</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.173</td><td>0.303</td><td>0.728</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.755 (df=58)</td><td>0.695 (df=50)</td><td>0.435 (df=48)</td></tr><tr><td style="text-align: left">F Statistic</td><td>13.338<sup>***</sup> (df=1; 58)</td><td>12.302<sup>***</sup> (df=2; 50)</td><td>35.756<sup>***</sup> (df=4; 48)</td></tr>
-<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="3" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
-</details>
-</div>
+<p>The figure below visualizes feature importance and effects across all samples in your dataset. Each dot represents one sample or observation, with color indicating the feature value (red for high values, blue for low values). The relationship between feature values and effects is revealed through color patterns: if red dots cluster on the right, high feature values lead to higher predictions, while if blue dots cluster on the right, low feature values increase predictions.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/ef46cf730d86a61ede83310c55b9895d74f54cceaa97de24c9d502758ad91b1d.png" src="../../_images/ef46cf730d86a61ede83310c55b9895d74f54cceaa97de24c9d502758ad91b1d.png" />
+<img alt="../../_images/c851138fb4170eb65cffbf63204cbdfefec22b02b0e3c6288d45eb5de36ce64b.png" src="../../_images/c851138fb4170eb65cffbf63204cbdfefec22b02b0e3c6288d45eb5de36ce64b.png" />
 </div>
 </div>
 </div>
@@ -1074,8 +1030,6 @@ document.write(`
       <th></th>
       <th>adm1_name</th>
       <th>Agriculture</th>
-      <th>Industry</th>
-      <th>Services</th>
     </tr>
   </thead>
   <tbody>
@@ -1083,127 +1037,91 @@ document.write(`
       <th>0</th>
       <td>Ayeyarwady</td>
       <td>16.0%</td>
-      <td>5.1%</td>
-      <td>10.1%</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Chin</td>
       <td>0.5%</td>
-      <td>0.3%</td>
-      <td>0.3%</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Kachin</td>
       <td>2.1%</td>
-      <td>1.9%</td>
-      <td>1.8%</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Kayah</td>
       <td>0.5%</td>
-      <td>0.2%</td>
-      <td>0.3%</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Kayin</td>
       <td>2.4%</td>
-      <td>1.3%</td>
-      <td>1.9%</td>
     </tr>
     <tr>
       <th>5</th>
       <td>Magway</td>
       <td>14.1%</td>
-      <td>7.9%</td>
-      <td>7.4%</td>
     </tr>
     <tr>
       <th>6</th>
       <td>Mandalay</td>
       <td>8.3%</td>
-      <td>12.3%</td>
-      <td>12.5%</td>
     </tr>
     <tr>
       <th>7</th>
       <td>Mon</td>
       <td>4.4%</td>
-      <td>4.1%</td>
-      <td>4.3%</td>
     </tr>
     <tr>
       <th>8</th>
       <td>Nay Pyi Taw</td>
       <td>1.1%</td>
-      <td>1.7%</td>
-      <td>3.3%</td>
     </tr>
     <tr>
       <th>9</th>
       <td>Rakhine</td>
       <td>3.3%</td>
-      <td>2.6%</td>
-      <td>4.6%</td>
     </tr>
     <tr>
       <th>10</th>
       <td>Sagaing</td>
       <td>17.0%</td>
-      <td>12.8%</td>
-      <td>8.2%</td>
     </tr>
     <tr>
       <th>11</th>
       <td>Tanintharyi</td>
       <td>6.9%</td>
-      <td>2.0%</td>
-      <td>2.5%</td>
     </tr>
     <tr>
       <th>12</th>
       <td>Yangon</td>
       <td>4.9%</td>
-      <td>35.4%</td>
-      <td>28.5%</td>
     </tr>
     <tr>
       <th>13</th>
       <td>Bago (East)</td>
       <td>5.3%</td>
-      <td>3.7%</td>
-      <td>4.2%</td>
     </tr>
     <tr>
       <th>14</th>
       <td>Bago (West)</td>
       <td>5.3%</td>
-      <td>3.7%</td>
-      <td>4.2%</td>
     </tr>
     <tr>
       <th>15</th>
       <td>Shan (South)</td>
       <td>2.7%</td>
-      <td>1.7%</td>
-      <td>2.0%</td>
     </tr>
     <tr>
       <th>16</th>
       <td>Shan (East)</td>
       <td>2.7%</td>
-      <td>1.7%</td>
-      <td>2.0%</td>
     </tr>
     <tr>
       <th>17</th>
       <td>Shan (North)</td>
       <td>2.7%</td>
-      <td>1.7%</td>
-      <td>2.0%</td>
     </tr>
   </tbody>
 </table>
@@ -1214,16 +1132,42 @@ document.write(`
 <img alt="../../_images/5ef17bb0b9c3497346622e1fc82916466276549c52fae0c384c8a18507e3a8fb.png" src="../../_images/5ef17bb0b9c3497346622e1fc82916466276549c52fae0c384c8a18507e3a8fb.png" />
 </div>
 </div>
-<p>The following figures show the correlation matrix between EVI, Nighttime Lights, and Sectoral GDP (Manufacturing and Services) at admin level 1.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/88ecc43800a073c29522a1aed55d65edd114f73502b867b29498a8e3922f244b.png" src="../../_images/88ecc43800a073c29522a1aed55d65edd114f73502b867b29498a8e3922f244b.png" />
+<img alt="../../_images/10b150760eab5f468247e7a2414a25af78c500588af3bb3ae45ef2ed5522c26c.png" src="../../_images/10b150760eab5f468247e7a2414a25af78c500588af3bb3ae45ef2ed5522c26c.png" />
 </div>
+</div>
+<p>The following figures show the correlation matrix between EVI, Nighttime Lights, and Agriculture GDP at admin level 1.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/da66929b086e84c73a1314aabd9a25d7eff5371736ba30f9bf5991553f6f94cb.png" src="../../_images/da66929b086e84c73a1314aabd9a25d7eff5371736ba30f9bf5991553f6f94cb.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="3"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">Intercept</td><td>11.544<sup>***</sup></td><td>11.028<sup>***</sup></td><td>6.824<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.176)</td><td>(0.466)</td><td>(0.405)</td></tr>
+<tr><td style="text-align:left">evi_lag_1_log</td><td></td><td></td><td>-0.099<sup></sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.120)</td></tr>
+<tr><td style="text-align:left">evi_log</td><td>0.096<sup></sup></td><td>0.125<sup></sup></td><td>-1.055<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.137)</td><td>(0.149)</td><td>(0.122)</td></tr>
+<tr><td style="text-align:left">is_crop_season[T.True]</td><td></td><td></td><td>2.119<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.084)</td></tr>
+<tr><td style="text-align:left">ntl_sum_log</td><td></td><td>0.053<sup></sup></td><td>0.150<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.045)</td><td>(0.035)</td></tr>
+
+<td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>1057</td><td>938</td><td>937</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.000</td><td>0.002</td><td>0.425</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>-0.000</td><td>-0.000</td><td>0.423</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>1.264 (df=1055)</td><td>1.270 (df=935)</td><td>0.965 (df=932)</td></tr><tr><td style="text-align: left">F Statistic</td><td>0.495<sup></sup> (df=1; 1055)</td><td>0.871<sup></sup> (df=2; 935)</td><td>172.378<sup>***</sup> (df=4; 932)</td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="3" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
 </div>
 <p>The figure below visualizes feature importance and effects across all samples in your dataset. Each dot represents one sample or observation, with color indicating the feature value (red for high values, blue for low values). The relationship between feature values and effects is revealed through color patterns: if red dots cluster on the right, high feature values lead to higher predictions, while if blue dots cluster on the right, low feature values increase predictions.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/c7f3714218264f1c6cede19003d78228326a7e6f944f634a01f30b2c588173ee.png" src="../../_images/c7f3714218264f1c6cede19003d78228326a7e6f944f634a01f30b2c588173ee.png" />
+<img alt="../../_images/c90d91292c233a4d41ed993da160ada2fc4f5f2e3a59141b6915dfbd1e04912b.png" src="../../_images/c90d91292c233a4d41ed993da160ada2fc4f5f2e3a59141b6915dfbd1e04912b.png" />
 </div>
 </div>
 </div>
@@ -1295,8 +1239,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp-and-nigthtime-lights">GDP and Nigthtime Lights</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-and-post-2021-coup-d-etat">Pre and Post 2021 coup d’état</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harvested-area-and-satellite-derived-crop-area-ranking-2021-2023">Harvested Area and Satellite-Derived Crop Area Ranking (2021-2023)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-exports">EVI and Exports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp-and-evi">GDP and EVI</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-0">Admin Level 0</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-1">Admin Level 1</a></li>
@@ -1328,7 +1272,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 23, 2025.
+  Last updated on Oct 30, 2025.
   <br/>
 </p>
   </div>
