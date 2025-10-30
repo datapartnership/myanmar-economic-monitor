@@ -415,7 +415,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harvested-area-and-satellite-derived-crop-area-ranking-2021-2023">Harvested Area and Satellite-Derived Crop Area Ranking (2021-2023)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-exports">EVI and Exports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-crop-exports">EVI and Crop Exports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp-and-evi">GDP and EVI</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-0">Admin Level 0</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-1">Admin Level 1</a></li>
@@ -892,61 +892,99 @@ To make both metrics comparable, both actual harvested area and satellite-derive
 </div>
 </div>
 <p>The chart below illustrates the relationship between the EVI and crop yield based on admin level 1 data from 2021-2023. The crop yield is calculated based on total output in tons divided by harvested area in acres.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/479d0079b02b22d1591242af06f8157ad7c15f8f13c86b32f5a9f22cc0cd811e.png" src="../../_images/479d0079b02b22d1591242af06f8157ad7c15f8f13c86b32f5a9f22cc0cd811e.png" />
+</div>
+</div>
+</div>
+<div class="section" id="evi-and-crop-exports">
+<h2>EVI and Crop Exports<a class="headerlink" href="#evi-and-crop-exports" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evi_adm1_annual</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">evi_adm1_raw</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">adm1_name</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;adm1_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;Bago&quot;</span> <span class="k">if</span> <span class="s2">&quot;Bago&quot;</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="p">(</span><span class="s2">&quot;Shan&quot;</span> <span class="k">if</span> <span class="s2">&quot;Shan&quot;</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
-        <span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;adm1_name&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s2">&quot;YS&quot;</span><span class="p">)])</span>
-    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;EVI&quot;</span><span class="p">:</span> <span class="s2">&quot;median&quot;</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evi_adm0_monthly</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">evi_adm0_raw</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s2">&quot;MS&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;EVI&quot;</span><span class="p">:</span> <span class="s2">&quot;median&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">clean_names</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">crops_evi</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">crops</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;adm1_name&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;harvested_area_in_acres&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span> <span class="s2">&quot;output_in_tons&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">})</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">date</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">),</span>
-        <span class="n">crop_yield</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;output_in_tons&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;harvested_area_in_acres&quot;</span><span class="p">],</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;adm1_name&quot;</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">evi_adm1_annual</span><span class="p">)</span>
+<span class="n">exports_indicators</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">exports</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">evi_adm0_monthly</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">clean_names</span><span class="p">)</span>
     <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
         <span class="n">evi_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;evi&quot;</span><span class="p">]),</span>
-        <span class="n">crop_yield_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;crop_yield&quot;</span><span class="p">]),</span>
+        <span class="n">total_vegetable_exports_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;total_vegetable_exports&quot;</span><span class="p">]),</span>
+        <span class="n">beans_and_pulses_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;beans_and_pulses&quot;</span><span class="p">]),</span>
+        <span class="n">corn_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;corn&quot;</span><span class="p">]),</span>
+        <span class="n">rice_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;rice&quot;</span><span class="p">]),</span>
+        <span class="n">other_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;other&quot;</span><span class="p">]),</span>
+        <span class="n">evi_lag_3</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;evi&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+        <span class="n">evi_lag_6</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;evi&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+        <span class="n">evi_lag_9</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;evi&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
+        <span class="n">evi_lag_3_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;evi_lag_3&quot;</span><span class="p">]),</span>
+        <span class="n">evi_lag_6_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;evi_lag_6&quot;</span><span class="p">]),</span>
+        <span class="n">evi_lag_9_log</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;evi_lag_9&quot;</span><span class="p">]),</span>
+        <span class="n">is_crop_season</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span>
     <span class="p">)</span>
-<span class="p">)</span>
-
-<span class="p">(</span>
-    <span class="n">crops_evi</span><span class="o">.</span><span class="n">pipe</span><span class="p">((</span><span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;evi&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;crop_yield&quot;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="o">+</span> <span class="n">p9</span><span class="o">.</span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;evi&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;crop_yield&quot;</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;lm&quot;</span><span class="p">)</span>
-    <span class="o">+</span> <span class="n">p9</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
-        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Median EVI&quot;</span><span class="p">,</span>
-        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Crop Yield (tons per acre)&quot;</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;EVI vs Crop Yield (Admin 1 Level)&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="o">+</span> <span class="n">p9</span><span class="o">.</span><span class="n">theme_minimal</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/d8d340444a95853a3abe9a580bd299c17121146fd3bb6a114363b186e3be0a07.png" src="../../_images/d8d340444a95853a3abe9a580bd299c17121146fd3bb6a114363b186e3be0a07.png" />
 </div>
-</div>
-</div>
-<div class="section" id="evi-and-exports">
-<h2>EVI and Exports<a class="headerlink" href="#evi-and-exports" title="Permalink to this heading">#</a></h2>
 <p>The figure below illustrates the relationship between EVI and crop exports with its 3, 6, and 9 months lagged values.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/7e98fbaf90a8ad2ef2dc44418bb1f17978a1e00fd324bd1aaa1adabde350790d.png" src="../../_images/7e98fbaf90a8ad2ef2dc44418bb1f17978a1e00fd324bd1aaa1adabde350790d.png" />
+<img alt="../../_images/57eaeb93799e2f97b1c617303f10272fa063fe2cda7bb24c9190c7b4b8d95bc0.png" src="../../_images/57eaeb93799e2f97b1c617303f10272fa063fe2cda7bb24c9190c7b4b8d95bc0.png" />
 </div>
+</div>
+<p>The following analysis examines the relationship between EVI and crop exports.</p>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<details class="hide above-output">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell outputs</span>
+<span class="expanded">Hide code cell outputs</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable: total_vegetable_exports_log</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">Intercept</td><td>5.524<sup>***</sup></td><td>5.961<sup>***</sup></td><td>7.502<sup>***</sup></td><td>7.523<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.156)</td><td>(0.208)</td><td>(0.504)</td><td>(0.499)</td></tr>
+<tr><td style="text-align:left">evi_lag_3_log</td><td></td><td>0.348<sup>***</sup></td><td>0.323<sup>***</sup></td><td>0.449<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.110)</td><td>(0.104)</td><td>(0.120)</td></tr>
+<tr><td style="text-align:left">evi_lag_6_log</td><td></td><td></td><td>0.658<sup>***</sup></td><td>0.408<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.192)</td><td>(0.227)</td></tr>
+<tr><td style="text-align:left">evi_log</td><td>-0.448<sup>***</sup></td><td>-0.480<sup>***</sup></td><td>0.028<sup></sup></td><td>0.064<sup></sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.114)</td><td>(0.109)</td><td>(0.189)</td><td>(0.188)</td></tr>
+<tr><td style="text-align:left">is_crop_season[T.True]</td><td></td><td></td><td></td><td>-0.208<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td>(0.103)</td></tr>
+
+<td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>168</td><td>165</td><td>162</td><td>162</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.085</td><td>0.152</td><td>0.229</td><td>0.249</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.079</td><td>0.141</td><td>0.215</td><td>0.230</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.389 (df=166)</td><td>0.369 (df=162)</td><td>0.346 (df=158)</td><td>0.343 (df=157)</td></tr><tr><td style="text-align: left">F Statistic</td><td>15.376<sup>***</sup> (df=1; 166)</td><td>14.510<sup>***</sup> (df=2; 162)</td><td>15.669<sup>***</sup> (df=3; 158)</td><td>13.011<sup>***</sup> (df=4; 157)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="4" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
+</details>
+</div>
+<p>Now we examine how EVI relates to exports of specific crop types: beans and pulses, corn, and rice.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><tr><td></td><td colspan="1">Total Veg</td><td colspan="1">Beans/Pulses</td><td colspan="1">Corn</td><td colspan="1">Rice</td></tr><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">Intercept</td><td>7.523<sup>***</sup></td><td>5.800<sup>***</sup></td><td>5.012<sup>***</sup></td><td>6.662<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.499)</td><td>(0.585)</td><td>(1.469)</td><td>(0.770)</td></tr>
+<tr><td style="text-align:left">evi_log</td><td>0.064<sup></sup></td><td>-0.107<sup></sup></td><td>-0.249<sup></sup></td><td>0.324<sup></sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.188)</td><td>(0.220)</td><td>(0.553)</td><td>(0.290)</td></tr>
+<tr><td style="text-align:left">evi_lag_3_log</td><td>0.449<sup>***</sup></td><td>-0.226<sup></sup></td><td>0.679<sup>*</sup></td><td>0.862<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.120)</td><td>(0.141)</td><td>(0.354)</td><td>(0.185)</td></tr>
+<tr><td style="text-align:left">evi_lag_6_log</td><td>0.408<sup>*</sup></td><td>0.777<sup>***</sup></td><td>0.443<sup></sup></td><td>0.232<sup></sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.227)</td><td>(0.266)</td><td>(0.668)</td><td>(0.350)</td></tr>
+<tr><td style="text-align:left">is_crop_season[T.True]</td><td>-0.208<sup>**</sup></td><td>-0.080<sup></sup></td><td>-0.201<sup></sup></td><td>-0.170<sup></sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.103)</td><td>(0.120)</td><td>(0.302)</td><td>(0.158)</td></tr>
+
+<td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>162</td><td>162</td><td>162</td><td>162</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.249</td><td>0.310</td><td>0.079</td><td>0.147</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.230</td><td>0.292</td><td>0.055</td><td>0.125</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.343 (df=157)</td><td>0.402 (df=157)</td><td>1.010 (df=157)</td><td>0.529 (df=157)</td></tr><tr><td style="text-align: left">F Statistic</td><td>13.011<sup>***</sup> (df=4; 157)</td><td>17.618<sup>***</sup> (df=4; 157)</td><td>3.351<sup>**</sup> (df=4; 157)</td><td>6.751<sup>***</sup> (df=4; 157)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="4" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
 </div>
 <p>The figure below compares the changes in EVI values on monthly basis for year 2024 and 2025 on national level.</p>
 <div class="cell tag_remove-input docutils container">
@@ -963,7 +1001,7 @@ To make both metrics comparable, both actual harvested area and satellite-derive
 </div>
 <div class="section" id="gdp-and-evi">
 <h2>GDP and EVI<a class="headerlink" href="#gdp-and-evi" title="Permalink to this heading">#</a></h2>
-<p>The GDP in the subsequent analysis has been filtered to include only the agriculture, excluding the forestry and fishing sector, to better align with the vegetation index data.</p>
+<p>The GDP in the subsequent analysis has been filtered to include only the agriculture, excluding the livestock, forestry and fishing sector, to better align with the vegetation index data.</p>
 <div class="section" id="admin-level-0">
 <h3>Admin Level 0<a class="headerlink" href="#admin-level-0" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_remove-input docutils container">
@@ -977,31 +1015,37 @@ To make both metrics comparable, both actual harvested area and satellite-derive
 <img alt="../../_images/d2dc1f94c66b087ac11704214e7fcd964089e50c7662c8a763542e242a661b09.png" src="../../_images/d2dc1f94c66b087ac11704214e7fcd964089e50c7662c8a763542e242a661b09.png" />
 </div>
 </div>
+<p>The following tables present the regression results of Agriculture GDP and EVI at national level. For the subsequent interpretation, we will focus on model 4, the full specification model.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">evi_lag_1_log</span> <span class="pre">=</span> <span class="pre">1.115</span></code> means that a 1% increase in EVI from the previous quarter is associated with a 1.12% increase in Agriculture GDP, holding other factors constant. This finding is logical as crops need time to mature before they can be harvested and contribute to GDP.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">evi_log</span> <span class="pre">=</span> <span class="pre">-0.396</span></code> indicates that a 1% increase in current EVI is associated with a 0.40% decrease in Agriculture GDP, holding other factors constant. This negative relationship suggests that if vegetation is currently very healthy (high EVI), it may imply that crops are still growing and not yet ready for harvest. Thus, this negative coefficient captures the timing within the crop cycle.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">is_crop_season[T.True]</span> <span class="pre">=</span> <span class="pre">1.484</span></code> means that being in the crop season is associated with a 340% increase in Agriculture GDP (exp(1.484) ≈ 4.4 times higher), holding other factors constant. Even after controlling for EVI and its lags, seasonality remains the dominant factor, capturing monsoon patterns and planting/harvest calendars.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><table style="text-align:center"><tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align:left"></td><td colspan="3"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
-<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
 
-<tr><td style="text-align:left">Intercept</td><td>16.994<sup>***</sup></td><td>18.880<sup>***</sup></td><td>21.795<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td>(0.612)</td><td>(1.828)</td><td>(1.223)</td></tr>
-<tr><td style="text-align:left">evi_lag_1_log</td><td></td><td></td><td>1.115<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td><td>(0.132)</td></tr>
-<tr><td style="text-align:left">evi_log</td><td>1.701<sup>***</sup></td><td>-0.788<sup>***</sup></td><td>-0.396<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td>(0.447)</td><td>(0.218)</td><td>(0.147)</td></tr>
-<tr><td style="text-align:left">is_crop_season[T.True]</td><td></td><td>1.867<sup>***</sup></td><td>1.484<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td>(0.113)</td><td>(0.086)</td></tr>
-<tr><td style="text-align:left">ntl_sum_log</td><td></td><td>-0.496<sup>***</sup></td><td>-0.540<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td>(0.133)</td><td>(0.086)</td></tr>
+<tr><td style="text-align:left">Intercept</td><td>16.994<sup>***</sup></td><td>32.030<sup>***</sup></td><td>24.636<sup>***</sup></td><td>21.795<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.612)</td><td>(2.857)</td><td>(3.954)</td><td>(1.223)</td></tr>
+<tr><td style="text-align:left">evi_lag_1_log</td><td></td><td>2.334<sup>***</sup></td><td>2.540<sup>***</sup></td><td>1.115<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.299)</td><td>(0.294)</td><td>(0.132)</td></tr>
+<tr><td style="text-align:left">evi_lag_2_log</td><td></td><td></td><td>-1.557<sup>**</sup></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.607)</td><td></td></tr>
+<tr><td style="text-align:left">evi_log</td><td>1.701<sup>***</sup></td><td>1.173<sup>***</sup></td><td>-0.009<sup></sup></td><td>-0.396<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.447)</td><td>(0.311)</td><td>(0.547)</td><td>(0.147)</td></tr>
+<tr><td style="text-align:left">is_crop_season[T.True]</td><td></td><td></td><td></td><td>1.484<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td>(0.086)</td></tr>
+<tr><td style="text-align:left">ntl_sum_log</td><td></td><td>-0.937<sup>***</sup></td><td>-0.642<sup>***</sup></td><td>-0.540<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.220)</td><td>(0.238)</td><td>(0.086)</td></tr>
 
-<td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align: left">Observations</td><td>60</td><td>53</td><td>53</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.200</td><td>0.899</td><td>0.959</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.186</td><td>0.893</td><td>0.956</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.749 (df=58)</td><td>0.272 (df=49)</td><td>0.175 (df=48)</td></tr><tr><td style="text-align: left">F Statistic</td><td>14.463<sup>***</sup> (df=1; 58)</td><td>146.070<sup>***</sup> (df=3; 49)</td><td>283.827<sup>***</sup> (df=4; 48)</td></tr>
-<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="3" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
+<td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>60</td><td>53</td><td>53</td><td>53</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.200</td><td>0.705</td><td>0.741</td><td>0.959</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.186</td><td>0.687</td><td>0.719</td><td>0.956</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.749 (df=58)</td><td>0.466 (df=49)</td><td>0.441 (df=48)</td><td>0.175 (df=48)</td></tr><tr><td style="text-align: left">F Statistic</td><td>14.463<sup>***</sup> (df=1; 58)</td><td>39.098<sup>***</sup> (df=3; 49)</td><td>34.311<sup>***</sup> (df=4; 48)</td><td>283.827<sup>***</sup> (df=4; 48)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="4" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
 </div>
 <p>The figure below visualizes feature importance and effects across all samples in your dataset. Each dot represents one sample or observation, with color indicating the feature value (red for high values, blue for low values). The relationship between feature values and effects is revealed through color patterns: if red dots cluster on the right, high feature values lead to higher predictions, while if blue dots cluster on the right, low feature values increase predictions.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/c851138fb4170eb65cffbf63204cbdfefec22b02b0e3c6288d45eb5de36ce64b.png" src="../../_images/c851138fb4170eb65cffbf63204cbdfefec22b02b0e3c6288d45eb5de36ce64b.png" />
+<img alt="../../_images/77b0d9bb2fb631165a8db70d41410434acfc6c59c1fe8136c2507b5f30711bd9.png" src="../../_images/77b0d9bb2fb631165a8db70d41410434acfc6c59c1fe8136c2507b5f30711bd9.png" />
 </div>
 </div>
 </div>
@@ -1127,14 +1171,31 @@ To make both metrics comparable, both actual harvested area and satellite-derive
 </table>
 </div></div></div>
 </div>
+<p>The following figure shows the relationship between EVI and GDP at admin level 1 with 3, 6, and 9 months lagged EVI values.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/5ef17bb0b9c3497346622e1fc82916466276549c52fae0c384c8a18507e3a8fb.png" src="../../_images/5ef17bb0b9c3497346622e1fc82916466276549c52fae0c384c8a18507e3a8fb.png" />
+<img alt="../../_images/517dd054394baac111c3f14ae33de9f710b94117c51e0e4348968dcce1114785.png" src="../../_images/517dd054394baac111c3f14ae33de9f710b94117c51e0e4348968dcce1114785.png" />
+</div>
+</div>
+<p>The figure below illustrates the relationship between EVI and GDP at admin level 1 with 3, 6, and 9 months lagged EVI values on logarithmic scale for both axes.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/902ed794780800b8bd53c8afa3ff6a811428e41112f91b96fa9feadf022308e0.png" src="../../_images/902ed794780800b8bd53c8afa3ff6a811428e41112f91b96fa9feadf022308e0.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/10b150760eab5f468247e7a2414a25af78c500588af3bb3ae45ef2ed5522c26c.png" src="../../_images/10b150760eab5f468247e7a2414a25af78c500588af3bb3ae45ef2ed5522c26c.png" />
+<img alt="../../_images/5884a2f8ca1a81e3ebf7cb8b1428a5f482c7e9b3fb4395a3c8dcd95154b7d71d.png" src="../../_images/5884a2f8ca1a81e3ebf7cb8b1428a5f482c7e9b3fb4395a3c8dcd95154b7d71d.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/aa9da83bb13e22a8414aca81a6a2cabc720b8da7dd01bb9b68586294a9436ba6.png" src="../../_images/aa9da83bb13e22a8414aca81a6a2cabc720b8da7dd01bb9b68586294a9436ba6.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/f2389059e87863121bfadd1dfd431366b4b3d8bae799ab03e81928af36d993f8.png" src="../../_images/f2389059e87863121bfadd1dfd431366b4b3d8bae799ab03e81928af36d993f8.png" />
 </div>
 </div>
 <p>The following figures show the correlation matrix between EVI, Nighttime Lights, and Agriculture GDP at admin level 1.</p>
@@ -1143,31 +1204,33 @@ To make both metrics comparable, both actual harvested area and satellite-derive
 <img alt="../../_images/da66929b086e84c73a1314aabd9a25d7eff5371736ba30f9bf5991553f6f94cb.png" src="../../_images/da66929b086e84c73a1314aabd9a25d7eff5371736ba30f9bf5991553f6f94cb.png" />
 </div>
 </div>
+<p>The following tables present the regression results of Agriculture GDP and EVI at admin 1 level. For the subsequent interpretation, we will focus on model 4 and 5, which exclude and include regional fixed effects respectively.</p>
+<p>as we control the regional effects in model 5, the <code class="docutils literal notranslate"><span class="pre">evi_lag_1_log:</span> <span class="pre">0.674</span></code> means that a 1% increase in EVI last quarter associated with 0.67% increase in agricultural GDP this quarter. This finding is similar with the national level.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><table style="text-align:center"><tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align:left"></td><td colspan="3"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
-<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="5"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td><td>(5)</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr>
 
-<tr><td style="text-align:left">Intercept</td><td>11.544<sup>***</sup></td><td>11.028<sup>***</sup></td><td>6.824<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td>(0.176)</td><td>(0.466)</td><td>(0.405)</td></tr>
-<tr><td style="text-align:left">evi_lag_1_log</td><td></td><td></td><td>-0.099<sup></sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td><td>(0.120)</td></tr>
-<tr><td style="text-align:left">evi_log</td><td>0.096<sup></sup></td><td>0.125<sup></sup></td><td>-1.055<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td>(0.137)</td><td>(0.149)</td><td>(0.122)</td></tr>
-<tr><td style="text-align:left">is_crop_season[T.True]</td><td></td><td></td><td>2.119<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td></td><td>(0.084)</td></tr>
-<tr><td style="text-align:left">ntl_sum_log</td><td></td><td>0.053<sup></sup></td><td>0.150<sup>***</sup></td></tr>
-<tr><td style="text-align:left"></td><td></td><td>(0.045)</td><td>(0.035)</td></tr>
+<tr><td style="text-align:left">Intercept</td><td>11.544<sup>***</sup></td><td>11.028<sup>***</sup></td><td>11.503<sup>***</sup></td><td>6.824<sup>***</sup></td><td>13.923<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.176)</td><td>(0.466)</td><td>(0.466)</td><td>(0.405)</td><td>(0.174)</td></tr>
+<tr><td style="text-align:left">evi_lag_1_log</td><td></td><td></td><td>0.837<sup>***</sup></td><td>-0.099<sup></sup></td><td>0.674<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.148)</td><td>(0.120)</td><td>(0.035)</td></tr>
+<tr><td style="text-align:left">evi_log</td><td>0.096<sup></sup></td><td>0.125<sup></sup></td><td>0.027<sup></sup></td><td>-1.055<sup>***</sup></td><td>-0.244<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.137)</td><td>(0.149)</td><td>(0.148)</td><td>(0.122)</td><td>(0.036)</td></tr>
+<tr><td style="text-align:left">is_crop_season[T.True]</td><td></td><td></td><td></td><td>2.119<sup>***</sup></td><td>1.602<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td>(0.084)</td><td>(0.024)</td></tr>
+<tr><td style="text-align:left">ntl_sum_log</td><td></td><td>0.053<sup></sup></td><td>0.097<sup>**</sup></td><td>0.150<sup>***</sup></td><td>-0.175<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.045)</td><td>(0.045)</td><td>(0.035)</td><td>(0.016)</td></tr>
 
-<td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align: left">Observations</td><td>1057</td><td>938</td><td>937</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.000</td><td>0.002</td><td>0.425</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>-0.000</td><td>-0.000</td><td>0.423</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>1.264 (df=1055)</td><td>1.270 (df=935)</td><td>0.965 (df=932)</td></tr><tr><td style="text-align: left">F Statistic</td><td>0.495<sup></sup> (df=1; 1055)</td><td>0.871<sup></sup> (df=2; 935)</td><td>172.378<sup>***</sup> (df=4; 932)</td></tr>
-<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="3" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
+<td colspan="6" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>1057</td><td>938</td><td>937</td><td>937</td><td>937</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.000</td><td>0.002</td><td>0.035</td><td>0.425</td><td>0.963</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>-0.000</td><td>-0.000</td><td>0.032</td><td>0.423</td><td>0.962</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>1.264 (df=1055)</td><td>1.270 (df=935)</td><td>1.250 (df=933)</td><td>0.965 (df=932)</td><td>0.248 (df=915)</td></tr><tr><td style="text-align: left">F Statistic</td><td>0.495<sup></sup> (df=1; 1055)</td><td>0.871<sup></sup> (df=2; 935)</td><td>11.275<sup>***</sup> (df=3; 933)</td><td>172.378<sup>***</sup> (df=4; 932)</td><td>1129.960<sup>***</sup> (df=21; 915)</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="5" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
 </div>
 <p>The figure below visualizes feature importance and effects across all samples in your dataset. Each dot represents one sample or observation, with color indicating the feature value (red for high values, blue for low values). The relationship between feature values and effects is revealed through color patterns: if red dots cluster on the right, high feature values lead to higher predictions, while if blue dots cluster on the right, low feature values increase predictions.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/c90d91292c233a4d41ed993da160ada2fc4f5f2e3a59141b6915dfbd1e04912b.png" src="../../_images/c90d91292c233a4d41ed993da160ada2fc4f5f2e3a59141b6915dfbd1e04912b.png" />
+<img alt="../../_images/58ff06b16ae392c2d4af4030e164bc3d2e3fc2880d583334e83e23152ff6013b.png" src="../../_images/58ff06b16ae392c2d4af4030e164bc3d2e3fc2880d583334e83e23152ff6013b.png" />
 </div>
 </div>
 </div>
@@ -1240,7 +1303,7 @@ To make both metrics comparable, both actual harvested area and satellite-derive
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harvested-area-and-satellite-derived-crop-area-ranking-2021-2023">Harvested Area and Satellite-Derived Crop Area Ranking (2021-2023)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-exports">EVI and Exports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-crop-exports">EVI and Crop Exports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp-and-evi">GDP and EVI</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-0">Admin Level 0</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-1">Admin Level 1</a></li>
