@@ -1,0 +1,638 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NO2 and GDP Analysis &#8212; Myanmar Economic Monitor</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/airpollution/no2-analysis';</script>
+    <link rel="canonical" href="https://github.com/datapartnership/myanmar-economic-monitor/notebooks/airpollution/no2-analysis.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Additional Resources" href="../../docs/3-add-resources.html" />
+    <link rel="prev" title="EVI and GDP Analysis" href="../vegetation-conditions/evi-manufacturing-analysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Oct 30, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Myanmar Economic Monitor - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Myanmar Economic Monitor - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Strategic Brief</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reports/myanmar-economic-monitor-strategic-brief.html">Data Lab Strategic Brief: Myanmar Economic Monitor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2023</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../relative-wealth/relative-wealth-index.html">Demographics of Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/README.html">Monitoring vegetation conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/analysis-2023/README.html">Nighttime Lights 2023 Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conflict/acled.html">Armed Conflict Location and Event Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sample-indicators/sagaing-story.html">The Story of Sagaing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobility/mobility.html">Activity proxies in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobility/activity.html">Estimating Activity Using Mobility Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://raw.githack.com/datapartnership/myanmar-economic-monitor/refs/heads/main/notebooks/nighttime-lights/analysis-2024-q4/nighttime_lights.html">Nighttime Lights 2024 Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conflict/conflict-and-ntl.html">Conflict and Nighttime Lights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conflict/conflict-and-ntl-updated.html">Conflict and Nighttime Lights - Updated</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2025</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/analysis-2025/earthquake_ntl.html">Earthquake Impact on Nightlights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl_collection2.html">Nighttime Lights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="air_pollution.html">Air Pollution in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-2025.html">Crop Productivity Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-manufacturing-analysis.html">EVI and GDP Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">NO2 and GDP Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/3-add-resources.html">Additional Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/team.html">Project Team and Acknowledgements</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor/edit/main/notebooks/airpollution/no2-analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor/issues/new?title=Issue%20on%20page%20%2Fnotebooks/airpollution/no2-analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/airpollution/no2-analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>NO2 and GDP Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no2">NO2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-0">Admin Level 0</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-1">Admin level 1</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="no2-and-gdp-analysis">
+<h1>NO2 and GDP Analysis<a class="headerlink" href="#no2-and-gdp-analysis" title="Permalink to this heading">#</a></h1>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<p>This analysis utilizes the following datasets:</p>
+<ul class="simple">
+<li><p>Overall GDP Data: Sourced from the World Bank World Development Indicators (WDI) database</p></li>
+<li><p>Sectoral GDP Data: Provided by the Myanmar team</p></li>
+<li><p>Enhanced Vegetation Index (EVI) Data: Derived from MODIS satellite imagery</p></li>
+</ul>
+</div>
+<div class="section" id="no2">
+<h2>NO2<a class="headerlink" href="#no2" title="Permalink to this heading">#</a></h2>
+<div class="section" id="admin-level-0">
+<h3>Admin Level 0<a class="headerlink" href="#admin-level-0" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/53a0e7b53665fe94dafe567834a276eadc33cdc1642bf63c78d463a4b6f7672a.png" src="../../_images/53a0e7b53665fe94dafe567834a276eadc33cdc1642bf63c78d463a4b6f7672a.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/9284b5bc50c14f96021da79d58a19b176cc2699e0baaf99412a5776e739e0564.png" src="../../_images/9284b5bc50c14f96021da79d58a19b176cc2699e0baaf99412a5776e739e0564.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">Intercept</td><td>17.492<sup>***</sup></td><td>22.434<sup>***</sup></td><td>13.066<sup></sup></td><td>12.915<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(2.591)</td><td>(4.646)</td><td>(8.650)</td><td>(2.573)</td></tr>
+<tr><td style="text-align:left">no2_lag_1_log</td><td></td><td></td><td>-0.547<sup></sup></td><td>-0.547<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.406)</td><td>(0.121)</td></tr>
+<tr><td style="text-align:left">no2_log</td><td>0.409<sup></sup></td><td>0.414<sup></sup></td><td>0.460<sup>*</sup></td><td>0.460<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.273)</td><td>(0.273)</td><td>(0.278)</td><td>(0.083)</td></tr>
+<tr><td style="text-align:left">ntl_sum_log</td><td></td><td>-0.359<sup></sup></td><td>-0.021<sup></sup></td><td>-0.021<sup></sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.280)</td><td>(0.386)</td><td>(0.115)</td></tr>
+
+<td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>275</td><td>275</td><td>264</td><td>264</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.008</td><td>0.014</td><td>0.021</td><td>0.917</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.005</td><td>0.007</td><td>0.010</td><td>0.912</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>1.120 (df=273)</td><td>1.119 (df=272)</td><td>1.113 (df=260)</td><td>0.331 (df=250)</td></tr><tr><td style="text-align: left">F Statistic</td><td>2.245<sup></sup> (df=1; 273)</td><td>1.946<sup></sup> (df=2; 272)</td><td>1.895<sup></sup> (df=3; 260)</td><td>211.958<sup>***</sup> (df=13; 250)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="4" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
+</div>
+</div>
+<div class="section" id="admin-level-1">
+<h3>Admin level 1<a class="headerlink" href="#admin-level-1" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/6773cecc356300966ce666d71de4334f170b559a3ee2b8d9934b66de4135a3eb.png" src="../../_images/6773cecc356300966ce666d71de4334f170b559a3ee2b8d9934b66de4135a3eb.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="5"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td><td>(5)</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">Intercept</td><td>16.334<sup>***</sup></td><td>23.310<sup>***</sup></td><td>15.351<sup>*</sup></td><td>15.100<sup>***</sup></td><td>23.006<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(2.608)</td><td>(7.113)</td><td>(8.937)</td><td>(2.628)</td><td>(3.168)</td></tr>
+<tr><td style="text-align:left">no2_lag_1_log</td><td></td><td></td><td>-0.511<sup></sup></td><td>-0.511<sup>***</sup></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.320)</td><td>(0.094)</td><td></td></tr>
+<tr><td style="text-align:left">no2_log</td><td>0.409<sup></sup></td><td>0.618<sup>*</sup></td><td>0.562<sup></sup></td><td>0.562<sup>***</sup></td><td>0.614<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.275)</td><td>(0.339)</td><td>(0.352)</td><td>(0.104)</td><td>(0.272)</td></tr>
+<tr><td style="text-align:left">ntl_sum_log</td><td></td><td>-0.416<sup></sup></td><td>-0.202<sup></sup></td><td>-0.202<sup></sup></td><td>-0.416<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.394)</td><td>(0.423)</td><td>(0.124)</td><td>(0.115)</td></tr>
+
+<td colspan="6" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>275</td><td>275</td><td>264</td><td>264</td><td>275</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.008</td><td>0.012</td><td>0.022</td><td>0.919</td><td>0.923</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.004</td><td>0.005</td><td>0.011</td><td>0.915</td><td>0.916</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>1.128 (df=273)</td><td>1.128 (df=272)</td><td>1.120 (df=260)</td><td>0.329 (df=250)</td><td>0.328 (df=252)</td></tr><tr><td style="text-align: left">F Statistic</td><td>2.216<sup></sup> (df=1; 273)</td><td>1.664<sup></sup> (df=2; 272)</td><td>1.946<sup></sup> (df=3; 260)</td><td>217.390<sup>***</sup> (df=13; 250)</td><td>136.378<sup>***</sup> (df=22; 252)</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="5" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/airpollution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../vegetation-conditions/evi-manufacturing-analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">EVI and GDP Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../docs/3-add-resources.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Additional Resources</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no2">NO2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-0">Admin Level 0</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-1">Admin level 1</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By World Bank
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Oct 30, 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+ Country borders or names do not necessarily reflect the World Bank Group’s official position. All maps are for illustrative purposes and do not imply the expression of any opinion on the part of the World Bank, concerning the legal status of any country or territory or concerning the delimitation of frontiers or boundaries
+</div>
+<div>
+    <b>All content (unless otherwise specified) is subject to the <a href="https://www.mozilla.org/en-US/MPL">Mozilla Public License.</a></b>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
