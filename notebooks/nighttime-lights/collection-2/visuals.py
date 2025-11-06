@@ -185,7 +185,7 @@ def plot_bar_chart(
     pos_color: str = "#2ca02c",
     neg_color: str = "#d62728",
     zero_line: bool = False,
-) -> None:
+) -> tuple:
     """
     Create a standard bar chart using World Bank styling
 
@@ -206,6 +206,9 @@ def plot_bar_chart(
     - pos_color: Color for positive percentage values
     - neg_color: Color for negative percentage values
     - zero_line: If True, adds a horizontal line at y=0
+    
+    Returns:
+    - tuple: (fig, ax) - matplotlib figure and axes objects for further customization
     """
 
     # Prepare data
@@ -400,8 +403,8 @@ def plot_bar_chart(
     # Add source note
     fig.text(0.1, 0.02, source_text, fontsize=9, color="gray", ha="left", va="bottom")
 
-    plt.tight_layout()
-    plt.show()
+    # Return figure and axes for further customization
+    return fig, ax
 
 
 def plot_subplots_bar_charts(
@@ -1551,9 +1554,19 @@ def plot_comparative_lines_subplots(
                 axs[i].set_xticklabels([str(int(y)) for y in years], rotation=45)
 
         # Add earthquake marker if specified
-        if earthquake_marker:
+        if earthquake_marker is not None:
             try:
-                if pd.api.types.is_datetime64_any_dtype(cat_data[x_column]):
+                # Check if earthquake_marker is numeric (e.g., day of year)
+                if isinstance(earthquake_marker, (int, float)):
+                    axs[i].axvline(
+                        earthquake_marker,
+                        color="red",
+                        linestyle="--",
+                        linewidth=2,
+                        alpha=0.8,
+                        zorder=3,
+                    )
+                elif pd.api.types.is_datetime64_any_dtype(cat_data[x_column]):
                     axs[i].axvline(
                         pd.Timestamp(earthquake_marker),
                         color="red",
