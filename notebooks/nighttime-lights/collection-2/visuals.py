@@ -403,8 +403,6 @@ def plot_bar_chart(
     # Add source note
     fig.text(0.1, 0.02, source_text, fontsize=9, color="gray", ha="left", va="bottom")
 
-    #plt.tight_layout()
-    
     # Return figure and axes for further customization
     return fig, ax
 
