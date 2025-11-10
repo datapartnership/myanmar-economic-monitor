@@ -1,0 +1,876 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nighttime Lights and GDP Analysis &#8212; Myanmar Economic Monitor</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/nighttime-lights/collection-2/ntl-gdp';</script>
+    <link rel="canonical" href="https://github.com/datapartnership/myanmar-economic-monitor/notebooks/nighttime-lights/collection-2/ntl-gdp.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Crop Productivity Analysis" href="../../vegetation-conditions/evi-analytics-update-2025.html" />
+    <link rel="prev" title="Nighttime Lights in Myanmar" href="ntl_collection2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Myanmar Economic Monitor - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Myanmar Economic Monitor - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Strategic Brief</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../reports/myanmar-economic-monitor-strategic-brief.html">Data Lab Strategic Brief: Myanmar Economic Monitor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2023</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../relative-wealth/relative-wealth-index.html">Demographics of Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vegetation-conditions/README.html">Monitoring vegetation conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-2023/README.html">Nighttime Lights 2023 Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conflict/acled.html">Armed Conflict Location and Event Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sample-indicators/sagaing-story.html">The Story of Sagaing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobility/mobility.html">Activity proxies in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobility/activity.html">Estimating Activity Using Mobility Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://raw.githack.com/datapartnership/myanmar-economic-monitor/refs/heads/main/notebooks/nighttime-lights/analysis-2024-q4/nighttime_lights.html">Nighttime Lights 2024 Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conflict/conflict-and-ntl.html">Conflict and Nighttime Lights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conflict/conflict-and-ntl-updated.html">Conflict and Nighttime Lights - Updated</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2025</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../analysis-2025/earthquake_ntl.html">Earthquake Impact on Nightlights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ntl_collection2.html">Nighttime Lights in Myanmar</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Nighttime Lights and GDP Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vegetation-conditions/evi-analytics-update-2025.html">Crop Productivity Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../airpollution/air_pollution.html">Air Pollution in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../airpollution/no2-analysis.html">NO2 and GDP Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/3-add-resources.html">Additional Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/team.html">Project Team and Acknowledgements</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor/edit/main/notebooks/nighttime-lights/collection-2/ntl-gdp.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor/issues/new?title=Issue%20on%20page%20%2Fnotebooks/nighttime-lights/collection-2/ntl-gdp.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/nighttime-lights/collection-2/ntl-gdp.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Nighttime Lights and GDP Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-and-methodological-notes">Assumptions and Methodological Notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-definitions-and-aggregations">Temporal Definitions and Aggregations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodological-assumptions">Methodological Assumptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-gdp-vs-nighttime-lights">Overall GDP vs Nighttime Lights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nighttime-lights-in-industrial-zones-vs-gdp">Nighttime Lights in Industrial Zones vs GDP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quarterly-gdp-vs-quarterly-nighttime-lights">Quarterly GDP vs Quarterly Nighttime Lights</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturing-gdp-vs-nighttime-lights">Manufacturing GDP vs Nighttime Lights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-1">Admin Level 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturing-gdp-vs-nighttime-lights-across-admin-level-1-regions">Manufacturing GDP vs Nighttime Lights across Admin Level 1 Regions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="nighttime-lights-and-gdp-analysis">
+<h1>Nighttime Lights and GDP Analysis<a class="headerlink" href="#nighttime-lights-and-gdp-analysis" title="Permalink to this heading">#</a></h1>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Nighttime Lights Data</strong>:</p>
+<ul class="simple">
+<li><p><strong>Source</strong>: NOAA’s VIIRS (Visible Infrared Imaging Radiometer Suite) Collection 2 products.</p></li>
+<li><p><strong>Description</strong>: This dataset provides daily nighttime lights intensity data, which is used to analyze economic activity and its correlation with GDP figures.</p></li>
+<li><p><strong>Spatial Resolution</strong>: 500 meters.</p></li>
+<li><p><strong>Temporal Coverage</strong>: Available daily from 2012 to 2025.</p></li>
+</ul>
+</li>
+<li><p><strong>National GDP Data</strong>:</p>
+<ul class="simple">
+<li><p><strong>Source</strong>: World Bank World Development Indicators (WDI).</p></li>
+<li><p><strong>Description</strong>: This dataset provides annual national GDP figures for Myanmar, which are used to analyze economic trends in relation to nighttime lights data.</p></li>
+<li><p><strong>Temporal Coverage</strong>: Available annually from 1961 to 2024.</p></li>
+</ul>
+</li>
+<li><p><strong>Manufacturing GDP Data</strong>:</p>
+<ul class="simple">
+<li><p><strong>Source</strong>: Provided by the Myanmar team.</p></li>
+<li><p><strong>Description</strong>: This dataset contains quarterly manufacturing GDP figures for Myanmar, which are used to assess the relationship between manufacturing activity and nighttime lights intensity.</p></li>
+<li><p><strong>Temporal Coverage</strong>: Available quarterly from 2015 to 2024.</p></li>
+</ul>
+</li>
+<li><p><strong>Administrative Boundaries</strong>:</p>
+<ul class="simple">
+<li><p><strong>Source</strong>: MIMU (Myanmar Information Management Unit)</p></li>
+<li><p><strong>Description</strong>: This dataset provides the administrative boundaries for Myanmar at various levels (national, state/region, district, township). It is used for spatial aggregation and analysis of crop productivity and economic data.</p></li>
+<li><p><strong>Spatial Resolution</strong>: Varies by administrative level.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="assumptions-and-methodological-notes">
+<h2>Assumptions and Methodological Notes<a class="headerlink" href="#assumptions-and-methodological-notes" title="Permalink to this heading">#</a></h2>
+<p>This analysis is based on the following assumptions and methodological considerations:</p>
+<div class="section" id="temporal-definitions-and-aggregations">
+<h3>Temporal Definitions and Aggregations<a class="headerlink" href="#temporal-definitions-and-aggregations" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Fiscal Year Definition</strong>: The first quarter (Q1) of each fiscal year starts in April and ends in March of the following year. This aligns with Myanmar’s fiscal calendar.</p></li>
+<li><p><strong>Quarterly Aggregations</strong>: Monthly data are aggregated into quarters (Q1: April-June, Q2: July-September, Q3: October-December, Q4: January-March).</p></li>
+</ol>
+</div>
+<div class="section" id="methodological-assumptions">
+<h3>Methodological Assumptions<a class="headerlink" href="#methodological-assumptions" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Spatial Aggregation</strong>: Manufacturing GDP is available quarterly from 2015 to 2024. However, regional manufacturing GDP are assumed to be identical to the regional industry GDP data available for the 2015-2016 financial year. Additionally, the manufacturing GDP at administrative level 1 are assumed to remain constant across all years in the analysis period.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this heading">#</a></h2>
+<div class="section" id="overall-gdp-vs-nighttime-lights">
+<h3>Overall GDP vs Nighttime Lights<a class="headerlink" href="#overall-gdp-vs-nighttime-lights" title="Permalink to this heading">#</a></h3>
+<p>The chart below shows a positive correlation between annual nighttime lights and overall GDP (constant LCU) at the national level from 2012 to 2024. The relationship appears nearly linear, suggesting that nighttime lights intensity can serve as a reliable proxy for economic activity measured by GDP.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/e4be43cc956bfacab8cfb70f1ac2e6e6ab39e06094aa27a2eca4443f0bbeed36.png" src="../../../_images/e4be43cc956bfacab8cfb70f1ac2e6e6ab39e06094aa27a2eca4443f0bbeed36.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="nighttime-lights-in-industrial-zones-vs-gdp">
+<h2>Nighttime Lights in Industrial Zones vs GDP<a class="headerlink" href="#nighttime-lights-in-industrial-zones-vs-gdp" title="Permalink to this heading">#</a></h2>
+<p>When focusing specifically on nighttime lights from industrial zones (SEZ areas), we still observe a positive correlation with overall national GDP. This suggests that economic activity in industrial zones, as captured by nighttime lights, is closely linked to broader national economic performance.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/a804458da36ddc4b0c790940a90aabe92bc353f5e90f478a33b99cb73994fe4c.png" src="../../../_images/a804458da36ddc4b0c790940a90aabe92bc353f5e90f478a33b99cb73994fe4c.png" />
+</div>
+</div>
+<p>The relationship between nighttime lights in industrial zones and manufacturing GDP is particularly strong, which makes intuitive sense as manufacturing activities typically occur in industrial areas. The positive correlation indicates that nighttime lights from SEZ areas can serve as a indicator for manufacturing sector performance.</p>
+<p>The table below shows the regression results of overall GDP against nighttime lights at both the national level and for SEZ areas only. The regression results show statistically significant positive relationships in both models. At the national level, a 1% increase in nighttime lights is associated with approximately 0.276% increase in GDP. When focusing on SEZ areas only, the coefficient is similar at 0.290%.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="2"><em>Dependent variable: gdp_constant_lcu_log</em></td></tr><tr><td style="text-align:left"></td><tr><td></td><td colspan="1">National Level</td><td colspan="1">SEZ Areas Only</td></tr><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">Intercept</td><td>14.844<sup>***</sup></td><td>13.958<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(1.280)</td><td>(1.250)</td></tr>
+<tr><td style="text-align:left">ntl_sum_log</td><td>0.276<sup>**</sup></td><td>0.290<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.107)</td><td>(0.087)</td></tr>
+
+<td colspan="3" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>13</td><td>13</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.376</td><td>0.505</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.319</td><td>0.460</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.106 (df=11)</td><td>0.094 (df=11)</td></tr><tr><td style="text-align: left">F Statistic</td><td>6.632<sup>**</sup> (df=1; 11)</td><td>11.206<sup>***</sup> (df=1; 11)</td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="2" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
+</div>
+</div>
+<div class="section" id="quarterly-gdp-vs-quarterly-nighttime-lights">
+<h2>Quarterly GDP vs Quarterly Nighttime Lights<a class="headerlink" href="#quarterly-gdp-vs-quarterly-nighttime-lights" title="Permalink to this heading">#</a></h2>
+<div class="section" id="manufacturing-gdp-vs-nighttime-lights">
+<h3>Manufacturing GDP vs Nighttime Lights<a class="headerlink" href="#manufacturing-gdp-vs-nighttime-lights" title="Permalink to this heading">#</a></h3>
+<p>The chart below shows the relationship between quarterly manufacturing GDP and nighttime lights across current quarter and lagged values.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/5358e715ceb0a3f892476f326efdacd7d2d04f70b06a1105ebc38704b554ad3e.png" src="../../../_images/5358e715ceb0a3f892476f326efdacd7d2d04f70b06a1105ebc38704b554ad3e.png" />
+</div>
+</div>
+<p>The following table below presents the regression results of manufacturing GDP against nighttime lights on quarterly data at the national level.</p>
+</div>
+<div class="section" id="admin-level-1">
+<h3>Admin Level 1<a class="headerlink" href="#admin-level-1" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The table below shows the proportion of industry GDP across administrative level 1 regions in Myanmar. This proportion is assumed to be identical to the manufacturing GDP proportion and constant over time for the purpose of estimating administrative level 1 manufacturing GDP.</p>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>adm1_name</th>
+      <th>Industry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>12</th>
+      <td>Yangon</td>
+      <td>35.4%</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Sagaing</td>
+      <td>12.8%</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Mandalay</td>
+      <td>12.3%</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Magway</td>
+      <td>7.9%</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Ayeyarwady</td>
+      <td>5.1%</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Mon</td>
+      <td>4.1%</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Bago (West)</td>
+      <td>3.7%</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Bago (East)</td>
+      <td>3.7%</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Rakhine</td>
+      <td>2.6%</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Tanintharyi</td>
+      <td>2.0%</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Kachin</td>
+      <td>1.9%</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Shan (South)</td>
+      <td>1.7%</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Shan (East)</td>
+      <td>1.7%</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Shan (North)</td>
+      <td>1.7%</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Nay Pyi Taw</td>
+      <td>1.7%</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Kayin</td>
+      <td>1.3%</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chin</td>
+      <td>0.3%</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Kayah</td>
+      <td>0.2%</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="manufacturing-gdp-vs-nighttime-lights-across-admin-level-1-regions">
+<h3>Manufacturing GDP vs Nighttime Lights across Admin Level 1 Regions<a class="headerlink" href="#manufacturing-gdp-vs-nighttime-lights-across-admin-level-1-regions" title="Permalink to this heading">#</a></h3>
+<p>At the Admin Level 1 (state/region), the positive relationship between manufacturing GDP and nighttime lights holds across all lag periods.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/bf9eff870d17759deea5d3fcc60656cec6a7e657451f83d2274e3b3e36ce97cf.png" src="../../../_images/bf9eff870d17759deea5d3fcc60656cec6a7e657451f83d2274e3b3e36ce97cf.png" />
+</div>
+</div>
+<p>The chart by region below shows variation in the strength and pattern of the relationship between manufacturing GDP and nighttime lights across different regions. Major economic centers like Yangon exhibit clearer positive relationships, while some smaller states show more scattered patterns.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/e205a6ef824a014241f4829641ec425a68b4b42790a7d221cf3f66e0c63861f0.png" src="../../../_images/e205a6ef824a014241f4829641ec425a68b4b42790a7d221cf3f66e0c63861f0.png" />
+</div>
+</div>
+<p>The three regression models below provide different models in analyzing the regional relationship. Model 1 (pooled OLS) shows a basic positive relationship with a coefficient of 0.646. Model 2 adds region fixed effects, accounting for time-invariant regional characteristics, and shows a coefficient of -0.248 but improved explanatory power. Model 3 uses mixed effects to allow for both region-specific intercepts and slopes, providing the most nuanced view of regional heterogeneity.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="3"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td></td><td colspan="1">Current only</td><td colspan="1">Current + Region FE</td><td colspan="1">Current + Mixed Effects</td></tr><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">Intercept</td><td>4.979<sup>***</sup></td><td>14.580<sup>***</sup></td><td>13.834<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.398)</td><td>(0.306)</td><td>(0.586)</td></tr>
+<tr><td style="text-align:left">ntl_sum_log</td><td>0.646<sup>***</sup></td><td>-0.248<sup>***</sup></td><td>-0.224<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.039)</td><td>(0.030)</td><td>(0.054)</td></tr>
+
+<td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>954</td><td>954</td><td>900</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.225</td><td>0.848</td><td></td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.224</td><td>0.845</td><td></td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>1.141 (df=952)</td><td>0.509 (df=935)</td><td>0.488 (df=898)</td></tr><tr><td style="text-align: left">F Statistic</td><td>275.688<sup>***</sup> (df=1; 952)</td><td>290.115<sup>***</sup> (df=18; 935)</td><td></td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="3" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
+</div>
+<p>When analyzing nighttime lights specifically from industrial zones at the regional level, the positive relationship with manufacturing GDP remains evident. The scatter plot shows a clear upward trend, indicating that industrial zone nighttime lights are a meaningful indicator of regional manufacturing activity.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/ecab1cecde8eb34ccaa784255a9f06756e76b03ce0d195c2acf4f7d19419c3ee.png" src="../../../_images/ecab1cecde8eb34ccaa784255a9f06756e76b03ce0d195c2acf4f7d19419c3ee.png" />
+</div>
+</div>
+<p>The regional breakdown of industrial zone nighttime lights versus manufacturing GDP reveals significant variation across states/regions. Some regions like Yangon show tight relationships with steep slopes, while others display more scattered patterns. This heterogeneity underscores the importance of region-specific analysis when using nighttime lights as an economic indicator, as the relationship’s strength varies with local industrial structure and development levels.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/684bbb4843c1f97be766c5abe6ff258c201cd0e8291e599b73cbecec321520a4.png" src="../../../_images/684bbb4843c1f97be766c5abe6ff258c201cd0e8291e599b73cbecec321520a4.png" />
+</div>
+</div>
+<p>The regression analysis using industrial zone nighttime lights at the regional level shows strong results across all three model specifications. The pooled OLS model (Model 1) yields a coefficient of 0.403, while the fixed effects model (Model 2) shows a lower coefficient of 0.060. The mixed effects model (Model 3) provides the most sophisticated specification, allowing for region-specific variations shows a coefficient of 0.079. All models are statistically significant, demonstrating that nighttime lights from industrial zones are robust predictors of regional manufacturing GDP.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="3"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td></td><td colspan="1">Current only</td><td colspan="1">Current + Region FE</td><td colspan="1">Current + Mixed Effects</td></tr><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">Intercept</td><td>8.336<sup>***</sup></td><td>11.647<sup>***</sup></td><td>10.992<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.139)</td><td>(0.261)</td><td>(0.356)</td></tr>
+<tr><td style="text-align:left">ntl_sum_log</td><td>0.408<sup>***</sup></td><td>0.060<sup>**</sup></td><td>0.079<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.017)</td><td>(0.030)</td><td>(0.039)</td></tr>
+
+<td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>848</td><td>848</td><td>800</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.417</td><td>0.823</td><td></td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.417</td><td>0.820</td><td></td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.946 (df=846)</td><td>0.526 (df=831)</td><td>0.514 (df=798)</td></tr><tr><td style="text-align: left">F Statistic</td><td>605.630<sup>***</sup> (df=1; 846)</td><td>241.749<sup>***</sup> (df=16; 831)</td><td></td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="3" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/nighttime-lights/collection-2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ntl_collection2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Nighttime Lights in Myanmar</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../vegetation-conditions/evi-analytics-update-2025.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Crop Productivity Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-and-methodological-notes">Assumptions and Methodological Notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-definitions-and-aggregations">Temporal Definitions and Aggregations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodological-assumptions">Methodological Assumptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-gdp-vs-nighttime-lights">Overall GDP vs Nighttime Lights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nighttime-lights-in-industrial-zones-vs-gdp">Nighttime Lights in Industrial Zones vs GDP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quarterly-gdp-vs-quarterly-nighttime-lights">Quarterly GDP vs Quarterly Nighttime Lights</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturing-gdp-vs-nighttime-lights">Manufacturing GDP vs Nighttime Lights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admin-level-1">Admin Level 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturing-gdp-vs-nighttime-lights-across-admin-level-1-regions">Manufacturing GDP vs Nighttime Lights across Admin Level 1 Regions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By World Bank
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Nov 10, 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+ Country borders or names do not necessarily reflect the World Bank Group’s official position. All maps are for illustrative purposes and do not imply the expression of any opinion on the part of the World Bank, concerning the legal status of any country or territory or concerning the delimitation of frontiers or boundaries
+</div>
+<div>
+    <b>All content (unless otherwise specified) is subject to the <a href="https://www.mozilla.org/en-US/MPL">Mozilla Public License.</a></b>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

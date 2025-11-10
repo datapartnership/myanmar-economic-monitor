@@ -65,11 +65,11 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://github.com/datapartnership/myanmar-economic-monitor/notebooks/nighttime-lights/collection-2/ntl_collection2.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Air Pollution in Myanmar" href="../../airpollution/air_pollution.html" />
+    <link rel="next" title="Nighttime Lights and GDP Analysis" href="ntl-gdp.html" />
     <link rel="prev" title="Earthquake Impact on Nightlights in Myanmar" href="../analysis-2025/earthquake_ntl.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Nov 06, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
   </head>
   
   
@@ -190,8 +190,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../analysis-2025/earthquake_ntl.html">Earthquake Impact on Nightlights in Myanmar</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Nighttime Lights in Myanmar</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../airpollution/air_pollution.html">Air Pollution in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ntl-gdp.html">Nighttime Lights and GDP Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vegetation-conditions/evi-analytics-update-2025.html">Crop Productivity Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../airpollution/air_pollution.html">Air Pollution in Myanmar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../airpollution/no2-analysis.html">NO2 and GDP Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
@@ -615,33 +616,43 @@ Change: -40.77%
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort by percentage change and create horizontal bar chart</span>
-<span class="n">df_sorted</span> <span class="o">=</span> <span class="n">ntl_annual_adm1_9months_wide</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;pc_change_2025_vs_2024&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df_sorted</span> <span class="o">=</span> <span class="n">ntl_annual_adm1_9months_wide</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+    <span class="n">by</span><span class="o">=</span><span class="s2">&quot;pc_change_2025_vs_2024&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
 <span class="c1"># Prepare data for wb_plot</span>
-<span class="n">df_sorted</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_sorted</span><span class="p">[</span><span class="s1">&#39;pc_change_2025_vs_2024&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;#d62728&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;#2ca02c&#39;</span>
+<span class="n">df_sorted</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_sorted</span><span class="p">[</span><span class="s2">&quot;pc_change_2025_vs_2024&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;#d62728&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;#2ca02c&quot;</span>
 <span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">wb_plot</span><span class="p">(</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">,</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df_sorted</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;pc_change_2025_vs_2024&#39;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;ADM1_EN&#39;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">df_sorted</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;pc_change_2025_vs_2024&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">df_sorted</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
     <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Regional Nighttime Lights % Change (Jan-Sep 2025 vs Jan-Sep 2024)&#39;</span><span class="p">,</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;% Change&#39;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Region (ADM1)&#39;</span><span class="p">,</span>
-    <span class="n">source</span><span class="o">=</span><span class="s1">&#39;Source: VIIRS Nighttime Lights — Collection 2&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Regional Nighttime Lights % Change (Jan-Sep 2025 vs Jan-Sep 2024)&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;% Change&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Region (ADM1)&quot;</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;Source: VIIRS Nighttime Lights — Collection 2&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Add zero line</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="c1"># Add value labels</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df_sorted</span><span class="p">[</span><span class="s1">&#39;ADM1_EN&#39;</span><span class="p">],</span> <span class="n">df_sorted</span><span class="p">[</span><span class="s1">&#39;pc_change_2025_vs_2024&#39;</span><span class="p">])):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">value</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">,</span> 
-            <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+    <span class="nb">zip</span><span class="p">(</span><span class="n">df_sorted</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">],</span> <span class="n">df_sorted</span><span class="p">[</span><span class="s2">&quot;pc_change_2025_vs_2024&quot;</span><span class="p">])</span>
+<span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+        <span class="n">value</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">i</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span>
+        <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+        <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;right&quot;</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -695,11 +706,11 @@ Change: -40.77%
       </div>
     </a>
     <a class="right-next"
-       href="../../airpollution/air_pollution.html"
+       href="ntl-gdp.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Air Pollution in Myanmar</p>
+        <p class="prev-next-title">Nighttime Lights and GDP Analysis</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -753,7 +764,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Nov 06, 2025.
+  Last updated on Nov 10, 2025.
   <br/>
 </p>
   </div>
