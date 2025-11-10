@@ -206,7 +206,7 @@ def plot_bar_chart(
     - pos_color: Color for positive percentage values
     - neg_color: Color for negative percentage values
     - zero_line: If True, adds a horizontal line at y=0
-    
+
     Returns:
     - tuple: (fig, ax) - matplotlib figure and axes objects for further customization
     """
