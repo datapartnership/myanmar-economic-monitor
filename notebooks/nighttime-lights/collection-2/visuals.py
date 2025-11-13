@@ -182,9 +182,10 @@ def plot_bar_chart(
     earthquake_marker: Optional[str] = None,
     bar_width: Union[int, float] = None,
     is_percentage: bool = False,
-    pos_color: str = "#2ca02c",
-    neg_color: str = "#d62728",
+    pos_color: str = "#025288",
+    neg_color: str = "#920000",
     zero_line: bool = False,
+    ax: Optional[plt.Axes] = None,
 ) -> tuple:
     """
     Create a standard bar chart using World Bank styling
@@ -199,13 +200,14 @@ def plot_bar_chart(
     - source_text: Source note for bottom of chart
     - date_col: Date column name (if None, will try to construct from year/month for time series)
     - color: Bar color (single color) or dict for custom coloring
-    - figsize: Figure size tuple
+    - figsize: Figure size tuple (only used if ax is None)
     - earthquake_marker: Optional date string for earthquake marker (e.g., '2025-03-25')
     - bar_width: Width of bars (auto-calculated if None)
     - is_percentage: If True, uses different colors for positive/negative values
     - pos_color: Color for positive percentage values
     - neg_color: Color for negative percentage values
     - zero_line: If True, adds a horizontal line at y=0
+    - ax: Optional matplotlib axes object for subplot integration. If provided, plots on this axes instead of creating new figure.
 
     Returns:
     - tuple: (fig, ax) - matplotlib figure and axes objects for further customization
@@ -271,13 +273,62 @@ def plot_bar_chart(
     # Create the plot manually with World Bank styling
     import matplotlib.pyplot as plt
 
-    # Create figure and axes
-    fig, ax = plt.subplots(figsize=figsize)
+    # Determine mode: standalone or subplot
+    if ax is None:
+        standalone_mode = True
+    else:
+        standalone_mode = False
+    
+    # Determine font family to use (same as other functions)
+    try:
+        from matplotlib import font_manager
+        available_fonts = [f.name for f in font_manager.fontManager.ttflist]
+        if 'Open Sans' not in available_fonts:
+            # Try to download and install Open Sans
+            try:
+                import urllib.request
+                import zipfile
+                import os
+                import tempfile
+                
+                # Download Open Sans from Google Fonts
+                url = "https://fonts.google.com/download?family=Open%20Sans"
+                temp_dir = tempfile.mkdtemp()
+                zip_path = os.path.join(temp_dir, "opensans.zip")
+                
+                urllib.request.urlretrieve(url, zip_path)
+                
+                # Extract fonts
+                with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                    zip_ref.extractall(temp_dir)
+                
+                # Add fonts to matplotlib
+                for font_file in os.listdir(temp_dir):
+                    if font_file.endswith('.ttf'):
+                        font_path = os.path.join(temp_dir, font_file)
+                        font_manager.fontManager.addfont(font_path)
+                
+                font_family = 'Open Sans'
+            except Exception:
+                # If download fails, fall back to sans-serif
+                font_family = 'sans-serif'
+        else:
+            font_family = 'Open Sans'
+    except Exception:
+        font_family = 'sans-serif'
+
+    # Create figure and axes based on mode
+    if standalone_mode:
+        fig, ax = plt.subplots(figsize=figsize)
+    else:
+        fig = ax.get_figure()
 
     # Apply World Bank styling manually
     # Remove top and right spines
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_linewidth(0.8)
+    ax.spines["bottom"].set_linewidth(0.8)
 
     # Set grid
     ax.grid(True, alpha=0.3, linewidth=0.5)
@@ -362,9 +413,14 @@ def plot_bar_chart(
             else:
                 ax.set_xticklabels([str(x) for x in chart_data[x_column]], rotation=45)
 
-    # Labels
-    ax.set_xlabel(xlabel)
-    ax.set_ylabel(ylabel)
+    # Labels with Open Sans font
+    ax.set_xlabel(xlabel, family=font_family, weight='bold')
+    ax.set_ylabel(ylabel, family=font_family, weight='bold')
+    
+    # Set tick label font
+    ax.tick_params(axis='both', length=4, width=0.8)
+    for label in ax.get_xticklabels() + ax.get_yticklabels():
+        label.set_fontfamily(font_family)
 
     # Set y-axis limits to show negative values BEFORE adding labels
     if is_percentage or chart_data[value_col].min() < 0:
@@ -386,22 +442,42 @@ def plot_bar_chart(
                 ha="center",
                 va="bottom" if height >= 0 else "top",
                 fontsize=8,
+                family=font_family,
             )
 
-    # Add title with World Bank styling (left-aligned with bold first word)
-    title_parts = title.split(" ", 1)
-    if len(title_parts) == 2:
-        bold_part, normal_part = title_parts
-        formatted_title = r"$\mathbf{" + bold_part + "}$ " + normal_part
+    # Add title and source note based on mode
+    if standalone_mode:
+        # Add title - simple left-aligned, no bold first word (matching other functions)
+        fig.text(
+            0.1,
+            0.98,
+            title,
+            fontsize=18,
+            fontweight="normal",
+            ha="left",
+            va="top",
+            family=font_family,
+        )
+
+        # Add source note
+        fig.text(
+            0.1, 
+            0.02, 
+            source_text, 
+            fontsize=9, 
+            style='italic',
+            color="#666666", 
+            ha="left", 
+            va="bottom",
+            family=font_family,
+        )
+        
+        # Adjust subplot to make room for title and note
+        plt.subplots_adjust(top=0.92, bottom=0.08, left=0.1, right=0.95)
     else:
-        formatted_title = r"$\mathbf{" + title + "}$"
-
-    ax.set_title(
-        formatted_title, fontsize="x-large", fontweight="normal", ha="left", x=0, pad=20
-    )
-
-    # Add source note
-    fig.text(0.1, 0.02, source_text, fontsize=9, color="gray", ha="left", va="bottom")
+        # For subplot mode, add title to axes - left aligned
+        ax.set_title(title, fontsize=12, ha='left', x=0, pad=10, 
+                    weight='normal', family=font_family)
 
     # Return figure and axes for further customization
     return fig, ax
@@ -842,16 +918,16 @@ def plot_comparative_lines(
     # Default colors and markers
     if colors is None:
         colors = [
-            "#1f77b4",
-            "#ff7f0e",
-            "#2ca02c",
-            "#d62728",
-            "#9467bd",
-            "#8c564b",
-            "#e377c2",
-            "#7f7f7f",
-            "#bcbd22",
-            "#17becf",
+            "#3587C3",  # Blue
+            "#BD6126",  # Orange
+            "#025288",  # Dark blue (positive)
+            "#920000",  # Dark red (negative)
+            "#80BDE7",  # Light blue
+            "#E3A763",  # Light orange
+            "#EFEFEF",  # Light gray
+            "#7f7f7f",  # Gray
+            "#bcbd22",  # Yellow-green
+            "#17becf",  # Cyan
         ]
     if markers is None:
         markers = ["o", "s", "^", "D", "v", "<", ">", "p", "*", "h"]
@@ -1318,7 +1394,7 @@ def plot_comparative_lines_subplots(
     marker_size: float = 6,
     alpha: float = 0.8,
     legend_location: str = "best",
-    share_axes: bool = True,
+    share_axes: bool = False,
     earthquake_marker: Optional[str] = None,
 ) -> None:
     """
@@ -1343,7 +1419,7 @@ def plot_comparative_lines_subplots(
     - marker_size: Size of markers
     - alpha: Transparency of lines
     - legend_location: Location of legend in each subplot
-    - share_axes: Whether to share x and y axes across subplots
+    - share_axes: Whether to share x and y axes across subplots (default: False)
     - earthquake_marker: Optional date string for earthquake marker (e.g., '2025-03-25')
     """
 
@@ -1403,6 +1479,44 @@ def plot_comparative_lines_subplots(
 
     # Calculate grid dimensions
     nrows = int(np.ceil(n_categories / ncols))
+    
+    # Determine font family to use (same as plot_regional_ntl_change)
+    try:
+        from matplotlib import font_manager
+        available_fonts = [f.name for f in font_manager.fontManager.ttflist]
+        if 'Open Sans' not in available_fonts:
+            # Try to download and install Open Sans
+            try:
+                import urllib.request
+                import zipfile
+                import os
+                import tempfile
+                
+                # Download Open Sans from Google Fonts
+                url = "https://fonts.google.com/download?family=Open%20Sans"
+                temp_dir = tempfile.mkdtemp()
+                zip_path = os.path.join(temp_dir, "opensans.zip")
+                
+                urllib.request.urlretrieve(url, zip_path)
+                
+                # Extract fonts
+                with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                    zip_ref.extractall(temp_dir)
+                
+                # Add fonts to matplotlib
+                for font_file in os.listdir(temp_dir):
+                    if font_file.endswith('.ttf'):
+                        font_path = os.path.join(temp_dir, font_file)
+                        font_manager.fontManager.addfont(font_path)
+                
+                font_family = 'Open Sans'
+            except Exception:
+                # If download fails, fall back to sans-serif
+                font_family = 'sans-serif'
+        else:
+            font_family = 'Open Sans'
+    except Exception:
+        font_family = 'sans-serif'
 
     # Create subplots with World Bank styling
     fig, axs = plt.subplots(
@@ -1494,35 +1608,26 @@ def plot_comparative_lines_subplots(
             )
 
         # Apply World Bank formatting to each subplot
-        axs[i].set_xlabel(xlabel, fontweight="normal")
-        axs[i].set_ylabel(ylabel, fontweight="normal")
+        axs[i].set_xlabel(xlabel, fontweight="normal", family=font_family)
+        axs[i].set_ylabel(ylabel, fontweight="normal", family=font_family)
 
-        # Set subplot title with World Bank styling (left-aligned, first word bold)
-        title_words = str(category).split()
-        if len(title_words) > 0:
-            # Create formatted title with first word bold
-            if len(title_words) > 1:
-                formatted_title = (
-                    f"$\\mathbf{{{title_words[0]}}}$ {' '.join(title_words[1:])}"
-                )
-            else:
-                formatted_title = f"$\\mathbf{{{title_words[0]}}}$"
-
-            axs[i].text(
-                0.02,
-                0.95,
-                formatted_title,
-                transform=axs[i].transAxes,
-                fontsize=12,
-                verticalalignment="top",
-                horizontalalignment="left",
-                bbox=dict(
-                    boxstyle="round,pad=0.3",
-                    facecolor="white",
-                    alpha=0.8,
-                    edgecolor="none",
-                ),
-            )
+        # Set subplot title - simple left-aligned, no bold first word
+        axs[i].text(
+            0.02,
+            0.95,
+            str(category),
+            transform=axs[i].transAxes,
+            fontsize=12,
+            verticalalignment="top",
+            horizontalalignment="left",
+            family=font_family,
+            bbox=dict(
+                boxstyle="round,pad=0.3",
+                facecolor="white",
+                alpha=0.8,
+                edgecolor="none",
+            ),
+        )
 
         # Remove top and right spines (World Bank style)
         axs[i].spines["top"].set_visible(False)
@@ -1543,6 +1648,7 @@ def plot_comparative_lines_subplots(
                 shadow=False,
                 framealpha=0.9,
                 edgecolor="#cccccc",
+                prop={'family': font_family}
             )
             legend.get_frame().set_linewidth(0.5)
 
@@ -1551,7 +1657,15 @@ def plot_comparative_lines_subplots(
             years = sorted(cat_data[x_column].dropna().unique())
             if len(years) <= 20:
                 axs[i].set_xticks(years)
-                axs[i].set_xticklabels([str(int(y)) for y in years], rotation=45)
+                axs[i].set_xticklabels([str(int(y)) for y in years], rotation=45, family=font_family)
+        elif x_column in ["month", "Month"]:
+            # Handle month axis - don't force to integer
+            months = sorted(cat_data[x_column].dropna().unique())
+            if len(months) <= 12:
+                axs[i].set_xticks(months)
+                # Keep decimal values if present, otherwise show as integer
+                axs[i].set_xticklabels([str(m) if m % 1 != 0 else str(int(m)) for m in months], 
+                                      rotation=0, family=font_family)
 
         # Add earthquake marker if specified
         if earthquake_marker is not None:
@@ -1594,27 +1708,234 @@ def plot_comparative_lines_subplots(
     for j in range(n_categories, len(axs)):
         axs[j].axis("off")
 
-    # Set overall title with World Bank formatting (left-aligned, first word bold)
-    title_words = title.split()
-    if len(title_words) > 0:
-        # Create formatted main title with first word bold using LaTeX math mode
-        if len(title_words) > 1:
-            formatted_main_title = (
-                f"$\\mathbf{{{title_words[0]}}}$ {' '.join(title_words[1:])}"
-            )
-        else:
-            formatted_main_title = f"$\\mathbf{{{title_words[0]}}}$"
-
-        fig.text(
-            0.02,
-            0.98,
-            formatted_main_title,
-            fontsize=18,
-            fontweight="normal",
-            verticalalignment="top",
-            horizontalalignment="left",
-            transform=fig.transFigure,
-        )
+    # Set overall title - simple left-aligned, no bold first word (matching plot_regional_ntl_change)
+    fig.text(
+        0.02,
+        0.98,
+        title,
+        fontsize=18,
+        fontweight="normal",
+        verticalalignment="top",
+        horizontalalignment="left",
+        transform=fig.transFigure,
+        family=font_family,
+    )
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     plt.show()
+
+
+def plot_regional_ntl_change(
+    ntl_monthly_adm1: pd.DataFrame,
+    year1: int = 2024,
+    year2: int = 2025,
+    max_month: int = 9,
+    value_col: str = "ntl_sum",
+    title: str = "Regional Nighttime Lights % Change (Jan-Sep 2025 vs Jan-Sep 2024)",
+    xlabel: str = "% Change",
+    ylabel: str = "Region (ADM1)",
+    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    figsize: tuple = (10, 8),
+    ax: Optional[plt.Axes] = None,
+) -> Optional[plt.Axes]:
+    """
+    Create a horizontal bar chart showing percentage change in nighttime lights by region
+    with World Bank styling (no decorator dependency)
+    
+    Parameters:
+    - ntl_monthly_adm1: DataFrame with columns 'date', 'ADM1_EN', and value column
+    - year1: First year for comparison (default: 2024)
+    - year2: Second year for comparison (default: 2025)
+    - max_month: Maximum month to include (default: 9 for Jan-Sep)
+    - value_col: Column name to use for values (default: 'ntl_sum')
+    - title: Chart title
+    - xlabel: X-axis label
+    - ylabel: Y-axis label
+    - source_text: Source note for bottom of chart
+    - figsize: Figure size tuple (width, height)
+    - ax: Optional matplotlib axes to plot on. If provided, returns the axes object
+    
+    Returns:
+    - Optional[plt.Axes]: The axes object if ax parameter was provided, None otherwise
+    """
+    # Prepare data
+    df = ntl_monthly_adm1.copy()
+    df["date"] = pd.to_datetime(df["date"])
+    df["month"] = df["date"].dt.month
+    df["year"] = df["date"].dt.year
+    
+    # Filter data
+    df_filtered = df[
+        (df["month"] <= max_month) & (df["year"].isin([year1, year2]))
+    ]
+    
+    # Aggregate by region and year
+    ntl_annual = (
+        df_filtered.groupby(["ADM1_EN", "year"])
+        .agg({value_col: "sum"})
+        .reset_index()
+    )
+    
+    # Pivot to wide format
+    ntl_wide = ntl_annual.pivot(
+        index="ADM1_EN", columns="year", values=value_col
+    )
+    
+    # Calculate percentage change
+    ntl_wide["pc_change"] = (
+        (ntl_wide[year2] - ntl_wide[year1])
+        / ntl_wide[year1]
+        * 100
+    )
+    
+    # Sort by percentage change
+    df_sorted = ntl_wide.sort_values(by="pc_change").reset_index()
+    
+    # Calculate font sizes based on figure height
+    if figsize[1] <= 5:
+        label_fontsize = 5
+        tick_fontsize = 4
+        title_fontsize = 7
+        axis_label_fontsize = 5
+        note_fontsize = 5
+    elif figsize[1] < 8:
+        label_fontsize = 7
+        tick_fontsize = 6
+        title_fontsize = 9
+        axis_label_fontsize = 7
+        note_fontsize = 7
+    else:
+        label_fontsize = 9
+        tick_fontsize = 8
+        title_fontsize = 12
+        axis_label_fontsize = 9
+        note_fontsize = 8
+    
+    # Create figure and axes if not provided
+    if ax is None:
+        fig, ax = plt.subplots(figsize=figsize)
+        standalone_mode = True
+    else:
+        fig = ax.get_figure()
+        standalone_mode = False
+    
+    # Determine font family to use
+    try:
+        from matplotlib import font_manager
+        available_fonts = [f.name for f in font_manager.fontManager.ttflist]
+        font_family = 'Open Sans' if 'Open Sans' in available_fonts else 'sans-serif'
+    except Exception:
+        font_family = 'sans-serif'
+    
+    # Create colors for bars (red for negative, blue for positive)
+    colors = ["#920000" if x < 0 else "#025288" for x in df_sorted["pc_change"]]
+    
+    # Create horizontal bar chart
+    ax.barh(df_sorted["ADM1_EN"], df_sorted["pc_change"], color=colors)
+    
+    # Add zero line
+    ax.axvline(0, color="#666666", linewidth=1, alpha=0.8)
+    
+    # Labels with custom font sizes and Open Sans font
+    ax.set_xlabel(xlabel, fontsize=axis_label_fontsize, fontweight='bold', family=font_family)
+    ax.set_ylabel(ylabel, fontsize=axis_label_fontsize, fontweight='bold', family=font_family)
+    
+    # Apply World Bank styling
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_linewidth(0.8)
+    ax.spines["bottom"].set_linewidth(0.8)
+    ax.grid(True, alpha=0.3, linewidth=0.5, axis='x')
+    ax.set_axisbelow(True)
+    
+    # Adjust tick label size and font
+    ax.tick_params(axis='both', labelsize=tick_fontsize, length=4, width=0.8)
+    # Set font family for tick labels
+    for label in ax.get_xticklabels() + ax.get_yticklabels():
+        label.set_fontfamily(font_family)
+    
+    # Add value labels on bars
+    for i, (region, value) in enumerate(
+        zip(df_sorted["ADM1_EN"], df_sorted["pc_change"])
+    ):
+        ax.text(
+            value + (0.5 if value > 0 else -0.5),
+            i,
+            f"{value:.1f}%",
+            va="center",
+            ha="left" if value > 0 else "right",
+            fontsize=label_fontsize,
+            family=font_family,
+        )
+    
+    # Extend x-axis limits to prevent overlap with region names
+    current_xlim = ax.get_xlim()
+    x_range = current_xlim[1] - current_xlim[0]
+    ax.set_xlim(current_xlim[0] - x_range * 0.05, current_xlim[1] + x_range * 0.05)
+    
+    # Add title and source note manually (World Bank style)
+    if standalone_mode:
+        # Ensure Open Sans font is available
+        try:
+            from matplotlib import font_manager
+            # Check if Open Sans is already available
+            available_fonts = [f.name for f in font_manager.fontManager.ttflist]
+            if 'Open Sans' not in available_fonts:
+                # Try to download and install Open Sans
+                try:
+                    import urllib.request
+                    import zipfile
+                    import os
+                    import tempfile
+                    
+                    # Download Open Sans from Google Fonts
+                    url = "https://fonts.google.com/download?family=Open%20Sans"
+                    temp_dir = tempfile.mkdtemp()
+                    zip_path = os.path.join(temp_dir, "opensans.zip")
+                    
+                    urllib.request.urlretrieve(url, zip_path)
+                    
+                    # Extract fonts
+                    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                        zip_ref.extractall(temp_dir)
+                    
+                    # Add fonts to matplotlib
+                    for font_file in os.listdir(temp_dir):
+                        if font_file.endswith('.ttf'):
+                            font_path = os.path.join(temp_dir, font_file)
+                            font_manager.fontManager.addfont(font_path)
+                    
+                    font_family = 'Open Sans'
+                except Exception as e:
+                    # If download fails, fall back to sans-serif
+                    font_family = 'sans-serif'
+            else:
+                font_family = 'Open Sans'
+        except Exception:
+            font_family = 'sans-serif'
+        
+        # Add title as figure text at top - left aligned
+        fig.text(0.125, 0.96, title, fontsize=title_fontsize, 
+                weight='normal', ha='left', va='top', family=font_family)
+        
+        # Add source note at bottom
+        fig.text(0.125, 0.02, source_text, fontsize=note_fontsize,
+                style='italic', ha='left', va='bottom', color='#666666', family=font_family)
+        
+        # Adjust subplot to make room for title and note
+        plt.subplots_adjust(top=0.90, bottom=0.08, left=0.125, right=0.95)
+        
+        return None
+    else:
+        # For subplot mode, get font family
+        try:
+            from matplotlib import font_manager
+            available_fonts = [f.name for f in font_manager.fontManager.ttflist]
+            font_family = 'Open Sans' if 'Open Sans' in available_fonts else 'sans-serif'
+        except Exception:
+            font_family = 'sans-serif'
+        
+        # Add title to axes - left aligned
+        ax.set_title(title, fontsize=title_fontsize, ha='left', x=0, pad=10, 
+                    weight='normal', family=font_family)
+        return ax
