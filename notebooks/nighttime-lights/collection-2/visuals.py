@@ -278,44 +278,45 @@ def plot_bar_chart(
         standalone_mode = True
     else:
         standalone_mode = False
-    
+
     # Determine font family to use (same as other functions)
     try:
         from matplotlib import font_manager
+
         available_fonts = [f.name for f in font_manager.fontManager.ttflist]
-        if 'Open Sans' not in available_fonts:
+        if "Open Sans" not in available_fonts:
             # Try to download and install Open Sans
             try:
                 import urllib.request
                 import zipfile
                 import os
                 import tempfile
-                
+
                 # Download Open Sans from Google Fonts
                 url = "https://fonts.google.com/download?family=Open%20Sans"
                 temp_dir = tempfile.mkdtemp()
                 zip_path = os.path.join(temp_dir, "opensans.zip")
-                
+
                 urllib.request.urlretrieve(url, zip_path)
-                
+
                 # Extract fonts
-                with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                with zipfile.ZipFile(zip_path, "r") as zip_ref:
                     zip_ref.extractall(temp_dir)
-                
+
                 # Add fonts to matplotlib
                 for font_file in os.listdir(temp_dir):
-                    if font_file.endswith('.ttf'):
+                    if font_file.endswith(".ttf"):
                         font_path = os.path.join(temp_dir, font_file)
                         font_manager.fontManager.addfont(font_path)
-                
-                font_family = 'Open Sans'
+
+                font_family = "Open Sans"
             except Exception:
                 # If download fails, fall back to sans-serif
-                font_family = 'sans-serif'
+                font_family = "sans-serif"
         else:
-            font_family = 'Open Sans'
+            font_family = "Open Sans"
     except Exception:
-        font_family = 'sans-serif'
+        font_family = "sans-serif"
 
     # Create figure and axes based on mode
     if standalone_mode:
@@ -414,11 +415,11 @@ def plot_bar_chart(
                 ax.set_xticklabels([str(x) for x in chart_data[x_column]], rotation=45)
 
     # Labels with Open Sans font
-    ax.set_xlabel(xlabel, family=font_family, weight='bold')
-    ax.set_ylabel(ylabel, family=font_family, weight='bold')
-    
+    ax.set_xlabel(xlabel, family=font_family, weight="bold")
+    ax.set_ylabel(ylabel, family=font_family, weight="bold")
+
     # Set tick label font
-    ax.tick_params(axis='both', length=4, width=0.8)
+    ax.tick_params(axis="both", length=4, width=0.8)
     for label in ax.get_xticklabels() + ax.get_yticklabels():
         label.set_fontfamily(font_family)
 
@@ -461,23 +462,30 @@ def plot_bar_chart(
 
         # Add source note
         fig.text(
-            0.1, 
-            0.02, 
-            source_text, 
-            fontsize=9, 
-            style='italic',
-            color="#666666", 
-            ha="left", 
+            0.1,
+            0.02,
+            source_text,
+            fontsize=9,
+            style="italic",
+            color="#666666",
+            ha="left",
             va="bottom",
             family=font_family,
         )
-        
+
         # Adjust subplot to make room for title and note
         plt.subplots_adjust(top=0.92, bottom=0.08, left=0.1, right=0.95)
     else:
         # For subplot mode, add title to axes - left aligned
-        ax.set_title(title, fontsize=12, ha='left', x=0, pad=10, 
-                    weight='normal', family=font_family)
+        ax.set_title(
+            title,
+            fontsize=12,
+            ha="left",
+            x=0,
+            pad=10,
+            weight="normal",
+            family=font_family,
+        )
 
     # Return figure and axes for further customization
     return fig, ax
@@ -1479,44 +1487,45 @@ def plot_comparative_lines_subplots(
 
     # Calculate grid dimensions
     nrows = int(np.ceil(n_categories / ncols))
-    
+
     # Determine font family to use (same as plot_regional_ntl_change)
     try:
         from matplotlib import font_manager
+
         available_fonts = [f.name for f in font_manager.fontManager.ttflist]
-        if 'Open Sans' not in available_fonts:
+        if "Open Sans" not in available_fonts:
             # Try to download and install Open Sans
             try:
                 import urllib.request
                 import zipfile
                 import os
                 import tempfile
-                
+
                 # Download Open Sans from Google Fonts
                 url = "https://fonts.google.com/download?family=Open%20Sans"
                 temp_dir = tempfile.mkdtemp()
                 zip_path = os.path.join(temp_dir, "opensans.zip")
-                
+
                 urllib.request.urlretrieve(url, zip_path)
-                
+
                 # Extract fonts
-                with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                with zipfile.ZipFile(zip_path, "r") as zip_ref:
                     zip_ref.extractall(temp_dir)
-                
+
                 # Add fonts to matplotlib
                 for font_file in os.listdir(temp_dir):
-                    if font_file.endswith('.ttf'):
+                    if font_file.endswith(".ttf"):
                         font_path = os.path.join(temp_dir, font_file)
                         font_manager.fontManager.addfont(font_path)
-                
-                font_family = 'Open Sans'
+
+                font_family = "Open Sans"
             except Exception:
                 # If download fails, fall back to sans-serif
-                font_family = 'sans-serif'
+                font_family = "sans-serif"
         else:
-            font_family = 'Open Sans'
+            font_family = "Open Sans"
     except Exception:
-        font_family = 'sans-serif'
+        font_family = "sans-serif"
 
     # Create subplots with World Bank styling
     fig, axs = plt.subplots(
@@ -1648,7 +1657,7 @@ def plot_comparative_lines_subplots(
                 shadow=False,
                 framealpha=0.9,
                 edgecolor="#cccccc",
-                prop={'family': font_family}
+                prop={"family": font_family},
             )
             legend.get_frame().set_linewidth(0.5)
 
@@ -1657,15 +1666,20 @@ def plot_comparative_lines_subplots(
             years = sorted(cat_data[x_column].dropna().unique())
             if len(years) <= 20:
                 axs[i].set_xticks(years)
-                axs[i].set_xticklabels([str(int(y)) for y in years], rotation=45, family=font_family)
+                axs[i].set_xticklabels(
+                    [str(int(y)) for y in years], rotation=45, family=font_family
+                )
         elif x_column in ["month", "Month"]:
             # Handle month axis - don't force to integer
             months = sorted(cat_data[x_column].dropna().unique())
             if len(months) <= 12:
                 axs[i].set_xticks(months)
                 # Keep decimal values if present, otherwise show as integer
-                axs[i].set_xticklabels([str(m) if m % 1 != 0 else str(int(m)) for m in months], 
-                                      rotation=0, family=font_family)
+                axs[i].set_xticklabels(
+                    [str(m) if m % 1 != 0 else str(int(m)) for m in months],
+                    rotation=0,
+                    family=font_family,
+                )
 
         # Add earthquake marker if specified
         if earthquake_marker is not None:
@@ -1741,7 +1755,7 @@ def plot_regional_ntl_change(
     """
     Create a horizontal bar chart showing percentage change in nighttime lights by region
     with World Bank styling (no decorator dependency)
-    
+
     Parameters:
     - ntl_monthly_adm1: DataFrame with columns 'date', 'ADM1_EN', and value column
     - year1: First year for comparison (default: 2024)
@@ -1754,7 +1768,7 @@ def plot_regional_ntl_change(
     - source_text: Source note for bottom of chart
     - figsize: Figure size tuple (width, height)
     - ax: Optional matplotlib axes to plot on. If provided, returns the axes object
-    
+
     Returns:
     - Optional[plt.Axes]: The axes object if ax parameter was provided, None otherwise
     """
@@ -1763,34 +1777,24 @@ def plot_regional_ntl_change(
     df["date"] = pd.to_datetime(df["date"])
     df["month"] = df["date"].dt.month
     df["year"] = df["date"].dt.year
-    
+
     # Filter data
-    df_filtered = df[
-        (df["month"] <= max_month) & (df["year"].isin([year1, year2]))
-    ]
-    
+    df_filtered = df[(df["month"] <= max_month) & (df["year"].isin([year1, year2]))]
+
     # Aggregate by region and year
     ntl_annual = (
-        df_filtered.groupby(["ADM1_EN", "year"])
-        .agg({value_col: "sum"})
-        .reset_index()
+        df_filtered.groupby(["ADM1_EN", "year"]).agg({value_col: "sum"}).reset_index()
     )
-    
+
     # Pivot to wide format
-    ntl_wide = ntl_annual.pivot(
-        index="ADM1_EN", columns="year", values=value_col
-    )
-    
+    ntl_wide = ntl_annual.pivot(index="ADM1_EN", columns="year", values=value_col)
+
     # Calculate percentage change
-    ntl_wide["pc_change"] = (
-        (ntl_wide[year2] - ntl_wide[year1])
-        / ntl_wide[year1]
-        * 100
-    )
-    
+    ntl_wide["pc_change"] = (ntl_wide[year2] - ntl_wide[year1]) / ntl_wide[year1] * 100
+
     # Sort by percentage change
     df_sorted = ntl_wide.sort_values(by="pc_change").reset_index()
-    
+
     # Calculate font sizes based on figure height
     if figsize[1] <= 5:
         label_fontsize = 5
@@ -1810,7 +1814,7 @@ def plot_regional_ntl_change(
         title_fontsize = 12
         axis_label_fontsize = 9
         note_fontsize = 8
-    
+
     # Create figure and axes if not provided
     if ax is None:
         fig, ax = plt.subplots(figsize=figsize)
@@ -1818,42 +1822,47 @@ def plot_regional_ntl_change(
     else:
         fig = ax.get_figure()
         standalone_mode = False
-    
+
     # Determine font family to use
     try:
         from matplotlib import font_manager
+
         available_fonts = [f.name for f in font_manager.fontManager.ttflist]
-        font_family = 'Open Sans' if 'Open Sans' in available_fonts else 'sans-serif'
+        font_family = "Open Sans" if "Open Sans" in available_fonts else "sans-serif"
     except Exception:
-        font_family = 'sans-serif'
-    
+        font_family = "sans-serif"
+
     # Create colors for bars (red for negative, blue for positive)
     colors = ["#920000" if x < 0 else "#025288" for x in df_sorted["pc_change"]]
-    
+
     # Create horizontal bar chart
     ax.barh(df_sorted["ADM1_EN"], df_sorted["pc_change"], color=colors)
-    
+
     # Add zero line
     ax.axvline(0, color="#666666", linewidth=1, alpha=0.8)
-    
+
     # Labels with custom font sizes and Open Sans font
-    ax.set_xlabel(xlabel, fontsize=axis_label_fontsize, fontweight='bold', family=font_family)
-    ax.set_ylabel(ylabel, fontsize=axis_label_fontsize, fontweight='bold', family=font_family)
-    
+    ax.set_xlabel(
+        xlabel, fontsize=axis_label_fontsize, fontweight="bold", family=font_family
+    )
+    ax.set_ylabel(
+        ylabel, fontsize=axis_label_fontsize, fontweight="bold", family=font_family
+    )
+
     # Apply World Bank styling
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.spines["left"].set_linewidth(0.8)
     ax.spines["bottom"].set_linewidth(0.8)
-    ax.grid(True, alpha=0.3, linewidth=0.5, axis='x')
+    ax.grid(True, alpha=0.3, linewidth=0.5, axis="x")
     ax.set_axisbelow(True)
-    
+
     # Adjust tick label size and font
-    ax.tick_params(axis='both', labelsize=tick_fontsize, length=4, width=0.8)
+    ax.tick_params(axis="both", labelsize=tick_fontsize, length=4, width=0.8)
     # Set font family for tick labels
     for label in ax.get_xticklabels() + ax.get_yticklabels():
         label.set_fontfamily(font_family)
-    
+
     # Add value labels on bars
     for i, (region, value) in enumerate(
         zip(df_sorted["ADM1_EN"], df_sorted["pc_change"])
@@ -1867,75 +1876,103 @@ def plot_regional_ntl_change(
             fontsize=label_fontsize,
             family=font_family,
         )
-    
+
     # Extend x-axis limits to prevent overlap with region names
     current_xlim = ax.get_xlim()
     x_range = current_xlim[1] - current_xlim[0]
     ax.set_xlim(current_xlim[0] - x_range * 0.05, current_xlim[1] + x_range * 0.05)
-    
+
     # Add title and source note manually (World Bank style)
     if standalone_mode:
         # Ensure Open Sans font is available
         try:
             from matplotlib import font_manager
+
             # Check if Open Sans is already available
             available_fonts = [f.name for f in font_manager.fontManager.ttflist]
-            if 'Open Sans' not in available_fonts:
+            if "Open Sans" not in available_fonts:
                 # Try to download and install Open Sans
                 try:
                     import urllib.request
                     import zipfile
                     import os
                     import tempfile
-                    
+
                     # Download Open Sans from Google Fonts
                     url = "https://fonts.google.com/download?family=Open%20Sans"
                     temp_dir = tempfile.mkdtemp()
                     zip_path = os.path.join(temp_dir, "opensans.zip")
-                    
+
                     urllib.request.urlretrieve(url, zip_path)
-                    
+
                     # Extract fonts
-                    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                    with zipfile.ZipFile(zip_path, "r") as zip_ref:
                         zip_ref.extractall(temp_dir)
-                    
+
                     # Add fonts to matplotlib
                     for font_file in os.listdir(temp_dir):
-                        if font_file.endswith('.ttf'):
+                        if font_file.endswith(".ttf"):
                             font_path = os.path.join(temp_dir, font_file)
                             font_manager.fontManager.addfont(font_path)
-                    
-                    font_family = 'Open Sans'
-                except Exception as e:
+
+                    font_family = "Open Sans"
+                except Exception:
                     # If download fails, fall back to sans-serif
-                    font_family = 'sans-serif'
+                    font_family = "sans-serif"
             else:
-                font_family = 'Open Sans'
+                font_family = "Open Sans"
         except Exception:
-            font_family = 'sans-serif'
-        
+            font_family = "sans-serif"
+
         # Add title as figure text at top - left aligned
-        fig.text(0.125, 0.96, title, fontsize=title_fontsize, 
-                weight='normal', ha='left', va='top', family=font_family)
-        
+        fig.text(
+            0.125,
+            0.96,
+            title,
+            fontsize=title_fontsize,
+            weight="normal",
+            ha="left",
+            va="top",
+            family=font_family,
+        )
+
         # Add source note at bottom
-        fig.text(0.125, 0.02, source_text, fontsize=note_fontsize,
-                style='italic', ha='left', va='bottom', color='#666666', family=font_family)
-        
+        fig.text(
+            0.125,
+            0.02,
+            source_text,
+            fontsize=note_fontsize,
+            style="italic",
+            ha="left",
+            va="bottom",
+            color="#666666",
+            family=font_family,
+        )
+
         # Adjust subplot to make room for title and note
         plt.subplots_adjust(top=0.90, bottom=0.08, left=0.125, right=0.95)
-        
+
         return None
     else:
         # For subplot mode, get font family
         try:
             from matplotlib import font_manager
+
             available_fonts = [f.name for f in font_manager.fontManager.ttflist]
-            font_family = 'Open Sans' if 'Open Sans' in available_fonts else 'sans-serif'
+            font_family = (
+                "Open Sans" if "Open Sans" in available_fonts else "sans-serif"
+            )
         except Exception:
-            font_family = 'sans-serif'
-        
+            font_family = "sans-serif"
+
         # Add title to axes - left aligned
-        ax.set_title(title, fontsize=title_fontsize, ha='left', x=0, pad=10, 
-                    weight='normal', family=font_family)
+        ax.set_title(
+            title,
+            fontsize=title_fontsize,
+            ha="left",
+            x=0,
+            pad=10,
+            weight="normal",
+            family=font_family,
+        )
         return ax
