@@ -1,0 +1,1747 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crop Productivity Analysis &#8212; Myanmar Economic Monitor</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/vegetation-conditions/evi-report';</script>
+    <link rel="canonical" href="https://github.com/datapartnership/myanmar-economic-monitor/notebooks/vegetation-conditions/evi-report.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Air Pollution in Myanmar" href="../airpollution/air_pollution.html" />
+    <link rel="prev" title="Nighttime Lights and GDP Analysis" href="../nighttime-lights/collection-2/ntl-gdp.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Nov 16, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Myanmar Economic Monitor - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Myanmar Economic Monitor - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Strategic Brief</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reports/myanmar-economic-monitor-strategic-brief.html">Data Lab Strategic Brief: Myanmar Economic Monitor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2023</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../relative-wealth/relative-wealth-index.html">Demographics of Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Monitoring vegetation conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/analysis-2023/README.html">Nighttime Lights 2023 Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conflict/acled.html">Armed Conflict Location and Event Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sample-indicators/sagaing-story.html">The Story of Sagaing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobility/mobility.html">Activity proxies in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobility/activity.html">Estimating Activity Using Mobility Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://raw.githack.com/datapartnership/myanmar-economic-monitor/refs/heads/main/notebooks/nighttime-lights/analysis-2024-q4/nighttime_lights.html">Nighttime Lights 2024 Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conflict/conflict-and-ntl.html">Conflict and Nighttime Lights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conflict/conflict-and-ntl-updated.html">Conflict and Nighttime Lights - Updated</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2025</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/analysis-2025/earthquake_ntl.html">Earthquake Impact on Nightlights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl_collection2.html">Nighttime Lights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl-gdp.html">Nighttime Lights and GDP Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Crop Productivity Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../airpollution/air_pollution.html">Air Pollution in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../airpollution/no2-analysis.html">NO2 and GDP Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/3-add-resources.html">Additional Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/team.html">Project Team and Acknowledgements</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor/edit/main/notebooks/vegetation-conditions/evi-report.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor/issues/new?title=Issue%20on%20page%20%2Fnotebooks/vegetation-conditions/evi-report.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/vegetation-conditions/evi-report.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Crop Productivity Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#literature-review-remote-sensing-for-agricultural-yield-prediction">Literature Review: Remote Sensing for Agricultural Yield Prediction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#satellite-and-ground-based-approaches">Satellite and Ground-Based Approaches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-other-vegetation-indices">EVI and Other Vegetation Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-influenced-on-evi">Climate influenced on EVI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-approaches-of-evi">Modelling Approaches of EVI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-assumptions">Data and Assumptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-and-methodological-notes">Assumptions and Methodological Notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-definitions-and-aggregations">Temporal Definitions and Aggregations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methodological-assumptions">Methodological Assumptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-area-analysis">Crop Area Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#satellite-derived-vs-official-harvested-area-comparison">Satellite-Derived vs. Official Harvested Area Comparison</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-seasonality">Crop Seasonality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-agricultural-gdp">EVI and Agricultural GDP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#national-level-regression-analysis">National Level Regression Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-trends-at-national-level">Temporal Trends at National Level</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-changes-in-2024-and-2025">EVI Changes in 2024 and 2025</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-level-evi-and-agricultural-gdp">State-level EVI and Agricultural GDP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-sample-prediction-2023-2025">Out-of-Sample Prediction: 2023-2025</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="crop-productivity-analysis">
+<span id="bibliography"></span><h1>Crop Productivity Analysis<a class="headerlink" href="#crop-productivity-analysis" title="Permalink to this heading">#</a></h1>
+<div class="section" id="literature-review-remote-sensing-for-agricultural-yield-prediction">
+<h2>Literature Review: Remote Sensing for Agricultural Yield Prediction<a class="headerlink" href="#literature-review-remote-sensing-for-agricultural-yield-prediction" title="Permalink to this heading">#</a></h2>
+<p>The relationship between crop yields and the Enhanced Vegetation Index (EVI), a proxy for vegetation health derived from satellite imagery, is central to agricultural forecasting <span id="id1">[<a class="reference internal" href="#id27" title="David M. Johnson. A comprehensive assessment of the correlations between field crop yields and commonly used MODIS products. International Journal of Applied Earth Observation and Geoinformation, 52:65–81, October 2016. doi:10.1016/j.jag.2016.05.010.">Johnson, 2016</a>]</span>. EVI is a spectral index that utilizes the blue, red, and near-infrared (NIR) bands of satellite data to monitor vegetation health and productivity. Relative to other vegetation indices, such as the Normalized Difference Vegetation Index (NDVI), EVI provided superior performance by offering increased sensitivity in high biomass areas and mitigating atmospheric effects <span id="id2">[<a class="reference internal" href="#id42" title="A Huete, K Didan, T Miura, E.P Rodriguez, X Gao, and L.G Ferreira. Overview of the radiometric and biophysical performance of the MODIS vegetation indices. Remote Sensing of Environment, 83(1-2):195–213, November 2002. doi:10.1016/S0034-4257(02)00096-2.">Huete <em>et al.</em>, 2002</a>]</span>. <span id="id3">Johnson [<a class="reference internal" href="#id27" title="David M. Johnson. A comprehensive assessment of the correlations between field crop yields and commonly used MODIS products. International Journal of Applied Earth Observation and Geoinformation, 52:65–81, October 2016. doi:10.1016/j.jag.2016.05.010.">2016</a>]</span> provides a comprehensive overview of the use of EVI in agricultural yield prediction, highlighting its advantages over other indices like the Normalized Difference Vegetation Index (NDVI). The study concluded that EVI was among the best overall performer in predicting crop yields, showing the highest correlation in five out of nine crops studied, excluding rice.</p>
+<p>Numerous studies have successfully utilized EVI to predict yields of various crops, including maize, soybeans, and rice. For instance, <span id="id4">Bolton and Friedl [<a class="reference internal" href="#id35" title="Douglas K. Bolton and Mark A. Friedl. Forecasting crop yield using remotely sensed vegetation indices and crop phenology metrics. Agricultural and Forest Meteorology, 173:74–84, May 2013. doi:10.1016/j.agrformet.2013.01.007.">2013</a>]</span> created a linear model using EVI to forecast soybean and maize yields in the Central United States. Their findings demonstrate that EVI exhibits a stronger correlation with maize yield and yield anomalies than other vegetation indices, and incorporating phenological data significantly enhances the model’s performance. A study in Thailand by <span id="id5">Wijesingha <em>et al.</em> [<a class="reference internal" href="#id50" title="J. S. J. Wijesingha, N. L. Deshapriya, and L. Samarakoon. Rice Crop Monitoring and Yield Assessment with MODIS 250m Gridded Vegetation Products: A Case Study of Sa Kaeo Province, Thailand. The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, XL-7/W3:121–127, April 2015. doi:10.5194/isprsarchives-XL-7-W3-121-2015.">2015</a>]</span> investigated the use of MODIS EVI for rice crop monitoring and yield assessment. Their research revealed that maximum EVI achieved a high correlation of 0.95 with rice yield, indicating its effectiveness in yield prediction. Furthermore, <span id="id6">Son <em>et al.</em> [<a class="reference internal" href="#id32" title="N. T. Son, C. F. Chen, C. R. Chen, L. Y. Chang, H. N. Duc, and L. D. Nguyen. Prediction of rice crop yield using MODIS EVI−LAI data in the Mekong Delta, Vietnam. International Journal of Remote Sensing, 34(20):7275–7292, October 2013. doi:10.1080/01431161.2013.818258.">2013</a>]</span> used MODIS EVI data for rice yield prediction in the Vietnamese Mekong Delta, reporting high correlation coefficients (R2 of 0.70 for spring-winter and 0.74 for autumn-summer in 2013, and 0.62-0.71 and 0.4-0.56 in 2014, respectively). Lastly, a study in one of the major rice-producing areas in China, Yangtze River Delta region, by <span id="id7">Shi and Huang [<a class="reference internal" href="#id57" title="Jingjing Shi and Jingfeng Huang. Monitoring Spatio-Temporal Distribution of Rice Planting Area in the Yangtze River Delta Region Using MODIS Images. Remote Sensing, 7(7):8883–8905, July 2015. doi:10.3390/rs70708883.">2015</a>]</span> further confirmed that the MODIS-based area shows higher consistency with agricultural census data during the period of 2000-2010, with less than 15% error.</p>
+<div class="section" id="satellite-and-ground-based-approaches">
+<h3>Satellite and Ground-Based Approaches<a class="headerlink" href="#satellite-and-ground-based-approaches" title="Permalink to this heading">#</a></h3>
+<p>Compared to ground-based methods, such as field interviews and crop cuttings, Remote sensing approach has several advantages on estimating crop yields:</p>
+<ul class="simple">
+<li><p>Timeliness and Rapid Assessment: Remote sensing offers real-time or near real-time assessment of crop conditions and potential yields, which is crucial for situations like natural disasters or conflicts <span id="id8">[<a class="reference internal" href="#id30" title="Paul C. Doraiswamy, Sophie Moulin, Paul W. Cook, and Alan Stern. Crop Yield Assessment from Remote Sensing. Photogrammetric Engineering &amp; Remote Sensing, 69(6):665–674, June 2003. doi:10.14358/PERS.69.6.665.">Doraiswamy <em>et al.</em>, 2003</a>]</span>.</p></li>
+<li><p>Extensive Spatial Coverage and Granularity: Satellite imagery can consistently cover large geographic areas, providing granular, field, and village-level data that can be aggregated to higher administrative levels, such as districts or provinces <span id="id9">[<a class="reference internal" href="#id45" title="George Azzari, Meha Jain, and David B. Lobell. Towards fine resolution global maps of crop yields: Testing multiple methods and satellites in three countries. Remote Sensing of Environment, 202:129–141, December 2017. doi:10.1016/j.rse.2017.04.014.">Azzari <em>et al.</em>, 2017</a>, <a class="reference internal" href="#id44" title="I. Becker-Reshef, E. Vermote, M. Lindeman, and C. Justice. A generalized regression-based model for forecasting winter wheat yields in Kansas and Ukraine using MODIS data. Remote Sensing of Environment, 114(6):1312–1323, June 2010. doi:10.1016/j.rse.2010.01.010.">Becker-Reshef <em>et al.</em>, 2010</a>]</span>.</p></li>
+<li><p>Cost-Effectiveness: Remote sensing is generally more cost-effective for collecting agricultural data over large areas compared to ground-based methods <span id="id10">[<a class="reference internal" href="#id27" title="David M. Johnson. A comprehensive assessment of the correlations between field crop yields and commonly used MODIS products. International Journal of Applied Earth Observation and Geoinformation, 52:65–81, October 2016. doi:10.1016/j.jag.2016.05.010.">Johnson, 2016</a>, <a class="reference internal" href="#id46" title="Atiqur Rahman, Leonid Roytman, Nir Y. Krakauer, Mohammad Nizamuddin, and Mitch Goldberg. Use of Vegetation Health Data for Estimation of Aus Rice Yield in Bangladesh. Sensors, 9(4):2968–2975, April 2009. doi:10.3390/s90402968.">Rahman <em>et al.</em>, 2009</a>]</span>.</p></li>
+<li><p>Accessibility in Difficult or Dangerous Areas: Remote sensing provides a reliable option for data collection in zones that are difficult, dangerous, or inaccessible for in-situ surveys, such as conflict areas <span id="id11">[<a class="reference internal" href="#id52" title="Hadi H. Jaafar and Farah A. Ahmad. Crop yield prediction from remotely sensed vegetation indices and primary productivity in arid and semi-arid lands. International Journal of Remote Sensing, 36(18):4570–4589, September 2015. doi:10.1080/01431161.2015.1084434.">Jaafar and Ahmad, 2015</a>]</span>.</p></li>
+<li><p>Independent and Consistent Data Source: Remote sensing offers an independent data source that can validate or complement ground-based data, which may be subject to biases or inaccuracies.</p></li>
+</ul>
+<p>However, remote sensing also has several limitations:</p>
+<ul class="simple">
+<li><p>Spatial Resolution Limitations: While modern sensors offer higher resolutions, coarse resolution data may not accurately reflect ground situations for small agricultural clusters, small parcels, or low-intensity agriculture <span id="id12">[<a class="reference internal" href="#id37" title="Kefyalew Sahle Kibret, Carsten Marohn, and Georg Cadisch. Use of MODIS EVI to map crop phenology, identify cropping systems, detect land use change and drought risk in Ethiopia – an application of Google Earth Engine. European Journal of Remote Sensing, 53(1):176–191, January 2020. doi:10.1080/22797254.2020.1786466.">Kibret <em>et al.</em>, 2020</a>]</span>.</p></li>
+<li><p>Significant Computational Demands: Analyzing high-resolution imagery requires massive amounts of computational power and storage, which can be expensive and time-consuming <span id="id13">[<a class="reference internal" href="#id33" title="Lillian Kay Petersen. Real-Time Prediction of Crop Yields From MODIS Relative Vegetation Health: A Continent-Wide Analysis of Africa. Remote Sensing, 10(11):1726, November 2018. Number: 11 Publisher: Multidisciplinary Digital Publishing Institute. doi:10.3390/rs10111726.">Petersen, 2018</a>]</span>.</p></li>
+<li><p>Interpretability and Bias Concerns: Satellite-derived metrics may not fully capture all determinants of crop production and may not quantitatively interpret crop growth status <span id="id14">[<a class="reference internal" href="#id38" title="Bingfang Wu, Miao Zhang, Hongwei Zeng, Fuyou Tian, Andries B Potgieter, Xingli Qin, Nana Yan, Sheng Chang, Yan Zhao, Qinghan Dong, Vijendra Boken, Dmitry Plotnikov, Huadong Guo, Fangming Wu, Hang Zhao, Bart Deronde, Laurent Tits, and Evgeny Loupian. Challenges and opportunities in remote sensing-based crop monitoring: a review. National Science Review, 10(4):nwac290, March 2023. doi:10.1093/nsr/nwac290.">Wu <em>et al.</em>, 2023</a>]</span>.</p></li>
+</ul>
+<p>While remote sensing offers timely, broad-scale, and cost-effective monitoring, particularly in data-scarce or inaccessible regions, it faces challenges with resolution limitations, computational demands, and potential biases in interpreting crop conditions.</p>
+</div>
+<div class="section" id="evi-and-other-vegetation-indices">
+<h3>EVI and Other Vegetation Indices<a class="headerlink" href="#evi-and-other-vegetation-indices" title="Permalink to this heading">#</a></h3>
+<p>Within the remote sensing approach itself, multiple vegetation indices have been utilized to enhance the accuracy of yield predictions. Compared to other vegetation indices, EVI offers several advantages over other vegetation indices:</p>
+<ul class="simple">
+<li><p>Reduced saturation: EVI does not saturate as quickly as NDVI at higher crop
+leaf area or in areas with large amounts of biomass, providing improved sensitivity in dense vegetation conditions <span id="id15">[<a class="reference internal" href="#id42" title="A Huete, K Didan, T Miura, E.P Rodriguez, X Gao, and L.G Ferreira. Overview of the radiometric and biophysical performance of the MODIS vegetation indices. Remote Sensing of Environment, 83(1-2):195–213, November 2002. doi:10.1016/S0034-4257(02)00096-2.">Huete <em>et al.</em>, 2002</a>]</span>. This is crucial as high saturation in indicators like NDVI can lead to unreliable yield estimates <span id="id16">[<a class="reference internal" href="#id32" title="N. T. Son, C. F. Chen, C. R. Chen, L. Y. Chang, H. N. Duc, and L. D. Nguyen. Prediction of rice crop yield using MODIS EVI−LAI data in the Mekong Delta, Vietnam. International Journal of Remote Sensing, 34(20):7275–7292, October 2013. doi:10.1080/01431161.2013.818258.">Son <em>et al.</em>, 2013</a>]</span>.</p></li>
+<li><p>Atmospheric and Soil Correction: EVI incorporates a soil adjustment factor and corrections for the red band due to aerosol scattering, making it more resistant to atmospheric influences and soil background noise compared to NDVI <span id="id17">[<a class="reference internal" href="#id36" title="František Jurečka, Vojtěch Lukas, Petr Hlavinka, Daniela Semerádová, Zdeněk Žalud, and Miroslav Trnka. Estimating Crop Yields at the Field Level Using Landsat and MODIS Products. Acta Universitatis Agriculturae et Silviculturae Mendelianae Brunensis, 66(5):1141–1150, October 2018. doi:10.11118/actaun201866051141.">Jurečka <em>et al.</em>, 2018</a>]</span>.</p></li>
+</ul>
+<p>On the other hand, EVI also has some limitations compared to other vegetation indices:</p>
+<ul class="simple">
+<li><p>Temporal Resolution and Latency: While EVI is disseminated at 250m resolution, it may only be available at 16-day time steps, compared to NDVI’s 8-day availability, which could introduce latency issues for real-time monitoring <span id="id18">[<a class="reference internal" href="#id27" title="David M. Johnson. A comprehensive assessment of the correlations between field crop yields and commonly used MODIS products. International Journal of Applied Earth Observation and Geoinformation, 52:65–81, October 2016. doi:10.1016/j.jag.2016.05.010.">Johnson, 2016</a>]</span>.</p></li>
+<li><p>Mixed Pixel Problems: Coarse spatial resolution of MODIS EVI (250m or 500m) can limit performance in regions with small, fragmented parcels <span id="id19">[<a class="reference internal" href="#id37" title="Kefyalew Sahle Kibret, Carsten Marohn, and Georg Cadisch. Use of MODIS EVI to map crop phenology, identify cropping systems, detect land use change and drought risk in Ethiopia – an application of Google Earth Engine. European Journal of Remote Sensing, 53(1):176–191, January 2020. doi:10.1080/22797254.2020.1786466.">Kibret <em>et al.</em>, 2020</a>]</span>.</p></li>
+</ul>
+</div>
+<div class="section" id="climate-influenced-on-evi">
+<h3>Climate influenced on EVI<a class="headerlink" href="#climate-influenced-on-evi" title="Permalink to this heading">#</a></h3>
+<p>EVI values are influenced by several environmental factors. EVI is sensitive to rainfall patterns, as the variations of phenological stages of crops, such as the timing of planting and harvesting, are closely linked to rainfall <span id="id20">[<a class="reference internal" href="#id37" title="Kefyalew Sahle Kibret, Carsten Marohn, and Georg Cadisch. Use of MODIS EVI to map crop phenology, identify cropping systems, detect land use change and drought risk in Ethiopia – an application of Google Earth Engine. European Journal of Remote Sensing, 53(1):176–191, January 2020. doi:10.1080/22797254.2020.1786466.">Kibret <em>et al.</em>, 2020</a>]</span>. Additionally, while EVI is designed to be resistant to atmospheric aerosols, cloud contamination, particularly during wet seasons, can affect vegetation greenness signals and lower the accuracy of yield predictions <span id="id21">[<a class="reference internal" href="#id32" title="N. T. Son, C. F. Chen, C. R. Chen, L. Y. Chang, H. N. Duc, and L. D. Nguyen. Prediction of rice crop yield using MODIS EVI−LAI data in the Mekong Delta, Vietnam. International Journal of Remote Sensing, 34(20):7275–7292, October 2013. doi:10.1080/01431161.2013.818258.">Son <em>et al.</em>, 2013</a>]</span>.</p>
+</div>
+<div class="section" id="modelling-approaches-of-evi">
+<h3>Modelling Approaches of EVI<a class="headerlink" href="#modelling-approaches-of-evi" title="Permalink to this heading">#</a></h3>
+<p>Several modeling approaches have been successfully employed with EVI data for crop yield prediction. Statistical models, particularly linear and quadratic regression, are widely used due to their fewer data requirements and assumptions compared to biophysical models <span id="id22">[<a class="reference internal" href="#id34" title="Zhonglin Ji, Yaozhong Pan, Xiufang Zhu, Dujuan Zhang, and Jinyun Wang. A generalized model to predict large-scale crop yields integrating satellite-based vegetation index time series and phenology metrics. Ecological Indicators, 137:108759, April 2022. doi:10.1016/j.ecolind.2022.108759.">Ji <em>et al.</em>, 2022</a>]</span>. Linear regression models are frequently applied, with EVI generally performing well and showing more linear relationships with yields than NDVI for certain crops <span id="id23">[<a class="reference internal" href="#id31" title="Gizachew Ayalew Tiruneh, Derege Tsegaye Meshesha, Enyew Adgo, Atsushi Tsunekawa, Nigussie Haregeweyn, Ayele Almaw Fenta, Tiringo Yilak Alemayehu, Temesgen Mulualem, Genetu Fekadu, Simeneh Demissie, and José Miguel Reichert. Mapping crop yield spatial variability using Sentinel-2 vegetation indices in Ethiopia. Arabian Journal of Geosciences, 16(11):631, November 2023. doi:10.1007/s12517-023-11754-x.">Tiruneh <em>et al.</em>, 2023</a>]</span>. Machine learning approaches have also proven effective, with <span id="id24">[<a class="reference internal" href="#id37" title="Kefyalew Sahle Kibret, Carsten Marohn, and Georg Cadisch. Use of MODIS EVI to map crop phenology, identify cropping systems, detect land use change and drought risk in Ethiopia – an application of Google Earth Engine. European Journal of Remote Sensing, 53(1):176–191, January 2020. doi:10.1080/22797254.2020.1786466.">Kibret <em>et al.</em>, 2020</a>]</span> applied Random Forest algorithm to MODIS EVI time series for agricultural land use classification and cropping system identification. <span id="id25">[<a class="reference internal" href="#id39" title="Hoa Thi Pham, Joseph Awange, Michael Kuhn, Binh Van Nguyen, and Luyen K. Bui. Enhancing Crop Yield Prediction Utilizing Machine Learning on Satellite-Based Vegetation Health Indices. Sensors, 22(3):719, January 2022. doi:10.3390/s22030719.">Pham <em>et al.</em>, 2022</a>]</span> demonstrated that integrating Principal Component Analysis (PCA) with machine learning methods (PCA-ML) on VCI data effectively addresses spatial variability and redundant data issues, enhancing prediction accuracy by up to 45% in rice yield forecasting for Vietnam.</p>
+</div>
+</div>
+<div class="section" id="data-and-assumptions">
+<h2>Data and Assumptions<a class="headerlink" href="#data-and-assumptions" title="Permalink to this heading">#</a></h2>
+<div class="section" id="data">
+<h3>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h3>
+<p>The following datasets are utilized in this analysis for calculating and mapping crop productivity over the past years:</p>
+<ol class="arabic simple">
+<li><p><strong>Dynamic World Dataset</strong>:</p>
+<ul class="simple">
+<li><p><strong>Source</strong>: <a class="reference external" href="https://dynamicworld.app/">Dynamic World - Google and the World Resources Institute (WRI)</a></p></li>
+<li><p><strong>Description</strong>: The Dynamic World dataset provides a near real-time, high-resolution (10-meter) global land cover classification. It is derived from Sentinel-2 imagery and utilizes machine learning models to classify land cover into nine distinct classes, including water, trees, grass, crops, built areas, bare ground, shrubs, flooded vegetation, and snow/ice. The dataset offers data with minimal latency, enabling near-immediate analysis and decision-making.</p></li>
+<li><p><strong>Spatial Resolution</strong>: 10 meters.</p></li>
+<li><p><strong>Temporal Coverage</strong>: Data is available since mid-2015, updated continuously as Sentinel-2 imagery becomes available capturing near Real-time.</p></li>
+</ul>
+</li>
+<li><p><strong>MODIS Dataset</strong>:</p>
+<ul class="simple">
+<li><p><strong>Source:</strong> NASA’s Moderate Resolution Imaging Spectroradiometer <a class="reference external" href="https://modis.gsfc.nasa.gov/data/">MODIS</a> on Terra and Aqua satellites.</p></li>
+<li><p><strong>Description:</strong> The MODIS dataset provides a wide range of data products, including land surface temperature, vegetation indices, and land cover classifications. It is widely used for monitoring and modeling land surface processes.</p></li>
+<li><p><strong>Spatial Resolution:</strong> 250 meters.</p></li>
+<li><p><strong>Temporal Coverage:</strong> Data is available from 2000 to the present, with daily to 16-day composite products.</p></li>
+</ul>
+</li>
+<li><p><strong>GDP and Agricultural Data</strong>:</p>
+<ul class="simple">
+<li><p><strong>Source</strong>: Official government statistics and international databases.</p></li>
+<li><p><strong>Description</strong>: This dataset includes regional GDP figures, agricultural output, export data, and crop production statistics. It is used to analyze the economic impact of agricultural productivity.</p></li>
+<li><p><strong>Spatial Resolution</strong>: Varies by dataset; typically available at national and subnational levels.</p></li>
+<li><p><strong>Temporal Coverage</strong>: Varies by dataset; typically available annually or quarterly.</p></li>
+</ul>
+</li>
+<li><p><strong>Administrative Boundaries</strong>:</p>
+<ul class="simple">
+<li><p><strong>Source</strong>: MIMU (Myanmar Information Management Unit)</p></li>
+<li><p><strong>Description</strong>: This dataset provides the administrative boundaries for Myanmar at various levels (national, state/region, district, township). It is used for spatial aggregation and analysis of crop productivity and economic data.</p></li>
+<li><p><strong>Spatial Resolution</strong>: Varies by administrative level.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="assumptions-and-methodological-notes">
+<h3>Assumptions and Methodological Notes<a class="headerlink" href="#assumptions-and-methodological-notes" title="Permalink to this heading">#</a></h3>
+<p>This analysis is based on the following assumptions and methodological considerations:</p>
+<div class="section" id="temporal-definitions-and-aggregations">
+<h4>Temporal Definitions and Aggregations<a class="headerlink" href="#temporal-definitions-and-aggregations" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Fiscal Year Definition</strong>: The first quarter (Q1) of each fiscal year starts in April and ends in March of the following year. This aligns with Myanmar’s fiscal calendar.</p></li>
+<li><p><strong>Quarterly Aggregations</strong>: Monthly data are aggregated into quarters (Q1: April-June, Q2: July-September, Q3: October-December, Q4: January-March).</p></li>
+</ol>
+</div>
+<div class="section" id="methodological-assumptions">
+<h4>Methodological Assumptions<a class="headerlink" href="#methodological-assumptions" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Spatial Aggregation</strong>: Regional GDP values are based on single-year reference data and are assumed to maintain consistent spatial distributions across all years in the analysis period.</p></li>
+<li><p><strong>EVI Processing</strong>:</p>
+<ul class="simple">
+<li><p>EVI values are median-aggregated within administrative boundaries to reduce noise</p></li>
+<li><p>Time series preprocessing follows TIMESAT methodology: outlier removal, interpolation, and Savitzky-Golay smoothing</p></li>
+<li><p>Seasonality parameters (start of season, middle of season, end of season) are extracted using a 20% threshold of maximum EVI</p></li>
+</ul>
+</li>
+<li><p><strong>Cropland Identification</strong>: Pixels are classified as cropland based on Dynamic World’s machine learning classification. Classification accuracy varies by region and land cover type, with potential confusion between cropland and similar land covers.R</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="crop-area-analysis">
+<h2>Crop Area Analysis<a class="headerlink" href="#crop-area-analysis" title="Permalink to this heading">#</a></h2>
+<div class="section" id="satellite-derived-vs-official-harvested-area-comparison">
+<h3>Satellite-Derived vs. Official Harvested Area Comparison<a class="headerlink" href="#satellite-derived-vs-official-harvested-area-comparison" title="Permalink to this heading">#</a></h3>
+<p>The table below compares the satellite-derived cropland area estimates with official harvested area statistics in 2023. Compared to the official harvested area, the cropland area derived from satellite data is significantly lower, with the highest difference observed in Tanintharyi region.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_d7c30">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_d7c30_level0_col0" class="col_heading level0 col0" >Admin Level 1</th>
+      <th id="T_d7c30_level0_col1" class="col_heading level0 col1" >year</th>
+      <th id="T_d7c30_level0_col2" class="col_heading level0 col2" >Actual Harvested Area (acres)</th>
+      <th id="T_d7c30_level0_col3" class="col_heading level0 col3" >Satellite-derived Crop Area (acres)</th>
+      <th id="T_d7c30_level0_col4" class="col_heading level0 col4" >Actual Rank</th>
+      <th id="T_d7c30_level0_col5" class="col_heading level0 col5" >Satellite-derived Rank</th>
+      <th id="T_d7c30_level0_col6" class="col_heading level0 col6" >Percent Difference (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_d7c30_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_d7c30_row0_col0" class="data row0 col0" >Sagaing</td>
+      <td id="T_d7c30_row0_col1" class="data row0 col1" >2023</td>
+      <td id="T_d7c30_row0_col2" class="data row0 col2" >15,737,204</td>
+      <td id="T_d7c30_row0_col3" class="data row0 col3" >3,962,762</td>
+      <td id="T_d7c30_row0_col4" class="data row0 col4" >1</td>
+      <td id="T_d7c30_row0_col5" class="data row0 col5" >1</td>
+      <td id="T_d7c30_row0_col6" class="data row0 col6" >-297.13%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_d7c30_row1_col0" class="data row1 col0" >Ayeyarwady</td>
+      <td id="T_d7c30_row1_col1" class="data row1 col1" >2023</td>
+      <td id="T_d7c30_row1_col2" class="data row1 col2" >15,600,272</td>
+      <td id="T_d7c30_row1_col3" class="data row1 col3" >3,029,523</td>
+      <td id="T_d7c30_row1_col4" class="data row1 col4" >2</td>
+      <td id="T_d7c30_row1_col5" class="data row1 col5" >2</td>
+      <td id="T_d7c30_row1_col6" class="data row1 col6" >-414.94%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_d7c30_row2_col0" class="data row2 col0" >Bago</td>
+      <td id="T_d7c30_row2_col1" class="data row2 col1" >2023</td>
+      <td id="T_d7c30_row2_col2" class="data row2 col2" >13,694,134</td>
+      <td id="T_d7c30_row2_col3" class="data row2 col3" >2,708,850</td>
+      <td id="T_d7c30_row2_col4" class="data row2 col4" >3</td>
+      <td id="T_d7c30_row2_col5" class="data row2 col5" >3</td>
+      <td id="T_d7c30_row2_col6" class="data row2 col6" >-405.53%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_d7c30_row3_col0" class="data row3 col0" >Mandalay</td>
+      <td id="T_d7c30_row3_col1" class="data row3 col1" >2023</td>
+      <td id="T_d7c30_row3_col2" class="data row3 col2" >9,080,864</td>
+      <td id="T_d7c30_row3_col3" class="data row3 col3" >2,645,312</td>
+      <td id="T_d7c30_row3_col4" class="data row3 col4" >5</td>
+      <td id="T_d7c30_row3_col5" class="data row3 col5" >4</td>
+      <td id="T_d7c30_row3_col6" class="data row3 col6" >-243.28%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_d7c30_row4_col0" class="data row4 col0" >Magway</td>
+      <td id="T_d7c30_row4_col1" class="data row4 col1" >2023</td>
+      <td id="T_d7c30_row4_col2" class="data row4 col2" >9,900,750</td>
+      <td id="T_d7c30_row4_col3" class="data row4 col3" >2,461,605</td>
+      <td id="T_d7c30_row4_col4" class="data row4 col4" >4</td>
+      <td id="T_d7c30_row4_col5" class="data row4 col5" >5</td>
+      <td id="T_d7c30_row4_col6" class="data row4 col6" >-302.21%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_d7c30_row5_col0" class="data row5 col0" >Shan</td>
+      <td id="T_d7c30_row5_col1" class="data row5 col1" >2023</td>
+      <td id="T_d7c30_row5_col2" class="data row5 col2" >7,783,626</td>
+      <td id="T_d7c30_row5_col3" class="data row5 col3" >1,762,997</td>
+      <td id="T_d7c30_row5_col4" class="data row5 col4" >6</td>
+      <td id="T_d7c30_row5_col5" class="data row5 col5" >6</td>
+      <td id="T_d7c30_row5_col6" class="data row5 col6" >-341.50%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_d7c30_row6_col0" class="data row6 col0" >Yangon</td>
+      <td id="T_d7c30_row6_col1" class="data row6 col1" >2023</td>
+      <td id="T_d7c30_row6_col2" class="data row6 col2" >4,259,410</td>
+      <td id="T_d7c30_row6_col3" class="data row6 col3" >1,120,116</td>
+      <td id="T_d7c30_row6_col4" class="data row6 col4" >7</td>
+      <td id="T_d7c30_row6_col5" class="data row6 col5" >7</td>
+      <td id="T_d7c30_row6_col6" class="data row6 col6" >-280.26%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_d7c30_row7_col0" class="data row7 col0" >Kachin</td>
+      <td id="T_d7c30_row7_col1" class="data row7 col1" >2023</td>
+      <td id="T_d7c30_row7_col2" class="data row7 col2" >1,905,864</td>
+      <td id="T_d7c30_row7_col3" class="data row7 col3" >588,800</td>
+      <td id="T_d7c30_row7_col4" class="data row7 col4" >11</td>
+      <td id="T_d7c30_row7_col5" class="data row7 col5" >8</td>
+      <td id="T_d7c30_row7_col6" class="data row7 col6" >-223.69%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_d7c30_row8_col0" class="data row8 col0" >Mon</td>
+      <td id="T_d7c30_row8_col1" class="data row8 col1" >2023</td>
+      <td id="T_d7c30_row8_col2" class="data row8 col2" >2,896,838</td>
+      <td id="T_d7c30_row8_col3" class="data row8 col3" >371,377</td>
+      <td id="T_d7c30_row8_col4" class="data row8 col4" >8</td>
+      <td id="T_d7c30_row8_col5" class="data row8 col5" >9</td>
+      <td id="T_d7c30_row8_col6" class="data row8 col6" >-680.03%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_d7c30_row9_col0" class="data row9 col0" >Nay Pyi Taw</td>
+      <td id="T_d7c30_row9_col1" class="data row9 col1" >2023</td>
+      <td id="T_d7c30_row9_col2" class="data row9 col2" >937,660</td>
+      <td id="T_d7c30_row9_col3" class="data row9 col3" >346,262</td>
+      <td id="T_d7c30_row9_col4" class="data row9 col4" >13</td>
+      <td id="T_d7c30_row9_col5" class="data row9 col5" >10</td>
+      <td id="T_d7c30_row9_col6" class="data row9 col6" >-170.80%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_d7c30_row10_col0" class="data row10 col0" >Rakhine</td>
+      <td id="T_d7c30_row10_col1" class="data row10 col1" >2023</td>
+      <td id="T_d7c30_row10_col2" class="data row10 col2" >2,647,330</td>
+      <td id="T_d7c30_row10_col3" class="data row10 col3" >320,716</td>
+      <td id="T_d7c30_row10_col4" class="data row10 col4" >10</td>
+      <td id="T_d7c30_row10_col5" class="data row10 col5" >11</td>
+      <td id="T_d7c30_row10_col6" class="data row10 col6" >-725.44%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_d7c30_row11_col0" class="data row11 col0" >Kayin</td>
+      <td id="T_d7c30_row11_col1" class="data row11 col1" >2023</td>
+      <td id="T_d7c30_row11_col2" class="data row11 col2" >2,737,796</td>
+      <td id="T_d7c30_row11_col3" class="data row11 col3" >188,712</td>
+      <td id="T_d7c30_row11_col4" class="data row11 col4" >9</td>
+      <td id="T_d7c30_row11_col5" class="data row11 col5" >12</td>
+      <td id="T_d7c30_row11_col6" class="data row11 col6" >-1350.78%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_d7c30_row12_col0" class="data row12 col0" >Kayah</td>
+      <td id="T_d7c30_row12_col1" class="data row12 col1" >2023</td>
+      <td id="T_d7c30_row12_col2" class="data row12 col2" >445,018</td>
+      <td id="T_d7c30_row12_col3" class="data row12 col3" >65,761</td>
+      <td id="T_d7c30_row12_col4" class="data row12 col4" >14</td>
+      <td id="T_d7c30_row12_col5" class="data row12 col5" >13</td>
+      <td id="T_d7c30_row12_col6" class="data row12 col6" >-576.72%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_d7c30_row13_col0" class="data row13 col0" >Tanintharyi</td>
+      <td id="T_d7c30_row13_col1" class="data row13 col1" >2023</td>
+      <td id="T_d7c30_row13_col2" class="data row13 col2" >1,608,060</td>
+      <td id="T_d7c30_row13_col3" class="data row13 col3" >36,513</td>
+      <td id="T_d7c30_row13_col4" class="data row13 col4" >12</td>
+      <td id="T_d7c30_row13_col5" class="data row13 col5" >14</td>
+      <td id="T_d7c30_row13_col6" class="data row13 col6" >-4304.06%</td>
+    </tr>
+    <tr>
+      <th id="T_d7c30_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_d7c30_row14_col0" class="data row14 col0" >Chin</td>
+      <td id="T_d7c30_row14_col1" class="data row14 col1" >2023</td>
+      <td id="T_d7c30_row14_col2" class="data row14 col2" >272,288</td>
+      <td id="T_d7c30_row14_col3" class="data row14 col3" >24,694</td>
+      <td id="T_d7c30_row14_col4" class="data row14 col4" >15</td>
+      <td id="T_d7c30_row14_col5" class="data row14 col5" >15</td>
+      <td id="T_d7c30_row14_col6" class="data row14 col6" >-1002.64%</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>When comparing regions based on cropland area rankings, the official harvested area data and satellite-based crop area demonstrate comparable patterns, particularly in the Sagaing, Ayeyarwady, and Bago regions. However, for regions with limited cropland area, the two datasets tend to diverge more noticeably.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/dfa6af509e38bb6cc28542728fc3dd9b382190663f4915c0d755860682302616.png" src="../../_images/dfa6af509e38bb6cc28542728fc3dd9b382190663f4915c0d755860682302616.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="crop-seasonality">
+<h2>Crop Seasonality<a class="headerlink" href="#crop-seasonality" title="Permalink to this heading">#</a></h2>
+<p>Using this time series dataset of EVI images, we apply several pre-processing steps to extract critical phenological parameters: start of season (SOS), middle of season (MOS), end of season (EOS), length of season (LOS), etc. This workflow is heavily inspired by the <a class="reference external" href="https://web.nateko.lu.se/timesat/timesat.asp">TIMESAT</a> software.</p>
+<p><strong>Pre-processing steps</strong></p>
+<ol class="arabic simple">
+<li><p>Remove outliers from dataset on per-pixel basis using median method: outlier if median from a moving window &lt; or &gt; standard deviation of time-series times 2.</p></li>
+<li><p>Interpolate missing values linearly</p></li>
+<li><p>Smooth data on per-pixel basis (using Savitsky Golay filter, window length of 3, and polyorder of 1)</p></li>
+</ol>
+<p><strong>Phenology Process</strong><br />
+We then extract crop seasonality metrics using the seasonal amplitude method from the phenolopy package.</p>
+<p>The chart below shows the result of this process for a single crop pixel. The blue dots represent the raw EVI values, the black line represents the processed EVI values, and the dotted lines represent season parameters extracted for that pixel: start of season, peak of season, and end of season.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-3100a06476c1493780cd90101260ce59.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-3100a06476c1493780cd90101260ce59.vega-embed details,
+  #altair-viz-3100a06476c1493780cd90101260ce59.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-3100a06476c1493780cd90101260ce59"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-3100a06476c1493780cd90101260ce59") {
+      outputDiv = document.getElementById("altair-viz-3100a06476c1493780cd90101260ce59");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"anchor": "start", "subtitleColor": "gray", "subtitleFontSize": 10}}, "layer": [{"mark": {"type": "circle", "color": "steelblue", "size": 60}, "encoding": {"tooltip": [{"field": "month", "type": "ordinal"}, {"field": "EVI", "type": "quantitative"}], "x": {"axis": {"labelExpr": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value-1]", "title": ""}, "field": "month", "scale": {"domain": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}, "type": "ordinal"}, "y": {"field": "EVI", "type": "quantitative"}}}, {"mark": {"type": "line", "color": "black"}, "encoding": {"tooltip": [{"field": "month", "type": "ordinal"}, {"field": "smoothed", "type": "quantitative"}], "x": {"field": "month", "type": "ordinal"}, "y": {"field": "smoothed", "type": "quantitative"}}}, {"mark": {"type": "rule", "color": "gray", "strokeDash": [5, 5]}, "encoding": {"x": {"field": "sos", "type": "ordinal"}}, "transform": [{"filter": "isValid(datum.sos)"}]}, {"mark": {"type": "text", "align": "center", "baseline": "bottom", "color": "gray", "dy": -5, "fontSize": 12, "fontWeight": "bold"}, "encoding": {"text": {"value": "SOS"}, "x": {"field": "sos", "type": "ordinal"}, "y": {"aggregate": "max", "field": "smoothed", "type": "quantitative"}}, "transform": [{"filter": "isValid(datum.sos)"}]}, {"mark": {"type": "rule", "color": "gray", "strokeDash": [5, 5]}, "encoding": {"x": {"field": "mos", "type": "ordinal"}}, "transform": [{"filter": "isValid(datum.mos)"}]}, {"mark": {"type": "text", "align": "center", "baseline": "bottom", "color": "gray", "dy": -10, "fontSize": 12, "fontWeight": "bold"}, "encoding": {"text": {"value": "MOS"}, "x": {"field": "mos", "type": "ordinal"}, "y": {"aggregate": "max", "field": "smoothed", "type": "quantitative"}}, "transform": [{"filter": "isValid(datum.mos)"}]}, {"mark": {"type": "rule", "color": "gray", "strokeDash": [5, 5]}, "encoding": {"text": {"value": "EOS"}, "x": {"field": "eos", "type": "ordinal"}}, "transform": [{"filter": "isValid(datum.eos)"}]}, {"mark": {"type": "text", "align": "center", "baseline": "bottom", "color": "gray", "dy": -5, "fontSize": 12, "fontWeight": "bold"}, "encoding": {"text": {"value": "EOS"}, "x": {"field": "eos", "type": "ordinal"}, "y": {"aggregate": "max", "field": "smoothed", "type": "quantitative"}}, "transform": [{"filter": "isValid(datum.eos)"}]}], "data": {"name": "data-37bf931f874cea7d3fc49ce4e2972029"}, "height": 400, "title": {"text": "Crop Seasonality based on EVI (2010-2025)", "subtitle": "Source: NASA MODIS, 250m resolution, 16-day composite"}, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-37bf931f874cea7d3fc49ce4e2972029": [{"month": 1, "EVI": 0.251, "smoothed": 0.252, "sos": 7, "mos": 10, "eos": 2}, {"month": 2, "EVI": 0.218, "smoothed": 0.215, "sos": 7, "mos": 10, "eos": 2}, {"month": 3, "EVI": 0.192, "smoothed": 0.195, "sos": 7, "mos": 10, "eos": 2}, {"month": 4, "EVI": 0.191, "smoothed": 0.191, "sos": 7, "mos": 10, "eos": 2}, {"month": 5, "EVI": 0.207, "smoothed": 0.21, "sos": 7, "mos": 10, "eos": 2}, {"month": 6, "EVI": 0.239, "smoothed": 0.23, "sos": 7, "mos": 10, "eos": 2}, {"month": 7, "EVI": 0.249, "smoothed": 0.257, "sos": 7, "mos": 10, "eos": 2}, {"month": 8, "EVI": 0.307, "smoothed": 0.314, "sos": 7, "mos": 10, "eos": 2}, {"month": 9, "EVI": 0.392, "smoothed": 0.386, "sos": 7, "mos": 10, "eos": 2}, {"month": 10, "EVI": 0.408, "smoothed": 0.397, "sos": 7, "mos": 10, "eos": 2}, {"month": 11, "EVI": 0.334, "smoothed": 0.341, "sos": 7, "mos": 10, "eos": 2}, {"month": 12, "EVI": 0.275, "smoothed": 0.28, "sos": 7, "mos": 10, "eos": 2}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Based on the phenology process, we identified the seasonality to start in July and end in February with the peak being in October. This can vary with geographic region and crop type as well, however, that has not been taken into consideration in this version.</p>
+</div>
+<div class="section" id="evi-and-agricultural-gdp">
+<h2>EVI and Agricultural GDP<a class="headerlink" href="#evi-and-agricultural-gdp" title="Permalink to this heading">#</a></h2>
+<p>In this section, we explore the relationship between EVI and agricultural GDP at national and regional levels. We employ regression analysis to quantify the strength and significance of these relationships. We also visualize the temporal trends of EVI and agricultural GDP to assess their alignment over time.</p>
+<div class="section" id="national-level-regression-analysis">
+<h3>National Level Regression Analysis<a class="headerlink" href="#national-level-regression-analysis" title="Permalink to this heading">#</a></h3>
+<p>The regression results demonstrate a strong and robust relationship between lagged EVI and agricultural GDP across all model specifications. Lagged EVI (one quarter ago) consistently emerges as the most important predictor of agricultural GDP, showing high statistical significance (p &lt; 0.01) and stable coefficients across all models that include it (Models 2-4). In the full specification model (model 4), the lagged EVI coefficient can be interpreted as: comparing two observations that differ by 1% in lagged EVI, the model predicts on average a difference of 1.15% in agricultural GDP, holding other variables constant.</p>
+<p>It is important to note that an alternative specification including rainfall was tested but suffered from severe multicollinearity with EVI measures. The high correlation is expected given that rainfall is a primary driver of vegetation greenness, leading to inflated standard errors and unstable coefficient estimates.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td></td><td colspan="1">Model 1</td><td colspan="1">Model 2</td><td colspan="1">Model 3</td><td colspan="1">Model 4</td></tr><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">EVI (log)</td><td>1.701<sup>***</sup></td><td>1.574<sup>***</sup></td><td>1.173<sup>***</sup></td><td>-0.396<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.447)</td><td>(0.332)</td><td>(0.311)</td><td>(0.147)</td></tr>
+<tr><td style="text-align:left">NTL Sum (log)</td><td></td><td></td><td>-0.937<sup>***</sup></td><td>-0.540<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.220)</td><td>(0.086)</td></tr>
+<tr><td style="text-align:left">EVI 1 Quarter Ago (log)</td><td></td><td>2.414<sup>***</sup></td><td>2.334<sup>***</sup></td><td>1.115<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.321)</td><td>(0.299)</td><td>(0.132)</td></tr>
+<tr><td style="text-align:left">Is Crop Season</td><td></td><td></td><td></td><td>1.484<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td>(0.086)</td></tr>
+
+<td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>60</td><td>59</td><td>53</td><td>53</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.200</td><td>0.591</td><td>0.705</td><td>0.959</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.186</td><td>0.576</td><td>0.687</td><td>0.956</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.749 (df=58)</td><td>0.536 (df=56)</td><td>0.466 (df=49)</td><td>0.175 (df=48)</td></tr><tr><td style="text-align: left">F Statistic</td><td>14.463<sup>***</sup> (df=1; 58)</td><td>40.380<sup>***</sup> (df=2; 56)</td><td>39.098<sup>***</sup> (df=3; 49)</td><td>283.827<sup>***</sup> (df=4; 48)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="4" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
+</div>
+<p>The figure below shows the visualize the coefficient estimates and its uncertainty. The coefficient of interest, EVI 1 Quarter Ago (log), has a 95% confidence interval of 0.849 to 1.380, indicating a strong and statistically significant positive relationship with agricultural GDP.</p>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<details class="hide above-output">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell outputs</span>
+<span class="expanded">Hide code cell outputs</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-952ed43a37cf42b0b27a8c890bffa2e1.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-952ed43a37cf42b0b27a8c890bffa2e1.vega-embed details,
+  #altair-viz-952ed43a37cf42b0b27a8c890bffa2e1.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-952ed43a37cf42b0b27a8c890bffa2e1"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-952ed43a37cf42b0b27a8c890bffa2e1") {
+      outputDiv = document.getElementById("altair-viz-952ed43a37cf42b0b27a8c890bffa2e1");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-d285a7403ed98ae579761d64a864032b"}, "mark": {"type": "rule", "color": "gray", "strokeDash": [5, 5]}, "encoding": {"x": {"field": "x", "type": "quantitative"}}}, {"data": {"name": "data-4ac5960a955706ddcad3ae6a3ec8fe76"}, "mark": {"type": "errorbar", "extent": "ci"}, "encoding": {"x": {"field": "conf_lower", "title": "Coefficient Estimate", "type": "quantitative"}, "x2": {"field": "conf_upper"}, "y": {"field": "variable_label", "sort": "-x", "title": "Variable", "type": "nominal"}}}, {"data": {"name": "data-4ac5960a955706ddcad3ae6a3ec8fe76"}, "mark": {"type": "point", "color": "#5276A7", "filled": true, "size": 100}, "encoding": {"tooltip": [{"field": "variable_label", "title": "Variable", "type": "nominal"}, {"field": "coefficient", "format": ".4f", "title": "Coefficient", "type": "quantitative"}, {"field": "std_err", "format": ".4f", "title": "Std Error", "type": "quantitative"}, {"field": "conf_lower", "format": ".4f", "title": "95% CI Lower", "type": "quantitative"}, {"field": "conf_upper", "format": ".4f", "title": "95% CI Upper", "type": "quantitative"}], "x": {"field": "coefficient", "type": "quantitative"}, "y": {"field": "variable_label", "sort": "-x", "type": "nominal"}}}], "height": 300, "title": "Model 5: Coefficient Estimates with 95% Confidence Intervals", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-d285a7403ed98ae579761d64a864032b": [{"x": 0}], "data-4ac5960a955706ddcad3ae6a3ec8fe76": [{"variable": "is_crop_season[T.True]", "coefficient": 1.4835222341048357, "conf_lower": 1.3115024428950428, "conf_upper": 1.6555420253146287, "std_err": 0.08555496743379276, "variable_label": "Is Crop Season"}, {"variable": "ntl_sum_log", "coefficient": -0.5395124917854499, "conf_lower": -0.7116173494643795, "conf_upper": -0.36740763410652033, "std_err": 0.08559727569928656, "variable_label": "NTL Sum (log)"}, {"variable": "evi_log", "coefficient": -0.39577377118612134, "conf_lower": -0.6922175985766521, "conf_upper": -0.09932994379559051, "std_err": 0.1474379303682232, "variable_label": "EVI (log)"}, {"variable": "evi_lag_1_log", "coefficient": 1.114551023993947, "conf_lower": 0.8486149019022313, "conf_upper": 1.3804871460856625, "std_err": 0.13226475921760447, "variable_label": "EVI 1 Quarter Ago (log)"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</details>
+</div>
+</div>
+<div class="section" id="temporal-trends-at-national-level">
+<h3>Temporal Trends at National Level<a class="headerlink" href="#temporal-trends-at-national-level" title="Permalink to this heading">#</a></h3>
+<p>The figure below shows agricultural GDP from 2010 to 2024 and quarterly EVI (lagged one quarter) from 2010 to mid 2025. The near-identical cyclical patterns suggest agricultural GDP materializes approximately one quarter later.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-dac4ceddcfee442485a71b6c98a175c1.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-dac4ceddcfee442485a71b6c98a175c1.vega-embed details,
+  #altair-viz-dac4ceddcfee442485a71b6c98a175c1.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-dac4ceddcfee442485a71b6c98a175c1"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-dac4ceddcfee442485a71b6c98a175c1") {
+      outputDiv = document.getElementById("altair-viz-dac4ceddcfee442485a71b6c98a175c1");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"anchor": "start", "subtitleColor": "gray", "subtitleFontSize": 10}}, "layer": [{"mark": {"type": "line", "color": "#A77652", "strokeWidth": 2}, "encoding": {"x": {"field": "date", "title": null, "type": "temporal"}, "y": {"axis": {"title": "GDP (in Kyat Millions)", "titleColor": "#A77652"}, "field": "gdp_lag_1", "type": "quantitative"}}}, {"mark": {"type": "line", "color": "#5276A7", "strokeWidth": 2}, "encoding": {"x": {"field": "date", "title": null, "type": "temporal"}, "y": {"axis": {"title": "EVI (Lag by 1 Quarter)", "titleColor": "#5276A7"}, "field": "evi", "type": "quantitative"}}}, {"mark": {"type": "rule", "color": "gray"}, "encoding": {"opacity": {"condition": [{"param": "param_1", "value": 0.3, "empty": false}], "value": 0}, "tooltip": [{"field": "date", "timeUnit": "yearquarter", "title": "Date", "type": "temporal"}, {"field": "gdp_lag_1", "format": ",.2f", "title": "GDP (Kyat Millions)", "type": "quantitative"}, {"field": "evi", "format": ".4f", "title": "EVI", "type": "quantitative"}], "x": {"field": "date", "title": null, "type": "temporal"}}, "name": "view_1"}], "data": {"name": "data-24621ef33e3f101480ea4175f256e451"}, "height": 400, "params": [{"name": "param_1", "select": {"type": "point", "fields": ["date"], "nearest": true, "on": "pointerover"}, "views": ["view_1"]}], "resolve": {"scale": {"y": "independent"}}, "title": {"text": "GDP Agriculture vs EVI Over Time with 1 Quarter Lag", "subtitle": "Source: GDP from official statistics | EVI: NASA MODIS, 250m resolution | Temporal: Quarterly, 2010-2025"}, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-24621ef33e3f101480ea4175f256e451": [{"date": "2010-01-01T00:00:00", "evi": 0.1874, "sub_group": null, "gdp": null, "gdp_lag_1": 760590.62, "gdp_lag_2": null}, {"date": "2010-04-01T00:00:00", "evi": 0.166, "sub_group": "Agriculture", "gdp": 760590.62, "gdp_lag_1": 2499761.78, "gdp_lag_2": null}, {"date": "2010-07-01T00:00:00", "evi": 0.3164, "sub_group": "Agriculture", "gdp": 2499761.78, "gdp_lag_1": 5539192.01, "gdp_lag_2": null}, {"date": "2010-10-01T00:00:00", "evi": 0.3223, "sub_group": "Agriculture", "gdp": 5539192.01, "gdp_lag_1": 5501829.04, "gdp_lag_2": 760590.6247228704}, {"date": "2011-01-01T00:00:00", "evi": 0.2246, "sub_group": "Agriculture", "gdp": 5501829.04, "gdp_lag_1": 767852.16, "gdp_lag_2": 2499761.7767354883}, {"date": "2011-04-01T00:00:00", "evi": 0.2539, "sub_group": "Agriculture", "gdp": 767852.16, "gdp_lag_1": 2566544.36, "gdp_lag_2": 5539192.00858071}, {"date": "2011-07-01T00:00:00", "evi": 0.3086, "sub_group": "Agriculture", "gdp": 2566544.36, "gdp_lag_1": 5192451.95, "gdp_lag_2": 5501829.035098574}, {"date": "2011-10-01T00:00:00", "evi": 0.3066, "sub_group": "Agriculture", "gdp": 5192451.95, "gdp_lag_1": 5313355.3, "gdp_lag_2": 767852.1569590042}, {"date": "2012-01-01T00:00:00", "evi": 0.2031, "sub_group": "Agriculture", "gdp": 5313355.3, "gdp_lag_1": 618423.95, "gdp_lag_2": 2566544.3647040087}, {"date": "2012-04-01T00:00:00", "evi": 0.1855, "sub_group": "Agriculture", "gdp": 618423.95, "gdp_lag_1": 2566434.29, "gdp_lag_2": 5192451.945335403}, {"date": "2012-07-01T00:00:00", "evi": 0.2539, "sub_group": "Agriculture", "gdp": 2566434.29, "gdp_lag_1": 5085486.77, "gdp_lag_2": 5313355.304810706}, {"date": "2012-10-01T00:00:00", "evi": 0.2949, "sub_group": "Agriculture", "gdp": 5085486.77, "gdp_lag_1": 5537157.6, "gdp_lag_2": 618423.9518755878}, {"date": "2013-01-01T00:00:00", "evi": 0.1973, "sub_group": "Agriculture", "gdp": 5537157.6, "gdp_lag_1": 653011.08, "gdp_lag_2": 2566434.2888204223}, {"date": "2013-04-01T00:00:00", "evi": 0.1992, "sub_group": "Agriculture", "gdp": 653011.08, "gdp_lag_1": 2781399.36, "gdp_lag_2": 5085486.767596542}, {"date": "2013-07-01T00:00:00", "evi": 0.2812, "sub_group": "Agriculture", "gdp": 2781399.36, "gdp_lag_1": 5092569.6, "gdp_lag_2": 5537157.600262085}, {"date": "2013-10-01T00:00:00", "evi": 0.332, "sub_group": "Agriculture", "gdp": 5092569.6, "gdp_lag_1": 5582392.87, "gdp_lag_2": 653011.0819355062}, {"date": "2014-01-01T00:00:00", "evi": 0.2138, "sub_group": "Agriculture", "gdp": 5582392.87, "gdp_lag_1": 716562.85, "gdp_lag_2": 2781399.3576038484}, {"date": "2014-04-01T00:00:00", "evi": 0.207, "sub_group": "Agriculture", "gdp": 716562.85, "gdp_lag_1": 2783426.56, "gdp_lag_2": 5092569.60354447}, {"date": "2014-07-01T00:00:00", "evi": 0.2969, "sub_group": "Agriculture", "gdp": 2783426.56, "gdp_lag_1": 5413971.36, "gdp_lag_2": 5582392.866204602}, {"date": "2014-10-01T00:00:00", "evi": 0.3321, "sub_group": "Agriculture", "gdp": 5413971.36, "gdp_lag_1": 5393345.07, "gdp_lag_2": 716562.8461629887}, {"date": "2015-01-01T00:00:00", "evi": 0.1953, "sub_group": "Agriculture", "gdp": 5393345.07, "gdp_lag_1": 788206.8, "gdp_lag_2": 2783426.5562739572}, {"date": "2015-04-01T00:00:00", "evi": 0.1992, "sub_group": "Agriculture", "gdp": 788206.8, "gdp_lag_1": 2786417.27, "gdp_lag_2": 5413971.357081818}, {"date": "2015-07-01T00:00:00", "evi": 0.3008, "sub_group": "Agriculture", "gdp": 2786417.27, "gdp_lag_1": 5306306.71, "gdp_lag_2": 5393345.0676536765}, {"date": "2015-10-01T00:00:00", "evi": 0.3144, "sub_group": "Agriculture", "gdp": 5306306.71, "gdp_lag_1": 5741025.86, "gdp_lag_2": 788206.7971305769}, {"date": "2016-01-01T00:00:00", "evi": 0.2236, "sub_group": "Agriculture", "gdp": 5741025.86, "gdp_lag_1": 622444.5, "gdp_lag_2": 2786417.272970683}, {"date": "2016-04-01T00:00:00", "evi": 0.1914, "sub_group": "Agriculture", "gdp": 622444.5, "gdp_lag_1": 2783552.2, "gdp_lag_2": 5306306.714693227}, {"date": "2016-07-01T00:00:00", "evi": 0.336, "sub_group": "Agriculture", "gdp": 2783552.2, "gdp_lag_1": 4939502.3, "gdp_lag_2": 5741025.861286542}, {"date": "2016-10-01T00:00:00", "evi": 0.3633, "sub_group": "Agriculture", "gdp": 4939502.3, "gdp_lag_1": 5014763.5, "gdp_lag_2": 622444.5000000002}, {"date": "2017-01-01T00:00:00", "evi": 0.2324, "sub_group": "Agriculture", "gdp": 5014763.5, "gdp_lag_1": 650078.6, "gdp_lag_2": 2783552.200000001}, {"date": "2017-04-01T00:00:00", "evi": 0.2246, "sub_group": "Agriculture", "gdp": 650078.6, "gdp_lag_1": 2697238.9, "gdp_lag_2": 4939502.3}, {"date": "2017-07-01T00:00:00", "evi": 0.3399, "sub_group": "Agriculture", "gdp": 2697238.9, "gdp_lag_1": 4719262.7, "gdp_lag_2": 5014763.500000002}, {"date": "2017-10-01T00:00:00", "evi": 0.3164, "sub_group": "Agriculture", "gdp": 4719262.7, "gdp_lag_1": 4753987.6, "gdp_lag_2": 650078.6000000002}, {"date": "2018-01-01T00:00:00", "evi": 0.2343, "sub_group": "Agriculture", "gdp": 4753987.6, "gdp_lag_1": 684061.0, "gdp_lag_2": 2697238.9000000004}, {"date": "2018-04-01T00:00:00", "evi": 0.2129, "sub_group": "Agriculture", "gdp": 684061.0, "gdp_lag_1": 2691392.0, "gdp_lag_2": 4719262.700000001}, {"date": "2018-07-01T00:00:00", "evi": 0.25, "sub_group": "Agriculture", "gdp": 2691392.0, "gdp_lag_1": 4875150.7, "gdp_lag_2": 4753987.6}, {"date": "2018-10-01T00:00:00", "evi": 0.3007, "sub_group": "Agriculture", "gdp": 4875150.7, "gdp_lag_1": 4805219.8, "gdp_lag_2": 684061.0}, {"date": "2019-01-01T00:00:00", "evi": 0.2314, "sub_group": "Agriculture", "gdp": 4805219.8, "gdp_lag_1": 622021.0, "gdp_lag_2": 2691392.0}, {"date": "2019-04-01T00:00:00", "evi": 0.1934, "sub_group": "Agriculture", "gdp": 622021.0, "gdp_lag_1": 2589802.5, "gdp_lag_2": 4875150.7}, {"date": "2019-07-01T00:00:00", "evi": 0.2929, "sub_group": "Agriculture", "gdp": 2589802.5, "gdp_lag_1": 5239930.9, "gdp_lag_2": 4805219.8}, {"date": "2019-10-01T00:00:00", "evi": 0.3476, "sub_group": "Agriculture", "gdp": 5239930.9, "gdp_lag_1": 4666756.5, "gdp_lag_2": 622020.9999999999}, {"date": "2020-01-01T00:00:00", "evi": 0.2207, "sub_group": "Agriculture", "gdp": 4666756.5, "gdp_lag_1": 669829.3, "gdp_lag_2": 2589802.4999999995}, {"date": "2020-04-01T00:00:00", "evi": 0.1934, "sub_group": "Agriculture", "gdp": 669829.3, "gdp_lag_1": 2378428.9, "gdp_lag_2": 5239930.899999999}, {"date": "2020-07-01T00:00:00", "evi": 0.3242, "sub_group": "Agriculture", "gdp": 2378428.9, "gdp_lag_1": 4956974.63, "gdp_lag_2": 4666756.499999998}, {"date": "2020-10-01T00:00:00", "evi": 0.3007, "sub_group": "Agriculture", "gdp": 4956974.63, "gdp_lag_1": 4200080.85, "gdp_lag_2": 669829.2999999998}, {"date": "2021-01-01T00:00:00", "evi": 0.2168, "sub_group": "Agriculture", "gdp": 4200080.85, "gdp_lag_1": 569354.9, "gdp_lag_2": 2378428.9000000013}, {"date": "2021-04-01T00:00:00", "evi": 0.207, "sub_group": "Agriculture", "gdp": 569354.9, "gdp_lag_1": 1783821.68, "gdp_lag_2": 4956974.6314}, {"date": "2021-07-01T00:00:00", "evi": 0.3476, "sub_group": "Agriculture", "gdp": 1783821.68, "gdp_lag_1": 3965579.71, "gdp_lag_2": 4200080.85}, {"date": "2021-10-01T00:00:00", "evi": 0.3321, "sub_group": "Agriculture", "gdp": 3965579.71, "gdp_lag_1": 3780072.76, "gdp_lag_2": 569354.9049999998}, {"date": "2022-01-01T00:00:00", "evi": 0.2246, "sub_group": "Agriculture", "gdp": 3780072.76, "gdp_lag_1": 512419.41, "gdp_lag_2": 1783821.675000001}, {"date": "2022-04-01T00:00:00", "evi": 0.2539, "sub_group": "Agriculture", "gdp": 512419.41, "gdp_lag_1": 1605439.51, "gdp_lag_2": 3965579.70512}, {"date": "2022-07-01T00:00:00", "evi": 0.3516, "sub_group": "Agriculture", "gdp": 1605439.51, "gdp_lag_1": 3747300.72, "gdp_lag_2": 3780072.7649999997}, {"date": "2022-10-01T00:00:00", "evi": 0.3085, "sub_group": "Agriculture", "gdp": 3747300.72, "gdp_lag_1": 3551069.13, "gdp_lag_2": 512419.41449999984}, {"date": "2023-01-01T00:00:00", "evi": 0.2109, "sub_group": "Agriculture", "gdp": 3551069.13, "gdp_lag_1": 559112.32, "gdp_lag_2": 1605439.5075000008}, {"date": "2023-04-01T00:00:00", "evi": 0.2226, "sub_group": "Agriculture", "gdp": 559112.32, "gdp_lag_1": 1669657.09, "gdp_lag_2": 3747300.719864}, {"date": "2023-07-01T00:00:00", "evi": 0.3359, "sub_group": "Agriculture", "gdp": 1669657.09, "gdp_lag_1": 3897192.75, "gdp_lag_2": 3551069.12675}, {"date": "2023-10-01T00:00:00", "evi": 0.3321, "sub_group": "Agriculture", "gdp": 3897192.75, "gdp_lag_1": 3693111.89, "gdp_lag_2": 559112.3229076708}, {"date": "2024-01-01T00:00:00", "evi": 0.2411, "sub_group": "Agriculture", "gdp": 3693111.89, "gdp_lag_1": 615023.56, "gdp_lag_2": 1669657.0878000008}, {"date": "2024-04-01T00:00:00", "evi": 0.1992, "sub_group": "Agriculture", "gdp": 615023.56, "gdp_lag_1": 1836622.8, "gdp_lag_2": 3897192.74865856}, {"date": "2024-07-01T00:00:00", "evi": 0.293, "sub_group": "Agriculture", "gdp": 1836622.8, "gdp_lag_1": 3624389.26, "gdp_lag_2": 3693111.89182}, {"date": "2024-10-01T00:00:00", "evi": 0.3555, "sub_group": "Agriculture", "gdp": 3624389.26, "gdp_lag_1": 3434594.06, "gdp_lag_2": 615023.5551984378}, {"date": "2025-01-01T00:00:00", "evi": 0.2363, "sub_group": "Agriculture", "gdp": 3434594.06, "gdp_lag_1": null, "gdp_lag_2": 1836622.7965800008}, {"date": "2025-04-01T00:00:00", "evi": 0.2304, "sub_group": null, "gdp": null, "gdp_lag_1": null, "gdp_lag_2": null}, {"date": "2025-07-01T00:00:00", "evi": 0.3203, "sub_group": null, "gdp": null, "gdp_lag_1": null, "gdp_lag_2": null}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>When these variables are aggregated at the annual level, the trends between EVI and agricultural GDP remain consistent, except after the year 2020 where agricultural GDP shows a sharper decline compared to EVI. This divergence may be attributed to external economic shocks, such as the COVID-19 pandemic and political instability, which affected the agricultural sector beyond what is captured by vegetation health alone.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-d0aaa27139d54fdf95d7bc7853f462f2.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-d0aaa27139d54fdf95d7bc7853f462f2.vega-embed details,
+  #altair-viz-d0aaa27139d54fdf95d7bc7853f462f2.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-d0aaa27139d54fdf95d7bc7853f462f2"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-d0aaa27139d54fdf95d7bc7853f462f2") {
+      outputDiv = document.getElementById("altair-viz-d0aaa27139d54fdf95d7bc7853f462f2");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"anchor": "start", "subtitleColor": "gray", "subtitleFontSize": 10}}, "layer": [{"mark": {"type": "line", "color": "#A77652", "strokeWidth": 2}, "encoding": {"x": {"field": "date", "title": null, "type": "temporal"}, "y": {"axis": {"title": "GDP (in Kyat Millions)", "titleColor": "#A77652"}, "field": "gdp", "type": "quantitative"}}}, {"mark": {"type": "line", "color": "#5276A7", "strokeWidth": 2}, "encoding": {"x": {"field": "date", "title": null, "type": "temporal"}, "y": {"axis": {"title": "EVI (Lag by 1 Quarter)", "titleColor": "#5276A7"}, "field": "evi", "type": "quantitative"}}}, {"mark": {"type": "rule", "color": "gray"}, "encoding": {"opacity": {"condition": [{"param": "param_2", "value": 0.3, "empty": false}], "value": 0}, "tooltip": [{"field": "date", "timeUnit": "year", "title": "Year", "type": "temporal"}, {"field": "gdp", "format": ",.2f", "title": "GDP (Kyat Millions)", "type": "quantitative"}, {"field": "evi", "format": ".4f", "title": "EVI", "type": "quantitative"}], "x": {"field": "date", "title": null, "type": "temporal"}}, "name": "view_2"}], "data": {"name": "data-46413882d77017394f0c5f1596cde4a3"}, "height": 400, "params": [{"name": "param_2", "select": {"type": "point", "fields": ["date"], "nearest": true, "on": "pointerover"}, "views": ["view_2"]}], "resolve": {"scale": {"y": "independent"}}, "title": {"text": "Annual GDP Agriculture vs EVI Over Time", "subtitle": "Source: GDP from official statistics | EVI: NASA MODIS, 250m resolution | Temporal: Annual, 2010-2025"}, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-46413882d77017394f0c5f1596cde4a3": [{"date": "2010-01-01T00:00:00", "gdp": 8799544.41003907, "evi": 0.2421130042517172}, {"date": "2011-01-01T00:00:00", "gdp": 14028677.50209699, "evi": 0.26174139798074386}, {"date": "2012-01-01T00:00:00", "gdp": 13583700.313103259, "evi": 0.23040999081853997}, {"date": "2013-01-01T00:00:00", "gdp": 14064137.64334591, "evi": 0.24600753381404855}, {"date": "2014-01-01T00:00:00", "gdp": 14496353.625723366, "evi": 0.24311554799217144}, {"date": "2015-01-01T00:00:00", "gdp": 14274275.852448164, "evi": 0.2421308159175904}, {"date": "2016-01-01T00:00:00", "gdp": 14086524.861286543, "evi": 0.25776306137953553}, {"date": "2017-01-01T00:00:00", "gdp": 13081343.700000003, "evi": 0.2655966112623078}, {"date": "2018-01-01T00:00:00", "gdp": 13004591.3, "evi": 0.23923199928364836}, {"date": "2019-01-01T00:00:00", "gdp": 13256974.2, "evi": 0.24603284028900024}, {"date": "2020-01-01T00:00:00", "gdp": 12671989.3314, "evi": 0.2460369968364245}, {"date": "2021-01-01T00:00:00", "gdp": 10518837.13512, "evi": 0.2450410375379416}, {"date": "2022-01-01T00:00:00", "gdp": 9645232.406864, "evi": 0.26564211203644766}, {"date": "2023-01-01T00:00:00", "gdp": 9677031.286116231, "evi": 0.28122529141470953}, {"date": "2024-01-01T00:00:00", "gdp": 9769147.499850899, "evi": 0.25684117154110997}, {"date": "2025-01-01T00:00:00", "gdp": 3434594.0593926, "evi": 0.246049889870024}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+</div>
+<div class="section" id="evi-changes-in-2024-and-2025">
+<h3>EVI Changes in 2024 and 2025<a class="headerlink" href="#evi-changes-in-2024-and-2025" title="Permalink to this heading">#</a></h3>
+<p>When we zoom in on the year of 2024 and 2025 and compare the annual median EVI during the early crop growing season (July to October), it appears that the EVI values for 2025 are higher than 2024. This may suggest a potential improvement in vegetation health and crop conditions in 2025 compared to the previous year. However, this observation should be interpreted with caution, as the EVI for 2025 only includes data up to early October, and the full growing season data is not yet available. Further monitoring and analysis will be necessary to confirm whether this trend continues through the end of the year.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>EVI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2024</td>
+      <td>0.3594</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2025</td>
+      <td>0.3868</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The pattern in the national level EVI is generally consistent across regions. The table below shows the comparison of median EVI in 2024 and 2025 during the early crop growing season (July to October) across different regions/states in Myanmar. Most of the regions/states show an increase in EVI from 2024 to 2025, while some regions/states such as Nay Pyi Taw and Rakhine show a slight decrease. But as suggested earlier, the 2025 data only covers up to early October, so these observations should be interpreted with caution until the full season data is available.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Admin Level 1</th>
+      <th>EVI 2024</th>
+      <th>EVI 2025</th>
+      <th>Difference (2025 - 2024)</th>
+      <th>Percent Difference (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Yangon</td>
+      <td>0.3096</td>
+      <td>0.3759</td>
+      <td>0.0664</td>
+      <td>21.41</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Shan (East)</td>
+      <td>0.4541</td>
+      <td>0.5119</td>
+      <td>0.0578</td>
+      <td>12.73</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mandalay</td>
+      <td>0.3359</td>
+      <td>0.3868</td>
+      <td>0.0508</td>
+      <td>15.15</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Kayin</td>
+      <td>0.1563</td>
+      <td>0.1955</td>
+      <td>0.0392</td>
+      <td>25.08</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Shan (South)</td>
+      <td>0.4033</td>
+      <td>0.4297</td>
+      <td>0.0264</td>
+      <td>6.55</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Magway</td>
+      <td>0.3516</td>
+      <td>0.3750</td>
+      <td>0.0234</td>
+      <td>6.66</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Bago (East)</td>
+      <td>0.3321</td>
+      <td>0.3554</td>
+      <td>0.0234</td>
+      <td>7.02</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Kayah</td>
+      <td>0.3992</td>
+      <td>0.4218</td>
+      <td>0.0226</td>
+      <td>5.66</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Sagaing</td>
+      <td>0.3594</td>
+      <td>0.3789</td>
+      <td>0.0195</td>
+      <td>5.43</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Shan (North)</td>
+      <td>0.4727</td>
+      <td>0.4882</td>
+      <td>0.0155</td>
+      <td>3.28</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Kachin</td>
+      <td>0.4542</td>
+      <td>0.4647</td>
+      <td>0.0105</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Bago (West)</td>
+      <td>0.4140</td>
+      <td>0.4219</td>
+      <td>0.0078</td>
+      <td>1.91</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Nay Pyi Taw</td>
+      <td>0.4326</td>
+      <td>0.4307</td>
+      <td>-0.0018</td>
+      <td>-0.44</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Rakhine</td>
+      <td>0.4257</td>
+      <td>0.4218</td>
+      <td>-0.0040</td>
+      <td>-0.92</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Chin</td>
+      <td>0.4669</td>
+      <td>0.4591</td>
+      <td>-0.0079</td>
+      <td>-1.67</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Tanintharyi</td>
+      <td>0.4765</td>
+      <td>0.4606</td>
+      <td>-0.0159</td>
+      <td>-3.34</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Mon</td>
+      <td>0.3674</td>
+      <td>0.3507</td>
+      <td>-0.0166</td>
+      <td>-4.55</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Ayeyarwady</td>
+      <td>0.2460</td>
+      <td>0.2227</td>
+      <td>-0.0233</td>
+      <td>-9.47</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="state-level-evi-and-agricultural-gdp">
+<h3>State-level EVI and Agricultural GDP<a class="headerlink" href="#state-level-evi-and-agricultural-gdp" title="Permalink to this heading">#</a></h3>
+<p>To further validate the findings from the national level regression analysis, we conduct a sensitivity analysis at the state/region level. This involves replicating the regression models using state-level EVI and agricultural GDP data to examine whether the observed relationships hold true across different geographic scales.</p>
+<p>The state-level results largely confirm the national-level findings, with lagged EVI remaining a strong and statistically significant predictor of agricultural GDP.</p>
+<p>The first 3 models (Models 1-3) <span class="math notranslate nohighlight">\(R^2\)</span> values are relatively low, indicating that these specifications explain only a small portion of the variation in agricultural GDP at the state level. However, as additional controls are introduced in Models 4 and 5, the explanatory power increases substantially, particularly when state fixed effects are included in Model 5 (<span class="math notranslate nohighlight">\(R^2\)</span> = 0.963).</p>
+<p>In model 4, after including the crop season indicator, lagged EVI becomes statistically insignificant, which contrasts with the national-level results where lagged EVI remains significant. This discrepancy may be due to regional heterogeneity in crop seasonality, as different states have varying crop calendars and planting patterns. The uniform application of a single binary crop season indicator across all regions may lead to misspecification, absorbing temporal variation in some regions while failing to capture it accurately in others.</p>
+<p>However, the inclusion of state fixed effects in Model 5 addresses these concerns. This specification achieves the highest explanatory power (<span class="math notranslate nohighlight">\(R^2\)</span> = 0.963) and reveals that lagged EVI remains positive and highly significant even after accounting for state-specific characteristics and seasonal patterns. The magnitude is smaller than at the national level, which is expected given that state-level variation is partially absorbed by the fixed effects.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="5"><em>Dependent variable: gdp_log</em></td></tr><tr><td style="text-align:left"></td><tr><td></td><td colspan="1">Model 1</td><td colspan="1">Model 2</td><td colspan="1">Model 3</td><td colspan="1">Model 4</td><td colspan="1">Model 5</td></tr><tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td><td>(5)</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">Intercept</td><td>11.544<sup>***</sup></td><td>12.278<sup>***</sup></td><td>11.503<sup>***</sup></td><td>6.824<sup>***</sup></td><td>13.923<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.176)</td><td>(0.227)</td><td>(0.466)</td><td>(0.405)</td><td>(0.174)</td></tr>
+<tr><td style="text-align:left">EVI (log)</td><td>0.096<sup></sup></td><td>-0.053<sup></sup></td><td>0.027<sup></sup></td><td>-1.055<sup>***</sup></td><td>-0.244<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.137)</td><td>(0.139)</td><td>(0.148)</td><td>(0.122)</td><td>(0.036)</td></tr>
+<tr><td style="text-align:left">EVI 1 Quarter Ago (log)</td><td></td><td>0.722<sup>***</sup></td><td>0.837<sup>***</sup></td><td>-0.099<sup></sup></td><td>0.674<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.138)</td><td>(0.148)</td><td>(0.120)</td><td>(0.035)</td></tr>
+<tr><td style="text-align:left">Is Crop Season</td><td></td><td></td><td></td><td>2.119<sup>***</sup></td><td>1.602<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td>(0.084)</td><td>(0.024)</td></tr>
+<tr><td style="text-align:left">NTL Sum (log)</td><td></td><td></td><td>0.097<sup>**</sup></td><td>0.150<sup>***</sup></td><td>-0.175<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.045)</td><td>(0.035)</td><td>(0.016)</td></tr>
+
+<td colspan="6" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>1057</td><td>1039</td><td>937</td><td>937</td><td>937</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.000</td><td>0.026</td><td>0.035</td><td>0.425</td><td>0.963</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>-0.000</td><td>0.024</td><td>0.032</td><td>0.423</td><td>0.962</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>1.264 (df=1055)</td><td>1.246 (df=1036)</td><td>1.250 (df=933)</td><td>0.965 (df=932)</td><td>0.248 (df=915)</td></tr><tr><td style="text-align: left">F Statistic</td><td>0.495<sup></sup> (df=1; 1055)</td><td>13.853<sup>***</sup> (df=2; 1036)</td><td>11.275<sup>***</sup> (df=3; 933)</td><td>172.378<sup>***</sup> (df=4; 932)</td><td>1129.960<sup>***</sup> (df=21; 915)</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="5" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
+</div>
+</div>
+<div class="section" id="out-of-sample-prediction-2023-2025">
+<h3>Out-of-Sample Prediction: 2023-2025<a class="headerlink" href="#out-of-sample-prediction-2023-2025" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Quarter</th>
+      <th>Actual GDP</th>
+      <th>Predicted GDP</th>
+      <th>Error</th>
+      <th>Error (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>51</th>
+      <td>2023-01-01</td>
+      <td>3551069.13</td>
+      <td>3710228.77</td>
+      <td>-159159.64</td>
+      <td>-4.48</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>2023-04-01</td>
+      <td>559112.32</td>
+      <td>404122.13</td>
+      <td>154990.19</td>
+      <td>27.72</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>2023-07-01</td>
+      <td>1669657.09</td>
+      <td>1938470.39</td>
+      <td>-268813.30</td>
+      <td>-16.10</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>2023-10-01</td>
+      <td>3897192.75</td>
+      <td>3434163.12</td>
+      <td>463029.63</td>
+      <td>11.88</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>2024-01-01</td>
+      <td>3693111.89</td>
+      <td>3511943.39</td>
+      <td>181168.50</td>
+      <td>4.91</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>2024-04-01</td>
+      <td>615023.56</td>
+      <td>606755.88</td>
+      <td>8267.68</td>
+      <td>1.34</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>2024-07-01</td>
+      <td>1836622.80</td>
+      <td>1697645.28</td>
+      <td>138977.51</td>
+      <td>7.57</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>2024-10-01</td>
+      <td>3624389.26</td>
+      <td>3556715.90</td>
+      <td>67673.35</td>
+      <td>1.87</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>2025-01-01</td>
+      <td>3434594.06</td>
+      <td>5389433.95</td>
+      <td>-1954839.89</td>
+      <td>-56.92</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Lastly, we evaluate the model’s predictive performance for the years 2023 to 2025, which were not included in the training dataset. The model demonstrates strong predictive accuracy, with predicted agricultural GDP values closely aligning with observed figures for 2023 and 2024. However, the model prediction on Q1 2025 diverges from expectations, potentially due to unforeseen factors affecting agricultural productivity that are not captured by EVI alone.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-7ea5cf30840f4986b48c892bca7a873f.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-7ea5cf30840f4986b48c892bca7a873f.vega-embed details,
+  #altair-viz-7ea5cf30840f4986b48c892bca7a873f.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-7ea5cf30840f4986b48c892bca7a873f"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-7ea5cf30840f4986b48c892bca7a873f") {
+      outputDiv = document.getElementById("altair-viz-7ea5cf30840f4986b48c892bca7a873f");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-a0294eb13f822b6781346042c4f23bf3"}, "mark": {"type": "line", "strokeWidth": 2}, "encoding": {"color": {"field": "gdp_type", "legend": {"title": null}, "scale": {"domain": ["Actual GDP", "Predicted GDP"], "range": ["#5276A7", "#A77652"]}, "type": "nominal"}, "strokeDash": {"field": "gdp_type", "scale": {"domain": ["Actual GDP", "Predicted GDP"], "range": [[1, 0], [5, 5]]}, "type": "nominal"}, "x": {"field": "date", "title": "Quarter", "type": "temporal"}, "y": {"field": "value", "title": "Agricultural GDP", "type": "quantitative"}}}, {"data": {"name": "data-a0294eb13f822b6781346042c4f23bf3"}, "mark": {"type": "point", "size": 100}, "encoding": {"color": {"field": "gdp_type", "legend": {"title": null}, "scale": {"domain": ["Actual GDP", "Predicted GDP"], "range": ["#5276A7", "#A77652"]}, "type": "nominal"}, "opacity": {"condition": [{"param": "param_3", "value": 1, "empty": false}], "value": 0}, "strokeDash": {"field": "gdp_type", "scale": {"domain": ["Actual GDP", "Predicted GDP"], "range": [[1, 0], [5, 5]]}, "type": "nominal"}, "x": {"field": "date", "title": "Quarter", "type": "temporal"}, "y": {"field": "value", "title": "Agricultural GDP", "type": "quantitative"}}}, {"data": {"name": "data-b36e4b3b5d2ab7e9b877cae8f4b596b8"}, "mark": {"type": "rule", "color": "gray"}, "encoding": {"opacity": {"condition": [{"param": "param_3", "value": 0.3, "empty": false}], "value": 0}, "tooltip": [{"field": "date", "timeUnit": "yearmonth", "title": "Quarter", "type": "temporal"}, {"field": "gdp", "format": ",.2f", "title": "Actual GDP", "type": "quantitative"}, {"field": "gdp_predicted", "format": ",.2f", "title": "Predicted GDP", "type": "quantitative"}, {"field": "error_pct", "format": ".2f", "title": "Error (%)", "type": "quantitative"}], "x": {"field": "date", "type": "temporal"}}, "name": "view_3"}], "height": 300, "params": [{"name": "param_3", "select": {"type": "point", "fields": ["date"], "nearest": true, "on": "pointerover"}, "views": ["view_3"]}], "title": "Out-of-Sample Predictions: 2023-2024", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-a0294eb13f822b6781346042c4f23bf3": [{"date": "2023-01-01T00:00:00", "error_pct": -4.48, "gdp_type": "Actual GDP", "value": 3551069.13}, {"date": "2023-04-01T00:00:00", "error_pct": 27.72, "gdp_type": "Actual GDP", "value": 559112.32}, {"date": "2023-07-01T00:00:00", "error_pct": -16.1, "gdp_type": "Actual GDP", "value": 1669657.09}, {"date": "2023-10-01T00:00:00", "error_pct": 11.88, "gdp_type": "Actual GDP", "value": 3897192.75}, {"date": "2024-01-01T00:00:00", "error_pct": 4.91, "gdp_type": "Actual GDP", "value": 3693111.89}, {"date": "2024-04-01T00:00:00", "error_pct": 1.34, "gdp_type": "Actual GDP", "value": 615023.56}, {"date": "2024-07-01T00:00:00", "error_pct": 7.57, "gdp_type": "Actual GDP", "value": 1836622.8}, {"date": "2024-10-01T00:00:00", "error_pct": 1.87, "gdp_type": "Actual GDP", "value": 3624389.26}, {"date": "2025-01-01T00:00:00", "error_pct": -56.92, "gdp_type": "Actual GDP", "value": 3434594.06}, {"date": "2023-01-01T00:00:00", "error_pct": -4.48, "gdp_type": "Predicted GDP", "value": 3710228.77}, {"date": "2023-04-01T00:00:00", "error_pct": 27.72, "gdp_type": "Predicted GDP", "value": 404122.13}, {"date": "2023-07-01T00:00:00", "error_pct": -16.1, "gdp_type": "Predicted GDP", "value": 1938470.39}, {"date": "2023-10-01T00:00:00", "error_pct": 11.88, "gdp_type": "Predicted GDP", "value": 3434163.12}, {"date": "2024-01-01T00:00:00", "error_pct": 4.91, "gdp_type": "Predicted GDP", "value": 3511943.39}, {"date": "2024-04-01T00:00:00", "error_pct": 1.34, "gdp_type": "Predicted GDP", "value": 606755.88}, {"date": "2024-07-01T00:00:00", "error_pct": 7.57, "gdp_type": "Predicted GDP", "value": 1697645.28}, {"date": "2024-10-01T00:00:00", "error_pct": 1.87, "gdp_type": "Predicted GDP", "value": 3556715.9}, {"date": "2025-01-01T00:00:00", "error_pct": -56.92, "gdp_type": "Predicted GDP", "value": 5389433.95}], "data-b36e4b3b5d2ab7e9b877cae8f4b596b8": [{"date": "2023-01-01T00:00:00", "gdp": 3551069.13, "gdp_predicted": 3710228.77, "error_pct": -4.48}, {"date": "2023-04-01T00:00:00", "gdp": 559112.32, "gdp_predicted": 404122.13, "error_pct": 27.72}, {"date": "2023-07-01T00:00:00", "gdp": 1669657.09, "gdp_predicted": 1938470.39, "error_pct": -16.1}, {"date": "2023-10-01T00:00:00", "gdp": 3897192.75, "gdp_predicted": 3434163.12, "error_pct": 11.88}, {"date": "2024-01-01T00:00:00", "gdp": 3693111.89, "gdp_predicted": 3511943.39, "error_pct": 4.91}, {"date": "2024-04-01T00:00:00", "gdp": 615023.56, "gdp_predicted": 606755.88, "error_pct": 1.34}, {"date": "2024-07-01T00:00:00", "gdp": 1836622.8, "gdp_predicted": 1697645.28, "error_pct": 7.57}, {"date": "2024-10-01T00:00:00", "gdp": 3624389.26, "gdp_predicted": 3556715.9, "error_pct": 1.87}, {"date": "2025-01-01T00:00:00", "gdp": 3434594.06, "gdp_predicted": 5389433.95, "error_pct": -56.92}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>The analysis demonstrates a robust relationship between lagged EVI and agricultural GDP at both national and regional levels. Lagged EVI consistently emerges as a significant predictor of agricultural GDP. However, it is important to note that while EVI effectively reflects vegetation health and crop conditions, and its predictive power on crop yield is evident, it does not capture the full complexity of agricultural GDP. Furthermore, the  the predictive relationship observed in historical data may not hold under changing conditions, such as ongoing political and economic transitions, natural disasters, climate variability and extreme weather events.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id26">
+<dl class="citation">
+<dt class="label" id="id45"><span class="brackets"><a class="fn-backref" href="#id9">AJL17</a></span></dt>
+<dd><p>George Azzari, Meha Jain, and David B. Lobell. Towards fine resolution global maps of crop yields: Testing multiple methods and satellites in three countries. <em>Remote Sensing of Environment</em>, 202:129–141, December 2017. <a class="reference external" href="https://doi.org/10.1016/j.rse.2017.04.014">doi:10.1016/j.rse.2017.04.014</a>.</p>
+</dd>
+<dt class="label" id="id44"><span class="brackets"><a class="fn-backref" href="#id9">BRVLJ10</a></span></dt>
+<dd><p>I. Becker-Reshef, E. Vermote, M. Lindeman, and C. Justice. A generalized regression-based model for forecasting winter wheat yields in Kansas and Ukraine using MODIS data. <em>Remote Sensing of Environment</em>, 114(6):1312–1323, June 2010. <a class="reference external" href="https://doi.org/10.1016/j.rse.2010.01.010">doi:10.1016/j.rse.2010.01.010</a>.</p>
+</dd>
+<dt class="label" id="id35"><span class="brackets"><a class="fn-backref" href="#id4">BF13</a></span></dt>
+<dd><p>Douglas K. Bolton and Mark A. Friedl. Forecasting crop yield using remotely sensed vegetation indices and crop phenology metrics. <em>Agricultural and Forest Meteorology</em>, 173:74–84, May 2013. <a class="reference external" href="https://doi.org/10.1016/j.agrformet.2013.01.007">doi:10.1016/j.agrformet.2013.01.007</a>.</p>
+</dd>
+<dt class="label" id="id30"><span class="brackets"><a class="fn-backref" href="#id8">DMCS03</a></span></dt>
+<dd><p>Paul C. Doraiswamy, Sophie Moulin, Paul W. Cook, and Alan Stern. Crop Yield Assessment from Remote Sensing. <em>Photogrammetric Engineering &amp; Remote Sensing</em>, 69(6):665–674, June 2003. <a class="reference external" href="https://doi.org/10.14358/PERS.69.6.665">doi:10.14358/PERS.69.6.665</a>.</p>
+</dd>
+<dt class="label" id="id42"><span class="brackets">HDM+02</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id15">2</a>)</span></dt>
+<dd><p>A Huete, K Didan, T Miura, E.P Rodriguez, X Gao, and L.G Ferreira. Overview of the radiometric and biophysical performance of the MODIS vegetation indices. <em>Remote Sensing of Environment</em>, 83(1-2):195–213, November 2002. <a class="reference external" href="https://doi.org/10.1016/S0034-4257(02)00096-2">doi:10.1016/S0034-4257(02)00096-2</a>.</p>
+</dd>
+<dt class="label" id="id52"><span class="brackets"><a class="fn-backref" href="#id11">JA15</a></span></dt>
+<dd><p>Hadi H. Jaafar and Farah A. Ahmad. Crop yield prediction from remotely sensed vegetation indices and primary productivity in arid and semi-arid lands. <em>International Journal of Remote Sensing</em>, 36(18):4570–4589, September 2015. <a class="reference external" href="https://doi.org/10.1080/01431161.2015.1084434">doi:10.1080/01431161.2015.1084434</a>.</p>
+</dd>
+<dt class="label" id="id34"><span class="brackets"><a class="fn-backref" href="#id22">JPZ+22</a></span></dt>
+<dd><p>Zhonglin Ji, Yaozhong Pan, Xiufang Zhu, Dujuan Zhang, and Jinyun Wang. A generalized model to predict large-scale crop yields integrating satellite-based vegetation index time series and phenology metrics. <em>Ecological Indicators</em>, 137:108759, April 2022. <a class="reference external" href="https://doi.org/10.1016/j.ecolind.2022.108759">doi:10.1016/j.ecolind.2022.108759</a>.</p>
+</dd>
+<dt class="label" id="id27"><span class="brackets">Joh16</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>,<a href="#id10">3</a>,<a href="#id18">4</a>)</span></dt>
+<dd><p>David M. Johnson. A comprehensive assessment of the correlations between field crop yields and commonly used MODIS products. <em>International Journal of Applied Earth Observation and Geoinformation</em>, 52:65–81, October 2016. <a class="reference external" href="https://doi.org/10.1016/j.jag.2016.05.010">doi:10.1016/j.jag.2016.05.010</a>.</p>
+</dd>
+<dt class="label" id="id36"><span class="brackets"><a class="fn-backref" href="#id17">JLH+18</a></span></dt>
+<dd><p>František Jurečka, Vojtěch Lukas, Petr Hlavinka, Daniela Semerádová, Zdeněk Žalud, and Miroslav Trnka. Estimating Crop Yields at the Field Level Using Landsat and MODIS Products. <em>Acta Universitatis Agriculturae et Silviculturae Mendelianae Brunensis</em>, 66(5):1141–1150, October 2018. <a class="reference external" href="https://doi.org/10.11118/actaun201866051141">doi:10.11118/actaun201866051141</a>.</p>
+</dd>
+<dt class="label" id="id37"><span class="brackets">KMC20</span><span class="fn-backref">(<a href="#id12">1</a>,<a href="#id19">2</a>,<a href="#id20">3</a>,<a href="#id24">4</a>)</span></dt>
+<dd><p>Kefyalew Sahle Kibret, Carsten Marohn, and Georg Cadisch. Use of MODIS EVI to map crop phenology, identify cropping systems, detect land use change and drought risk in Ethiopia – an application of Google Earth Engine. <em>European Journal of Remote Sensing</em>, 53(1):176–191, January 2020. <a class="reference external" href="https://doi.org/10.1080/22797254.2020.1786466">doi:10.1080/22797254.2020.1786466</a>.</p>
+</dd>
+<dt class="label" id="id33"><span class="brackets"><a class="fn-backref" href="#id13">Pet18</a></span></dt>
+<dd><p>Lillian Kay Petersen. Real-Time Prediction of Crop Yields From MODIS Relative Vegetation Health: A Continent-Wide Analysis of Africa. <em>Remote Sensing</em>, 10(11):1726, November 2018. Number: 11 Publisher: Multidisciplinary Digital Publishing Institute. <a class="reference external" href="https://doi.org/10.3390/rs10111726">doi:10.3390/rs10111726</a>.</p>
+</dd>
+<dt class="label" id="id39"><span class="brackets"><a class="fn-backref" href="#id25">PAK+22</a></span></dt>
+<dd><p>Hoa Thi Pham, Joseph Awange, Michael Kuhn, Binh Van Nguyen, and Luyen K. Bui. Enhancing Crop Yield Prediction Utilizing Machine Learning on Satellite-Based Vegetation Health Indices. <em>Sensors</em>, 22(3):719, January 2022. <a class="reference external" href="https://doi.org/10.3390/s22030719">doi:10.3390/s22030719</a>.</p>
+</dd>
+<dt class="label" id="id46"><span class="brackets"><a class="fn-backref" href="#id10">RRK+09</a></span></dt>
+<dd><p>Atiqur Rahman, Leonid Roytman, Nir Y. Krakauer, Mohammad Nizamuddin, and Mitch Goldberg. Use of Vegetation Health Data for Estimation of Aus Rice Yield in Bangladesh. <em>Sensors</em>, 9(4):2968–2975, April 2009. <a class="reference external" href="https://doi.org/10.3390/s90402968">doi:10.3390/s90402968</a>.</p>
+</dd>
+<dt class="label" id="id57"><span class="brackets"><a class="fn-backref" href="#id7">SH15</a></span></dt>
+<dd><p>Jingjing Shi and Jingfeng Huang. Monitoring Spatio-Temporal Distribution of Rice Planting Area in the Yangtze River Delta Region Using MODIS Images. <em>Remote Sensing</em>, 7(7):8883–8905, July 2015. <a class="reference external" href="https://doi.org/10.3390/rs70708883">doi:10.3390/rs70708883</a>.</p>
+</dd>
+<dt class="label" id="id32"><span class="brackets">SCC+13</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id16">2</a>,<a href="#id21">3</a>)</span></dt>
+<dd><p>N. T. Son, C. F. Chen, C. R. Chen, L. Y. Chang, H. N. Duc, and L. D. Nguyen. Prediction of rice crop yield using MODIS EVI−LAI data in the Mekong Delta, Vietnam. <em>International Journal of Remote Sensing</em>, 34(20):7275–7292, October 2013. <a class="reference external" href="https://doi.org/10.1080/01431161.2013.818258">doi:10.1080/01431161.2013.818258</a>.</p>
+</dd>
+<dt class="label" id="id31"><span class="brackets"><a class="fn-backref" href="#id23">TMA+23</a></span></dt>
+<dd><p>Gizachew Ayalew Tiruneh, Derege Tsegaye Meshesha, Enyew Adgo, Atsushi Tsunekawa, Nigussie Haregeweyn, Ayele Almaw Fenta, Tiringo Yilak Alemayehu, Temesgen Mulualem, Genetu Fekadu, Simeneh Demissie, and José Miguel Reichert. Mapping crop yield spatial variability using Sentinel-2 vegetation indices in Ethiopia. <em>Arabian Journal of Geosciences</em>, 16(11):631, November 2023. <a class="reference external" href="https://doi.org/10.1007/s12517-023-11754-x">doi:10.1007/s12517-023-11754-x</a>.</p>
+</dd>
+<dt class="label" id="id50"><span class="brackets"><a class="fn-backref" href="#id5">WDS15</a></span></dt>
+<dd><p>J. S. J. Wijesingha, N. L. Deshapriya, and L. Samarakoon. Rice Crop Monitoring and Yield Assessment with MODIS 250m Gridded Vegetation Products: A Case Study of Sa Kaeo Province, Thailand. <em>The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences</em>, XL-7/W3:121–127, April 2015. <a class="reference external" href="https://doi.org/10.5194/isprsarchives-XL-7-W3-121-2015">doi:10.5194/isprsarchives-XL-7-W3-121-2015</a>.</p>
+</dd>
+<dt class="label" id="id38"><span class="brackets"><a class="fn-backref" href="#id14">WZZ+23</a></span></dt>
+<dd><p>Bingfang Wu, Miao Zhang, Hongwei Zeng, Fuyou Tian, Andries B Potgieter, Xingli Qin, Nana Yan, Sheng Chang, Yan Zhao, Qinghan Dong, Vijendra Boken, Dmitry Plotnikov, Huadong Guo, Fangming Wu, Hang Zhao, Bart Deronde, Laurent Tits, and Evgeny Loupian. Challenges and opportunities in remote sensing-based crop monitoring: a review. <em>National Science Review</em>, 10(4):nwac290, March 2023. <a class="reference external" href="https://doi.org/10.1093/nsr/nwac290">doi:10.1093/nsr/nwac290</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/vegetation-conditions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../nighttime-lights/collection-2/ntl-gdp.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Nighttime Lights and GDP Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../airpollution/air_pollution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Air Pollution in Myanmar</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#literature-review-remote-sensing-for-agricultural-yield-prediction">Literature Review: Remote Sensing for Agricultural Yield Prediction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#satellite-and-ground-based-approaches">Satellite and Ground-Based Approaches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-other-vegetation-indices">EVI and Other Vegetation Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-influenced-on-evi">Climate influenced on EVI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-approaches-of-evi">Modelling Approaches of EVI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-assumptions">Data and Assumptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-and-methodological-notes">Assumptions and Methodological Notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-definitions-and-aggregations">Temporal Definitions and Aggregations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methodological-assumptions">Methodological Assumptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-area-analysis">Crop Area Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#satellite-derived-vs-official-harvested-area-comparison">Satellite-Derived vs. Official Harvested Area Comparison</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-seasonality">Crop Seasonality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-agricultural-gdp">EVI and Agricultural GDP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#national-level-regression-analysis">National Level Regression Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-trends-at-national-level">Temporal Trends at National Level</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-changes-in-2024-and-2025">EVI Changes in 2024 and 2025</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-level-evi-and-agricultural-gdp">State-level EVI and Agricultural GDP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-sample-prediction-2023-2025">Out-of-Sample Prediction: 2023-2025</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By World Bank
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Nov 16, 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+ Country borders or names do not necessarily reflect the World Bank Group’s official position. All maps are for illustrative purposes and do not imply the expression of any opinion on the part of the World Bank, concerning the legal status of any country or territory or concerning the delimitation of frontiers or boundaries
+</div>
+<div>
+    <b>All content (unless otherwise specified) is subject to the <a href="https://www.mozilla.org/en-US/MPL">Mozilla Public License.</a></b>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
