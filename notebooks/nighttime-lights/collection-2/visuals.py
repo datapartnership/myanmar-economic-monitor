@@ -86,9 +86,9 @@ def plot_line_chart(
     if value_col is None:
         value_col = pick_value_column(plot_df)
 
-    assert (
-        year_col is not None and value_col is not None
-    ), f"Could not determine columns. x={year_col}, value={value_col}"
+    assert year_col is not None and value_col is not None, (
+        f"Could not determine columns. x={year_col}, value={value_col}"
+    )
 
     # Aggregate data
     agg_data = (
