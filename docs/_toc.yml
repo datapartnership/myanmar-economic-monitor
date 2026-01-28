@@ -33,7 +33,7 @@ parts:
       - file: notebooks/airpollution/air_pollution.ipynb
       - file: notebooks/airpollution/no2-analysis.ipynb
   - caption: Myanmar Update 2026
-    chapters: 
+    chapters:
       - file: notebooks/new-construction-activity/new-construction.md
   - caption: Additional Resources
     chapters:
