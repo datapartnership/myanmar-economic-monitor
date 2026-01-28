@@ -32,6 +32,9 @@ parts:
       - file: notebooks/vegetation-conditions/evi-report.ipynb
       - file: notebooks/airpollution/air_pollution.ipynb
       - file: notebooks/airpollution/no2-analysis.ipynb
+  - caption: Myanmar Update 2026
+    chapter: 
+      - file: notebooks/new-construction-activity/new-construction.md
   - caption: Additional Resources
     chapters:
       - file: docs/3-add-resources.md
