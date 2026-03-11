@@ -35,7 +35,7 @@ parts:
       # - file: notebooks/airpollution/no2-exploratory-v2.ipynb
       # - file: notebooks/airpollution/no2-omi.ipynb
   - caption: Myanmar Update 2026
-    chapters: 
+    chapters:
       - file: notebooks/new-construction-activity/new-construction.md
   - caption: Additional Resources
     chapters:
