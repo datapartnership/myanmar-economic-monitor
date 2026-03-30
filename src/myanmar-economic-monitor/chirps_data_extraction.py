@@ -126,7 +126,7 @@ def get_chirps_rainfall_by_region(
 
     for idx, region in regions_gdf.iterrows():
         region_name = region[admin_column]
-        logger.info(f"Processing region {idx+1}/{len(regions_gdf)}: {region_name}")
+        logger.info(f"Processing region {idx + 1}/{len(regions_gdf)}: {region_name}")
 
         # Convert geometry to GEE format
         geom_json = region.geometry.__geo_interface__
