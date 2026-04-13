@@ -1,5 +1,7 @@
 import pandas as pd
+import geopandas as gpd
 from typing import Optional, Union, Literal
+from datetime import datetime
 
 _DEF_EXCLUDE = {
     "year",
@@ -801,3 +803,164 @@ def subnational_monthly_pct_change(
             "pct_change",
         ]
     ]
+
+
+# ---------------------------------------------------------------------------
+# Data-preparation helpers (called from notebook, keep notebook visual-only)
+# ---------------------------------------------------------------------------
+
+
+def prepare_ntl_corrected(ntl_monthly_adm0, max_month, value_cols=None):
+    """Filter monthly data to max_month and aggregate by year-start."""
+    df = ntl_monthly_adm0.copy()
+    df["date"] = pd.to_datetime(df["date"])
+    df["year_col"] = df["date"].dt.year
+    df["month"] = df["date"].dt.month
+    if value_cols is None:
+        value_cols = ["ntl_sum", "ntl_ind_5km_sum", "ntl_noind_5km_sum"]
+    filtered = df[df["month"] <= max_month]
+    corrected = (
+        filtered.groupby([pd.Grouper(key="date", freq="YS"), "year_col"])[value_cols]
+        .sum()
+        .reset_index()
+    )
+    return corrected
+
+
+def prepare_annual_yoy_with_partial(
+    ntl_annual_adm0, ntl_corrected, value_col, date_col="date"
+):
+    """Compute full-year and partial-year YoY, merge into one DataFrame."""
+    date_cand = date_col if date_col in ntl_annual_adm0.columns else None
+
+    full_yoy = annual_ntl_pct_change(
+        ntl_annual_adm0,
+        year_col="year",
+        value_col=value_col,
+        date_col=date_cand,
+        mode="yoy",
+    )
+
+    partial_yoy = annual_ntl_pct_change(
+        ntl_corrected,
+        year_col="year",
+        value_col=value_col,
+        date_col="date",
+        mode="yoy",
+    )
+
+    merged = full_yoy.merge(partial_yoy, on=["year"], how="right")
+    # Build rename map dynamically based on value_col suffix
+    rename_map = {
+        "pct_change_x": "pct_change_full_year",
+        "pct_change_y": "pct_change_9months",
+    }
+    # Also rename value columns with _x suffix
+    for c in merged.columns:
+        if c.endswith("_x") and c not in rename_map:
+            rename_map[c] = "ntl_sum"
+    merged.rename(columns=rename_map, inplace=True)
+    return merged
+
+
+def prepare_monthly_comparison(ntl_monthly_adm0, years):
+    """Prepare monthly comparison data for multi-year line charts."""
+    df = ntl_monthly_adm0.copy()
+    df["date"] = pd.to_datetime(df["date"])
+    df["year_col"] = df["date"].dt.year
+    df["month"] = df["date"].dt.month
+    comparison = df[df["year_col"].isin(years)].copy()
+    comparison["year_col"] = comparison["year_col"].astype(str)
+    return comparison
+
+
+def prepare_industrial_comparison_melted(ntl_monthly_adm0, years):
+    """Melt industrial vs non-industrial for side-by-side comparative plots."""
+    df = ntl_monthly_adm0.copy()
+    df["date"] = pd.to_datetime(df["date"])
+    df["month"] = df["date"].dt.month
+    df["year_col"] = df["date"].dt.year
+
+    df1 = df[["date", "ntl_ind_5km_sum"]].copy()
+    df1.rename(columns={"ntl_ind_5km_sum": "ntl_sum"}, inplace=True)
+    df1["type"] = "Industrial Zones (5km)"
+
+    df2 = df[["date", "ntl_noind_5km_sum"]].copy()
+    df2.rename(columns={"ntl_noind_5km_sum": "ntl_sum"}, inplace=True)
+    df2["type"] = "Non-Industrial Areas (5km)"
+
+    melted = pd.concat([df1, df2], ignore_index=True)
+    melted["year_col"] = melted["date"].dt.year
+    melted["month"] = melted["date"].dt.month
+
+    return melted[melted["year_col"].isin(years)]
+
+
+def prepare_regional_industrial_data(
+    ntl_monthly_adm1, start_date="2024-01-01", value_col="ntl_ind_5km_sum"
+):
+    """Prepare regional industrial data sorted by total NTL."""
+    df = ntl_monthly_adm1.copy()
+    df = df[df["date"] >= start_date]
+
+    region_totals = (
+        df.groupby(["ADM1_PCODE", "ADM1_EN"])[value_col]
+        .sum()
+        .reset_index()
+        .sort_values(by=value_col, ascending=False)
+    )
+    region_order_list = region_totals["ADM1_EN"].tolist()
+
+    df["ADM1_EN"] = pd.Categorical(
+        df["ADM1_EN"], categories=region_order_list, ordered=True
+    )
+    df = df.sort_values(["ADM1_EN", "date"])
+    df[value_col] = df[value_col].astype(int)
+    return df, region_order_list
+
+
+def prepare_regional_comparison(ntl_monthly_adm1, years, region_order_list):
+    """Prepare regional comparison data for comparative line subplots."""
+    df = ntl_monthly_adm1[ntl_monthly_adm1["year_col"].isin(years)].copy()
+    df["year_col"] = df["year_col"].astype(str)
+    df["ADM1_EN"] = pd.Categorical(
+        df["ADM1_EN"], categories=region_order_list, ordered=True
+    )
+    df = df.sort_values(["ADM1_EN", "date"])
+    return df
+
+
+def get_earthquake_categories(date):
+    """Classify a date into earthquake period categories."""
+    if pd.Timestamp("2025-03-01") <= date <= pd.Timestamp("2025-04-30"):
+        return "Mar-Apr 2025 (Earthquake Period)"
+    elif pd.Timestamp("2025-01-01") <= date <= pd.Timestamp("2025-02-28"):
+        return "Jan-Feb 2025 (Pre-Earthquake Period)"
+    elif pd.Timestamp("2025-05-01") <= date <= pd.Timestamp("2025-06-30"):
+        return "May-Jun 2025 (Post-Earthquake Period)"
+    elif pd.Timestamp("2025-07-01") <= date <= pd.Timestamp("2025-09-30"):
+        return "Jul-Sep 2025 (Recovery Period)"
+    elif pd.Timestamp("2025-10-01") <= date <= pd.Timestamp("2025-12-31"):
+        return "Oct-Dec 2025 (Late Recovery Period)"
+    elif pd.Timestamp("2026-01-01") <= date <= pd.Timestamp("2026-03-31"):
+        return "Jan-Mar 2026"
+    else:
+        return None
+
+
+def prepare_earthquake_period_data(ntl_monthly_adm1, mmr_adm1):
+    """Group monthly NTL into earthquake period categories and merge geometry."""
+    df = ntl_monthly_adm1.copy()
+    df["date"] = pd.to_datetime(df["date"])
+    df["category"] = df["date"].apply(get_earthquake_categories)
+
+    grouped = (
+        df.groupby(["ADM1_PCODE", "ADM1_EN", "category"])["ntl_sum"]
+        .sum()
+        .reset_index()
+    )
+
+    result = mmr_adm1[["ADM1_EN", "ADM1_PCODE", "geometry"]].merge(
+        grouped, on=["ADM1_PCODE", "ADM1_EN"], how="inner"
+    )
+    return result
