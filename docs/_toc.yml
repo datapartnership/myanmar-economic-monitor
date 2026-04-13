@@ -37,6 +37,7 @@ parts:
   - caption: Myanmar Update 2026
     chapters:
       - file: notebooks/new-construction-activity/new-construction.md
+      - file: notebooks/nighttime-lights/collection-2/ntl_mem_2026.ipynb
   - caption: Additional Resources
     chapters:
       - file: docs/3-add-resources.md

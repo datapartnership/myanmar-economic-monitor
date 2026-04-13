@@ -44,7 +44,7 @@ def plot_line_chart(
     title: str = "Line Chart",
     xlabel: str = "X",
     ylabel: str = "Y",
-    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    source_text: str = "Source: NASA BlackMarble",
     date_col: Optional[str] = None,
     color: str = "#1f77b4",
     marker: str = "o",
@@ -168,6 +168,22 @@ def plot_line_chart(
     plot_func()
 
 
+def _wb_font_sizes(width_inches):
+    """Return WB-compliant font sizes (in pt) based on chart width.
+
+    Three chart-size bands from the WB Visualization Style Guide:
+      small  (<4 in):  s=9,  m=10, l=12
+      medium (4-7 in): s=10, m=11, l=13
+      large  (>7 in):  s=11, m=12, l=15
+    """
+    if width_inches < 4:
+        return {"s": 9, "m": 10, "l": 12}
+    elif width_inches < 7:
+        return {"s": 10, "m": 11, "l": 13}
+    else:
+        return {"s": 11, "m": 12, "l": 15}
+
+
 def plot_bar_chart(
     df: pd.DataFrame,
     x_col: Optional[str] = None,
@@ -175,15 +191,15 @@ def plot_bar_chart(
     title: str = "Bar Chart",
     xlabel: str = "X",
     ylabel: str = "Value",
-    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    source_text: str = "Source: NASA BlackMarble",
     date_col: Optional[str] = None,
     color: Union[str, dict] = "#4e79a7",
     figsize: tuple = (12, 6),
     earthquake_marker: Optional[str] = None,
     bar_width: Union[int, float] = None,
     is_percentage: bool = False,
-    pos_color: str = "#025288",
-    neg_color: str = "#920000",
+    pos_color: str = "#754493",
+    neg_color: str = "#24768E",
     zero_line: bool = False,
     ax: Optional[plt.Axes] = None,
 ) -> tuple:
@@ -324,15 +340,24 @@ def plot_bar_chart(
     else:
         fig = ax.get_figure()
 
+    # Compute WB-compliant font sizes based on axes width
+    if standalone_mode:
+        _chart_w = figsize[0]
+    else:
+        _chart_w = ax.get_position().width * fig.get_size_inches()[0]
+    _fs = _wb_font_sizes(_chart_w)
+
     # Apply World Bank styling manually
     # Remove top and right spines
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.spines["left"].set_linewidth(0.8)
+    ax.spines["left"].set_color("#cccccc")
     ax.spines["bottom"].set_linewidth(0.8)
+    ax.spines["bottom"].set_color("#cccccc")
 
     # Set grid
-    ax.grid(True, alpha=0.3, linewidth=0.5)
+    ax.grid(True, alpha=0.3, color="#cccccc", linewidth=0.5)
     ax.set_axisbelow(True)
 
     # Determine bar colors
@@ -404,22 +429,49 @@ def plot_bar_chart(
         xmax = chart_data[x_column].max() + time_padding
         ax.set_xlim(xmin, xmax)
     else:
-        # Categorical/discrete x-axis
-        if len(chart_data[x_column].unique()) <= 20:
+        # Categorical/discrete x-axis — thin labels based on available width
+        unique_vals = chart_data[x_column].unique()
+        n_unique = len(unique_vals)
+        if n_unique <= 20:
+            # Estimate available width per label (inches)
+            ax_width = ax.get_position().width * fig.get_size_inches()[0]
+            # Each year label needs ~0.45 in; derive how many labels fit
+            min_width_per_label = 0.45
+            max_labels = max(2, int(ax_width / min_width_per_label))
+            step = max(1, -(-n_unique // max_labels))  # ceil division
+            if step > 1:
+                show_indices = set(range(0, n_unique, step))
+                show_indices.add(0)
+                show_indices.add(n_unique - 1)
+            else:
+                show_indices = set(range(n_unique))
+
             ax.set_xticks(chart_data[x_column])
             if x_column in ["year", "Year"]:
-                ax.set_xticklabels(
-                    [str(int(x)) for x in chart_data[x_column]], rotation=0
-                )
+                labels = [
+                    str(int(x)) if i in show_indices else ""
+                    for i, x in enumerate(chart_data[x_column])
+                ]
+                ax.set_xticklabels(labels, rotation=0, fontsize=_fs["s"])
             else:
-                ax.set_xticklabels([str(x) for x in chart_data[x_column]], rotation=45)
+                labels = [
+                    str(x) if i in show_indices else ""
+                    for i, x in enumerate(chart_data[x_column])
+                ]
+                ax.set_xticklabels(labels, rotation=45, fontsize=_fs["s"])
 
-    # Labels with Open Sans font
-    ax.set_xlabel(xlabel, family=font_family, weight="bold")
-    ax.set_ylabel(ylabel, family=font_family, weight="bold")
+    # Labels with Open Sans font and grey color (WB: axis label = size s, semibold)
+    ax.set_xlabel(xlabel, family=font_family, weight="semibold", fontsize=_fs["s"], color="#666666")
+    ax.set_ylabel(ylabel, family=font_family, weight="semibold", fontsize=_fs["s"], color="#666666")
 
-    # Set tick label font
-    ax.tick_params(axis="both", length=4, width=0.8)
+    # Format y-axis in thousands
+    from matplotlib.ticker import FuncFormatter
+    ax.yaxis.set_major_formatter(
+        FuncFormatter(lambda x, p: f"{x/1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}")
+    )
+
+    # Set tick label font and grey color (WB: tick label = size s, regular)
+    ax.tick_params(axis="both", length=4, width=0.8, colors="#999999", labelcolor="#666666", labelsize=_fs["s"])
     for label in ax.get_xticklabels() + ax.get_yticklabels():
         label.set_fontfamily(font_family)
 
@@ -442,48 +494,63 @@ def plot_bar_chart(
                 f"{value:.1f}%",
                 ha="center",
                 va="bottom" if height >= 0 else "top",
-                fontsize=8,
+                fontsize=max(_fs["s"] - 1, 7),
+                color="#666666",
                 family=font_family,
             )
 
     # Add title and source note based on mode
     if standalone_mode:
-        # Add title - simple left-aligned, no bold first word (matching other functions)
+        # Add title - bold, fully left-aligned (WB: title = size l, bold)
         fig.text(
-            0.1,
+            0.0,
             0.98,
             title,
-            fontsize=18,
-            fontweight="normal",
+            fontsize=_fs["l"],
+            fontweight="bold",
+            ha="left",
+            va="top",
+            family=font_family,
+            color="#111111",
+        )
+
+        # Add source note (WB: note = size s)
+        fig.text(
+            0.0,
+            -0.02,
+            source_text,
+            fontsize=_fs["s"],
+            style="italic",
+            color="#111111",
             ha="left",
             va="top",
             family=font_family,
         )
 
-        # Add source note
-        fig.text(
-            0.1,
-            0.02,
-            source_text,
-            fontsize=9,
-            style="italic",
-            color="#666666",
-            ha="left",
-            va="bottom",
-            family=font_family,
-        )
-
         # Adjust subplot to make room for title and note
-        plt.subplots_adjust(top=0.92, bottom=0.08, left=0.1, right=0.95)
+        plt.subplots_adjust(top=0.92, bottom=0.10, left=0.1, right=0.95)
     else:
-        # For subplot mode, add title to axes - left aligned
+        # For subplot mode, add title to axes (WB: title = size l, bold)
         ax.set_title(
             title,
-            fontsize=12,
+            fontsize=_fs["l"],
             ha="left",
             x=0,
             pad=10,
-            weight="normal",
+            weight="bold",
+            family=font_family,
+            color="#111111",
+        )
+        # Add source note below the axes
+        ax.text(
+            0.0, -0.18,
+            source_text,
+            transform=ax.transAxes,
+            fontsize=_fs["s"],
+            style="italic",
+            color="#111111",
+            ha="left",
+            va="top",
             family=font_family,
         )
 
@@ -499,7 +566,7 @@ def plot_subplots_bar_charts(
     title: str = "Bar Chart Subplots",
     xlabel: str = "X",
     ylabel: str = "Y",
-    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    source_text: str = "Source: NASA BlackMarble",
     ncols: int = 4,
     figsize_per_subplot: tuple = (4.5, 3.5),
     color: str = "#4e79a7",
@@ -696,10 +763,11 @@ def plot_subplots_bar_charts(
             verticalalignment="top",
             horizontalalignment="left",
             transform=fig.transFigure,
+            color="#111111",
         )
 
     # Add source note
-    fig.text(0.02, 0.01, source_text, fontsize=9, color="gray", ha="left", va="bottom")
+    fig.text(0.02, 0.01, source_text, fontsize=9, color="#111111", ha="left", va="bottom")
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     plt.show()
@@ -714,7 +782,7 @@ def plot_comparison_bar_chart(
     title: str = "Comparison Bar Chart",
     xlabel: str = "Groups",
     ylabel: str = "Value",
-    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    source_text: str = "Source: NASA BlackMarble",
     figsize: tuple = (10, 6),
     colors: list = None,
     bar_width: float = 0.35,
@@ -748,7 +816,7 @@ def plot_comparison_bar_chart(
 
     # Default colors
     if colors is None:
-        colors = ["#4e79a7", "#f28e2b", "#e15759", "#76b7b2", "#59a14f"]
+        colors = ["#34A7F2", "#FF9800", "#664AB6", "#76b7b2", "#59a14f"]
 
     # Filter data for comparison values
     comparison_df = df[df[x_col].isin(compare_values)].copy()
@@ -838,7 +906,7 @@ def plot_comparative_lines(
     title: str = "Comparative Line Plot",
     xlabel: str = "X",
     ylabel: str = "Y",
-    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    source_text: str = "Source: NASA BlackMarble",
     date_col: Optional[str] = None,
     figsize: tuple = (12, 8),
     colors: list = None,
@@ -926,30 +994,49 @@ def plot_comparative_lines(
     # Default colors and markers
     if colors is None:
         colors = [
-            "#3587C3",  # Blue
-            "#BD6126",  # Orange
-            "#025288",  # Dark blue (positive)
-            "#920000",  # Dark red (negative)
+            "#34A7F2",  # 2024 Blue
+            "#FF9800",  # 2025 Orange
+            "#664AB6",  # 2026 Purple
+            "#754493",  # Purple
+            "#24768E",  # Teal
             "#80BDE7",  # Light blue
             "#E3A763",  # Light orange
             "#EFEFEF",  # Light gray
             "#7f7f7f",  # Gray
-            "#bcbd22",  # Yellow-green
             "#17becf",  # Cyan
         ]
     if markers is None:
         markers = ["o", "s", "^", "D", "v", "<", ">", "p", "*", "h"]
 
+    # Determine font family
+    try:
+        from matplotlib import font_manager
+        available_fonts = [f.name for f in font_manager.fontManager.ttflist]
+        font_family = "Open Sans" if "Open Sans" in available_fonts else "sans-serif"
+    except Exception:
+        font_family = "sans-serif"
+
+    # Scale font sizes based on figure width (reference: width=12)
+    scale = figsize[0] / 12.0
+    title_fontsize = max(10, 18 * scale)
+    label_fontsize = max(8, 12 * scale)
+    tick_fontsize = max(7, 10 * scale)
+    legend_fontsize = max(7, 10 * scale)
+    source_fontsize = max(7, 9 * scale)
+
     # Create plot with World Bank styling
     fig, ax = plt.subplots(figsize=figsize)
 
     # Apply World Bank styling manually
-    # Remove top and right spines
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_linewidth(0.8)
+    ax.spines["left"].set_color("#cccccc")
+    ax.spines["bottom"].set_linewidth(0.8)
+    ax.spines["bottom"].set_color("#cccccc")
 
     # Set grid
-    ax.grid(True, alpha=0.3, linewidth=0.5)
+    ax.grid(True, alpha=0.3, color="#cccccc", linewidth=0.5)
     ax.set_axisbelow(True)
 
     # Plot each group as a separate line
@@ -969,20 +1056,32 @@ def plot_comparative_lines(
             label=str(group),
         )
 
-    # Labels
-    ax.set_xlabel(xlabel)
-    ax.set_ylabel(ylabel)
+    # Labels with Open Sans font and grey color
+    ax.set_xlabel(xlabel, family=font_family, weight="bold", color="#666666", fontsize=label_fontsize)
+    ax.set_ylabel(ylabel, family=font_family, weight="bold", color="#666666", fontsize=label_fontsize)
 
-    # Add title with World Bank styling (left-aligned with bold first word)
-    title_parts = title.split(" ", 1)
-    if len(title_parts) == 2:
-        bold_part, normal_part = title_parts
-        formatted_title = r"$\mathbf{" + bold_part + "}$ " + normal_part
-    else:
-        formatted_title = r"$\mathbf{" + title + "}$"
+    # Format y-axis in thousands
+    from matplotlib.ticker import FuncFormatter
+    ax.yaxis.set_major_formatter(
+        FuncFormatter(lambda x, p: f"{x/1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}")
+    )
 
-    ax.set_title(
-        formatted_title, fontsize="x-large", fontweight="normal", ha="left", x=0, pad=20
+    # Set tick label font and grey color
+    ax.tick_params(axis="both", length=4, width=0.8, colors="#999999", labelcolor="#666666", labelsize=tick_fontsize)
+    for label in ax.get_xticklabels() + ax.get_yticklabels():
+        label.set_fontfamily(font_family)
+
+    # Add title - bold, fully left-aligned via fig.text
+    fig.text(
+        0.0,
+        0.98,
+        title,
+        fontsize=title_fontsize,
+        fontweight="bold",
+        ha="left",
+        va="top",
+        family=font_family,
+        color="#111111",
     )
 
     # Add earthquake marker if specified
@@ -1011,11 +1110,10 @@ def plot_comparative_lines(
                     label="Earthquake",
                 )
         except Exception:
-            # If parsing fails, skip the marker
             pass
 
     # Legend with World Bank styling
-    ax.legend(loc=legend_location, frameon=False, fontsize=10)
+    ax.legend(loc=legend_location, frameon=False, fontsize=legend_fontsize, prop={"family": font_family})
 
     # Format x-axis if it's years
     if x_column in ["year", "Year"] and len(agg_data[x_column].unique()) <= 20:
@@ -1024,9 +1122,19 @@ def plot_comparative_lines(
         ax.set_xticklabels([str(int(y)) for y in years], rotation=0)
 
     # Add source note
-    fig.text(0.1, 0.02, source_text, fontsize=9, color="gray", ha="left", va="bottom")
+    fig.text(
+        0.0,
+        -0.02,
+        source_text,
+        fontsize=source_fontsize,
+        style="italic",
+        color="#111111",
+        ha="left",
+        va="top",
+        family=font_family,
+    )
 
-    plt.tight_layout()
+    plt.subplots_adjust(top=0.92, bottom=0.10, left=0.1, right=0.95)
     plt.show()
 
 
@@ -1037,7 +1145,7 @@ def plot_single_map(
     cmap: str = "RdYlGn",
     figsize: tuple = (10, 8),
     legend: bool = True,
-    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    source_text: str = "Source: NASA BlackMarble",
     vmin: float = None,
     vmax: float = None,
     legend_kwargs: dict = None,
@@ -1089,7 +1197,7 @@ def plot_single_map(
     ax.set_title(title, fontfamily=font_family, fontsize=14, fontweight="bold")
 
     # Source note
-    fig.text(0.5, 0.01, source_text, ha="center", va="bottom", fontsize=9, color="gray")
+    fig.text(0.5, 0.01, source_text, ha="center", va="bottom", fontsize=9, color="#111111")
 
     plt.tight_layout(rect=[0, 0.03, 1, 1])
     plt.show()
@@ -1103,7 +1211,7 @@ def plot_multiple_maps(
     figsize: tuple = None,
     ncols: int = 2,
     legend: bool = True,
-    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    source_text: str = "Source: NASA BlackMarble",
     suptitle: str = "Myanmar Maps",
     vmin: float = None,
     vmax: float = None,
@@ -1186,7 +1294,7 @@ def plot_multiple_maps(
     fig.suptitle(suptitle, fontsize=16, fontweight="bold", y=0.98)
 
     # Source note
-    fig.text(0.5, 0.01, source_text, ha="center", va="bottom", fontsize=9, color="gray")
+    fig.text(0.5, 0.01, source_text, ha="center", va="bottom", fontsize=9, color="#111111")
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.97])
     plt.show()
@@ -1201,7 +1309,7 @@ def plot_maps_by_category(
     figsize: tuple = None,
     ncols: int = 3,
     legend: bool = True,
-    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    source_text: str = "Source: NASA BlackMarble",
     suptitle: str = "Myanmar Maps by Category",
     vmin: float = None,
     vmax: float = None,
@@ -1377,7 +1485,7 @@ def plot_maps_by_category(
 
     # Source note (left-aligned) after layout adjustment
     fig.text(
-        source_x, 0.04, source_text, ha="left", va="bottom", fontsize=9, color="gray"
+        source_x, 0.04, source_text, ha="left", va="bottom", fontsize=9, color="#111111"
     )
 
     plt.show()
@@ -1392,7 +1500,7 @@ def plot_comparative_lines_subplots(
     title: str = "Comparative Line Subplots",
     xlabel: str = "X",
     ylabel: str = "Y",
-    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    source_text: str = "Source: NASA BlackMarble",
     date_col: Optional[str] = None,
     ncols: int = 3,
     figsize_per_subplot: tuple = (5, 4),
@@ -1545,9 +1653,9 @@ def plot_comparative_lines_subplots(
     # World Bank colors as default
     if colors is None:
         colors = [
-            "#4e79a7",
-            "#f28e2c",
-            "#e15759",
+            "#34A7F2",
+            "#FF9800",
+            "#664AB6",
             "#76b7b2",
             "#59a14f",
             "#edc949",
@@ -1617,25 +1725,19 @@ def plot_comparative_lines_subplots(
             )
 
         # Apply World Bank formatting to each subplot
-        axs[i].set_xlabel(xlabel, fontweight="normal", family=font_family)
-        axs[i].set_ylabel(ylabel, fontweight="normal", family=font_family)
+        axs[i].set_xlabel(xlabel, fontweight="bold", family=font_family, color="#666666")
+        axs[i].set_ylabel(ylabel, fontweight="bold", family=font_family, color="#666666")
 
-        # Set subplot title - simple left-aligned, no bold first word
-        axs[i].text(
-            0.02,
-            0.95,
+        # Set subplot title - above axes, left-aligned
+        axs[i].set_title(
             str(category),
-            transform=axs[i].transAxes,
             fontsize=12,
-            verticalalignment="top",
-            horizontalalignment="left",
+            ha="left",
+            x=0,
+            pad=12,
+            weight="bold",
             family=font_family,
-            bbox=dict(
-                boxstyle="round,pad=0.3",
-                facecolor="white",
-                alpha=0.8,
-                edgecolor="none",
-            ),
+            color="#111111",
         )
 
         # Remove top and right spines (World Bank style)
@@ -1648,8 +1750,19 @@ def plot_comparative_lines_subplots(
         axs[i].grid(True, alpha=0.3, color="#cccccc", linewidth=0.5)
         axs[i].set_axisbelow(True)
 
-        # Add legend if there are groups
-        if group_col and len(cat_data[group_col].unique()) > 1:
+        # Format y-axis in thousands
+        from matplotlib.ticker import FuncFormatter
+        axs[i].yaxis.set_major_formatter(
+            FuncFormatter(lambda x, p: f"{x/1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}")
+        )
+
+        # Set tick label font and grey color
+        axs[i].tick_params(axis="both", length=4, width=0.8, colors="#999999", labelcolor="#666666")
+        for label in axs[i].get_xticklabels() + axs[i].get_yticklabels():
+            label.set_fontfamily(font_family)
+
+        # Add legend only to the first subplot
+        if group_col and len(cat_data[group_col].unique()) > 1 and i == 0:
             legend = axs[i].legend(
                 loc=legend_location,
                 frameon=True,
@@ -1722,20 +1835,21 @@ def plot_comparative_lines_subplots(
     for j in range(n_categories, len(axs)):
         axs[j].axis("off")
 
-    # Set overall title - simple left-aligned, no bold first word (matching plot_regional_ntl_change)
+    # Set overall title - bold, left-aligned, pushed above subplots
     fig.text(
         0.02,
-        0.98,
+        0.99,
         title,
         fontsize=18,
-        fontweight="normal",
+        fontweight="bold",
         verticalalignment="top",
         horizontalalignment="left",
         transform=fig.transFigure,
         family=font_family,
+        color="#111111",
     )
 
-    plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+    plt.tight_layout(rect=[0, 0.03, 1, 0.93])
     plt.show()
 
 
@@ -1748,7 +1862,7 @@ def plot_regional_ntl_change(
     title: str = "Regional Nighttime Lights % Change (Jan-Sep 2025 vs Jan-Sep 2024)",
     xlabel: str = "% Change",
     ylabel: str = "Region (ADM1)",
-    source_text: str = "Source: VIIRS Nighttime Lights — Collection 2",
+    source_text: str = "Source: NASA BlackMarble",
     figsize: tuple = (10, 8),
     ax: Optional[plt.Axes] = None,
 ) -> Optional[plt.Axes]:
@@ -1792,6 +1906,9 @@ def plot_regional_ntl_change(
     # Calculate percentage change
     ntl_wide["pc_change"] = (ntl_wide[year2] - ntl_wide[year1]) / ntl_wide[year1] * 100
 
+    # Drop regions with missing data (e.g. no industrial zones)
+    ntl_wide = ntl_wide.dropna(subset=["pc_change"])
+
     # Sort by percentage change
     df_sorted = ntl_wide.sort_values(by="pc_change").reset_index()
 
@@ -1832,8 +1949,8 @@ def plot_regional_ntl_change(
     except Exception:
         font_family = "sans-serif"
 
-    # Create colors for bars (red for negative, blue for positive)
-    colors = ["#920000" if x < 0 else "#025288" for x in df_sorted["pc_change"]]
+    # Create colors for bars (teal for negative, purple for positive)
+    colors = ["#24768E" if x < 0 else "#754493" for x in df_sorted["pc_change"]]
 
     # Create horizontal bar chart
     ax.barh(df_sorted["ADM1_EN"], df_sorted["pc_change"], color=colors)
@@ -1843,22 +1960,24 @@ def plot_regional_ntl_change(
 
     # Labels with custom font sizes and Open Sans font
     ax.set_xlabel(
-        xlabel, fontsize=axis_label_fontsize, fontweight="bold", family=font_family
+        xlabel, fontsize=axis_label_fontsize, fontweight="bold", family=font_family, color="#666666"
     )
     ax.set_ylabel(
-        ylabel, fontsize=axis_label_fontsize, fontweight="bold", family=font_family
+        ylabel, fontsize=axis_label_fontsize, fontweight="bold", family=font_family, color="#666666"
     )
 
     # Apply World Bank styling
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.spines["left"].set_linewidth(0.8)
+    ax.spines["left"].set_color("#cccccc")
     ax.spines["bottom"].set_linewidth(0.8)
-    ax.grid(True, alpha=0.3, linewidth=0.5, axis="x")
+    ax.spines["bottom"].set_color("#cccccc")
+    ax.grid(True, alpha=0.05, color="#cccccc", linewidth=0.3, axis="x")
     ax.set_axisbelow(True)
 
     # Adjust tick label size and font
-    ax.tick_params(axis="both", labelsize=tick_fontsize, length=4, width=0.8)
+    ax.tick_params(axis="both", labelsize=tick_fontsize, length=4, width=0.8, colors="#999999", labelcolor="#666666")
     # Set font family for tick labels
     for label in ax.get_xticklabels() + ax.get_yticklabels():
         label.set_fontfamily(font_family)
@@ -1875,6 +1994,7 @@ def plot_regional_ntl_change(
             ha="left" if value > 0 else "right",
             fontsize=label_fontsize,
             family=font_family,
+            color="#666666",
         )
 
     # Extend x-axis limits to prevent overlap with region names
@@ -1924,33 +2044,34 @@ def plot_regional_ntl_change(
         except Exception:
             font_family = "sans-serif"
 
-        # Add title as figure text at top - left aligned
+        # Add title as figure text at top - bold, fully left-aligned
         fig.text(
-            0.125,
-            0.96,
+            0.0,
+            0.98,
             title,
             fontsize=title_fontsize,
-            weight="normal",
+            weight="bold",
             ha="left",
             va="top",
             family=font_family,
+            color="#111111",
         )
 
         # Add source note at bottom
         fig.text(
-            0.125,
-            0.02,
+            0.0,
+            -0.02,
             source_text,
             fontsize=note_fontsize,
             style="italic",
             ha="left",
-            va="bottom",
-            color="#666666",
+            va="top",
+            color="#111111",
             family=font_family,
         )
 
         # Adjust subplot to make room for title and note
-        plt.subplots_adjust(top=0.90, bottom=0.08, left=0.125, right=0.95)
+        plt.subplots_adjust(top=0.92, bottom=0.10, left=0.1, right=0.95)
 
         return None
     else:
@@ -1965,14 +2086,67 @@ def plot_regional_ntl_change(
         except Exception:
             font_family = "sans-serif"
 
-        # Add title to axes - left aligned
+        # Add title to axes - bold, left aligned
         ax.set_title(
             title,
             fontsize=title_fontsize,
             ha="left",
             x=0,
             pad=10,
-            weight="normal",
+            weight="bold",
             family=font_family,
+            color="#111111",
         )
         return ax
+
+
+def add_partial_year_bars(
+    ax, data, full_col, yoy_col, current_yr, prev_yr, max_m, font="Open Sans", show_legend=False
+):
+    """Add partial-year overlay bars and dynamic labels to a bar chart axis."""
+    from matplotlib.patches import Patch
+    df_sub = data[data["year"] >= prev_yr].copy()
+    val_cur = df_sub[df_sub["year"] == current_yr][yoy_col].values[0]
+    val_prev = df_sub[df_sub["year"] == prev_yr][yoy_col].values[0]
+    ax.bar(
+        df_sub["year"],
+        df_sub[yoy_col],
+        width=0.8,
+        color="#754493",
+        alpha=0.5,
+    )
+    # Compute ylim from both full-year and partial-year values
+    all_vals = list(data[full_col].dropna()) + list(data[yoy_col].dropna())
+    y_min = min(all_vals)
+    y_max = max(all_vals)
+    y_range = y_max - y_min
+    padding = y_range * 0.15
+    ax.set_ylim(y_min - padding, y_max + padding)
+    # Offset for text labels
+    offset = y_range * 0.04
+    for yr, val in [(current_yr, val_cur), (prev_yr, val_prev)]:
+        ax.text(
+            yr,
+            val + (offset if val >= 0 else -offset),
+            f"{val:.1f}%",
+            ha="center",
+            va="bottom" if val >= 0 else "top",
+            color="#666666",
+            fontsize=9,
+            family=font,
+            clip_on=True,
+        )
+    # Add legend with full and alpha color patches
+    if show_legend:
+        legend_handles = [
+            Patch(facecolor="#754493", label="% change from PY"),
+            Patch(facecolor="#754493", alpha=0.5, label="3M % change from PY"),
+        ]
+        ax.legend(
+            handles=legend_handles,
+            loc="upper right",
+            fontsize=7,
+            frameon=False,
+            prop={"family": font},
+            labelcolor="#666666",
+        )
