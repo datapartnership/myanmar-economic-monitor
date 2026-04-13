@@ -461,17 +461,37 @@ def plot_bar_chart(
                 ax.set_xticklabels(labels, rotation=45, fontsize=_fs["s"])
 
     # Labels with Open Sans font and grey color (WB: axis label = size s, semibold)
-    ax.set_xlabel(xlabel, family=font_family, weight="semibold", fontsize=_fs["s"], color="#666666")
-    ax.set_ylabel(ylabel, family=font_family, weight="semibold", fontsize=_fs["s"], color="#666666")
+    ax.set_xlabel(
+        xlabel,
+        family=font_family,
+        weight="semibold",
+        fontsize=_fs["s"],
+        color="#666666",
+    )
+    ax.set_ylabel(
+        ylabel,
+        family=font_family,
+        weight="semibold",
+        fontsize=_fs["s"],
+        color="#666666",
+    )
 
     # Format y-axis in thousands
     from matplotlib.ticker import FuncFormatter
+
     ax.yaxis.set_major_formatter(
         FuncFormatter(lambda x, p: f"{x/1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}")
     )
 
     # Set tick label font and grey color (WB: tick label = size s, regular)
-    ax.tick_params(axis="both", length=4, width=0.8, colors="#999999", labelcolor="#666666", labelsize=_fs["s"])
+    ax.tick_params(
+        axis="both",
+        length=4,
+        width=0.8,
+        colors="#999999",
+        labelcolor="#666666",
+        labelsize=_fs["s"],
+    )
     for label in ax.get_xticklabels() + ax.get_yticklabels():
         label.set_fontfamily(font_family)
 
@@ -543,7 +563,8 @@ def plot_bar_chart(
         )
         # Add source note below the axes
         ax.text(
-            0.0, -0.18,
+            0.0,
+            -0.18,
             source_text,
             transform=ax.transAxes,
             fontsize=_fs["s"],
@@ -767,7 +788,9 @@ def plot_subplots_bar_charts(
         )
 
     # Add source note
-    fig.text(0.02, 0.01, source_text, fontsize=9, color="#111111", ha="left", va="bottom")
+    fig.text(
+        0.02, 0.01, source_text, fontsize=9, color="#111111", ha="left", va="bottom"
+    )
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     plt.show()
@@ -1011,6 +1034,7 @@ def plot_comparative_lines(
     # Determine font family
     try:
         from matplotlib import font_manager
+
         available_fonts = [f.name for f in font_manager.fontManager.ttflist]
         font_family = "Open Sans" if "Open Sans" in available_fonts else "sans-serif"
     except Exception:
@@ -1057,17 +1081,37 @@ def plot_comparative_lines(
         )
 
     # Labels with Open Sans font and grey color
-    ax.set_xlabel(xlabel, family=font_family, weight="bold", color="#666666", fontsize=label_fontsize)
-    ax.set_ylabel(ylabel, family=font_family, weight="bold", color="#666666", fontsize=label_fontsize)
+    ax.set_xlabel(
+        xlabel,
+        family=font_family,
+        weight="bold",
+        color="#666666",
+        fontsize=label_fontsize,
+    )
+    ax.set_ylabel(
+        ylabel,
+        family=font_family,
+        weight="bold",
+        color="#666666",
+        fontsize=label_fontsize,
+    )
 
     # Format y-axis in thousands
     from matplotlib.ticker import FuncFormatter
+
     ax.yaxis.set_major_formatter(
         FuncFormatter(lambda x, p: f"{x/1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}")
     )
 
     # Set tick label font and grey color
-    ax.tick_params(axis="both", length=4, width=0.8, colors="#999999", labelcolor="#666666", labelsize=tick_fontsize)
+    ax.tick_params(
+        axis="both",
+        length=4,
+        width=0.8,
+        colors="#999999",
+        labelcolor="#666666",
+        labelsize=tick_fontsize,
+    )
     for label in ax.get_xticklabels() + ax.get_yticklabels():
         label.set_fontfamily(font_family)
 
@@ -1113,7 +1157,12 @@ def plot_comparative_lines(
             pass
 
     # Legend with World Bank styling
-    ax.legend(loc=legend_location, frameon=False, fontsize=legend_fontsize, prop={"family": font_family})
+    ax.legend(
+        loc=legend_location,
+        frameon=False,
+        fontsize=legend_fontsize,
+        prop={"family": font_family},
+    )
 
     # Format x-axis if it's years
     if x_column in ["year", "Year"] and len(agg_data[x_column].unique()) <= 20:
@@ -1197,7 +1246,9 @@ def plot_single_map(
     ax.set_title(title, fontfamily=font_family, fontsize=14, fontweight="bold")
 
     # Source note
-    fig.text(0.5, 0.01, source_text, ha="center", va="bottom", fontsize=9, color="#111111")
+    fig.text(
+        0.5, 0.01, source_text, ha="center", va="bottom", fontsize=9, color="#111111"
+    )
 
     plt.tight_layout(rect=[0, 0.03, 1, 1])
     plt.show()
@@ -1294,7 +1345,9 @@ def plot_multiple_maps(
     fig.suptitle(suptitle, fontsize=16, fontweight="bold", y=0.98)
 
     # Source note
-    fig.text(0.5, 0.01, source_text, ha="center", va="bottom", fontsize=9, color="#111111")
+    fig.text(
+        0.5, 0.01, source_text, ha="center", va="bottom", fontsize=9, color="#111111"
+    )
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.97])
     plt.show()
@@ -1725,8 +1778,12 @@ def plot_comparative_lines_subplots(
             )
 
         # Apply World Bank formatting to each subplot
-        axs[i].set_xlabel(xlabel, fontweight="bold", family=font_family, color="#666666")
-        axs[i].set_ylabel(ylabel, fontweight="bold", family=font_family, color="#666666")
+        axs[i].set_xlabel(
+            xlabel, fontweight="bold", family=font_family, color="#666666"
+        )
+        axs[i].set_ylabel(
+            ylabel, fontweight="bold", family=font_family, color="#666666"
+        )
 
         # Set subplot title - above axes, left-aligned
         axs[i].set_title(
@@ -1752,12 +1809,17 @@ def plot_comparative_lines_subplots(
 
         # Format y-axis in thousands
         from matplotlib.ticker import FuncFormatter
+
         axs[i].yaxis.set_major_formatter(
-            FuncFormatter(lambda x, p: f"{x/1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}")
+            FuncFormatter(
+                lambda x, p: f"{x/1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}"
+            )
         )
 
         # Set tick label font and grey color
-        axs[i].tick_params(axis="both", length=4, width=0.8, colors="#999999", labelcolor="#666666")
+        axs[i].tick_params(
+            axis="both", length=4, width=0.8, colors="#999999", labelcolor="#666666"
+        )
         for label in axs[i].get_xticklabels() + axs[i].get_yticklabels():
             label.set_fontfamily(font_family)
 
@@ -1960,10 +2022,18 @@ def plot_regional_ntl_change(
 
     # Labels with custom font sizes and Open Sans font
     ax.set_xlabel(
-        xlabel, fontsize=axis_label_fontsize, fontweight="bold", family=font_family, color="#666666"
+        xlabel,
+        fontsize=axis_label_fontsize,
+        fontweight="bold",
+        family=font_family,
+        color="#666666",
     )
     ax.set_ylabel(
-        ylabel, fontsize=axis_label_fontsize, fontweight="bold", family=font_family, color="#666666"
+        ylabel,
+        fontsize=axis_label_fontsize,
+        fontweight="bold",
+        family=font_family,
+        color="#666666",
     )
 
     # Apply World Bank styling
@@ -1977,7 +2047,14 @@ def plot_regional_ntl_change(
     ax.set_axisbelow(True)
 
     # Adjust tick label size and font
-    ax.tick_params(axis="both", labelsize=tick_fontsize, length=4, width=0.8, colors="#999999", labelcolor="#666666")
+    ax.tick_params(
+        axis="both",
+        labelsize=tick_fontsize,
+        length=4,
+        width=0.8,
+        colors="#999999",
+        labelcolor="#666666",
+    )
     # Set font family for tick labels
     for label in ax.get_xticklabels() + ax.get_yticklabels():
         label.set_fontfamily(font_family)
@@ -2101,10 +2178,19 @@ def plot_regional_ntl_change(
 
 
 def add_partial_year_bars(
-    ax, data, full_col, yoy_col, current_yr, prev_yr, max_m, font="Open Sans", show_legend=False
+    ax,
+    data,
+    full_col,
+    yoy_col,
+    current_yr,
+    prev_yr,
+    max_m,
+    font="Open Sans",
+    show_legend=False,
 ):
     """Add partial-year overlay bars and dynamic labels to a bar chart axis."""
     from matplotlib.patches import Patch
+
     df_sub = data[data["year"] >= prev_yr].copy()
     val_cur = df_sub[df_sub["year"] == current_yr][yoy_col].values[0]
     val_prev = df_sub[df_sub["year"] == prev_yr][yoy_col].values[0]
