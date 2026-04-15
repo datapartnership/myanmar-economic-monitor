@@ -1,7 +1,5 @@
 import pandas as pd
-import geopandas as gpd
 from typing import Optional, Union, Literal
-from datetime import datetime
 
 _DEF_EXCLUDE = {
     "year",
@@ -955,9 +953,7 @@ def prepare_earthquake_period_data(ntl_monthly_adm1, mmr_adm1):
     df["category"] = df["date"].apply(get_earthquake_categories)
 
     grouped = (
-        df.groupby(["ADM1_PCODE", "ADM1_EN", "category"])["ntl_sum"]
-        .sum()
-        .reset_index()
+        df.groupby(["ADM1_PCODE", "ADM1_EN", "category"])["ntl_sum"].sum().reset_index()
     )
 
     result = mmr_adm1[["ADM1_EN", "ADM1_PCODE", "geometry"]].merge(
