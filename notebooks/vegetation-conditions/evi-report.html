@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Nighttime Lights and GDP Analysis" href="../nighttime-lights/collection-2/ntl-gdp.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Apr 13, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 15, 2026"/>
   </head>
   
   
@@ -444,10 +444,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-seasonality">Crop Seasonality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-agricultural-gdp">EVI and Agricultural GDP</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#national-level-regression-analysis">National Level Regression Analysis</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnostic-does-evi-predict-gdp-beyond-seasonality">Diagnostic: Does EVI Predict GDP Beyond Seasonality?</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#national-level-regression-analysis">National Level Regression Analysis</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-trends-at-national-level">Temporal Trends at National Level</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-changes-in-2024-and-2025">EVI Changes in 2024 and 2025</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-level-evi-and-agricultural-gdp">State-level EVI and Agricultural GDP</a></li>
@@ -886,155 +883,6 @@ We then extract crop seasonality metrics using the seasonal amplitude method fro
 <tr><td style="text-align: left">Observations</td><td>60</td><td>59</td><td>53</td><td>53</td><td>53</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.200</td><td>0.591</td><td>0.705</td><td>0.959</td><td>0.986</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.186</td><td>0.576</td><td>0.687</td><td>0.956</td><td>0.985</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.749 (df=58)</td><td>0.536 (df=56)</td><td>0.466 (df=49)</td><td>0.175 (df=48)</td><td>0.103 (df=46)</td></tr><tr><td style="text-align: left">F Statistic</td><td>14.463<sup>***</sup> (df=1; 58)</td><td>40.380<sup>***</sup> (df=2; 56)</td><td>39.098<sup>***</sup> (df=3; 49)</td><td>283.828<sup>***</sup> (df=4; 48)</td><td>554.476<sup>***</sup> (df=6; 46)</td></tr>
 <tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="5" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.stats.outliers_influence</span><span class="w"> </span><span class="kn">import</span> <span class="n">variance_inflation_factor</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">patsy</span>
-
-
-<span class="c1"># VIF for Model 4 (is_crop_season) vs Model 5 (quarter dummies)</span>
-<span class="c1"># Build design matrices directly from the formulas</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">compute_vif</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-    <span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">patsy</span><span class="o">.</span><span class="n">dmatrices</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;dataframe&quot;</span><span class="p">)</span>
-    <span class="n">vif</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;Variable&quot;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
-            <span class="s2">&quot;VIF&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">variance_inflation_factor</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
-        <span class="p">}</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">vif</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Variable&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-
-<span class="n">vif_mod4</span> <span class="o">=</span> <span class="n">compute_vif</span><span class="p">(</span>
-    <span class="s2">&quot;gdp_log ~ ntl_sum_log + evi_log + evi_lag_1_log + is_crop_season&quot;</span><span class="p">,</span>
-    <span class="n">evi_indicators</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span>
-<span class="p">)</span>
-<span class="n">vif_mod5</span> <span class="o">=</span> <span class="n">compute_vif</span><span class="p">(</span>
-    <span class="s2">&quot;gdp_log ~ ntl_sum_log + evi_log + evi_lag_1_log + C(quarter)&quot;</span><span class="p">,</span>
-    <span class="n">evi_indicators</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span>
-<span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VIF — Model 4 (is_crop_season):&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">vif_mod4</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VIF — Model 5 (quarter dummies):&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">vif_mod5</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VIF — Model 4 (is_crop_season):
-                            VIF
-Variable                       
-Intercept               2603.06
-is_crop_season[T.True]     2.34
-ntl_sum_log                1.21
-evi_log                    1.74
-evi_lag_1_log              1.37
-
-VIF — Model 5 (quarter dummies):
-                     VIF
-Variable                
-Intercept        3710.55
-C(quarter)[T.2]     6.33
-C(quarter)[T.3]    14.54
-C(quarter)[T.4]     7.26
-ntl_sum_log         1.38
-evi_log             7.82
-evi_lag_1_log       7.99
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="diagnostic-does-evi-predict-gdp-beyond-seasonality">
-<h4>Diagnostic: Does EVI Predict GDP Beyond Seasonality?<a class="headerlink" href="#diagnostic-does-evi-predict-gdp-beyond-seasonality" title="Permalink to this heading">#</a></h4>
-<p>Before interpreting the quarter-dummy results, it helps to clarify what role a control variable can play in a regression.</p>
-<hr class="docutils" />
-<p><strong>Mediator vs. Confounder — Two Illustrative Examples</strong></p>
-<p><strong>Example 1 — Mediator (bad to control for):</strong></p>
-<blockquote>
-<div><p><em>Does fertilizer increase crop yield?</em></p>
-<p>The causal chain is: <strong>Fertilizer → Plant growth → Crop yield</strong></p>
-<p>If you add “plant growth” as a control variable, you block the very pathway through which fertilizer works. The fertilizer coefficient shrinks toward zero — not because fertilizer has no effect, but because you removed the channel. Controlling for a mediator produces a biased (downward) estimate of the true effect.</p>
-</div></blockquote>
-<p><strong>Example 2 — Confounder (good to control for):</strong></p>
-<blockquote>
-<div><p><em>Does ice cream sales predict drowning rates?</em></p>
-<p>Both are driven by <strong>summer heat</strong>: hot weather → more ice cream sales AND more swimming → more drownings.</p>
-<p>Without controlling for season, you find a strong spurious correlation. Controlling for season breaks the spurious link. Ice cream does not cause drowning.</p>
-</div></blockquote>
-<hr class="docutils" />
-<p><strong>The EVI-GDP Case: A Mix of Both</strong></p>
-<p>Quarter is likely <em>both</em> a partial mediator and a partial confounder:</p>
-<ul class="simple">
-<li><p><strong>Mediator pathway</strong>: Monsoon rains → high EVI (crops growing) → harvest → high agricultural GDP. Here, quarter is part of the mechanism through which EVI affects GDP. Controlling for it absorbs the signal.</p></li>
-<li><p><strong>Confounder pathway</strong>: Quarter independently affects GDP through non-vegetation channels — fiscal spending cycles, labor migration patterns, commodity market timing. Here, controlling for quarter removes a genuine bias.</p></li>
-</ul>
-<p>Because both pathways likely operate simultaneously, we cannot simply choose to control or not control for quarter. Instead, we test whether EVI carries predictive information <em>beyond the seasonal average</em> — year-to-year variation in EVI within the same quarter. This is the <strong>quarter-demeaned</strong> approach below.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Quarter-demeaned EVI analysis</span>
-<span class="c1"># Removes the seasonal average from EVI and GDP, keeping only year-to-year variation within each quarter.</span>
-<span class="c1"># A positive coefficient on demeaned EVI indicates genuine predictive power beyond the seasonal cycle.</span>
-
-<span class="n">evi_demeaned</span> <span class="o">=</span> <span class="n">evi_indicators</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;evi_log&quot;</span><span class="p">,</span> <span class="s2">&quot;evi_lag_1_log&quot;</span><span class="p">,</span> <span class="s2">&quot;gdp_log&quot;</span><span class="p">]:</span>
-    <span class="n">evi_demeaned</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">_demeaned&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">evi_demeaned</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;quarter&quot;</span><span class="p">)[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
-        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    <span class="p">)</span>
-
-<span class="n">mod_a</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span>
-    <span class="s2">&quot;gdp_log ~ evi_log + evi_lag_1_log&quot;</span><span class="p">,</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">evi_demeaned</span><span class="p">,</span>
-<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">mod_b</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span>
-    <span class="s2">&quot;gdp_log_demeaned ~ evi_log_demeaned + evi_lag_1_log_demeaned&quot;</span><span class="p">,</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">evi_demeaned</span><span class="p">,</span>
-<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">mod_c</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span>
-    <span class="s2">&quot;gdp_log_demeaned ~ evi_log_demeaned + evi_lag_1_log_demeaned + ntl_sum_log&quot;</span><span class="p">,</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">evi_demeaned</span><span class="p">,</span>
-<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-
-<span class="n">demeaned_models</span> <span class="o">=</span> <span class="n">Stargazer</span><span class="p">([</span><span class="n">mod_a</span><span class="p">,</span> <span class="n">mod_b</span><span class="p">,</span> <span class="n">mod_c</span><span class="p">])</span>
-<span class="n">demeaned_models</span><span class="o">.</span><span class="n">custom_columns</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">&quot;Raw (no seasonal control)&quot;</span><span class="p">,</span> <span class="s2">&quot;Demeaned&quot;</span><span class="p">,</span> <span class="s2">&quot;Demeaned + NTL&quot;</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<span class="p">)</span>
-<span class="n">demeaned_models</span><span class="o">.</span><span class="n">covariate_order</span><span class="p">(</span>
-    <span class="p">[</span>
-        <span class="s2">&quot;evi_log&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;evi_lag_1_log&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;evi_log_demeaned&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;evi_lag_1_log_demeaned&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ntl_sum_log&quot;</span><span class="p">,</span>
-    <span class="p">]</span>
-<span class="p">)</span>
-<span class="n">demeaned_models</span><span class="o">.</span><span class="n">rename_covariates</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;evi_log&quot;</span><span class="p">:</span> <span class="s2">&quot;EVI (log)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;evi_lag_1_log&quot;</span><span class="p">:</span> <span class="s2">&quot;EVI 1 Quarter Ago (log)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;evi_log_demeaned&quot;</span><span class="p">:</span> <span class="s2">&quot;EVI (log, demeaned)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;evi_lag_1_log_demeaned&quot;</span><span class="p">:</span> <span class="s2">&quot;EVI 1 Quarter Ago (log, demeaned)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ntl_sum_log&quot;</span><span class="p">:</span> <span class="s2">&quot;NTL Sum (log)&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-<span class="p">)</span>
-<span class="n">demeaned_models</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>How to interpret the demeaned results:</strong></p>
-<ul class="simple">
-<li><p><strong>Raw model</strong> (column 1): the baseline correlation, which mixes genuine EVI signal with seasonal confounding.</p></li>
-<li><p><strong>Demeaned model</strong> (column 2): EVI’s predictive power <em>within</em> each quarter — i.e., in years when EVI was higher than its seasonal average, was GDP also higher than its seasonal average?</p>
-<ul>
-<li><p>If positive and significant → EVI carries genuine year-to-year signal beyond the seasonal cycle.</p></li>
-<li><p>If near zero or insignificant → EVI’s apparent relationship is largely a seasonal phenomenon.</p></li>
-</ul>
-</li>
-<li><p><strong>Demeaned + NTL</strong> (column 3): adds nighttime lights as a control for broader economic activity, isolating the agriculture-specific component.</p></li>
-</ul>
 <p>The figure below shows the visualize the coefficient estimates and its uncertainty. The coefficient of interest, EVI 1 Quarter Ago (log), has a 95% confidence interval of 0.849 to 1.380, indicating a strong and statistically significant positive relationship with agricultural GDP.</p>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <details class="hide above-output">
@@ -1112,7 +960,6 @@ evi_lag_1_log       7.99
   })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-d285a7403ed98ae579761d64a864032b"}, "mark": {"type": "rule", "color": "gray", "strokeDash": [5, 5]}, "encoding": {"x": {"field": "x", "type": "quantitative"}}}, {"data": {"name": "data-39ba8f4b59692643b80ca2fdcffed667"}, "mark": {"type": "errorbar", "extent": "ci"}, "encoding": {"x": {"field": "conf_lower", "title": "Coefficient Estimate", "type": "quantitative"}, "x2": {"field": "conf_upper"}, "y": {"field": "variable_label", "sort": "-x", "title": "Variable", "type": "nominal"}}}, {"data": {"name": "data-39ba8f4b59692643b80ca2fdcffed667"}, "mark": {"type": "point", "color": "#5276A7", "filled": true, "size": 100}, "encoding": {"tooltip": [{"field": "variable_label", "title": "Variable", "type": "nominal"}, {"field": "coefficient", "format": ".4f", "title": "Coefficient", "type": "quantitative"}, {"field": "std_err", "format": ".4f", "title": "Std Error", "type": "quantitative"}, {"field": "conf_lower", "format": ".4f", "title": "95% CI Lower", "type": "quantitative"}, {"field": "conf_upper", "format": ".4f", "title": "95% CI Upper", "type": "quantitative"}], "x": {"field": "coefficient", "type": "quantitative"}, "y": {"field": "variable_label", "sort": "-x", "type": "nominal"}}}], "height": 300, "title": "Model 5: Coefficient Estimates with 95% Confidence Intervals", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-d285a7403ed98ae579761d64a864032b": [{"x": 0}], "data-39ba8f4b59692643b80ca2fdcffed667": [{"variable": "is_crop_season[T.True]", "coefficient": 1.483522384394142, "conf_lower": 1.3115026161428647, "conf_upper": 1.6555421526454195, "std_err": 0.08555495601525163, "variable_label": "Is Crop Season"}, {"variable": "ntl_sum_log", "coefficient": -0.5395125091499038, "conf_lower": -0.711617340806001, "conf_upper": -0.36740767749380654, "std_err": 0.08559726275669106, "variable_label": "NTL Sum (log)"}, {"variable": "evi_log", "coefficient": -0.39577420588569723, "conf_lower": -0.6922180124423011, "conf_upper": -0.09933039932909338, "std_err": 0.14743792000635766, "variable_label": "EVI (log)"}, {"variable": "evi_lag_1_log", "coefficient": 1.1145509694559266, "conf_lower": 0.8486149019608573, "conf_upper": 1.3804870369509958, "std_err": 0.13226473206366907, "variable_label": "EVI 1 Quarter Ago (log)"}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </details>
-</div>
 </div>
 </div>
 <div class="section" id="temporal-trends-at-national-level">
@@ -1946,10 +1793,7 @@ evi_lag_1_log       7.99
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-seasonality">Crop Seasonality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-and-agricultural-gdp">EVI and Agricultural GDP</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#national-level-regression-analysis">National Level Regression Analysis</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnostic-does-evi-predict-gdp-beyond-seasonality">Diagnostic: Does EVI Predict GDP Beyond Seasonality?</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#national-level-regression-analysis">National Level Regression Analysis</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-trends-at-national-level">Temporal Trends at National Level</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evi-changes-in-2024-and-2025">EVI Changes in 2024 and 2025</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-level-evi-and-agricultural-gdp">State-level EVI and Agricultural GDP</a></li>
@@ -1984,7 +1828,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Apr 13, 2026.
+  Last updated on Apr 15, 2026.
   <br/>
 </p>
   </div>
