@@ -1,0 +1,895 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Air Pollution Trends in Myanmar &#8212; Myanmar Economic Monitor</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/airpollution/omi-report';</script>
+    <link rel="canonical" href="https://github.com/datapartnership/myanmar-economic-monitor/notebooks/airpollution/omi-report.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using Satellite Imagery to Understand Impact of Conflict on Public Infrastructure, Mining and New Construction Activity" href="../new-construction-activity/new-construction.html" />
+    <link rel="prev" title="Satellite NO₂ as an Economic Indicator for Myanmar" href="no2-analysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Apr 15, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Myanmar Economic Monitor - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Myanmar Economic Monitor - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Strategic Brief</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reports/myanmar-economic-monitor-strategic-brief.html">Data Lab Strategic Brief: Myanmar Economic Monitor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2023</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../relative-wealth/relative-wealth-index.html">Demographics of Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/README.html">Monitoring vegetation conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/analysis-2023/README.html">Nighttime Lights 2023 Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conflict/acled.html">Armed Conflict Location and Event Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sample-indicators/sagaing-story.html">The Story of Sagaing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobility/mobility.html">Activity proxies in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobility/activity.html">Estimating Activity Using Mobility Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://raw.githack.com/datapartnership/myanmar-economic-monitor/refs/heads/main/notebooks/nighttime-lights/analysis-2024-q4/nighttime_lights.html">Nighttime Lights 2024 Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conflict/conflict-and-ntl.html">Conflict and Nighttime Lights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conflict/conflict-and-ntl-updated.html">Conflict and Nighttime Lights - Updated</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2025</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/analysis-2025/earthquake_ntl.html">Earthquake Impact on Nightlights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl_collection2.html">Nighttime Lights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl-gdp.html">Nighttime Lights and GDP Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-report.html">Enhanced Vegetation Index and GDP Agriculture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="air_pollution.html">Air Pollution in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="no2-analysis.html">Satellite NO₂ as an Economic Indicator for Myanmar</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Air Pollution Trends in Myanmar</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Myanmar Update 2026</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../new-construction-activity/new-construction.html">Using Satellite Imagery to Understand Impact of Conflict on Public Infrastructure, Mining and New Construction Activity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl_mem_2026.html">Nighttime Lights in Myanmar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-2026.html">Enhanced Vegetation Index 2026 Update</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/3-add-resources.html">Additional Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/team.html">Project Team and Acknowledgements</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor/edit/main/notebooks/airpollution/omi-report.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/myanmar-economic-monitor/issues/new?title=Issue%20on%20page%20%2Fnotebooks/airpollution/omi-report.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/airpollution/omi-report.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Air Pollution Trends in Myanmar</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annual-national-no2-trend">Annual National NO₂ Trend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yangon-no2-trends">Yangon NO₂ Trends</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="air-pollution-trends-in-myanmar">
+<h1>Air Pollution Trends in Myanmar<a class="headerlink" href="#air-pollution-trends-in-myanmar" title="Permalink to this heading">#</a></h1>
+<p>This notebook summarizes tropospheric nitrogen dioxide (NO₂) levels in Myanmar using data from NASA’s Ozone Monitoring Instrument (OMI). This analysis focuses on annual national trends across Myanmar (ADM0) and monthly/annual trends for Yangon (ADM1).</p>
+<div class="section" id="annual-national-no2-trend">
+<h2>Annual National NO₂ Trend<a class="headerlink" href="#annual-national-no2-trend" title="Permalink to this heading">#</a></h2>
+<p>The chart below shows the mean annual tropospheric NO₂ column density across Myanmar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nearest</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_point</span><span class="p">(</span>
+    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;mouseover&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">omi_annual_adm0</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">strokeWidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">)),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_point</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.6f&quot;</span><span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="n">points</span> <span class="o">+</span> <span class="n">rules</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Annual National NO₂ Trend in Myanmar&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="s2">&quot;Source: NASA OMI (Ozone Monitoring Instrument), 2010–2025&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-81780f54d2a641ddbcdde8c8259eefbe.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-81780f54d2a641ddbcdde8c8259eefbe.vega-embed details,
+  #altair-viz-81780f54d2a641ddbcdde8c8259eefbe.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-81780f54d2a641ddbcdde8c8259eefbe"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-81780f54d2a641ddbcdde8c8259eefbe") {
+      outputDiv = document.getElementById("altair-viz-81780f54d2a641ddbcdde8c8259eefbe");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"background": "white", "padding": 15, "mark": {"tooltip": true}, "point": {"filled": true, "size": 60, "stroke": "white", "strokeWidth": 1}, "circle": {"filled": true, "stroke": "white", "strokeWidth": 1}, "square": {"filled": true, "stroke": "white", "strokeWidth": 1}, "line": {"strokeWidth": 4, "strokeCap": "round", "strokeJoin": "round"}, "bar": {"cornerRadiusEnd": 0}, "area": {"opacity": 0.7}, "arc": {"stroke": "white", "strokeWidth": 1}, "rect": {"stroke": "#8A969F", "strokeWidth": 0.5}, "geoshape": {"stroke": "#666666", "strokeWidth": 0.3, "strokeJoin": "round", "strokeCap": "round"}, "title": {"font": "Open Sans, sans-serif", "fontSize": 18, "fontWeight": 700, "lineHeight": 22, "color": "#111111", "anchor": "start", "offset": 21, "subtitleFont": "Open Sans, sans-serif", "subtitleFontSize": 15, "subtitleFontWeight": 400, "subtitleLineHeight": 18, "subtitleColor": "#666666", "subtitlePadding": 3}, "axis": {"domain": false, "grid": true, "gridColor": "#CED4DE", "gridDash": [4, 2], "gridWidth": 1, "labelFont": "Open Sans, sans-serif", "labelFontSize": 13, "labelFontWeight": 400, "labelColor": "#666666", "labelPadding": 3, "tickColor": "#CED4DE", "tickSize": 5, "tickCount": 5, "titleFont": "Open Sans, sans-serif", "titleFontSize": 13, "titleFontWeight": 600, "titleColor": "#111111", "titlePadding": 9}, "axisX": {"grid": false, "tickSize": 0, "labelAngle": 0}, "axisY": {"domain": false, "ticks": false, "gridColor": "#CED4DE", "gridDash": [4, 2], "gridWidth": 1}, "axisQuantitative": {"tickCount": 5}, "axisBand": {"labelPadding": 6, "tickSize": 0}, "axisTemporal": {"grid": false}, "legend": {"labelFont": "Open Sans, sans-serif", "labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#111111", "titleFont": "Open Sans, sans-serif", "titleFontSize": 13, "titleFontWeight": 600, "titleColor": "#111111", "titlePadding": 3, "symbolSize": 196, "symbolStrokeWidth": 0, "padding": 15, "offset": 21, "columnPadding": 21, "orient": "bottom", "labelLimit": 200, "titleLimit": 200}, "view": {"stroke": null, "continuousWidth": 600, "continuousHeight": 400}, "range": {"category": ["#34A7F2", "#FF9800", "#664AB6", "#4EC2C0", "#F3578E", "#081079", "#0C7C68", "#AA0000", "#DDDA21"], "diverging": ["#920000", "#BD6126", "#E3A763", "#EFEFEF", "#80BDE7", "#3587C3", "#025288"], "heatmap": ["#E3F6FD", "#75CCEC", "#089BD4", "#0169A1", "#023B6F"], "ordinal": ["#E3F6FD", "#75CCEC", "#089BD4", "#0169A1", "#023B6F"], "ramp": ["#E3F6FD", "#75CCEC", "#089BD4", "#0169A1", "#023B6F"]}, "scale": {"bandPaddingInner": 0.2, "bandPaddingOuter": 0.1, "pointPadding": 0.5}, "header": {"labelFont": "Open Sans, sans-serif", "labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#111111", "titleFont": "Open Sans, sans-serif", "titleFontSize": 15, "titleFontWeight": 600, "titleColor": "#111111"}, "concat": {"spacing": 18}, "facet": {"spacing": 18}, "selection": {"point": {"on": "click", "clear": "dblclick"}, "interval": {"mark": {"fill": "#0071BC", "fillOpacity": 0.15, "stroke": "#0071BC", "strokeWidth": 1}}}}, "layer": [{"mark": {"type": "line", "strokeWidth": 2.5}, "encoding": {"x": {"axis": {"format": "%Y"}, "field": "date", "title": "", "type": "temporal"}, "y": {"field": "no2", "title": "NO\u2082", "type": "quantitative"}}}, {"mark": {"type": "point", "filled": true, "size": 60}, "encoding": {"x": {"field": "date", "type": "temporal"}, "y": {"field": "no2", "type": "quantitative"}}}, {"mark": {"type": "rule", "color": "gray"}, "encoding": {"opacity": {"condition": [{"param": "param_a239a2f221911962", "value": 0.3, "empty": false}], "value": 0}, "tooltip": [{"field": "date", "format": "%Y", "title": "Year", "type": "temporal"}, {"field": "no2", "format": ".6f", "title": "NO\u2082", "type": "quantitative"}], "x": {"field": "date", "type": "temporal"}}, "name": "view_e67079cb121658ac_2"}], "data": {"name": "data-daace529fd848ef4556fa168adceb82b"}, "height": 300, "params": [{"name": "param_a239a2f221911962", "select": {"type": "point", "fields": ["date"], "nearest": true, "on": "mouseover"}, "views": ["view_e67079cb121658ac_2"]}], "title": {"text": "Annual National NO\u2082 Trend in Myanmar", "subtitle": "Source: NASA OMI (Ozone Monitoring Instrument), 2010\u20132025"}, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-daace529fd848ef4556fa168adceb82b": [{"date": "2012-01-01T00:00:00", "no2": 1.2881935999034931e-05, "valid_pixels_mean": 2361.1521126760563, "n_days": 355}, {"date": "2013-01-01T00:00:00", "no2": 1.316664226645473e-05, "valid_pixels_mean": 1455.9490084985837, "n_days": 353}, {"date": "2014-01-01T00:00:00", "no2": 1.3638129288236059e-05, "valid_pixels_mean": 1485.3474576271187, "n_days": 354}, {"date": "2015-01-01T00:00:00", "no2": 1.2863141710271939e-05, "valid_pixels_mean": 1369.1581920903955, "n_days": 354}, {"date": "2016-01-01T00:00:00", "no2": 1.4490614928768287e-05, "valid_pixels_mean": 1344.7382352941177, "n_days": 340}, {"date": "2017-01-01T00:00:00", "no2": 1.3131427029992855e-05, "valid_pixels_mean": 1274.4485714285715, "n_days": 350}, {"date": "2018-01-01T00:00:00", "no2": 1.2830559506581007e-05, "valid_pixels_mean": 1245.3767705382436, "n_days": 353}, {"date": "2019-01-01T00:00:00", "no2": 1.3308188563369802e-05, "valid_pixels_mean": 1344.8611898016998, "n_days": 353}, {"date": "2020-01-01T00:00:00", "no2": 1.3744030391511018e-05, "valid_pixels_mean": 1301.3945205479451, "n_days": 365}, {"date": "2021-01-01T00:00:00", "no2": 1.4122168073466706e-05, "valid_pixels_mean": 1289.8876712328768, "n_days": 365}, {"date": "2022-01-01T00:00:00", "no2": 1.1159254090535023e-05, "valid_pixels_mean": 1284.5357142857142, "n_days": 364}, {"date": "2023-01-01T00:00:00", "no2": 1.1962245030669769e-05, "valid_pixels_mean": 1394.7375690607735, "n_days": 362}, {"date": "2024-01-01T00:00:00", "no2": 1.130670052292548e-05, "valid_pixels_mean": 1392.7353760445683, "n_days": 359}, {"date": "2025-01-01T00:00:00", "no2": 1.118066002983433e-05, "valid_pixels_mean": 1341.2884615384614, "n_days": 364}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+</div>
+<div class="section" id="yangon-no2-trends">
+<h2>Yangon NO₂ Trends<a class="headerlink" href="#yangon-no2-trends" title="Permalink to this heading">#</a></h2>
+<p>The charts below show the monthly and annual mean tropospheric NO₂ column density for Yangon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nearest</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_point</span><span class="p">(</span>
+    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;mouseover&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">omi_monthly_yangon</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%b %Y&quot;</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.6f&quot;</span><span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="n">rules</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">280</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Monthly NO₂ in Yangon&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="s2">&quot;Source: NASA OMI, 2010–2025&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-a14119e3b84848e68864481e2261e3a8.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-a14119e3b84848e68864481e2261e3a8.vega-embed details,
+  #altair-viz-a14119e3b84848e68864481e2261e3a8.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-a14119e3b84848e68864481e2261e3a8"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-a14119e3b84848e68864481e2261e3a8") {
+      outputDiv = document.getElementById("altair-viz-a14119e3b84848e68864481e2261e3a8");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"background": "white", "padding": 15, "mark": {"tooltip": true}, "point": {"filled": true, "size": 60, "stroke": "white", "strokeWidth": 1}, "circle": {"filled": true, "stroke": "white", "strokeWidth": 1}, "square": {"filled": true, "stroke": "white", "strokeWidth": 1}, "line": {"strokeWidth": 4, "strokeCap": "round", "strokeJoin": "round"}, "bar": {"cornerRadiusEnd": 0}, "area": {"opacity": 0.7}, "arc": {"stroke": "white", "strokeWidth": 1}, "rect": {"stroke": "#8A969F", "strokeWidth": 0.5}, "geoshape": {"stroke": "#666666", "strokeWidth": 0.3, "strokeJoin": "round", "strokeCap": "round"}, "title": {"font": "Open Sans, sans-serif", "fontSize": 18, "fontWeight": 700, "lineHeight": 22, "color": "#111111", "anchor": "start", "offset": 21, "subtitleFont": "Open Sans, sans-serif", "subtitleFontSize": 15, "subtitleFontWeight": 400, "subtitleLineHeight": 18, "subtitleColor": "#666666", "subtitlePadding": 3}, "axis": {"domain": false, "grid": true, "gridColor": "#CED4DE", "gridDash": [4, 2], "gridWidth": 1, "labelFont": "Open Sans, sans-serif", "labelFontSize": 13, "labelFontWeight": 400, "labelColor": "#666666", "labelPadding": 3, "tickColor": "#CED4DE", "tickSize": 5, "tickCount": 5, "titleFont": "Open Sans, sans-serif", "titleFontSize": 13, "titleFontWeight": 600, "titleColor": "#111111", "titlePadding": 9}, "axisX": {"grid": false, "tickSize": 0, "labelAngle": 0}, "axisY": {"domain": false, "ticks": false, "gridColor": "#CED4DE", "gridDash": [4, 2], "gridWidth": 1}, "axisQuantitative": {"tickCount": 5}, "axisBand": {"labelPadding": 6, "tickSize": 0}, "axisTemporal": {"grid": false}, "legend": {"labelFont": "Open Sans, sans-serif", "labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#111111", "titleFont": "Open Sans, sans-serif", "titleFontSize": 13, "titleFontWeight": 600, "titleColor": "#111111", "titlePadding": 3, "symbolSize": 196, "symbolStrokeWidth": 0, "padding": 15, "offset": 21, "columnPadding": 21, "orient": "bottom", "labelLimit": 200, "titleLimit": 200}, "view": {"stroke": null, "continuousWidth": 600, "continuousHeight": 400}, "range": {"category": ["#34A7F2", "#FF9800", "#664AB6", "#4EC2C0", "#F3578E", "#081079", "#0C7C68", "#AA0000", "#DDDA21"], "diverging": ["#920000", "#BD6126", "#E3A763", "#EFEFEF", "#80BDE7", "#3587C3", "#025288"], "heatmap": ["#E3F6FD", "#75CCEC", "#089BD4", "#0169A1", "#023B6F"], "ordinal": ["#E3F6FD", "#75CCEC", "#089BD4", "#0169A1", "#023B6F"], "ramp": ["#E3F6FD", "#75CCEC", "#089BD4", "#0169A1", "#023B6F"]}, "scale": {"bandPaddingInner": 0.2, "bandPaddingOuter": 0.1, "pointPadding": 0.5}, "header": {"labelFont": "Open Sans, sans-serif", "labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#111111", "titleFont": "Open Sans, sans-serif", "titleFontSize": 15, "titleFontWeight": 600, "titleColor": "#111111"}, "concat": {"spacing": 18}, "facet": {"spacing": 18}, "selection": {"point": {"on": "click", "clear": "dblclick"}, "interval": {"mark": {"fill": "#0071BC", "fillOpacity": 0.15, "stroke": "#0071BC", "strokeWidth": 1}}}}, "layer": [{"mark": {"type": "line", "color": "steelblue"}, "encoding": {"x": {"field": "date", "title": "", "type": "temporal"}, "y": {"field": "no2", "title": "NO\u2082", "type": "quantitative"}}}, {"mark": {"type": "rule", "color": "gray"}, "encoding": {"opacity": {"condition": [{"param": "param_a239a2f221911962", "value": 0.3, "empty": false}], "value": 0}, "tooltip": [{"field": "date", "format": "%b %Y", "title": "Month", "type": "temporal"}, {"field": "no2", "format": ".6f", "title": "NO\u2082", "type": "quantitative"}], "x": {"field": "date", "type": "temporal"}}, "name": "view_57b85d1b23b311f4_1"}], "data": {"name": "data-9b411bbea5b45f2d2ff49eba89b1d03f"}, "height": 280, "params": [{"name": "param_a239a2f221911962", "select": {"type": "point", "fields": ["date"], "nearest": true, "on": "mouseover"}, "views": ["view_57b85d1b23b311f4_1"]}], "title": {"text": "Monthly NO\u2082 in Yangon", "subtitle": "Source: NASA OMI, 2010\u20132025"}, "width": 700, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-9b411bbea5b45f2d2ff49eba89b1d03f": [{"date": "2010-01-01T00:00:00", "no2": 3.473300380643002e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-02-01T00:00:00", "no2": 3.028853424546995e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-03-01T00:00:00", "no2": 2.7003864303602847e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-04-01T00:00:00", "no2": 2.935914780958188e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-05-01T00:00:00", "no2": 3.1485609403615666e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-06-01T00:00:00", "no2": 3.901637140400362e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-07-01T00:00:00", "no2": 2.9355774785074318e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-08-01T00:00:00", "no2": 2.741307807330965e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-09-01T00:00:00", "no2": 5.274159820831267e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-10-01T00:00:00", "no2": 2.733312868233276e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-11-01T00:00:00", "no2": 3.8915137361691285e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2010-12-01T00:00:00", "no2": 2.8313655252129596e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-01-01T00:00:00", "no2": 2.5223729745548902e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-02-01T00:00:00", "no2": 3.061652364502007e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-03-01T00:00:00", "no2": 3.045686134305784e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-04-01T00:00:00", "no2": 3.921134996345526e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-05-01T00:00:00", "no2": 5.281742841625731e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-06-01T00:00:00", "no2": 5.046672584635094e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-07-01T00:00:00", "no2": 4.396881044374765e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-08-01T00:00:00", "no2": 4.67208292771979e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-09-01T00:00:00", "no2": 4.35199102896854e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-10-01T00:00:00", "no2": 5.239828425437458e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-11-01T00:00:00", "no2": 2.8591522172907253e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2011-12-01T00:00:00", "no2": 3.1956437604730424e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-01-01T00:00:00", "no2": 3.2419780772810142e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-02-01T00:00:00", "no2": 2.6344554378205923e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-03-01T00:00:00", "no2": 1.4902808810302555e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-04-01T00:00:00", "no2": 1.779567139292139e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-05-01T00:00:00", "no2": 1.6443307223206794e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-06-01T00:00:00", "no2": 1.6844987806804457e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-07-01T00:00:00", "no2": 2.514272368342585e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-08-01T00:00:00", "no2": 2.1157589318915898e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-09-01T00:00:00", "no2": 4.055833797923568e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-10-01T00:00:00", "no2": 3.962003174081107e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-11-01T00:00:00", "no2": 3.9094119345203125e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2012-12-01T00:00:00", "no2": 3.2200701434403492e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-01-01T00:00:00", "no2": 2.2536628120199403e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-02-01T00:00:00", "no2": 2.909356451818389e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-03-01T00:00:00", "no2": 2.0886163592290038e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-04-01T00:00:00", "no2": 2.6786212468189503e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-05-01T00:00:00", "no2": 3.916400628815026e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-06-01T00:00:00", "no2": 5.553520065600213e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-07-01T00:00:00", "no2": 3.7264442543507507e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-08-01T00:00:00", "no2": 2.98828016788568e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-09-01T00:00:00", "no2": 5.136704931451287e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-10-01T00:00:00", "no2": 5.369661127178642e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-11-01T00:00:00", "no2": 4.65469992498902e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2013-12-01T00:00:00", "no2": 3.865245699339236e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-01-01T00:00:00", "no2": 3.428259094048612e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-02-01T00:00:00", "no2": 2.3680098347241593e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-03-01T00:00:00", "no2": 2.9877218160202743e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-04-01T00:00:00", "no2": 2.837913267681251e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-05-01T00:00:00", "no2": 3.6178707951896017e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-06-01T00:00:00", "no2": 3.948328291446768e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-07-01T00:00:00", "no2": 4.9471029833405775e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-08-01T00:00:00", "no2": 5.116894830448972e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-09-01T00:00:00", "no2": 4.176276010099031e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-10-01T00:00:00", "no2": 3.3159332806549266e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-11-01T00:00:00", "no2": 3.6147733216526056e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2014-12-01T00:00:00", "no2": 2.8031335852648715e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-01-01T00:00:00", "no2": 2.501381014527054e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-02-01T00:00:00", "no2": 2.16337746207903e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-03-01T00:00:00", "no2": 3.053198874697001e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-04-01T00:00:00", "no2": 3.169589954878177e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-05-01T00:00:00", "no2": 3.5272848871539178e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-06-01T00:00:00", "no2": 4.425543133324472e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-07-01T00:00:00", "no2": 4.878324481045334e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-08-01T00:00:00", "no2": 5.880484009434267e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-09-01T00:00:00", "no2": 4.908662821925404e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-10-01T00:00:00", "no2": 5.426898131297542e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-11-01T00:00:00", "no2": 5.331992649557411e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2015-12-01T00:00:00", "no2": 4.298534736254955e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-01-01T00:00:00", "no2": 2.481648291982012e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-02-01T00:00:00", "no2": 3.049290152648901e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-03-01T00:00:00", "no2": 2.591275893663219e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-04-01T00:00:00", "no2": 3.722547585484825e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-05-01T00:00:00", "no2": 3.9508324164154665e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-06-01T00:00:00", "no2": 2.2302857984352072e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-07-01T00:00:00", "no2": 3.6918478518098173e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-08-01T00:00:00", "no2": 4.6835975583466255e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-09-01T00:00:00", "no2": 6.454919550604169e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-10-01T00:00:00", "no2": 5.726122877529769e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-11-01T00:00:00", "no2": 5.902632242636642e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2016-12-01T00:00:00", "no2": 4.25048901349065e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-01-01T00:00:00", "no2": 2.8011070173062178e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-02-01T00:00:00", "no2": 2.3461023709786646e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-03-01T00:00:00", "no2": 3.4142996936813848e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-04-01T00:00:00", "no2": 3.310603598235539e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-05-01T00:00:00", "no2": 4.888135066823505e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-06-01T00:00:00", "no2": 4.409811622191917e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-07-01T00:00:00", "no2": 4.871375314827862e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-08-01T00:00:00", "no2": 3.7733079820498185e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-09-01T00:00:00", "no2": 5.537027240252858e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-10-01T00:00:00", "no2": 4.069086607125287e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-11-01T00:00:00", "no2": 3.999582777234742e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2017-12-01T00:00:00", "no2": 3.472679436732766e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-01-01T00:00:00", "no2": 1.4826326427354461e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-02-01T00:00:00", "no2": 4.201740883875357e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-03-01T00:00:00", "no2": 3.642471529468812e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-04-01T00:00:00", "no2": 1.8617288600932649e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-05-01T00:00:00", "no2": 2.1957202844334152e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-06-01T00:00:00", "no2": 3.813816494257937e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-07-01T00:00:00", "no2": 3.6531775020236347e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-08-01T00:00:00", "no2": 2.936302590545628e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-09-01T00:00:00", "no2": 4.126042297526997e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-10-01T00:00:00", "no2": 4.2808434054018294e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-11-01T00:00:00", "no2": 4.1356995653481645e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2018-12-01T00:00:00", "no2": 3.165692045675313e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-01-01T00:00:00", "no2": 3.1484664611923123e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-02-01T00:00:00", "no2": 3.250442652418444e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-03-01T00:00:00", "no2": 2.5911358266455863e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-04-01T00:00:00", "no2": 2.927794617417308e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-05-01T00:00:00", "no2": 3.7144851822190724e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-06-01T00:00:00", "no2": 3.4165961877386986e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-07-01T00:00:00", "no2": 3.484135527410227e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-08-01T00:00:00", "no2": 5.497593979976423e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-09-01T00:00:00", "no2": 6.163209712214813e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-10-01T00:00:00", "no2": 5.966850176729152e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-11-01T00:00:00", "no2": 4.891980485655756e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2019-12-01T00:00:00", "no2": 4.083298474652293e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-01-01T00:00:00", "no2": 3.18319789828058e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-02-01T00:00:00", "no2": 2.9130593921835387e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-03-01T00:00:00", "no2": 3.5220318850322595e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-04-01T00:00:00", "no2": 2.869151632648228e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-05-01T00:00:00", "no2": 1.8906371715745562e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-06-01T00:00:00", "no2": 2.6970256866770618e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-07-01T00:00:00", "no2": 4.1342309275572895e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-08-01T00:00:00", "no2": 6.381409742777708e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-09-01T00:00:00", "no2": 4.063715443792282e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-10-01T00:00:00", "no2": 4.694487000129561e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-11-01T00:00:00", "no2": 3.6174514137225893e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2020-12-01T00:00:00", "no2": 3.284890385018269e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-01-01T00:00:00", "no2": 3.030163341427559e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-02-01T00:00:00", "no2": 2.803875089472177e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-03-01T00:00:00", "no2": 2.5007878725360057e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-04-01T00:00:00", "no2": 3.97062442231695e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-05-01T00:00:00", "no2": 3.354156137810138e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-06-01T00:00:00", "no2": 2.9863414686951157e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-07-01T00:00:00", "no2": 4.293510188072014e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-08-01T00:00:00", "no2": 4.204567319990296e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-09-01T00:00:00", "no2": 6.2973202259328414e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-10-01T00:00:00", "no2": 3.2508550846564147e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-11-01T00:00:00", "no2": 2.370684166772427e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2021-12-01T00:00:00", "no2": 3.4262359483507156e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-01-01T00:00:00", "no2": 4.502997273199277e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-02-01T00:00:00", "no2": 4.066512087849264e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-03-01T00:00:00", "no2": 2.612593792187624e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-04-01T00:00:00", "no2": 2.3326551745526504e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-05-01T00:00:00", "no2": 3.006251166163613e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-06-01T00:00:00", "no2": 3.814354906480867e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-07-01T00:00:00", "no2": 5.133465460615466e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-08-01T00:00:00", "no2": 4.170608462000593e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-09-01T00:00:00", "no2": 4.269935349797232e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-10-01T00:00:00", "no2": 3.741539600175244e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-11-01T00:00:00", "no2": 5.1427464268779695e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2022-12-01T00:00:00", "no2": 3.162974089455507e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-01-01T00:00:00", "no2": 3.9051363559525495e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-02-01T00:00:00", "no2": 3.572984226220169e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-03-01T00:00:00", "no2": 3.778079868035495e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-04-01T00:00:00", "no2": 3.079039123200005e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-05-01T00:00:00", "no2": 3.6752075878322836e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-06-01T00:00:00", "no2": 4.027378484251835e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-07-01T00:00:00", "no2": 4.1190729372278236e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-08-01T00:00:00", "no2": 3.968166426373186e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-09-01T00:00:00", "no2": 4.345503606386467e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-10-01T00:00:00", "no2": 3.226512585229239e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-11-01T00:00:00", "no2": 4.0477251870301275e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2023-12-01T00:00:00", "no2": 6.24223149422103e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-01-01T00:00:00", "no2": 3.0280208463318214e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-02-01T00:00:00", "no2": 4.3071233922844675e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-03-01T00:00:00", "no2": 3.881121727417814e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-04-01T00:00:00", "no2": 3.689809931815988e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-05-01T00:00:00", "no2": 3.7757362381519396e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-06-01T00:00:00", "no2": 4.051262173934087e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-07-01T00:00:00", "no2": 6.0820243445210605e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-08-01T00:00:00", "no2": 6.5566680404855815e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-09-01T00:00:00", "no2": 8.312105329356762e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-10-01T00:00:00", "no2": 6.560676611168081e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-11-01T00:00:00", "no2": 6.4765212405774365e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2024-12-01T00:00:00", "no2": 3.4114801942543104e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2025-01-01T00:00:00", "no2": 4.3862949159051455e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2025-02-01T00:00:00", "no2": 4.221778492743086e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2025-03-01T00:00:00", "no2": 3.5762787129591727e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2025-04-01T00:00:00", "no2": 2.6874613749856223e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2025-05-01T00:00:00", "no2": 4.796346775421873e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2025-06-01T00:00:00", "no2": 3.902855545380468e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2025-07-01T00:00:00", "no2": 4.8693317491694845e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2025-08-01T00:00:00", "no2": 4.215379526363871e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2025-09-01T00:00:00", "no2": 5.440071410600899e-06, "valid_pixels_mean": 27.0, "n_days": 1}, {"date": "2025-10-01T00:00:00", "no2": 3.650555784721129e-06, "valid_pixels_mean": 27.0, "n_days": 1}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nearest</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_point</span><span class="p">(</span>
+    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;mouseover&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">omi_annual_yangon</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">)),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂ (×10¹⁵ molecules/cm²)&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_point</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.6f&quot;</span><span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="n">points</span> <span class="o">+</span> <span class="n">rules</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">280</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Annual NO₂ Trend in Yangon&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="s2">&quot;Source: NASA OMI, 2010–2025&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-9256b71dfac244b9a48810a7a5fa9eec.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-9256b71dfac244b9a48810a7a5fa9eec.vega-embed details,
+  #altair-viz-9256b71dfac244b9a48810a7a5fa9eec.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-9256b71dfac244b9a48810a7a5fa9eec"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-9256b71dfac244b9a48810a7a5fa9eec") {
+      outputDiv = document.getElementById("altair-viz-9256b71dfac244b9a48810a7a5fa9eec");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"background": "white", "padding": 15, "mark": {"tooltip": true}, "point": {"filled": true, "size": 60, "stroke": "white", "strokeWidth": 1}, "circle": {"filled": true, "stroke": "white", "strokeWidth": 1}, "square": {"filled": true, "stroke": "white", "strokeWidth": 1}, "line": {"strokeWidth": 4, "strokeCap": "round", "strokeJoin": "round"}, "bar": {"cornerRadiusEnd": 0}, "area": {"opacity": 0.7}, "arc": {"stroke": "white", "strokeWidth": 1}, "rect": {"stroke": "#8A969F", "strokeWidth": 0.5}, "geoshape": {"stroke": "#666666", "strokeWidth": 0.3, "strokeJoin": "round", "strokeCap": "round"}, "title": {"font": "Open Sans, sans-serif", "fontSize": 18, "fontWeight": 700, "lineHeight": 22, "color": "#111111", "anchor": "start", "offset": 21, "subtitleFont": "Open Sans, sans-serif", "subtitleFontSize": 15, "subtitleFontWeight": 400, "subtitleLineHeight": 18, "subtitleColor": "#666666", "subtitlePadding": 3}, "axis": {"domain": false, "grid": true, "gridColor": "#CED4DE", "gridDash": [4, 2], "gridWidth": 1, "labelFont": "Open Sans, sans-serif", "labelFontSize": 13, "labelFontWeight": 400, "labelColor": "#666666", "labelPadding": 3, "tickColor": "#CED4DE", "tickSize": 5, "tickCount": 5, "titleFont": "Open Sans, sans-serif", "titleFontSize": 13, "titleFontWeight": 600, "titleColor": "#111111", "titlePadding": 9}, "axisX": {"grid": false, "tickSize": 0, "labelAngle": 0}, "axisY": {"domain": false, "ticks": false, "gridColor": "#CED4DE", "gridDash": [4, 2], "gridWidth": 1}, "axisQuantitative": {"tickCount": 5}, "axisBand": {"labelPadding": 6, "tickSize": 0}, "axisTemporal": {"grid": false}, "legend": {"labelFont": "Open Sans, sans-serif", "labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#111111", "titleFont": "Open Sans, sans-serif", "titleFontSize": 13, "titleFontWeight": 600, "titleColor": "#111111", "titlePadding": 3, "symbolSize": 196, "symbolStrokeWidth": 0, "padding": 15, "offset": 21, "columnPadding": 21, "orient": "bottom", "labelLimit": 200, "titleLimit": 200}, "view": {"stroke": null, "continuousWidth": 600, "continuousHeight": 400}, "range": {"category": ["#34A7F2", "#FF9800", "#664AB6", "#4EC2C0", "#F3578E", "#081079", "#0C7C68", "#AA0000", "#DDDA21"], "diverging": ["#920000", "#BD6126", "#E3A763", "#EFEFEF", "#80BDE7", "#3587C3", "#025288"], "heatmap": ["#E3F6FD", "#75CCEC", "#089BD4", "#0169A1", "#023B6F"], "ordinal": ["#E3F6FD", "#75CCEC", "#089BD4", "#0169A1", "#023B6F"], "ramp": ["#E3F6FD", "#75CCEC", "#089BD4", "#0169A1", "#023B6F"]}, "scale": {"bandPaddingInner": 0.2, "bandPaddingOuter": 0.1, "pointPadding": 0.5}, "header": {"labelFont": "Open Sans, sans-serif", "labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#111111", "titleFont": "Open Sans, sans-serif", "titleFontSize": 15, "titleFontWeight": 600, "titleColor": "#111111"}, "concat": {"spacing": 18}, "facet": {"spacing": 18}, "selection": {"point": {"on": "click", "clear": "dblclick"}, "interval": {"mark": {"fill": "#0071BC", "fillOpacity": 0.15, "stroke": "#0071BC", "strokeWidth": 1}}}}, "layer": [{"mark": {"type": "line"}, "encoding": {"x": {"axis": {"format": "%Y"}, "field": "date", "title": "", "type": "temporal"}, "y": {"field": "no2", "title": "NO\u2082 (\u00d710\u00b9\u2075 molecules/cm\u00b2)", "type": "quantitative"}}}, {"mark": {"type": "point", "filled": true, "size": 60}, "encoding": {"x": {"field": "date", "type": "temporal"}, "y": {"field": "no2", "type": "quantitative"}}}, {"mark": {"type": "rule", "color": "gray"}, "encoding": {"opacity": {"condition": [{"param": "param_a239a2f221911962", "value": 0.3, "empty": false}], "value": 0}, "tooltip": [{"field": "date", "format": "%Y", "title": "Year", "type": "temporal"}, {"field": "no2", "format": ".6f", "title": "NO\u2082", "type": "quantitative"}], "x": {"field": "date", "type": "temporal"}}, "name": "view_e67079cb121658ac_2"}], "data": {"name": "data-a32266d252af3466962eec67dba448e4"}, "height": 280, "params": [{"name": "param_a239a2f221911962", "select": {"type": "point", "fields": ["date"], "nearest": true, "on": "mouseover"}, "views": ["view_e67079cb121658ac_2"]}], "title": {"text": "Annual NO\u2082 Trend in Yangon", "subtitle": "Source: NASA OMI, 2010\u20132025"}, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-a32266d252af3466962eec67dba448e4": [{"date": "2010-01-01T00:00:00", "no2": 3.2996575277962856e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2011-01-01T00:00:00", "no2": 3.9662367750194465e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2012-01-01T00:00:00", "no2": 2.6877051157187195e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2013-01-01T00:00:00", "no2": 3.761767805791345e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2014-01-01T00:00:00", "no2": 3.596851425880971e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2015-01-01T00:00:00", "no2": 4.13043934634788e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2016-01-01T00:00:00", "no2": 4.061290769420609e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2017-01-01T00:00:00", "no2": 3.90775989395338e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2018-01-01T00:00:00", "no2": 3.29132234178215e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2019-01-01T00:00:00", "no2": 4.094665773689174e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2020-01-01T00:00:00", "no2": 3.604274048282827e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2021-01-01T00:00:00", "no2": 3.5407601055027213e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2022-01-01T00:00:00", "no2": 3.8297194824462755e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2023-01-01T00:00:00", "no2": 3.998919823496684e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2024-01-01T00:00:00", "no2": 5.011045839191612e-06, "valid_pixels_mean": 27.0, "n_days": 12}, {"date": "2025-01-01T00:00:00", "no2": 4.174635428825075e-06, "valid_pixels_mean": 27.0, "n_days": 10}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/airpollution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="no2-analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Satellite NO₂ as an Economic Indicator for Myanmar</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../new-construction-activity/new-construction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using Satellite Imagery to Understand Impact of Conflict on Public Infrastructure, Mining and New Construction Activity</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annual-national-no2-trend">Annual National NO₂ Trend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yangon-no2-trends">Yangon NO₂ Trends</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By World Bank
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Apr 15, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+ Country borders or names do not necessarily reflect the World Bank Group’s official position. All maps are for illustrative purposes and do not imply the expression of any opinion on the part of the World Bank, concerning the legal status of any country or territory or concerning the delimitation of frontiers or boundaries
+</div>
+<div>
+    <b>All content (unless otherwise specified) is subject to the <a href="https://www.mozilla.org/en-US/MPL">Mozilla Public License.</a></b>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
