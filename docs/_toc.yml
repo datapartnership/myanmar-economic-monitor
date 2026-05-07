@@ -39,8 +39,8 @@ parts:
     chapters:
       - file: notebooks/new-construction-activity/new-construction.md
       - file: notebooks/new-construction-activity/myanmar_damConstruction_tracking.ipynb
-      - title: Dam Construction Visualization
-        url: https://datapartnership.github.io/myanmar-economic-monitor/dam-visualization.html
+      # - title: Dam Construction Visualization
+      #   url: https://datapartnership.github.io/myanmar-economic-monitor/dam-visualization.html
       - file: notebooks/nighttime-lights/collection-2/ntl_mem_2026.ipynb
       - file: notebooks/vegetation-conditions/evi-analytics-update-2026.ipynb
   - caption: Additional Resources
