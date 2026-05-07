@@ -563,7 +563,7 @@ document.write(`
 <tr><td align="center"><b>2017</b></td><td align="center"><b>2019</b></td><td align="center"><b>2023</b></td><td align="center"><b>2025</b></td></tr>
 <tr>
 <td><img src="https://raw.githubusercontent.com/datapartnership/myanmar-economic-monitor/main/docs/images/upper_yeywa_composite_2017_buff1000.png" width="240"></td>
-<td><img src="https://raw.githubusercontent.com/datapartnership/myanmar-economic-monitor/main/docs/images/upper_yeywa_composite_2019_buff1000.png" width="240"></td>
+<td><img src="https://raw.githubusercontent.com/datapartnership/myanmar-economic-monitor/main/docs/images/upper_yeywa_composite_2021_buff1000.png" width="240"></td>
 <td><img src="https://raw.githubusercontent.com/datapartnership/myanmar-economic-monitor/main/docs/images/upper_yeywa_composite_2023_buff1000.png" width="240"></td>
 <td><img src="https://raw.githubusercontent.com/datapartnership/myanmar-economic-monitor/main/docs/images/upper_yeywa_composite_2025_buff1000.png" width="240"></td>
 </tr>
@@ -593,23 +593,23 @@ document.write(`
             </style>
             </div><div class="output text_html">
 <style>
-  #altair-viz-ebd03627b7df4e6aac7df63f9830b31e.vega-embed {
+  #altair-viz-e8dd718ccdfb412da378866c0b0d3da3.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-ebd03627b7df4e6aac7df63f9830b31e.vega-embed details,
-  #altair-viz-ebd03627b7df4e6aac7df63f9830b31e.vega-embed details summary {
+  #altair-viz-e8dd718ccdfb412da378866c0b0d3da3.vega-embed details,
+  #altair-viz-e8dd718ccdfb412da378866c0b0d3da3.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-ebd03627b7df4e6aac7df63f9830b31e"></div>
+<div id="altair-viz-e8dd718ccdfb412da378866c0b0d3da3"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-ebd03627b7df4e6aac7df63f9830b31e") {
-      outputDiv = document.getElementById("altair-viz-ebd03627b7df4e6aac7df63f9830b31e");
+    if (outputDiv.id !== "altair-viz-e8dd718ccdfb412da378866c0b0d3da3") {
+      outputDiv = document.getElementById("altair-viz-e8dd718ccdfb412da378866c0b0d3da3");
     }
 
     const paths = {
@@ -661,9 +661,9 @@ document.write(`
 </script></div></div>
 </div>
 <small style="color:#666">
-<p><strong>Source:</strong> Analysis conducted using SAR data from Sentinel-1A; reference images from LANDSAT, Google Earth and Sentinel-2 accessed using Google Earth Engine.</p>
-<p>The images are annual composites and the SAR analysis in the line chart is aggregated monthly.</p>
-<p>Data available from October 2014 to January 2026.</p>
+<p><strong>Source:</strong> Analysis conducted using SAR data from Sentinel-1A; reference images from LANDSAT, Google Earth and Sentinel-2 accessed using Google Earth Engine.
+The images are annual composites and the SAR analysis in the line chart is aggregated monthly.
+Data available from October 2014 to January 2026.</p>
 </small><p>Most of the construction for Upper Yeywa happened between 2019 and 2023, confirmed by SAR data (lower backscatter values), and images from LANDSAT.</p>
 </div>
 <div class="section" id="upper-kengtawng-hydropower-project">
@@ -770,9 +770,8 @@ document.write(`
 </script></div></div>
 </div>
 <small style="color:#666">
-<p><strong>Source:</strong> Analysis conducted using SAR data from Sentinel-1A; reference images from LANDSAT, Google Earth and Sentinel-2 accessed using Google Earth Engine.</p>
-<p>The images are annual composites and the SAR analysis in the line chart is aggregated monthly.</p>
-<p>Data available from January 2014 to January 2026.</p>
+<p><strong>Source:</strong> Analysis conducted using SAR data from Sentinel-1A; reference images from LANDSAT, Google Earth and Sentinel-2 accessed using Google Earth Engine.The images are annual composites and the SAR analysis in the line chart is aggregated monthly.
+Data available from January 2014 to January 2026.</p>
 </small></div>
 <div class="section" id="tha-htay-hydropower-project">
 <h2>Tha Htay Hydropower Project<a class="headerlink" href="#tha-htay-hydropower-project" title="Permalink to this heading">#</a></h2>
@@ -784,16 +783,7 @@ document.write(`
 <td><img src="https://raw.githubusercontent.com/datapartnership/myanmar-economic-monitor/main/docs/images/tha_htay_composite_2023_buff1000.png" width="240"></td>
 <td><img src="https://raw.githubusercontent.com/datapartnership/myanmar-economic-monitor/main/docs/images/tha_htay_composite_2025_buff1000.png" width="240"></td>
 </tr>
-</table><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tha Htay trend with annotations</span>
-<span class="n">tha_htay_annotations</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2024-04-01&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;Construction halted&#39;</span><span class="p">},</span>
-<span class="p">]</span>
-<span class="n">plot_dam_trend</span><span class="p">(</span><span class="n">combined_dam_df</span><span class="p">,</span> <span class="s1">&#39;tha_htay&#39;</span><span class="p">,</span> <span class="s1">&#39;150m&#39;</span><span class="p">,</span> <span class="n">tha_htay_annotations</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+</table><div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html">
             <style>
@@ -887,9 +877,9 @@ document.write(`
 </script></div></div>
 </div>
 <small style="color:#666">
-<p><strong>Source:</strong> Analysis conducted using SAR data from Sentinel-1A; reference images from LANDSAT, Google Earth and Sentinel-2 accessed using Google Earth Engine.</p>
-<p>The images are annual composites and the SAR analysis in the line chart is aggregated monthly.</p>
-<p>Data available from January 2018 to January 2026.</p>
+<p><strong>Source:</strong> Analysis conducted using SAR data from Sentinel-1A; reference images from LANDSAT, Google Earth and Sentinel-2 accessed using Google Earth Engine.
+The images are annual composites and the SAR analysis in the line chart is aggregated monthly.
+Data available from January 2018 to January 2026.</p>
 </small></div>
 </div>
 
