@@ -3721,24 +3721,24 @@ console.log('Dam metadata loaded for:', Object.keys(damMetadata));
 // Function to create D3.js visualization
 function createChart(damId) {
     console.log('Creating chart for:', damId);
-    
+
     // Clear any existing chart
     d3.select("#" + damId + "-chart").selectAll("*").remove();
-    
+
     const data = damData[damId];
     if (!data) {
         console.error(`No data found for dam: ${damId}`);
         return;
     }
-    
+
     console.log('Data loaded for', damId, '- Date count:', data.data.dates.length);
-    
+
     // Update metadata display
     const metadata = damMetadata[damId] || {};
     document.getElementById(damId + '-reported-start').textContent = metadata.reported_start || 'N/A';
     document.getElementById(damId + '-data-from').textContent = metadata.data_from || 'N/A';
     document.getElementById(damId + '-last-image').textContent = metadata.last_image || 'N/A';
-    
+
     // Prepare data for D3
     const chartData = data.data.dates.map((date, i) => ({
         date: new Date(date),
@@ -3746,12 +3746,12 @@ function createChart(damId) {
         VV: data.data.VV[i],
         seasonal: data.data.seasonal[i]
     }));
-    
+
     // Set dimensions and margins
     const container = document.getElementById(damId + '-chart');
     const parentContainer = container.parentElement;
     let containerWidth = container.clientWidth;
-    
+
     // Fix for hidden tabs - use parent container width if container width is 0
     if (containerWidth === 0) {
         containerWidth = parentContainer ? parentContainer.clientWidth - 40 : 1320;
@@ -3776,21 +3776,21 @@ function createChart(damId) {
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", `translate(${chartOffsetX},${margin.top})`);
-    
+
     console.log('SVG created with dimensions:', width + margin.left + margin.right, 'x', height + margin.top + margin.bottom);
 
     // Create scales
     const xExtent = d3.extent(chartData, d => d.date);
     const yMin = d3.min(chartData, d => d.trend) - 1;
     const yMax = d3.max(chartData, d => d.trend) + 1;
-    
+
     // Extend x-axis to start from 2014
     const xStart = new Date('2014-01-01');
     const xEnd = xExtent[1];
-    
+
     console.log('X domain:', [xStart, xEnd]);
     console.log('Y domain:', [yMin, yMax]);
-    
+
     const x = d3.scaleTime()
         .domain([xStart, xEnd])
         .range([0, width]);
@@ -3798,7 +3798,7 @@ function createChart(damId) {
     const y = d3.scaleLinear()
         .domain([yMin, yMax])
         .range([height, 0]);
-        
+
     // Create axes
     svg.append("g")
         .attr("transform", `translate(0,${height})`)
@@ -3823,7 +3823,7 @@ function createChart(damId) {
         .attr("stroke", "#333")
         .attr("stroke-width", 2)
         .attr("marker-end", "url(#arrow-up)");
-    
+
     // Wrap "More rubble/construction" on two lines
     const upText = svg.append("text")
         .attr("x", -80)
@@ -3833,7 +3833,7 @@ function createChart(damId) {
         .style("fill", "#333");
     upText.append("tspan").attr("x", -80).attr("dy", 0).attr("y", 5).text("More rubble/");
     upText.append("tspan").attr("x", -80).attr("dy", 14).text("construction");
-    
+
     // Arrow pointing down with "more flooded vegetation and water"
     svg.append("line")
         .attr("x1", -70)
@@ -3843,7 +3843,7 @@ function createChart(damId) {
         .attr("stroke", "#333")
         .attr("stroke-width", 2)
         .attr("marker-end", "url(#arrow-down)");
-    
+
     // Wrap "More flooded vegetation and water" on two lines
     const downText = svg.append("text")
         .attr("x", -80)
@@ -3903,7 +3903,7 @@ function createChart(damId) {
         const spacing = 10;
         // Center images: offset from chart center
         const imagesStartX = -(chartOffsetX - margin.left);
-        
+
         metadata.timeline_images.forEach((img, idx) => {
             const imgDate = new Date(img.date);
             const xPos = x(imgDate);
@@ -4057,7 +4057,7 @@ function switchTab(damId) {
     document.getElementById(damId).classList.add('active');
 
     // Add active class to the button that was clicked
-    const clickedButton = Array.from(document.querySelectorAll('.tab-button')).find(btn => 
+    const clickedButton = Array.from(document.querySelectorAll('.tab-button')).find(btn =>
         btn.getAttribute('onclick').includes(damId)
     );
     if (clickedButton) {
