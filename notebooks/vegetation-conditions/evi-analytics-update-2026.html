@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Nighttime Lights in Myanmar" href="../nighttime-lights/collection-2/ntl_mem_2026.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="May 15, 2026"/>
+    <meta name="docbuild:last-update" content="May 16, 2026"/>
   </head>
   
   
@@ -454,23 +454,23 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-e29b6dbf20fb47ac805bcd01574f1627.vega-embed {
+  #altair-viz-a7f2b18d070f4782bea06eada83dce2b.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e29b6dbf20fb47ac805bcd01574f1627.vega-embed details,
-  #altair-viz-e29b6dbf20fb47ac805bcd01574f1627.vega-embed details summary {
+  #altair-viz-a7f2b18d070f4782bea06eada83dce2b.vega-embed details,
+  #altair-viz-a7f2b18d070f4782bea06eada83dce2b.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e29b6dbf20fb47ac805bcd01574f1627"></div>
+<div id="altair-viz-a7f2b18d070f4782bea06eada83dce2b"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e29b6dbf20fb47ac805bcd01574f1627") {
-      outputDiv = document.getElementById("altair-viz-e29b6dbf20fb47ac805bcd01574f1627");
+    if (outputDiv.id !== "altair-viz-a7f2b18d070f4782bea06eada83dce2b") {
+      outputDiv = document.getElementById("altair-viz-a7f2b18d070f4782bea06eada83dce2b");
     }
 
     const paths = {
@@ -529,23 +529,23 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-e234fd91bd924159aa10ab26da4dfc46.vega-embed {
+  #altair-viz-2970a1e3e92148a3ac729e6b2dce1be6.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e234fd91bd924159aa10ab26da4dfc46.vega-embed details,
-  #altair-viz-e234fd91bd924159aa10ab26da4dfc46.vega-embed details summary {
+  #altair-viz-2970a1e3e92148a3ac729e6b2dce1be6.vega-embed details,
+  #altair-viz-2970a1e3e92148a3ac729e6b2dce1be6.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e234fd91bd924159aa10ab26da4dfc46"></div>
+<div id="altair-viz-2970a1e3e92148a3ac729e6b2dce1be6"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e234fd91bd924159aa10ab26da4dfc46") {
-      outputDiv = document.getElementById("altair-viz-e234fd91bd924159aa10ab26da4dfc46");
+    if (outputDiv.id !== "altair-viz-2970a1e3e92148a3ac729e6b2dce1be6") {
+      outputDiv = document.getElementById("altair-viz-2970a1e3e92148a3ac729e6b2dce1be6");
     }
 
     const paths = {
@@ -612,111 +612,27 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">assign_season_month</span><span class="p">(</span><span class="n">month</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Map calendar month -&gt; within-season ordinal (1=Jul, ..., 6=Dec, 7=Jan, 8=Feb).</span>
-
-<span class="sd">    Jul-Dec map to 1-6; Jan-Feb map to 7-8 so the season plots on a single</span>
-<span class="sd">    continuous x-axis across the calendar-year boundary.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">month</span> <span class="o">-</span> <span class="mi">6</span> <span class="k">if</span> <span class="n">month</span> <span class="o">&gt;=</span> <span class="mi">7</span> <span class="k">else</span> <span class="n">month</span> <span class="o">+</span> <span class="mi">6</span>
-
-
-<span class="n">SEASON_MONTH_LABELS</span> <span class="o">=</span> <span class="s2">&quot;[&#39;Jul&#39;, &#39;Aug&#39;, &#39;Sep&#39;, &#39;Oct&#39;, &#39;Nov&#39;, &#39;Dec&#39;, &#39;Jan&#39;, &#39;Feb&#39;]&quot;</span>
-<span class="n">MONTH_LABELS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Jul&quot;</span><span class="p">,</span> <span class="s2">&quot;Aug&quot;</span><span class="p">,</span> <span class="s2">&quot;Sep&quot;</span><span class="p">,</span> <span class="s2">&quot;Oct&quot;</span><span class="p">,</span> <span class="s2">&quot;Nov&quot;</span><span class="p">,</span> <span class="s2">&quot;Dec&quot;</span><span class="p">,</span> <span class="s2">&quot;Jan&quot;</span><span class="p">,</span> <span class="s2">&quot;Feb&quot;</span><span class="p">]</span>
-
-<span class="n">evi_adm0_season_compare</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">evi_adm0_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">filter_growing_season</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;year in [&#39;2024-01-01&#39;, &#39;2025-01-01&#39;]&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">season</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span>
-        <span class="n">season_month</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">assign_season_month</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;season&quot;</span><span class="p">,</span> <span class="s2">&quot;season_month&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">EVI</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;EVI&quot;</span><span class="p">,</span> <span class="s2">&quot;median&quot;</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">EVI</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;EVI&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
-        <span class="n">month_label</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;season_month&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">MONTH_LABELS</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]),</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">nearest</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_point</span><span class="p">(</span>
-    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;mouseover&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;season_month&quot;</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
-<span class="p">)</span>
-
-<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">evi_adm0_season_compare</span><span class="p">)</span>
-
-<span class="n">lines</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span>
-        <span class="s2">&quot;season_month:O&quot;</span><span class="p">,</span>
-        <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span>
-            <span class="n">labelExpr</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">SEASON_MONTH_LABELS</span><span class="si">}</span><span class="s2">[datum.value - 1]&quot;</span><span class="p">,</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="p">),</span>
-        <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">padding</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
-    <span class="p">),</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;EVI:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Median EVI&quot;</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span>
-        <span class="s2">&quot;season:N&quot;</span><span class="p">,</span>
-        <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span>
-            <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2024&quot;</span><span class="p">,</span> <span class="s2">&quot;2025&quot;</span><span class="p">],</span>
-            <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="n">attaviz</span><span class="o">.</span><span class="n">REFERENCE</span><span class="p">,</span> <span class="n">attaviz</span><span class="o">.</span><span class="n">SELECTION_PRIMARY</span><span class="p">],</span>
-        <span class="p">),</span>
-        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Growing Season&quot;</span><span class="p">,</span>
-    <span class="p">),</span>
-<span class="p">)</span>
-
-<span class="n">rules</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">base</span><span class="o">.</span><span class="n">transform_pivot</span><span class="p">(</span><span class="s2">&quot;season&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;EVI&quot;</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;season_month&quot;</span><span class="p">,</span> <span class="s2">&quot;month_label&quot;</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;season_month:O&quot;</span><span class="p">,</span>
-        <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
-        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;month_label:N&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Month&quot;</span><span class="p">),</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;2024:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;2024 EVI&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.4f&quot;</span><span class="p">),</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;2025:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;2025 EVI&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.4f&quot;</span><span class="p">),</span>
-        <span class="p">],</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">chart</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">lines</span> <span class="o">+</span> <span class="n">rules</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">properties</span><span class="p">(</span>
-        <span class="n">title</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Growing Season EVI: 2024 vs 2025&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="s2">&quot;National monthly median, Jul–Feb&quot;</span><span class="p">,</span>
-        <span class="p">}</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-<span class="n">attaviz</span><span class="o">.</span><span class="n">add_caption</span><span class="p">(</span><span class="n">chart</span><span class="p">,</span> <span class="s2">&quot;Source: NASA MODIS, 250m resolution, 16-day composite.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-8c5493f220a34dd2b3bb3ab319fc990f.vega-embed {
+  #altair-viz-206d808ec31346d59ab1ac44f29fb6be.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-8c5493f220a34dd2b3bb3ab319fc990f.vega-embed details,
-  #altair-viz-8c5493f220a34dd2b3bb3ab319fc990f.vega-embed details summary {
+  #altair-viz-206d808ec31346d59ab1ac44f29fb6be.vega-embed details,
+  #altair-viz-206d808ec31346d59ab1ac44f29fb6be.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-8c5493f220a34dd2b3bb3ab319fc990f"></div>
+<div id="altair-viz-206d808ec31346d59ab1ac44f29fb6be"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-8c5493f220a34dd2b3bb3ab319fc990f") {
-      outputDiv = document.getElementById("altair-viz-8c5493f220a34dd2b3bb3ab319fc990f");
+    if (outputDiv.id !== "altair-viz-206d808ec31346d59ab1ac44f29fb6be") {
+      outputDiv = document.getElementById("altair-viz-206d808ec31346d59ab1ac44f29fb6be");
     }
 
     const paths = {
@@ -775,23 +691,23 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-a006e3c49f5441e48593613250bffa33.vega-embed {
+  #altair-viz-cc976f43eea9414b9b642d93003c2fe1.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-a006e3c49f5441e48593613250bffa33.vega-embed details,
-  #altair-viz-a006e3c49f5441e48593613250bffa33.vega-embed details summary {
+  #altair-viz-cc976f43eea9414b9b642d93003c2fe1.vega-embed details,
+  #altair-viz-cc976f43eea9414b9b642d93003c2fe1.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-a006e3c49f5441e48593613250bffa33"></div>
+<div id="altair-viz-cc976f43eea9414b9b642d93003c2fe1"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-a006e3c49f5441e48593613250bffa33") {
-      outputDiv = document.getElementById("altair-viz-a006e3c49f5441e48593613250bffa33");
+    if (outputDiv.id !== "altair-viz-cc976f43eea9414b9b642d93003c2fe1") {
+      outputDiv = document.getElementById("altair-viz-cc976f43eea9414b9b642d93003c2fe1");
     }
 
     const paths = {
@@ -850,23 +766,23 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-a4499fc896a041719507527545b934c6.vega-embed {
+  #altair-viz-2d409c3a68684cb3abc90a84232ae386.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-a4499fc896a041719507527545b934c6.vega-embed details,
-  #altair-viz-a4499fc896a041719507527545b934c6.vega-embed details summary {
+  #altair-viz-2d409c3a68684cb3abc90a84232ae386.vega-embed details,
+  #altair-viz-2d409c3a68684cb3abc90a84232ae386.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-a4499fc896a041719507527545b934c6"></div>
+<div id="altair-viz-2d409c3a68684cb3abc90a84232ae386"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-a4499fc896a041719507527545b934c6") {
-      outputDiv = document.getElementById("altair-viz-a4499fc896a041719507527545b934c6");
+    if (outputDiv.id !== "altair-viz-2d409c3a68684cb3abc90a84232ae386") {
+      outputDiv = document.getElementById("altair-viz-2d409c3a68684cb3abc90a84232ae386");
     }
 
     const paths = {
@@ -925,23 +841,23 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-9def5eb7b7664b80aedeebb04f8758d9.vega-embed {
+  #altair-viz-fc617fcba90243299a2332bbe2b8571c.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-9def5eb7b7664b80aedeebb04f8758d9.vega-embed details,
-  #altair-viz-9def5eb7b7664b80aedeebb04f8758d9.vega-embed details summary {
+  #altair-viz-fc617fcba90243299a2332bbe2b8571c.vega-embed details,
+  #altair-viz-fc617fcba90243299a2332bbe2b8571c.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-9def5eb7b7664b80aedeebb04f8758d9"></div>
+<div id="altair-viz-fc617fcba90243299a2332bbe2b8571c"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-9def5eb7b7664b80aedeebb04f8758d9") {
-      outputDiv = document.getElementById("altair-viz-9def5eb7b7664b80aedeebb04f8758d9");
+    if (outputDiv.id !== "altair-viz-fc617fcba90243299a2332bbe2b8571c") {
+      outputDiv = document.getElementById("altair-viz-fc617fcba90243299a2332bbe2b8571c");
     }
 
     const paths = {
@@ -1000,23 +916,23 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-43677bc80e3d481f9b33e797f1bd8584.vega-embed {
+  #altair-viz-985cd34d92514b2fa004df1af168762f.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-43677bc80e3d481f9b33e797f1bd8584.vega-embed details,
-  #altair-viz-43677bc80e3d481f9b33e797f1bd8584.vega-embed details summary {
+  #altair-viz-985cd34d92514b2fa004df1af168762f.vega-embed details,
+  #altair-viz-985cd34d92514b2fa004df1af168762f.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-43677bc80e3d481f9b33e797f1bd8584"></div>
+<div id="altair-viz-985cd34d92514b2fa004df1af168762f"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-43677bc80e3d481f9b33e797f1bd8584") {
-      outputDiv = document.getElementById("altair-viz-43677bc80e3d481f9b33e797f1bd8584");
+    if (outputDiv.id !== "altair-viz-985cd34d92514b2fa004df1af168762f") {
+      outputDiv = document.getElementById("altair-viz-985cd34d92514b2fa004df1af168762f");
     }
 
     const paths = {
@@ -1071,103 +987,27 @@ document.write(`
 <div class="section" id="state-region-evi-growing-season-2024-vs-2025">
 <h2>State/Region EVI: Growing Season 2024 vs 2025<a class="headerlink" href="#state-region-evi-growing-season-2024-vs-2025" title="Permalink to this heading">#</a></h2>
 <p>The figure below mirrors the national comparison above at the state/region level — within-season monthly median EVI for the 2024 and 2025 growing seasons, faceted across Myanmar’s states and regions.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evi_adm1_season_compare</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">evi_adm1_df</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">filter_growing_season</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;year in [&#39;2024-01-01&#39;, &#39;2025-01-01&#39;]&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">season</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span>
-        <span class="n">season_month</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">assign_season_month</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;adm1_name&quot;</span><span class="p">,</span> <span class="s2">&quot;season&quot;</span><span class="p">,</span> <span class="s2">&quot;season_month&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">EVI</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;EVI&quot;</span><span class="p">,</span> <span class="s2">&quot;median&quot;</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">EVI</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;EVI&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
-        <span class="n">month_label</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;season_month&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">MONTH_LABELS</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]),</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">nearest_adm1</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_point</span><span class="p">(</span>
-    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;mouseover&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;season_month&quot;</span><span class="p">,</span> <span class="s2">&quot;adm1_name&quot;</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
-<span class="p">)</span>
-
-<span class="n">base_adm1</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">evi_adm1_season_compare</span><span class="p">)</span>
-
-<span class="n">line</span> <span class="o">=</span> <span class="n">base_adm1</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span>
-        <span class="s2">&quot;season_month:O&quot;</span><span class="p">,</span>
-        <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span>
-            <span class="n">labelExpr</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">SEASON_MONTH_LABELS</span><span class="si">}</span><span class="s2">[datum.value - 1]&quot;</span><span class="p">,</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="p">),</span>
-        <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">padding</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
-    <span class="p">),</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;EVI:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Median EVI&quot;</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span>
-        <span class="s2">&quot;season:N&quot;</span><span class="p">,</span>
-        <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span>
-            <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2024&quot;</span><span class="p">,</span> <span class="s2">&quot;2025&quot;</span><span class="p">],</span>
-            <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="n">attaviz</span><span class="o">.</span><span class="n">REFERENCE</span><span class="p">,</span> <span class="n">attaviz</span><span class="o">.</span><span class="n">SELECTION_PRIMARY</span><span class="p">],</span>
-        <span class="p">),</span>
-        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Growing Season&quot;</span><span class="p">,</span>
-    <span class="p">),</span>
-<span class="p">)</span>
-
-<span class="n">rules</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">base_adm1</span><span class="o">.</span><span class="n">transform_pivot</span><span class="p">(</span>
-        <span class="s2">&quot;season&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;EVI&quot;</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;adm1_name&quot;</span><span class="p">,</span> <span class="s2">&quot;season_month&quot;</span><span class="p">,</span> <span class="s2">&quot;month_label&quot;</span><span class="p">]</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;season_month:O&quot;</span><span class="p">,</span>
-        <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">nearest_adm1</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
-        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;adm1_name:N&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;State/Region&quot;</span><span class="p">),</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;month_label:N&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Month&quot;</span><span class="p">),</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;2024:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;2024 EVI&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.4f&quot;</span><span class="p">),</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;2025:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;2025 EVI&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.4f&quot;</span><span class="p">),</span>
-        <span class="p">],</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">nearest_adm1</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">chart</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">rules</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">facet</span><span class="p">(</span><span class="n">facet</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="s2">&quot;adm1_name:N&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">properties</span><span class="p">(</span>
-        <span class="n">title</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Growing Season EVI by State/Region: 2024 vs 2025&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="s2">&quot;Monthly median, Jul–Feb&quot;</span><span class="p">,</span>
-        <span class="p">}</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">attaviz</span><span class="o">.</span><span class="n">add_caption</span><span class="p">(</span><span class="n">chart</span><span class="p">,</span> <span class="s2">&quot;Source: NASA MODIS, 250m resolution, 16-day composite.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-84828eb74a2d487eb3b6ebd0a0332ea3.vega-embed {
+  #altair-viz-216abc3cd3854919a75d261ad686320a.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-84828eb74a2d487eb3b6ebd0a0332ea3.vega-embed details,
-  #altair-viz-84828eb74a2d487eb3b6ebd0a0332ea3.vega-embed details summary {
+  #altair-viz-216abc3cd3854919a75d261ad686320a.vega-embed details,
+  #altair-viz-216abc3cd3854919a75d261ad686320a.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-84828eb74a2d487eb3b6ebd0a0332ea3"></div>
+<div id="altair-viz-216abc3cd3854919a75d261ad686320a"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-84828eb74a2d487eb3b6ebd0a0332ea3") {
-      outputDiv = document.getElementById("altair-viz-84828eb74a2d487eb3b6ebd0a0332ea3");
+    if (outputDiv.id !== "altair-viz-216abc3cd3854919a75d261ad686320a") {
+      outputDiv = document.getElementById("altair-viz-216abc3cd3854919a75d261ad686320a");
     }
 
     const paths = {
@@ -1226,23 +1066,23 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-f42e0f85a67e435a850ff79165b8bdee.vega-embed {
+  #altair-viz-ff8a25ac5bbf4fa2ae522d1a8cb90809.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-f42e0f85a67e435a850ff79165b8bdee.vega-embed details,
-  #altair-viz-f42e0f85a67e435a850ff79165b8bdee.vega-embed details summary {
+  #altair-viz-ff8a25ac5bbf4fa2ae522d1a8cb90809.vega-embed details,
+  #altair-viz-ff8a25ac5bbf4fa2ae522d1a8cb90809.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-f42e0f85a67e435a850ff79165b8bdee"></div>
+<div id="altair-viz-ff8a25ac5bbf4fa2ae522d1a8cb90809"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-f42e0f85a67e435a850ff79165b8bdee") {
-      outputDiv = document.getElementById("altair-viz-f42e0f85a67e435a850ff79165b8bdee");
+    if (outputDiv.id !== "altair-viz-ff8a25ac5bbf4fa2ae522d1a8cb90809") {
+      outputDiv = document.getElementById("altair-viz-ff8a25ac5bbf4fa2ae522d1a8cb90809");
     }
 
     const paths = {
@@ -1301,23 +1141,23 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-5f8cdd58997042389d7059d56f85ce25.vega-embed {
+  #altair-viz-681cad34388f47619fab4e0a9c91bbfd.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-5f8cdd58997042389d7059d56f85ce25.vega-embed details,
-  #altair-viz-5f8cdd58997042389d7059d56f85ce25.vega-embed details summary {
+  #altair-viz-681cad34388f47619fab4e0a9c91bbfd.vega-embed details,
+  #altair-viz-681cad34388f47619fab4e0a9c91bbfd.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-5f8cdd58997042389d7059d56f85ce25"></div>
+<div id="altair-viz-681cad34388f47619fab4e0a9c91bbfd"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-5f8cdd58997042389d7059d56f85ce25") {
-      outputDiv = document.getElementById("altair-viz-5f8cdd58997042389d7059d56f85ce25");
+    if (outputDiv.id !== "altair-viz-681cad34388f47619fab4e0a9c91bbfd") {
+      outputDiv = document.getElementById("altair-viz-681cad34388f47619fab4e0a9c91bbfd");
     }
 
     const paths = {
@@ -1376,23 +1216,23 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-f4925fd3f6d847bab44dfe849c5c3829.vega-embed {
+  #altair-viz-0524dbcc31c447f38dec33e95624e985.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-f4925fd3f6d847bab44dfe849c5c3829.vega-embed details,
-  #altair-viz-f4925fd3f6d847bab44dfe849c5c3829.vega-embed details summary {
+  #altair-viz-0524dbcc31c447f38dec33e95624e985.vega-embed details,
+  #altair-viz-0524dbcc31c447f38dec33e95624e985.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-f4925fd3f6d847bab44dfe849c5c3829"></div>
+<div id="altair-viz-0524dbcc31c447f38dec33e95624e985"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-f4925fd3f6d847bab44dfe849c5c3829") {
-      outputDiv = document.getElementById("altair-viz-f4925fd3f6d847bab44dfe849c5c3829");
+    if (outputDiv.id !== "altair-viz-0524dbcc31c447f38dec33e95624e985") {
+      outputDiv = document.getElementById("altair-viz-0524dbcc31c447f38dec33e95624e985");
     }
 
     const paths = {
@@ -1451,23 +1291,23 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-7badcbc331db485c857fc33738209389.vega-embed {
+  #altair-viz-8a888e9e8b7d45a8af3e38e430dfea8d.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-7badcbc331db485c857fc33738209389.vega-embed details,
-  #altair-viz-7badcbc331db485c857fc33738209389.vega-embed details summary {
+  #altair-viz-8a888e9e8b7d45a8af3e38e430dfea8d.vega-embed details,
+  #altair-viz-8a888e9e8b7d45a8af3e38e430dfea8d.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-7badcbc331db485c857fc33738209389"></div>
+<div id="altair-viz-8a888e9e8b7d45a8af3e38e430dfea8d"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-7badcbc331db485c857fc33738209389") {
-      outputDiv = document.getElementById("altair-viz-7badcbc331db485c857fc33738209389");
+    if (outputDiv.id !== "altair-viz-8a888e9e8b7d45a8af3e38e430dfea8d") {
+      outputDiv = document.getElementById("altair-viz-8a888e9e8b7d45a8af3e38e430dfea8d");
     }
 
     const paths = {
@@ -1623,7 +1463,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on May 15, 2026.
+  Last updated on May 16, 2026.
   <br/>
 </p>
   </div>
