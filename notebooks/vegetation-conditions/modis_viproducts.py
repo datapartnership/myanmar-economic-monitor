@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 NAME
     modis_viproducts.py
@@ -28,8 +27,9 @@ TODO
 """
 
 import os
-import arcpy
 from datetime import datetime, timedelta
+
+import arcpy
 
 # To avoid overwriting outputs, change overwriteOutput option to False.
 arcpy.env.overwriteOutput = True
@@ -38,12 +38,12 @@ arcpy.env.overwriteOutput = True
 iso3 = "mmr"  # Syria: syr, Myanmar: mmr
 
 # Define input and output folders
-input_folder = "X:\\Temp\\modis\\{}\\gee\\02_positive\\temp\\cropland".format(iso3)
-stats_folder = "X:\\Temp\\modis\\{}\\gee\\03_statistics\\cropland".format(iso3)
-ratioanom_folder = "X:\\Temp\\modis\\{}\\gee\\05_ratioanom\\temp\\cropland".format(iso3)
-diffanom_folder = "X:\\Temp\\modis\\{}\\gee\\06_diffanom\\temp\\cropland".format(iso3)
-stdanom_folder = "X:\\Temp\\modis\\{}\\gee\\07_stdanom\\temp\\cropland".format(iso3)
-vci_folder = "X:\\Temp\\modis\\{}\\gee\\08_vci\\temp\\cropland".format(iso3)
+input_folder = f"X:\\Temp\\modis\\{iso3}\\gee\\02_positive\\temp\\cropland"
+stats_folder = f"X:\\Temp\\modis\\{iso3}\\gee\\03_statistics\\cropland"
+ratioanom_folder = f"X:\\Temp\\modis\\{iso3}\\gee\\05_ratioanom\\temp\\cropland"
+diffanom_folder = f"X:\\Temp\\modis\\{iso3}\\gee\\06_diffanom\\temp\\cropland"
+stdanom_folder = f"X:\\Temp\\modis\\{iso3}\\gee\\07_stdanom\\temp\\cropland"
+vci_folder = f"X:\\Temp\\modis\\{iso3}\\gee\\08_vci\\temp\\cropland"
 
 
 def derivative_vi(
@@ -78,10 +78,10 @@ def derivative_vi(
             doy = date.strftime("%j")
 
             # Construct the corresponding filenames in the stats folder
-            avg_raster = "{0}_phy_mxd13q1_20yr_avg_{1}.tif".format(iso3, doy.zfill(3))
-            min_raster = "{0}_phy_mxd13q1_20yr_min_{1}.tif".format(iso3, doy.zfill(3))
-            max_raster = "{0}_phy_mxd13q1_20yr_max_{1}.tif".format(iso3, doy.zfill(3))
-            std_raster = "{0}_phy_mxd13q1_20yr_std_{1}.tif".format(iso3, doy.zfill(3))
+            avg_raster = f"{iso3}_phy_mxd13q1_20yr_avg_{doy.zfill(3)}.tif"
+            min_raster = f"{iso3}_phy_mxd13q1_20yr_min_{doy.zfill(3)}.tif"
+            max_raster = f"{iso3}_phy_mxd13q1_20yr_max_{doy.zfill(3)}.tif"
+            std_raster = f"{iso3}_phy_mxd13q1_20yr_std_{doy.zfill(3)}.tif"
             avg_raster = os.path.join(stats_folder, avg_raster)
             min_raster = os.path.join(stats_folder, min_raster)
             max_raster = os.path.join(stats_folder, max_raster)
@@ -90,9 +90,7 @@ def derivative_vi(
             # Check if the corresponding rasters exist in the stats folder
             for stats_raster in [avg_raster, min_raster, max_raster, std_raster]:
                 if not arcpy.Exists(stats_raster):
-                    print(
-                        "Error: {} not found in {}".format(stats_raster, stats_folder)
-                    )
+                    print(f"Error: {stats_raster} not found in {stats_folder}")
                     continue
 
             # Create the output raster name with the appropriate format
@@ -100,55 +98,45 @@ def derivative_vi(
             if "_" in stats_raster:
                 ratioanom_raster = os.path.join(
                     ratioanom_folder,
-                    "{}_phy_mxd13q1_ratioanom_{}{:02d}{:02d}.tif".format(
-                        iso3, year, month, day
-                    ),
+                    f"{iso3}_phy_mxd13q1_ratioanom_{year}{month:02d}{day:02d}.tif",
                 )
             else:
                 ratioanom_raster = os.path.join(
                     ratioanom_folder,
-                    "{}_phy_mxd13q1_ratioanom_{}{}.tif".format(
-                        iso3, year, doy.zfill(3)
-                    ),
+                    f"{iso3}_phy_mxd13q1_ratioanom_{year}{doy.zfill(3)}.tif",
                 )
             # Difference anomaly
             if "_" in stats_raster:
                 diffanom_raster = os.path.join(
                     diffanom_folder,
-                    "{}_phy_mxd13q1_diffanom_{}{:02d}{:02d}.tif".format(
-                        iso3, year, month, day
-                    ),
+                    f"{iso3}_phy_mxd13q1_diffanom_{year}{month:02d}{day:02d}.tif",
                 )
             else:
                 diffanom_raster = os.path.join(
                     diffanom_folder,
-                    "{}_phy_mxd13q1_diffanom_{}{}.tif".format(iso3, year, doy.zfill(3)),
+                    f"{iso3}_phy_mxd13q1_diffanom_{year}{doy.zfill(3)}.tif",
                 )
             # Standardize anomaly
             if "_" in stats_raster:
                 stdanom_raster = os.path.join(
                     stdanom_folder,
-                    "{}_phy_mxd13q1_stdanom_{}{:02d}{:02d}.tif".format(
-                        iso3, year, month, day
-                    ),
+                    f"{iso3}_phy_mxd13q1_stdanom_{year}{month:02d}{day:02d}.tif",
                 )
             else:
                 stdanom_raster = os.path.join(
                     stdanom_folder,
-                    "{}_phy_mxd13q1_stdanom_{}{}.tif".format(iso3, year, doy.zfill(3)),
+                    f"{iso3}_phy_mxd13q1_stdanom_{year}{doy.zfill(3)}.tif",
                 )
             # Vegetation condition index
             if "_" in stats_raster:
                 vci_raster = os.path.join(
                     vci_folder,
-                    "{}_phy_mxd13q1_vci_{}{:02d}{:02d}.tif".format(
-                        iso3, year, month, day
-                    ),
+                    f"{iso3}_phy_mxd13q1_vci_{year}{month:02d}{day:02d}.tif",
                 )
             else:
                 vci_raster = os.path.join(
                     vci_folder,
-                    "{}_phy_mxd13q1_vci_{}{}.tif".format(iso3, year, doy.zfill(3)),
+                    f"{iso3}_phy_mxd13q1_vci_{year}{doy.zfill(3)}.tif",
                 )
 
             arcpy.CheckOutExtension("spatial")
