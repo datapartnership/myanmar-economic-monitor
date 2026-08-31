@@ -1,5 +1,6 @@
+from typing import Literal
+
 import pandas as pd
-from typing import Optional, Union, Literal
 
 _DEF_EXCLUDE = {
     "year",
@@ -31,12 +32,12 @@ def pick_value_column(df: pd.DataFrame):
 def annual_ntl_pct_change(
     df: pd.DataFrame,
     year_col: str = "year",
-    value_col: Optional[str] = None,
-    baseline_year: Optional[int] = None,
-    current_year: Optional[int] = None,
-    date_col: Optional[str] = None,
+    value_col: str | None = None,
+    baseline_year: int | None = None,
+    current_year: int | None = None,
+    date_col: str | None = None,
     mode: Literal["baseline", "yoy", "baseline_series"] = "baseline",
-    baseline_years: Optional[Union[tuple, list, range]] = None,
+    baseline_years: tuple | list | range | None = None,
 ) -> pd.DataFrame:
     """
     Compute percentage differences for annual NTL data.
@@ -226,11 +227,11 @@ def annual_ntl_pct_change(
 
 def monthly_ntl_yoy(
     df: pd.DataFrame,
-    date_col: Optional[str] = None,
+    date_col: str | None = None,
     year_col: str = "year",
     month_col: str = "month",
-    value_col: Optional[str] = None,
-    baseline_year: Optional[int] = None,
+    value_col: str | None = None,
+    baseline_year: int | None = None,
 ) -> pd.DataFrame:
     """
     Compute percentage difference for monthly NTL data.
@@ -330,12 +331,12 @@ def subnational_pct_change(
     df: pd.DataFrame,
     region_col: str,
     *,
-    baseline_year: Optional[int] = None,
+    baseline_year: int | None = None,
     mode: Literal["baseline", "yoy"] = "baseline",
     year_col: str = "year",
-    date_col: Optional[str] = None,
-    value_col: Optional[str] = None,
-    current_year: Optional[int] = None,
+    date_col: str | None = None,
+    value_col: str | None = None,
+    current_year: int | None = None,
 ) -> pd.DataFrame:
     """
     Compute subnational NTL percentage change by region.
@@ -471,8 +472,8 @@ def calculate_percentage_change(
     df: pd.DataFrame,
     baseline_filter: dict,
     group_cols: list,
-    value_col: Optional[str] = None,
-    date_col: Optional[str] = None,
+    value_col: str | None = None,
+    date_col: str | None = None,
     comparison_filter: dict = None,
     mode: Literal["baseline", "yoy", "mom"] = "baseline",
     suffix: str = "_pct_change",
@@ -649,11 +650,11 @@ def subnational_monthly_pct_change(
     region_col: str,
     baseline_year: int,
     *,
-    date_col: Optional[str] = None,
+    date_col: str | None = None,
     year_col: str = "year",
     month_col: str = "month",
-    value_col: Optional[str] = None,
-    current_year: Optional[int] = None,
+    value_col: str | None = None,
+    current_year: int | None = None,
 ) -> pd.DataFrame:
     """
     Compute month-to-month percentage changes from baseline year same month values for subnational regions.
