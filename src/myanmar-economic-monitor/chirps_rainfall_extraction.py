@@ -5,11 +5,12 @@ This module provides functions to extract CHIRPS rainfall data for Myanmar
 using Google Earth Engine.
 """
 
-import ee
-import pandas as pd
-import geopandas as gpd
-from pathlib import Path
 import logging
+from pathlib import Path
+
+import ee
+import geopandas as gpd
+import pandas as pd
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
