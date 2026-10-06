@@ -5,11 +5,12 @@ Product: VNP46A2 - VIIRS/NPP Gap-Filled Lunar BRDF-Adjusted Nighttime Lights Dai
 Time period: April 1, 2025 to May 20, 2025
 """
 
+import argparse
 import os
-import requests
 import time
 from urllib.parse import urljoin
-import argparse
+
+import requests
 
 
 class LADSDownloader:
@@ -81,8 +82,7 @@ class LADSDownloader:
 
         if response.status_code == 200:
             with open(output_path, "wb") as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    f.write(chunk)
+                f.writelines(response.iter_content(chunk_size=8192))
             print(f"Downloaded: {output_path}")
             return output_path
         else:
