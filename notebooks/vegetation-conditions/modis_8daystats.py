@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 NAME
     modis_8daystats.py
@@ -26,9 +25,10 @@ TODO
 """
 
 import os
-import arcpy
 from collections import defaultdict
 from datetime import datetime
+
+import arcpy
 
 # To avoid overwriting outputs, change overwriteOutput option to False.
 arcpy.env.overwriteOutput = True
@@ -37,8 +37,8 @@ arcpy.env.overwriteOutput = True
 iso3 = "mmr"  # Myanmar
 
 # Change the data and output folder
-input_folder = "X:\\Temp\\modis\\{}\\gee\\02_positive\\temp".format(iso3)
-output_folder = "X:\\Temp\\modis\\{}\\gee\\03_statistics\\temp".format(iso3)
+input_folder = f"X:\\Temp\\modis\\{iso3}\\gee\\02_positive\\temp"
+output_folder = f"X:\\Temp\\modis\\{iso3}\\gee\\03_statistics\\temp"
 
 # Create file collection based on date information
 groups = defaultdict(list)
