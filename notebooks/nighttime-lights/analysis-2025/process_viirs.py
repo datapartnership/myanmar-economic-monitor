@@ -1,11 +1,12 @@
-import os
 import glob
+import os
 import re
+
 import h5py
 import numpy as np
 import rasterio
-from rasterio.transform import from_origin
 from rasterio.crs import CRS
+from rasterio.transform import from_origin
 
 
 # BlackMarble data processing class
@@ -44,7 +45,7 @@ class BlackMarbleProcessor:
         try:
             self.bm_tiles = self._load_bm_tiles()
         except Exception as e:
-            print(f"Could not load BlackMarble tiles information: {str(e)}")
+            print(f"Could not load BlackMarble tiles information: {e!s}")
             self.bm_tiles = None
 
     def _load_bm_tiles(self):
@@ -52,7 +53,7 @@ class BlackMarbleProcessor:
         Load BlackMarble tiles information (similar to what BlackMarbler does)
         """
         # This would ideally load from the same source as BlackMarbler, but for now just return None
-        return None
+        return
 
     def _remove_fill_value(self, data, variable, fill_value=255):
         """
@@ -362,9 +363,9 @@ class BlackMarbleProcessor:
                                     except Exception:
                                         pass
                 except Exception as e:
-                    print(f"Error opening {h5_file} in {mode} mode: {str(e)}")
+                    print(f"Error opening {h5_file} in {mode} mode: {e!s}")
         except Exception as e:
-            print(f"Error processing {h5_file}: {str(e)}")
+            print(f"Error processing {h5_file}: {e!s}")
 
         return data, variable, scale_factor, fill_value
 
@@ -454,7 +455,7 @@ class BlackMarbleProcessor:
             return output_file
 
         except Exception as e:
-            print(f"Error processing {base_name}: {str(e)}")
+            print(f"Error processing {base_name}: {e!s}")
             return None
 
     def process_all(self):
