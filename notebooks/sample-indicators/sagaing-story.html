@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Armed Conflict Location and Event Data Analysis" href="../conflict/acled.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="May 17, 2026"/>
+    <meta name="docbuild:last-update" content="Oct 27, 2026"/>
   </head>
   
   
@@ -201,7 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../new-construction-activity/new-construction.html">Using Satellite Imagery to Understand Impact of Conflict on Public Infrastructure, Mining and New Construction Activity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../new-construction-activity/myanmar_damConstruction_tracking.html">Tracking Dam Construction using Synthetic Aperture Radar Data (SAR)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl_mem_2026.html">Nighttime Lights in Myanmar</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-2026.html">Enhanced Vegetation Index 2026 Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-2026.html">Myanmar vegetation conditions through September 2026</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -442,17 +442,17 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled_adm2_disagg</span> <span class="o">=</span> <span class="n">convert_to_gdf</span><span class="p">(</span><span class="n">acled</span><span class="p">)</span>
 <span class="n">acled_adm2_disagg</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">myanmar_adm2</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">)[</span>
-        <span class="p">[</span><span class="s2">&quot;event_date&quot;</span><span class="p">,</span> <span class="s2">&quot;fatalities&quot;</span><span class="p">,</span> <span class="s2">&quot;event_type&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_event_type&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;ST&quot;</span><span class="p">]</span>
+        <span class="p">[</span><span class="s2">"event_date"</span><span class="p">,</span> <span class="s2">"fatalities"</span><span class="p">,</span> <span class="s2">"event_type"</span><span class="p">,</span> <span class="s2">"sub_event_type"</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"ST"</span><span class="p">]</span>
     <span class="p">]</span>
     <span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
         <span class="p">[</span>
-            <span class="s2">&quot;event_type&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;sub_event_type&quot;</span><span class="p">,</span>
-            <span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;event_date&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">),</span>
+            <span class="s2">"event_type"</span><span class="p">,</span>
+            <span class="s2">"sub_event_type"</span><span class="p">,</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">"event_date"</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"M"</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="s2">"left"</span><span class="p">),</span>
         <span class="p">]</span>
-        <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;ST&quot;</span><span class="p">]</span>
-    <span class="p">)[</span><span class="s2">&quot;fatalities&quot;</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;sum&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">])</span>
+        <span class="o">+</span> <span class="p">[</span><span class="s2">"ST"</span><span class="p">]</span>
+    <span class="p">)[</span><span class="s2">"fatalities"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">"sum"</span><span class="p">,</span> <span class="s2">"count"</span><span class="p">])</span>
     <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
@@ -462,7 +462,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\sahit\anaconda3\envs\turkey-rdna\lib\site-packages\geopandas\geodataframe.py:2061: UserWarning: CRS mismatch between the CRS of left geometries and the CRS of right geometries.
 Use `to_crs()` to reproject one of the input geometries to match the CRS of the other.
 
-Left CRS: GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot; ...
+Left CRS: GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84" ...
 Right CRS: EPSG:4326
 
   return geopandas.sjoin(left_df=self, right_df=df, *args, **kwargs)
@@ -483,47 +483,47 @@ Right CRS: EPSG:4326
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.family&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Georgia&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"font.family"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Georgia"</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span>  <span class="c1"># .flatten()</span>
 
-<span class="c1"># for i, ST in enumerate([&#39;Sagaing&#39;]):</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;NAME_2&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Sagaing&quot;</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;ntl_bm_mean&quot;</span><span class="p">],</span> <span class="s2">&quot;#1F77B4&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ntl&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Night Time Lights&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;#1F77B4&quot;</span><span class="p">)</span>
+<span class="c1"># for i, ST in enumerate(['Sagaing']):</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"NAME_2"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Sagaing"</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s2">"date"</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s2">"ntl_bm_mean"</span><span class="p">],</span> <span class="s2">"#1F77B4"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"ntl"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Night Time Lights"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">"#1F77B4"</span><span class="p">)</span>
 
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;conflictIndex&quot;</span><span class="p">],</span> <span class="s2">&quot;#FF7F00&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;conflict index&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Conflict Index&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;#FF7F00&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s2">"date"</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s2">"conflictIndex"</span><span class="p">],</span> <span class="s2">"#FF7F00"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"conflict index"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Conflict Index"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">"#FF7F00"</span><span class="p">)</span>
 
-<span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"top"</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"top"</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"right"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"right"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">)</span>
 
 
 <span class="n">lines</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_lines</span><span class="p">()</span> <span class="o">+</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_lines</span><span class="p">()</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">)</span>
 
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Correlation between conflict index and Night Time Lights in Sagaing&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Correlation between conflict index and Night Time Lights in Sagaing"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Correlation between conflict index and Night Time Lights in Sagaing&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, 'Correlation between conflict index and Night Time Lights in Sagaing')
 </pre></div>
 </div>
 <img alt="../../_images/18d5a14e82a6939a66c567b70d7e183caebda0aadb511c541799ffe22e1c1d41.png" src="../../_images/18d5a14e82a6939a66c567b70d7e183caebda0aadb511c541799ffe22e1c1d41.png" />
@@ -532,8 +532,8 @@ Right CRS: EPSG:4326
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled_adm2_disagg</span><span class="p">[</span>
-    <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">&quot;ST&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Sagaing&quot;</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">&quot;event_date&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;2021-10-31&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">"ST"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Sagaing"</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">"event_date"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2021-10-31"</span><span class="p">)</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -645,8 +645,8 @@ Right CRS: EPSG:4326
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled_adm2_disagg</span><span class="p">[</span>
-    <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">&quot;ST&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Sagaing&quot;</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">&quot;event_date&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;2022-06-30&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">"ST"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Sagaing"</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">"event_date"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2022-06-30"</span><span class="p">)</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -767,8 +767,8 @@ Right CRS: EPSG:4326
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acled_adm2_disagg</span><span class="p">[</span>
-    <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">&quot;ST&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Sagaing&quot;</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">&quot;event_date&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;2022-10-31&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">"ST"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Sagaing"</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">acled_adm2_disagg</span><span class="p">[</span><span class="s2">"event_date"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2022-10-31"</span><span class="p">)</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -971,7 +971,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on May 17, 2026.
+  Last updated on Oct 27, 2026.
   <br/>
 </p>
   </div>

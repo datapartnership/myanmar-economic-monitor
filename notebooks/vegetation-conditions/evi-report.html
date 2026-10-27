@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Nighttime Lights and GDP Analysis" href="../nighttime-lights/collection-2/ntl-gdp.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="May 17, 2026"/>
+    <meta name="docbuild:last-update" content="Oct 27, 2026"/>
   </head>
   
   
@@ -203,7 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../new-construction-activity/new-construction.html">Using Satellite Imagery to Understand Impact of Conflict on Public Infrastructure, Mining and New Construction Activity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../new-construction-activity/myanmar_damConstruction_tracking.html">Tracking Dam Construction using Synthetic Aperture Radar Data (SAR)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl_mem_2026.html">Nighttime Lights in Myanmar</a></li>
-<li class="toctree-l1"><a class="reference internal" href="evi-analytics-update-2026.html">Enhanced Vegetation Index 2026 Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi-analytics-update-2026.html">Myanmar vegetation conditions through September 2026</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -1556,22 +1556,22 @@ We then extract crop seasonality metrics using the seasonal amplitude method fro
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
     <span class="n">evi_gdp_annual</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">evi_log_std</span><span class="o">=</span><span class="p">(</span><span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">&quot;evi&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">&quot;evi&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-        <span class="o">/</span> <span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">&quot;evi&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
-        <span class="n">gdp_log_std</span><span class="o">=</span><span class="p">(</span><span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">&quot;gdp_lag_1&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">&quot;gdp_lag_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-        <span class="o">/</span> <span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">&quot;gdp_lag_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+        <span class="n">evi_log_std</span><span class="o">=</span><span class="p">(</span><span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">"evi"</span><span class="p">]</span> <span class="o">-</span> <span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">"evi"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        <span class="o">/</span> <span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">"evi"</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+        <span class="n">gdp_log_std</span><span class="o">=</span><span class="p">(</span><span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">"gdp_lag_1"</span><span class="p">]</span> <span class="o">-</span> <span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">"gdp_lag_1"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        <span class="o">/</span> <span class="n">evi_gdp_annual</span><span class="p">[</span><span class="s2">"gdp_lag_1"</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
     <span class="p">)</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
-        <span class="n">id_vars</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
-        <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;evi_log_std&quot;</span><span class="p">,</span> <span class="s2">&quot;gdp_log_std&quot;</span><span class="p">],</span>
-        <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;indicator&quot;</span><span class="p">,</span>
+        <span class="n">id_vars</span><span class="o">=</span><span class="s2">"date"</span><span class="p">,</span>
+        <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"evi_log_std"</span><span class="p">,</span> <span class="s2">"gdp_log_std"</span><span class="p">],</span>
+        <span class="n">var_name</span><span class="o">=</span><span class="s2">"indicator"</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">base</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">),</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;value:Q&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">zero</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Standardized Log of EVI&quot;</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;indicator:N&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Indicator&quot;</span><span class="p">),</span>
-<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;EVI Over Time&quot;</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">"date:T"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Date"</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">"value:Q"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">zero</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Standardized Log of EVI"</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">"indicator:N"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Indicator"</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"EVI Over Time"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1830,7 +1830,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on May 17, 2026.
+  Last updated on Oct 27, 2026.
   <br/>
 </p>
   </div>

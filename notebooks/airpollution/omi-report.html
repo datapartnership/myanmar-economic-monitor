@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Satellite NO₂ as an Economic Indicator for Myanmar" href="no2-analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="May 17, 2026"/>
+    <meta name="docbuild:last-update" content="Oct 27, 2026"/>
   </head>
   
   
@@ -201,7 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../new-construction-activity/new-construction.html">Using Satellite Imagery to Understand Impact of Conflict on Public Infrastructure, Mining and New Construction Activity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../new-construction-activity/myanmar_damConstruction_tracking.html">Tracking Dam Construction using Synthetic Aperture Radar Data (SAR)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nighttime-lights/collection-2/ntl_mem_2026.html">Nighttime Lights in Myanmar</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-2026.html">Enhanced Vegetation Index 2026 Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-2026.html">Myanmar vegetation conditions through September 2026</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -444,25 +444,25 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nearest</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_point</span><span class="p">(</span>
-    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;mouseover&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
+    <span class="n">on</span><span class="o">=</span><span class="s2">"mouseover"</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">"date"</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 <span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">omi_annual_adm0</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
 <span class="n">line</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">strokeWidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">)),</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂&quot;</span><span class="p">),</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">"date:T"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">"%Y"</span><span class="p">)),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">"no2:Q"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"NO₂"</span><span class="p">),</span>
 <span class="p">)</span>
 <span class="n">points</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_point</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">),</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">),</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">"date:T"</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">"no2:Q"</span><span class="p">),</span>
 <span class="p">)</span>
 <span class="n">rules</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">base</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
     <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">"date:T"</span><span class="p">,</span>
         <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
         <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">),</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.6f&quot;</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">"date:T"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Year"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"%Y"</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">"no2:Q"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"NO₂"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">".6f"</span><span class="p">),</span>
         <span class="p">],</span>
     <span class="p">)</span>
     <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span>
@@ -472,8 +472,8 @@ document.write(`
     <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Annual National NO₂ Trend in Myanmar&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="s2">&quot;Source: NASA OMI (Ozone Monitoring Instrument), 2010–2025&quot;</span><span class="p">,</span>
+        <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Annual National NO₂ Trend in Myanmar"</span><span class="p">,</span>
+        <span class="s2">"subtitle"</span><span class="p">:</span> <span class="s2">"Source: NASA OMI (Ozone Monitoring Instrument), 2010–2025"</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">)</span>
 </pre></div>
@@ -556,21 +556,21 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nearest</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_point</span><span class="p">(</span>
-    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;mouseover&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
+    <span class="n">on</span><span class="o">=</span><span class="s2">"mouseover"</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">"date"</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 <span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">omi_monthly_yangon</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
-<span class="n">line</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂&quot;</span><span class="p">),</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"steelblue"</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">"date:T"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">""</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">"no2:Q"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"NO₂"</span><span class="p">),</span>
 <span class="p">)</span>
 <span class="n">rules</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">base</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
     <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">"date:T"</span><span class="p">,</span>
         <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
         <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%b %Y&quot;</span><span class="p">),</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.6f&quot;</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">"date:T"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Month"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"%b %Y"</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">"no2:Q"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"NO₂"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">".6f"</span><span class="p">),</span>
         <span class="p">],</span>
     <span class="p">)</span>
     <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span>
@@ -580,8 +580,8 @@ document.write(`
     <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">280</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Monthly NO₂ in Yangon&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="s2">&quot;Source: NASA OMI, 2010–2025&quot;</span><span class="p">,</span>
+        <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Monthly NO₂ in Yangon"</span><span class="p">,</span>
+        <span class="s2">"subtitle"</span><span class="p">:</span> <span class="s2">"Source: NASA OMI, 2010–2025"</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">)</span>
 </pre></div>
@@ -660,25 +660,25 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nearest</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_point</span><span class="p">(</span>
-    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;mouseover&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
+    <span class="n">on</span><span class="o">=</span><span class="s2">"mouseover"</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">"date"</span><span class="p">],</span> <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 <span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">omi_annual_yangon</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
 <span class="n">line</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">)),</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂ (×10¹⁵ molecules/cm²)&quot;</span><span class="p">),</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">"date:T"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">"%Y"</span><span class="p">)),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">"no2:Q"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"NO₂ (×10¹⁵ molecules/cm²)"</span><span class="p">),</span>
 <span class="p">)</span>
 <span class="n">points</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">mark_point</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">),</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">),</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">"date:T"</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">"no2:Q"</span><span class="p">),</span>
 <span class="p">)</span>
 <span class="n">rules</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">base</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
     <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">"date:T"</span><span class="p">,</span>
         <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
         <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;date:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">),</span>
-            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;no2:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO₂&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.6f&quot;</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">"date:T"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Year"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"%Y"</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">"no2:Q"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"NO₂"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">".6f"</span><span class="p">),</span>
         <span class="p">],</span>
     <span class="p">)</span>
     <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">nearest</span><span class="p">)</span>
@@ -688,8 +688,8 @@ document.write(`
     <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">280</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Annual NO₂ Trend in Yangon&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;subtitle&quot;</span><span class="p">:</span> <span class="s2">&quot;Source: NASA OMI, 2010–2025&quot;</span><span class="p">,</span>
+        <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Annual NO₂ Trend in Yangon"</span><span class="p">,</span>
+        <span class="s2">"subtitle"</span><span class="p">:</span> <span class="s2">"Source: NASA OMI, 2010–2025"</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">)</span>
 </pre></div>
@@ -860,7 +860,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on May 17, 2026.
+  Last updated on Oct 27, 2026.
   <br/>
 </p>
   </div>
