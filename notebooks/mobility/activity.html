@@ -1,13 +1,13 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Estimating Activity Using Mobility Data &#8212; Myanmar Economic Monitor</title>
   
   
@@ -28,39 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/mobility/activity';</script>
@@ -166,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Strategic Brief</span></p>
 <ul class="nav bd-sidenav">
@@ -241,9 +248,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -401,9 +408,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -470,16 +477,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="estimating-activity-using-mobility-data">
-<span id="mobility-activity"></span><h1>Estimating Activity Using Mobility Data<a class="headerlink" href="#estimating-activity-using-mobility-data" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="estimating-activity-using-mobility-data">
+<span id="mobility-activity"></span><h1>Estimating Activity Using Mobility Data<a class="headerlink" href="#estimating-activity-using-mobility-data" title="Link to this heading">#</a></h1>
 <p>Understanding population movement can provide valuable insights for public policy and disaster response efforts, particularly during crises when less movement often correlates with reduced economic activity.</p>
 <p>Similar to initiatives such as the <a class="reference external" href="https://www.google.com/covid19/mobility/">COVID-19 Community Mobility Reports</a>, <a class="reference external" href="https://dataforgood.facebook.com/dfg/tools/facebook-population-maps">Facebook Population During Crisis</a>, and <a class="reference external" href="https://www.mapbox.com/movement-data">Mapbox Movement Data</a>, we have developed a range of crisis-relevant indicators. These include baseline and subsequent device densities, as well as metrics like <strong>percent change</strong> and <strong>z-score</strong>. These indicators are derived by aggregating device counts within specific geographical tiles and across various time periods, utilizing longitudinal mobility data.</p>
 <p>It’s important to note the inherent limitations associated with this approach, as detailed in <span class="xref std std-ref">mobility-activity-limitations</span>. Notably, mobility data is typically collected through convenience sampling methods and lacks the controlled methodology of randomized trials.</p>
-<div class="section" id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
 <p>In this section, we import from the data sources, available either publicly or via <span class="xref std std-ref">data</span>.</p>
-<div class="section" id="area-of-interest">
-<h3>Area of Interest<a class="headerlink" href="#area-of-interest" title="Permalink to this heading">#</a></h3>
+<section id="area-of-interest">
+<h3>Area of Interest<a class="headerlink" href="#area-of-interest" title="Link to this heading">#</a></h3>
 <p>In this step, we import the SEZ points and create a buffer of 30 km around them. Later, we do a tessellation with h3 polygons of level 6. The resulting tessellation can be explored below.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -657,16 +664,16 @@ document.write(`
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
 </div>
-</div>
-<div class="section" id="mobility-data">
-<h3>Mobility Data<a class="headerlink" href="#mobility-data" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="mobility-data">
+<h3>Mobility Data<a class="headerlink" href="#mobility-data" title="Link to this heading">#</a></h3>
 <p>The WB Data Lab team has acquired longitudinal human mobility data encompassing anonymized timestamped geographical points generated by GPS-enabled devices located in Myanmar. The dataset we are using for this analysis spans across 2020.</p>
 <p>The project team has utilized the longitudinal mobility data to derive several key metrics. Specifically, we compute baseline and subsequent device densities, denoted as <code class="docutils literal notranslate"><span class="pre">n_baseline</span></code> and <code class="docutils literal notranslate"><span class="pre">count</span></code> respectively, along with metrics such as <strong>percent change</strong> (<code class="docutils literal notranslate"><span class="pre">percent_change</span></code> and <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_score"><strong>Z-score</strong></a> (<code class="docutils literal notranslate"><span class="pre">z-score</span></code>). These indicators are derived by aggregating the device count within each tile and at each time period. The devices are sourced from the longitudinal mobility data. For further details, please refer to the documentation provided in <span class="xref std std-ref">mobility-data</span> and <span class="xref std std-ref">mobility-activity-methodology</span>.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">ddf</span><span class="p">)</span>
@@ -680,8 +687,8 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="section" id="spatial-aggregation">
-<h4>Spatial Aggregation<a class="headerlink" href="#spatial-aggregation" title="Permalink to this heading">#</a></h4>
+<section id="spatial-aggregation">
+<h4>Spatial Aggregation<a class="headerlink" href="#spatial-aggregation" title="Link to this heading">#</a></h4>
 <p>The indicators are aggregated spatially on <a class="reference external" href="https://h3geo.org">H3 resolution 6</a> tiles. This is equivalent to approximately to an area of <span class="math notranslate nohighlight">\(36 Km^2\)</span> on average as illustrated below.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -859,27 +866,27 @@ document.write(`
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
 </div>
-</div>
-<div class="section" id="temporal-aggregation">
-<h4>Temporal Aggregation<a class="headerlink" href="#temporal-aggregation" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="temporal-aggregation">
+<h4>Temporal Aggregation<a class="headerlink" href="#temporal-aggregation" title="Link to this heading">#</a></h4>
 <p>The indicators are aggregated daily on the localized date in the <strong>Europe/Istanbul (UTC+3)</strong> timezone.</p>
-</div>
-</div>
-<div class="section" id="implementation">
-<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h3>
-<div class="section" id="calculate-activity">
-<h4>Calculate <code class="docutils literal notranslate"><span class="pre">ACTIVITY</span></code><a class="headerlink" href="#calculate-activity" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
+<section id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h3>
+<section id="calculate-activity">
+<h4>Calculate <code class="docutils literal notranslate"><span class="pre">ACTIVITY</span></code><a class="headerlink" href="#calculate-activity" title="Link to this heading">#</a></h4>
 <p>In this step, we compute <code class="docutils literal notranslate"><span class="pre">ACTIVITY</span></code> as a density metric. Specifically, we tally the total number of devices detected within each designated area of interest, aggregated on a daily basis. It’s important to highlight that this calculation is based on a spatial join approach, which determines whether a device has been detected within an area of interest at least once. This method, while straightforward, represents a simplified approach compared to more advanced techniques such as estimating stay locations and visits.</p>
 <p>Additionally, we create a column <code class="docutils literal notranslate"><span class="pre">weekday</span></code> that will come handy later on when standardizing.</p>
-</div>
-<div class="section" id="calculate-baseline">
-<h4>Calculate <code class="docutils literal notranslate"><span class="pre">BASELINE</span></code><a class="headerlink" href="#calculate-baseline" title="Permalink to this heading">#</a></h4>
-<p>In this step, we choose the period spanning January 1, 2020 to February 29, 2020 as the baseline. The baseline is calculated for each tile and for each time period, according to the <span class="xref myst">spatial</span> and <span class="xref myst">temporal</span> aggregations.</p>
+</section>
+<section id="calculate-baseline">
+<h4>Calculate <code class="docutils literal notranslate"><span class="pre">BASELINE</span></code><a class="headerlink" href="#calculate-baseline" title="Link to this heading">#</a></h4>
+<p>In this step, we choose the period spanning January 1, 2020 to February 29, 2020 as the baseline. The baseline is calculated for each tile and for each time period, according to the <a class="reference internal" href="#spatial-aggregation"><span class="xref myst">spatial</span></a> and <a class="reference internal" href="#temporal-aggregation"><span class="xref myst">temporal</span></a> aggregations.</p>
 <p>In fact, the result are 7 different baselines for each tile. We calculate the mean device density for each tile and for each day of the week (Mon-Sun).</p>
 <p>Taking a sneak peek,</p>
-</div>
-<div class="section" id="calculate-z-score-and-percent-change">
-<h4>Calculate <code class="docutils literal notranslate"><span class="pre">Z-Score</span></code> and <strong>Percent Change</strong><a class="headerlink" href="#calculate-z-score-and-percent-change" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="calculate-z-score-and-percent-change">
+<h4>Calculate <code class="docutils literal notranslate"><span class="pre">Z-Score</span></code> and <strong>Percent Change</strong><a class="headerlink" href="#calculate-z-score-and-percent-change" title="Link to this heading">#</a></h4>
 <p>A z-score serves as a statistical metric indicating the deviation of a specific data point from the mean (average) of a given dataset, expressed in terms of standard deviations. It is particularly valuable for standardizing and facilitating meaningful comparisons across various datasets. By evaluating the z-scores, one can gauge the extent to which a dataset diverges from its mean, while accounting for variance. Conversely, a percent change offers a simpler interpretation but lacks the detailed information provided by z-scores.</p>
 <p>Creating <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> for each <code class="docutils literal notranslate"><span class="pre">hex_id</span></code>,</p>
 <p>Additionally, we calculate the <strong>percent change</strong>. While the <strong>z-score</strong> offers more robustness to outliers and numerical stability, the <strong>percent change</strong> can be used when interpretability is most important. Thus, preparing columns,</p>
@@ -1040,73 +1047,73 @@ document.write(`
 <p>526220 rows × 8 columns</p>
 </div></div></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="findings">
-<h2>Findings<a class="headerlink" href="#findings" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+</section>
+<section id="findings">
+<h2>Findings<a class="headerlink" href="#findings" title="Link to this heading">#</a></h2>
 <p>Less movement typically means less economic activity. A potential use of movement “activity” indicators could be to see the their evolution in time and correlatation to other features. We present the results (i.e., <code class="docutils literal notranslate"><span class="pre">percent_change</span></code> and <code class="docutils literal notranslate"><span class="pre">z_score</span></code>) on Speial Economic Zones, Administrative 1 boundaries and on the defined Regions.</p>
 <p>Aggregation method: Activity index calculated at h3 level 6 was aggregated, first, by averaging the values across the SEZ, Admin 1 or Region, daily. Later, a weekly aggregation was performed.</p>
-<div class="section" id="by-special-economic-zones">
-<h3>By Special Economic Zones<a class="headerlink" href="#by-special-economic-zones" title="Permalink to this heading">#</a></h3>
-<div class="section" id="percentage-change">
-<h4>Percentage Change<a class="headerlink" href="#percentage-change" title="Permalink to this heading">#</a></h4>
+<section id="by-special-economic-zones">
+<h3>By Special Economic Zones<a class="headerlink" href="#by-special-economic-zones" title="Link to this heading">#</a></h3>
+<section id="percentage-change">
+<h4>Percentage Change<a class="headerlink" href="#percentage-change" title="Link to this heading">#</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../_images/9b92dc978bbfa895e1ac2d54dd0854d71cef7ff708bacb04358455d975f44693.png" src="../../_images/9b92dc978bbfa895e1ac2d54dd0854d71cef7ff708bacb04358455d975f44693.png" />
 </div>
 </div>
-</div>
-<div class="section" id="z-score">
-<h4>Z-Score<a class="headerlink" href="#z-score" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="z-score">
+<h4>Z-Score<a class="headerlink" href="#z-score" title="Link to this heading">#</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../_images/9e3fbbba3ddf131f3feea17d1bc0b414e21cd253ff2ed13666b61d4f4718ab99.png" src="../../_images/9e3fbbba3ddf131f3feea17d1bc0b414e21cd253ff2ed13666b61d4f4718ab99.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="by-admin-1">
-<h3>By Admin 1<a class="headerlink" href="#by-admin-1" title="Permalink to this heading">#</a></h3>
-<div class="section" id="id1">
-<h4>Percentage Change<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
+<section id="by-admin-1">
+<h3>By Admin 1<a class="headerlink" href="#by-admin-1" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h4>Percentage Change<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../_images/65fee2a5cf5ce0feb5a5cfcbbe1325486d89c16d72de4943d51c2c699bafcfc3.png" src="../../_images/65fee2a5cf5ce0feb5a5cfcbbe1325486d89c16d72de4943d51c2c699bafcfc3.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id2">
-<h4>Z-Score<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="id2">
+<h4>Z-Score<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../_images/73551632e7efefeca9108bf5f908987f7d35be98f0d52cdc46a8bcacfe2e252d.png" src="../../_images/73551632e7efefeca9108bf5f908987f7d35be98f0d52cdc46a8bcacfe2e252d.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="by-region">
-<h3>By Region<a class="headerlink" href="#by-region" title="Permalink to this heading">#</a></h3>
-<div class="section" id="id3">
-<h4>Percentage Change<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
+<section id="by-region">
+<h3>By Region<a class="headerlink" href="#by-region" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h4>Percentage Change<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../_images/651e6129ed01fe63569c641af861cc4583ec30800a7ed68c1e6c3747b988f193.png" src="../../_images/651e6129ed01fe63569c641af861cc4583ec30800a7ed68c1e6c3747b988f193.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h4>Z-Score<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="id4">
+<h4>Z-Score<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../_images/a4c108f89041880530ad8d350d0c21d251eca8bca3b77e3c611b302e0488f3ab.png" src="../../_images/a4c108f89041880530ad8d350d0c21d251eca8bca3b77e3c611b302e0488f3ab.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h2>
 <p>The methodology presented is an exploratory analysis pilot aiming to shed light on the economic situation in Syria and Türkiye leveraging alternative data, especially when we are confronted with the absence of traditional data and methods. Mobility data, like any other type of data, comes with limitations and underlying assumptions that should be considered when interpreting and using the data.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
@@ -1119,7 +1126,7 @@ document.write(`
 <li><p><strong>Data Quality:</strong> Data quality can vary, and errors, inaccuracies, or missing data points may be present, which can affect the reliability of analyses.</p></li>
 <li><p><strong>Temporal and Spatial Resolution:</strong> Mobility data may not capture all movements or may lack fine-grained temporal or spatial resolution, limiting its utility for some applications.</p></li>
 <li><p><strong>Lack of Contextual Information:</strong> Mobility data primarily captures movement patterns and geolocation information. It may lack other crucial contextual information, such as transactional data, business types, or specific economic activities, which are essential for accurate estimation of economic activity.</p></li>
-<li><p><strong>Private Intent Data:</strong> The methodology relies on private intent data. In other words, the input data, i.e. the mobility data, was not produced or collected to analyze the population of interest or address the research question as its primary objective but it was repurposed for the public good. The benefits and caveats when using private intent data have been discussed extensively in the <a class="reference external" href="https://wdr2021.worldbank.org">World Development Report 2021</a> <span id="id5">[]</span>.</p></li>
+<li><p><strong>Private Intent Data:</strong> The methodology relies on private intent data. In other words, the input data, i.e. the mobility data, was not produced or collected to analyze the population of interest or address the research question as its primary objective but it was repurposed for the public good. The benefits and caveats when using private intent data have been discussed extensively in the <a class="reference external" href="https://wdr2021.worldbank.org">World Development Report 2021</a> <span class="bibtex-citation" id="id5">[]</span>.</p></li>
 </ul>
 <p><strong>Assumptions:</strong></p>
 <ul class="simple">
@@ -1135,11 +1142,11 @@ document.write(`
 <p class="admonition-title">See also</p>
 <p>For further discussion on limitations and assumptions, please check out the <a class="reference external" href="https://docs.datapartnership.org/collections/mobility/README.md">Development Data Partnership Documentation on Mobility Data</a>.</p>
 </div>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<span class="target" id="id6"></span></div>
-</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<span class="target" id="id6"></span></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
