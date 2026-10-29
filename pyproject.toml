@@ -79,4 +79,3 @@ convention = "numpy"
 
 [tool.uv.sources]
 evy = { git = "https://github.com/datapartnership/evy.git", rev = "ced478e739a59f32eda1ea4977b35edb6ae10646" }
-
