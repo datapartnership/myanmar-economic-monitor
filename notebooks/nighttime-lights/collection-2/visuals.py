@@ -2,13 +2,12 @@
 Standard visualization functions for Myanmar Economic Monitor
 """
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-import numpy as np
 import geopandas as gpd
+import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 from wbpyplot import wb_plot
-from typing import Optional, Union
 
 
 def pick_value_column(df: pd.DataFrame):
@@ -40,16 +39,16 @@ def pick_value_column(df: pd.DataFrame):
 def plot_line_chart(
     df: pd.DataFrame,
     x_col: str,
-    value_col: Optional[str] = None,
+    value_col: str | None = None,
     title: str = "Line Chart",
     xlabel: str = "X",
     ylabel: str = "Y",
     source_text: str = "Source: NASA BlackMarble",
-    date_col: Optional[str] = None,
+    date_col: str | None = None,
     color: str = "#1f77b4",
     marker: str = "o",
     linewidth: float = 2,
-    earthquake_marker: Optional[str] = None,
+    earthquake_marker: str | None = None,
 ) -> None:
     """
     Create a standard line chart using wb_plot decorator
@@ -86,9 +85,9 @@ def plot_line_chart(
     if value_col is None:
         value_col = pick_value_column(plot_df)
 
-    assert (
-        year_col is not None and value_col is not None
-    ), f"Could not determine columns. x={year_col}, value={value_col}"
+    assert year_col is not None and value_col is not None, (
+        f"Could not determine columns. x={year_col}, value={value_col}"
+    )
 
     # Aggregate data
     agg_data = (
@@ -186,22 +185,22 @@ def _wb_font_sizes(width_inches):
 
 def plot_bar_chart(
     df: pd.DataFrame,
-    x_col: Optional[str] = None,
-    value_col: Optional[str] = None,
+    x_col: str | None = None,
+    value_col: str | None = None,
     title: str = "Bar Chart",
     xlabel: str = "X",
     ylabel: str = "Value",
     source_text: str = "Source: NASA BlackMarble",
-    date_col: Optional[str] = None,
-    color: Union[str, dict] = "#4e79a7",
+    date_col: str | None = None,
+    color: str | dict = "#4e79a7",
     figsize: tuple = (12, 6),
-    earthquake_marker: Optional[str] = None,
-    bar_width: Union[int, float] = None,
+    earthquake_marker: str | None = None,
+    bar_width: float = None,
     is_percentage: bool = False,
     pos_color: str = "#754493",
     neg_color: str = "#24768E",
     zero_line: bool = False,
-    ax: Optional[plt.Axes] = None,
+    ax: plt.Axes | None = None,
 ) -> tuple:
     """
     Create a standard bar chart using World Bank styling
@@ -303,10 +302,10 @@ def plot_bar_chart(
         if "Open Sans" not in available_fonts:
             # Try to download and install Open Sans
             try:
-                import urllib.request
-                import zipfile
                 import os
                 import tempfile
+                import urllib.request
+                import zipfile
 
                 # Download Open Sans from Google Fonts
                 url = "https://fonts.google.com/download?family=Open%20Sans"
@@ -480,7 +479,9 @@ def plot_bar_chart(
     from matplotlib.ticker import FuncFormatter
 
     ax.yaxis.set_major_formatter(
-        FuncFormatter(lambda x, p: f"{x/1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}")
+        FuncFormatter(
+            lambda x, p: f"{x / 1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}"
+        )
     )
 
     # Set tick label font and grey color (WB: tick label = size s, regular)
@@ -583,7 +584,7 @@ def plot_subplots_bar_charts(
     df: pd.DataFrame,
     group_col: str,
     x_col: str,
-    value_col: Optional[str] = None,
+    value_col: str | None = None,
     title: str = "Bar Chart Subplots",
     xlabel: str = "X",
     ylabel: str = "Y",
@@ -800,7 +801,7 @@ def plot_comparison_bar_chart(
     df: pd.DataFrame,
     group_col: str,
     x_col: str,
-    value_col: Optional[str] = None,
+    value_col: str | None = None,
     compare_values: list = [2024, 2025],
     title: str = "Comparison Bar Chart",
     xlabel: str = "Groups",
@@ -810,7 +811,7 @@ def plot_comparison_bar_chart(
     colors: list = None,
     bar_width: float = 0.35,
     add_trend_lines: bool = True,
-    earthquake_marker: Optional[str] = None,
+    earthquake_marker: str | None = None,
 ) -> None:
     """
     Create a comparison bar chart with optional trend lines
@@ -924,13 +925,13 @@ def plot_comparison_bar_chart(
 def plot_comparative_lines(
     df: pd.DataFrame,
     x_col: str,
-    value_col: Optional[str] = None,
+    value_col: str | None = None,
     group_col: str = None,
     title: str = "Comparative Line Plot",
     xlabel: str = "X",
     ylabel: str = "Y",
     source_text: str = "Source: NASA BlackMarble",
-    date_col: Optional[str] = None,
+    date_col: str | None = None,
     figsize: tuple = (12, 8),
     colors: list = None,
     markers: list = None,
@@ -938,7 +939,7 @@ def plot_comparative_lines(
     marker_size: float = 6,
     alpha: float = 0.8,
     legend_location: str = "best",
-    earthquake_marker: Optional[str] = None,
+    earthquake_marker: str | None = None,
 ) -> None:
     """
     Create comparative line plots for different groups/categories
@@ -1100,7 +1101,9 @@ def plot_comparative_lines(
     from matplotlib.ticker import FuncFormatter
 
     ax.yaxis.set_major_formatter(
-        FuncFormatter(lambda x, p: f"{x/1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}")
+        FuncFormatter(
+            lambda x, p: f"{x / 1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}"
+        )
     )
 
     # Set tick label font and grey color
@@ -1548,13 +1551,13 @@ def plot_comparative_lines_subplots(
     df: pd.DataFrame,
     category_col: str,
     x_col: str,
-    value_col: Optional[str] = None,
+    value_col: str | None = None,
     group_col: str = None,
     title: str = "Comparative Line Subplots",
     xlabel: str = "X",
     ylabel: str = "Y",
     source_text: str = "Source: NASA BlackMarble",
-    date_col: Optional[str] = None,
+    date_col: str | None = None,
     ncols: int = 3,
     figsize_per_subplot: tuple = (5, 4),
     colors: list = None,
@@ -1564,7 +1567,7 @@ def plot_comparative_lines_subplots(
     alpha: float = 0.8,
     legend_location: str = "best",
     share_axes: bool = False,
-    earthquake_marker: Optional[str] = None,
+    earthquake_marker: str | None = None,
 ) -> None:
     """
     Create comparative line plots as subplots for different categories using World Bank styling
@@ -1657,10 +1660,10 @@ def plot_comparative_lines_subplots(
         if "Open Sans" not in available_fonts:
             # Try to download and install Open Sans
             try:
-                import urllib.request
-                import zipfile
                 import os
                 import tempfile
+                import urllib.request
+                import zipfile
 
                 # Download Open Sans from Google Fonts
                 url = "https://fonts.google.com/download?family=Open%20Sans"
@@ -1812,7 +1815,7 @@ def plot_comparative_lines_subplots(
 
         axs[i].yaxis.set_major_formatter(
             FuncFormatter(
-                lambda x, p: f"{x/1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}"
+                lambda x, p: f"{x / 1_000:.0f}k" if abs(x) >= 1_000 else f"{x:.0f}"
             )
         )
 
@@ -1926,8 +1929,8 @@ def plot_regional_ntl_change(
     ylabel: str = "Region (ADM1)",
     source_text: str = "Source: NASA BlackMarble",
     figsize: tuple = (10, 8),
-    ax: Optional[plt.Axes] = None,
-) -> Optional[plt.Axes]:
+    ax: plt.Axes | None = None,
+) -> plt.Axes | None:
     """
     Create a horizontal bar chart showing percentage change in nighttime lights by region
     with World Bank styling (no decorator dependency)
@@ -2090,10 +2093,10 @@ def plot_regional_ntl_change(
             if "Open Sans" not in available_fonts:
                 # Try to download and install Open Sans
                 try:
-                    import urllib.request
-                    import zipfile
                     import os
                     import tempfile
+                    import urllib.request
+                    import zipfile
 
                     # Download Open Sans from Google Fonts
                     url = "https://fonts.google.com/download?family=Open%20Sans"
