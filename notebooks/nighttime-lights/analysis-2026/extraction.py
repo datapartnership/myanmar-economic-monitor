@@ -1,14 +1,13 @@
 import os
-from pathlib import Path
-import geopandas as gpd
-import pandas as pd
-
-import numpy as np
-from rasterstats import zonal_stats
 from getpass import getpass
+from pathlib import Path
+
+import geopandas as gpd
+import numpy as np
+import pandas as pd
+from blackmarble import BlackMarble, Product, extract, raster
 from dotenv import dotenv_values
-from blackmarble import BlackMarble, Product
-from blackmarble import raster, extract
+from rasterstats import zonal_stats
 
 # Get repo root directory (3 levels up from this script)
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
@@ -208,7 +207,7 @@ for products in [Product.VNP46A3]:
             (gdf_ind_10km, gdf_noind_10km, "ntl_ind_10km"),
         ]:
             col_in = f"{prefix}_sum" if "gf" in prefix else f"{prefix}_sum"
-            col_out = f'{prefix.replace("gf", "nogf").replace("ind", "noind")}_sum'
+            col_out = f"{prefix.replace('gf', 'nogf').replace('ind', 'noind')}_sum"
 
             extr_in = extract_mask_variant(gdf_in, rasters, col_in)
             if extr_in is not None:
