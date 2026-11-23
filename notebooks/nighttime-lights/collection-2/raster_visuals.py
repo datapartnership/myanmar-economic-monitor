@@ -2,11 +2,11 @@
 Raster visualization utilities for nighttime lights analysis.
 """
 
-import numpy as np
 import matplotlib.pyplot as plt
-from rasterio.merge import merge
-from rasterio.features import geometry_mask
+import numpy as np
 import rasterio
+from rasterio.features import geometry_mask
+from rasterio.merge import merge
 
 
 def process_raster_tiles(file_list, threshold=0.5):

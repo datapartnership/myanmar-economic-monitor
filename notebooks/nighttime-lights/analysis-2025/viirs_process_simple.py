@@ -1,12 +1,13 @@
-import os
 import glob
+import os
 import re
+
+import geopandas as gpd
 import h5py
 import numpy as np
 import rasterio
-from rasterio.transform import from_origin
 from rasterio.crs import CRS
-import geopandas as gpd
+from rasterio.transform import from_origin
 from rasterstats import zonal_stats
 
 
